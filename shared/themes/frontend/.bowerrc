@@ -1,0 +1,12 @@
+{
+    "directory": "ui-deps/",
+    "analytics": false,
+    "color": true,
+    "interactive": true,
+    "timeout": 120000,
+    "registry": {
+        "search": [
+            "https://bower.herokuapp.com"
+        ]
+    }
+}

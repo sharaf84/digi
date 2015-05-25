@@ -1,0 +1,37 @@
+{
+  "name": "TSS",
+  "version": "1.0.0",
+  "authors": [
+    "Islam Magdy <i.magdy.m@gmail.com>"
+  ],
+  "description": "TSS Project",
+  "main": "index.html",
+  "moduleType": [
+    "amd",
+    "es6"
+  ],
+  "keywords": [
+    "web",
+    "app",
+    "front",
+    "end",
+    "gulp",
+    "sass"
+  ],
+  "license": "MIT",
+  "homepage": "http://jsfather.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "underscore": "~1.8.3",
+    "bourbon": "~4.2.3",
+    "neat": "~1.7.2",
+    "font-awesome": "~4.3.0"
+  }
+}

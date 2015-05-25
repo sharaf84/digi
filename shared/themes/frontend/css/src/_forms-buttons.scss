@@ -1,0 +1,41 @@
+#{$all-buttons} {
+	background: #e61b1e;
+	color: #fff;
+	font: 400 18px $roboto;
+	padding: 14px;
+	display: block;
+	max-width: 160px;
+	text-align: center;
+	@include transition( 0.3s, ease, all );
+}
+
+#{$all-buttons-focus},
+#{$all-buttons-hover} {
+	background: #292929;
+	color: #fff;
+}
+
+#{$all-buttons-active} {
+	background: #292929;
+	color: #fff;
+}
+#{$all-text-inputs} {
+	color: #9c9c9c;
+	font: 400 16px / 24px $roboto;
+	border: 1px solid #ed2024;
+}
+
+#{$all-text-inputs-focus},
+#{$all-text-inputs-hover} {
+	border: 1px solid #111;
+	color: #111;
+	@include placeholder {
+		color: #111;
+	}
+}
+
+#{$all-text-inputs-active} {
+	border: 1px solid #111;
+	background: #ed2024;
+	color: #111;
+}
