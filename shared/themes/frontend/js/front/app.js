@@ -28,7 +28,16 @@ TSS.onReady = function() {
 	};
 	
 	self.initializeFoundation = function() {
-		$(document).foundation();
+		$(document).foundation({
+			'magellan-expedition': {
+				active_class: 'active',
+				threshold: 20,
+				destination_threshold: 20,
+				throttle_delay: 50,
+				fixed_top: 0,
+				offset_by_height: true
+			}
+		});
 	};
 	
 	self.initializeFoundation();
@@ -57,7 +66,7 @@ TSS.homepageManager = function() {
 		onSlideChangeStart: function( instance ) {
 			var slides       = instance.slides;
 			var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
-			$('header').attr('style', 'background: #111;');
+			$('header').attr('style', 'background: #fff;');
 			$('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
 		},
 		onSlideChangeEnd: function( instance ) {
@@ -100,9 +109,9 @@ jQuery(document).ready(function( $ ) {
 	
 	TSS.onReady();
 	
-	if( Helpers.isHome() ) {
+	//if( Helpers.isHome() ) {
 		TSS.homepageManager();
-	}
+	//}
 	
 	
 });

@@ -61,12 +61,29 @@ header {
 	width: 100%;
 	height: 622px;
 	background-size: cover;
+	padding-top: 20;
+	@include transition( background-image, 0.5s, ease-in-out );
+	.left-off-canvas-toggle {
+		font-size: 40px;
+		position: absolute;
+		z-index: 10;
+		left: -19px;
+		width: 60px;
+		text-align: center;
+		top: 10px;
+	}
 	.header-top-bar {
 		background: #fff;
 		border-radius: 8px;
 		height: 74px;
 		width: 100%;
 		margin: 20px 0 0 0;
+		padding-top: 0;
+		&.fixed {
+			box-shadow: 0 0 5px #111;
+			border-radius: 0;
+			margin-top: 0;
+		}
 	}
 	.logo {
 		background: url(../../images/front/logo.png) no-repeat center center;
@@ -90,7 +107,13 @@ header {
 					padding: 27px;
 					display: block;
 					@include transition(0.3s, ease, all);
-					&:hover, &.active {
+					&:hover {
+						background-color: #ed2024;
+						color: #fff;
+						border: none !important;
+						padding-top: 27px !important;
+					}
+					&.active {
 						padding-top: 22px;
 						border-top: 5px solid;
 					}
@@ -422,3 +445,19 @@ footer {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@import "responsive";

@@ -1,0 +1,96 @@
+/**
+ * General Responsive Rules:
+ */
+
+@import "_devices";
+
+// Fonts Vars:
+$roboto: 'Roboto', arial, sans-serif;
+
+// Colors vars:
+$topSliderBG	: #4b5c70;
+$grey			: #f3f5f5;
+$green			: #1abc9c;
+$dark-blue		: #4b5c70;
+$facebookColor	: #354f88;
+$linkedInColor	: #007bb6;
+$googleColor	: #ce3e26;
+
+
+
+@media #{$small-up} {
+}
+@media #{$small-only} {
+}
+
+@media #{$small-only} {}
+@media #{$medium-up} {}
+@media #{$medium-only} {}
+@media #{$large-up} {}
+@media #{$large-only} {}
+@media #{$xlarge-up} {}
+@media #{$xlarge-only} {}
+@media #{$xxlarge-up} {}
+@media #{$xxlarge-only} {}
+
+/**
+ * More Specific Responsive Rules:
+ */
+
+// Mobile Portrait:
+@include mobile( portrait ) {
+	header {
+		background-size: 244%;
+		background-position: top right;
+		
+		.header-top-bar {
+			margin: 0;
+			border-radius: 0;
+		}
+		
+		.shop-now {
+			width: 100%;
+			left: 0;
+			top: 250px;
+			display: block;
+			max-width: 100%;
+			padding: 18px 0;
+		}
+		
+		.left-off-canvas-toggle {
+			font-size: 40px;
+			position: absolute;
+			z-index: 10;
+			left: -19px;
+			width: 60px;
+			text-align: center;
+			top: 10px;
+		}
+		.logo {
+			margin-left: 22px;
+			text-indent: -101%;
+		}
+		form {
+			position: absolute;
+			right: -126px;
+		}
+	}
+	
+	.home-tabs ul.tabs .tab-title {
+		float: none;
+		width: 100%;
+		text-align: center;
+		&.active a { margin: 0; }
+	}
+	.article-section {
+		.shop-now {
+			width: 100%;
+			display: block;
+			max-width: 100%;
+		}
+	}
+	.home-bottom-articles img {
+		height: auto;
+	}
+	
+}
