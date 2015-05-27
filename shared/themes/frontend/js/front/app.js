@@ -19,14 +19,14 @@ Helpers = new TSS.helpers();
 
 TSS.onReady = function() {
 	var self = this;
-	
+
 	self.events = function() {
 		$('#newsletter-form-js').on('valid.fndtn.abide', function( e ) {
 			e.preventDefault();
 			TSS.newsletter();
 		});
 	};
-	
+
 	self.initializeFoundation = function() {
 		$(document).foundation({
 			'magellan-expedition': {
@@ -39,7 +39,7 @@ TSS.onReady = function() {
 			}
 		});
 	};
-	
+
 	self.initializeFoundation();
 	self.events();
 };
@@ -60,6 +60,9 @@ TSS.homepageManager = function() {
 		pagination: 'header .swiper-pagination',
 		paginationClickable: true,
 		effect: 'fade',
+		fade: {
+			crossFade: true
+		},
 		spaceBetween: 0,
 		hashnav: true,
 		preloadImages: true,
@@ -68,15 +71,17 @@ TSS.homepageManager = function() {
 			var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
 			$('header').attr('style', 'background: #fff;');
 			$('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
+			$('.header-slider h2').removeClass('animated slideInLeft');
 		},
 		onSlideChangeEnd: function( instance ) {
 			var slides       = instance.slides;
 			var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
 			$('header').attr('style', 'background: #111;');
 			$('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
+			$('.header-slider h2').addClass('animated slideInLeft');
 		}
 	});
-}
+};
 
 /**
  * Footer Newsletter Form:
@@ -106,12 +111,12 @@ TSS.newsletter = function() {
 }
 
 jQuery(document).ready(function( $ ) {
-	
+
 	TSS.onReady();
-	
+
 	//if( Helpers.isHome() ) {
 		TSS.homepageManager();
 	//}
-	
-	
+
+
 });
