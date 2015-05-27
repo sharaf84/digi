@@ -25,10 +25,12 @@ use digi\metronic\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
 
     <?=
-    $form->field($model, 'body')->widget(\dosamigos\ckeditor\CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'standerd' //full,standerd,basic
-    ])
+            $form->field($model, 'body')
+            ->widget(\dosamigos\ckeditor\CKEditor::className(), [
+                'options' => ['rows' => 6],
+                'preset' => 'standerd' //full,standerd,basic
+            ])
+            ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
     ?>
 
 </div>

@@ -14,21 +14,19 @@ use Yii;
  * @property string $created
  * @property string $updated
  */
-class Settings extends \common\models\core\ActiveRecord
-{
+class Settings extends Base {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'base_settings';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['key', 'value'], 'required'],
             [['key'], 'string', 'max' => 64],
@@ -41,8 +39,7 @@ class Settings extends \common\models\core\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'key' => Yii::t('app', 'Key'),
@@ -52,4 +49,5 @@ class Settings extends \common\models\core\ActiveRecord
             'updated' => Yii::t('app', 'Updated'),
         ];
     }
+
 }

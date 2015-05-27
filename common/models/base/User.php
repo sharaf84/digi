@@ -5,7 +5,6 @@ namespace common\models\base;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
-use common\models\core\ActiveRecord;
 
 /**
  * This is the model class for table "base_user".
@@ -23,7 +22,7 @@ use common\models\core\ActiveRecord;
  * @property string $created
  * @property string $updated
  */
-class User extends ActiveRecord implements IdentityInterface {
+class User extends Base implements IdentityInterface {
 
     const STATUS_DELETED = 0;
     const STATUS_SUSPENDED = 1;

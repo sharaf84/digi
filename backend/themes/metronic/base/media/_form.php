@@ -25,9 +25,9 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'size')->textInput() ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => 255])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className()) ?>
 
-    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => 255]) ?>
 

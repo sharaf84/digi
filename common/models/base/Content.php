@@ -3,7 +3,6 @@
 namespace common\models\base;
 
 use Yii;
-use common\models\core\ActiveRecord;
 
 /**
  * This is the model class for table "base_content".
@@ -22,7 +21,7 @@ use common\models\core\ActiveRecord;
  * @property string $created
  * @property string $updated
  */
-class Content extends ActiveRecord {
+class Content extends Base {
 
     const TYPE = 0;
 
@@ -79,6 +78,11 @@ class Content extends ActiveRecord {
                 'immutable' => true,
                 'ensureUnique' => true,
                 'uniqueValidator' => ['targetAttribute' => ['slug', 'type']]
+            ],
+            'Sortable' => [
+                'class' => \digi\sortable\behaviors\Sortable::className(),
+                'query' => static::find(),
+                'orderAttribute' => 'sort'
             ],
         ]);
     }
