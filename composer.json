@@ -28,6 +28,7 @@
         "creocoder/yii2-nested-sets": "0.9.*",
         "kotchuprik/yii2-sortable-widgets": "dev-master",
         "2amigos/yii2-ckeditor-widget": "~1.0",
+        "v0lume/yii2-meta-tags": "*",
         "webvimark/multilanguage": "*"
     },
     "require-dev": {
