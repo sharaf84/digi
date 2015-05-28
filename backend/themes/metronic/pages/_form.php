@@ -36,7 +36,8 @@ use digi\metronic\widgets\ActiveForm;
     <?=
     digi\metaTags\MetaTags::widget([
         'model' => $model,
-        'form' => $form
+        'form' => $form,
+        'multiLanguage' => true,
     ])
     ?>
 </div>
