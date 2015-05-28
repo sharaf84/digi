@@ -80,6 +80,11 @@ return [
                 ],
             ],
         ],
+        'metaTags' => [
+            'class' => 'digi\metaTags\MetaTagsComponent',
+            'generateCsrf' => false,
+            'generateOg' => true,
+        ],
     ],
     /**
      * RBAC access

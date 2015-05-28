@@ -33,12 +33,18 @@ use digi\metronic\widgets\ActiveForm;
             ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
     ?>
 
+    <?=
+    digi\metaTags\MetaTags::widget([
+        'model' => $model,
+        'form' => $form
+    ])
+    ?>
 </div>
 <div class="form-actions">
     <div class="row">
         <div class="col-md-offset-3 col-md-9">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn green']) ?>
-            <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
+<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn green']) ?>
+<?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
         </div>
     </div>
 </div>

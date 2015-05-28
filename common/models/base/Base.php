@@ -14,11 +14,14 @@ class Base extends \yii\db\ActiveRecord {
                 'updatedAtAttribute' => 'updated',
                 'value' => new \yii\db\Expression('NOW()'),
             ],
+            'MetaTag' => [
+                'class' => \digi\metaTags\MetaTagBehavior::className(),
+            ],
             'MultiLanguageBehavior' => [
                 'class' => \webvimark\behaviors\multilanguage\MultiLanguageBehavior::className(),
                 'mlConfig' => [
-                    'db_table' => 'translations_with_string',
-                    'attributes' => ['name', 'title', 'value', 'breif', 'description', 'body'],
+                    'db_table' => 'translations_with_text',
+                    'attributes' => ['name', 'title', 'value', 'keywords', 'breif', 'description', 'body'],
                     //Sets all virtual attributes at these routes ex: title_ar, title_fr, ... 
                     'admin_routes' => [
                         'content/update',
