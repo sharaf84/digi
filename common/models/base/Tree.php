@@ -127,4 +127,11 @@ class Tree extends \kartik\tree\models\Tree {
         return (new query\Tree(get_called_class()))->andWhere(static::ROOT ? ['root' => static::ROOT] : null);
     }
 
+    public function beforeDelete() {
+        if (parent::beforeDelete()) {
+            return !($this->isRoot() && ($this->root == static::ROOT));
+        }
+        return false;
+    }
+
 }

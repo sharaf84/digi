@@ -21,7 +21,7 @@ class Base extends \yii\db\ActiveRecord {
                 'class' => \webvimark\behaviors\multilanguage\MultiLanguageBehavior::className(),
                 'mlConfig' => [
                     'db_table' => 'translations_with_text',
-                    'attributes' => ['name', 'title', 'value', 'keywords', 'breif', 'description', 'body'],
+                    'attributes' => ['name', 'title', 'value', 'keywords', 'brief', 'description', 'body'],
                     //Sets all virtual attributes at these routes ex: title_ar, title_fr, ... 
                     'admin_routes' => [
                         'content/update',

@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use digi\metronic\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Tree */
-
-$this->title = $model->name;
+/* @var $model common\models\base\Content */
+Yii::$app->metaTags->register($model);
+$this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => ucfirst($this->context->id), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="page-content tree-view">
+<div class="page-content content-view">
 
     <!-- BEGIN STYLE CUSTOMIZER -->
     <?= $this->render('@metronicTheme/layouts/themePanel.php'); ?>
@@ -33,14 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
-<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => '']) ?>
+<?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => '']) ?>
                     </li>
                     <li>
                         <?=
-                        Html::a('Delete', ['delete', 'id' => $model->id], [
+                        Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
                             'class' => '',
                             'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
+                                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                             //'method' => 'post',
                             ],
                         ])
@@ -70,28 +70,17 @@ $this->params['breadcrumbs'][] = $this->title;
                         'model' => $model,
                         'attributes' => [
                             'id',
-                            'root',
-                            'lft',
-                            'rgt',
-                            'lvl',
-                            'name',
+                            //'type',
+                            'title',
+                            'title_ar',
                             'slug',
-                            'link',
+                            'brief:ntext',
                             'description:ntext',
-                            'icon',
-                            'icon_type',
-                            'active',
-                            'selected',
-                            'disabled',
-                            'readonly',
-                            'visible',
-                            'collapsed',
-                            'movable_u',
-                            'movable_d',
-                            'movable_l',
-                            'movable_r',
-                            'removable',
-                            'removable_all',
+                            'body:ntext',
+                            'date',
+                            //'end_date',
+                            'sort',
+                            'status',
                             'created',
                             'updated',
                         ],
