@@ -1,6 +1,10 @@
 # yii console command
 /yii
 
+#Node
+node_modules/
+shared/themes/frontend/node_modules/
+
 # phpstorm project files
 .idea
 

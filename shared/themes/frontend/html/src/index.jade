@@ -1,0 +1,95 @@
+include ./includes/head.jade
+
+body
+	div( class="off-canvas-wrap", data-offcanvas )
+		div( class="inner-wrap" )
+			a( class="left-off-canvas-toggle, menu-icon, show-for-touch", href="#" )
+				i.md.md-menu
+				
+			include ./includes/mobile-nav.jade
+			include ./includes/homeHeader.jade
+			
+			.center-features.row
+				h3 largest egyptian fitness website
+				.large-4.medium-4.small-12.columns
+					.star-icon
+					h4 High Quality
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				.large-4.medium-4.small-12.columns
+					.delivery-icon
+					h4 Free Delivery
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+				.large-4.medium-4.small-12.columns
+					.network-icon
+					h4 Social Blog
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+
+
+			.home-tabs
+				ul.tabs(data-tab)
+					li.tab-title.active
+						a( href="#featured-products" ) Featured Products
+					li.tab-title
+						a( href="#best-seller" ) Best Seller
+
+				.tabs-content
+					.content.row.active( id="featured-products" )
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+					.content.row( id="best-seller" )
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+						.large-4.medium-4.small-12.columns.product-item
+							img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+							h4 Platinum&trade; - <span>Creatine</span>
+							p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+							a.shop-now( href="#" )
+								i.md.md-shopping-cart
+								| Shop Now
+
+
+
+
+
+
+			.dark-section
+				.row
+					.large-6.medium-6.small-12.columns.hide-for-small
+						img(src= imagesPath +  "MergedLayers.png", alt="")
+					.large-6.medium-6.small-12.columns
+						h3 BLENDER BOTTLE
+						p Daily Multivitamin for Overall Men's Health malum soccer das lansey fall left
+						a.shop-now(href="#") <i class="md md-shopping-cart"></i> Shop Now
+
+			include ./includes/footer.jade

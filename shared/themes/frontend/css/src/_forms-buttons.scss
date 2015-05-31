@@ -39,3 +39,19 @@
 	background: #ed2024;
 	color: #111;
 }
+.select-component {
+	position: relative;
+	.md-arrow-drop-up {
+		@include position(absolute, 3px 5px null null)
+	}
+	.md-arrow-drop-down {
+		@include position(absolute, 10px 5px null null)
+	}
+}
+select {
+	background: #dedede;
+	border-radius: 3px;
+	padding-right: 40px;
+	outline: none;
+	&:active, &focus { outline: none; }
+}
