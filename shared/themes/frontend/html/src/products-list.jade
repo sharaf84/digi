@@ -1,0 +1,143 @@
+include ./includes/head.jade
+
+body
+	div( class="off-canvas-wrap", data-offcanvas )
+		div( class="inner-wrap" )
+			a( class="left-off-canvas-toggle, menu-icon, show-for-touch", href="#" )
+				i.md.md-menu
+				
+			include ./includes/mobile-nav.jade
+			include ./includes/header.jade
+
+
+			div.single-page.archive-page.row
+				.page-title.large-12.medium-12.small-12.columns
+					h2 Muscle Building
+				
+				form.row(action="/products")
+					.large-10.medium-10.small-12.columns
+						.alphabet-filter
+							input(type="hidden", id="filterCharValue", value="")
+							ul.pagination.filters
+								li.current(data-id="")
+									a(href="#") All
+								each val in ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+									li(data-id=val)
+										a(href="#")= val
+								li(data-id="...")
+									a(href="#") ...
+								
+					.large-2.medium-2.small-12.columns
+						.price-filter
+							.select-component
+								i.md.md-arrow-drop-up
+								i.md.md-arrow-drop-down
+								select#price-filter(name="price")
+									option(value="0") Sort By Price
+									option(value="1") Price: Higher First
+									option(value="2") Price: Lower First
+
+
+				.products-list
+					.single-product-item.row
+						.large-3.medium-3.small-12.columns
+							img(src= imagesPath + "archive-product.png", alt="")
+						.large-8.medium-8.small-12.columns
+							h3 
+								a(href="#") NITRO-TECH&trade;
+							p Contains protein sourced primarily from whey protein isolate - one of the cleanest and purest protien sources available to athletes. It is
+							p.price-tag 299 LE
+							a.more-on-this-product(href="#") Find Out More
+								i.md.md-keyboard-arrow-right
+							
+					.single-product-item.row
+						.large-3.medium-3.small-12.columns
+							img(src= imagesPath + "archive-product.png", alt="")
+						.large-8.medium-8.small-12.columns
+							h3 
+								a(href="#") NITRO-TECH&trade;
+							p Contains protein sourced primarily from whey protein isolate - one of the cleanest and purest protien sources available to athletes. It is
+							p.price-tag 299 LE
+							a.more-on-this-product(href="#") Find Out More
+								i.md.md-keyboard-arrow-right
+							
+					.single-product-item.row
+						.large-3.medium-3.small-12.columns
+							img(src= imagesPath + "archive-product.png", alt="")
+						.large-8.medium-8.small-12.columns
+							h3 
+								a(href="#") NITRO-TECH&trade;
+							p Contains protein sourced primarily from whey protein isolate - one of the cleanest and purest protien sources available to athletes. It is
+							p.price-tag 299 LE
+							a.more-on-this-product(href="#") Find Out More
+								i.md.md-keyboard-arrow-right
+							
+					.single-product-item.row
+						.large-3.medium-3.small-12.columns
+							img(src= imagesPath + "archive-product.png", alt="")
+						.large-8.medium-8.small-12.columns
+							h3 
+								a(href="#") NITRO-TECH&trade;
+							p Contains protein sourced primarily from whey protein isolate - one of the cleanest and purest protien sources available to athletes. It is
+							p.price-tag 299 LE
+							a.more-on-this-product(href="#") Find Out More
+								i.md.md-keyboard-arrow-right
+							
+					.single-product-item.row
+						.large-3.medium-3.small-12.columns
+							img(src= imagesPath + "archive-product.png", alt="")
+						.large-8.medium-8.small-12.columns
+							h3 
+								a(href="#") NITRO-TECH&trade;
+							p Contains protein sourced primarily from whey protein isolate - one of the cleanest and purest protien sources available to athletes. It is
+							p.price-tag 299 LE
+							a.more-on-this-product(href="#") Find Out More
+								i.md.md-keyboard-arrow-right
+							
+					ul.pagination.normalize
+						li(data-id="")
+							a(href="#")
+								i.md.md-chevron-left
+								| Back
+						li.current
+							a(href="#") 1
+						each val in ['2','3','...','14','15','16']
+							li(data-id=val)
+								a(href="#")= val
+						li(data-id="...")
+							a(href="#")
+								| Next
+								i.md.md-chevron-right
+					
+					
+				.page-title.large-12.medium-12.small-12.columns
+					h2 Best Seller
+					
+				.row
+					.large-3.medium-3.small-12.columns.product-item
+						img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+						h4 Platinum&trade; - <span>Creatine</span>
+						p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+						a.more-on-this-product(href="#") Find Out More
+							i.md.md-keyboard-arrow-right
+					.large-3.medium-3.small-12.columns.product-item
+						img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+						h4 Platinum&trade; - <span>Creatine</span>
+						p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+						a.more-on-this-product(href="#") Find Out More
+							i.md.md-keyboard-arrow-right
+					.large-3.medium-3.small-12.columns.product-item
+						img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+						h4 Platinum&trade; - <span>Creatine</span>
+						p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+						a.more-on-this-product(href="#") Find Out More
+							i.md.md-keyboard-arrow-right
+					.large-3.medium-3.small-12.columns.product-item
+						img( src= imagesPath + "Platinum-Pure-Whey.png", alt="" )
+						h4 Platinum&trade; - <span>Creatine</span>
+						p Platinum is an ultra-premium leanla gainer engineered to deliver quality
+						a.more-on-this-product(href="#") Find Out More
+							i.md.md-keyboard-arrow-right
+							
+
+			include ./includes/footer.jade
