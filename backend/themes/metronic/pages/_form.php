@@ -32,7 +32,9 @@ use digi\metronic\widgets\ActiveForm;
             ])
             ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
     ?>
-
+    
+    <h3 class="form-section">SEO:  <small>Meta Tags</small></h3>
+    
     <?=
     digi\metaTags\MetaTags::widget([
         'model' => $model,
