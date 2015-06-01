@@ -5,7 +5,7 @@ use digi\metronic\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\base\Content */
-
+Yii::$app->metaTags->register($model);
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => ucfirst($this->context->id), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

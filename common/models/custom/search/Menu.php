@@ -53,7 +53,7 @@ class Menu extends \common\models\custom\Menu {
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'root' => $this->root,
+            //'root' => $this->root,
             'lft' => $this->lft,
             'rgt' => $this->rgt,
             'lvl' => $this->lvl,

@@ -4,7 +4,7 @@ namespace common\components;
 
 use Yii;
 use yii\helpers\Url;
-use common\models\custom\Media;
+use common\models\base\Media;
 
 /**
  * jQuery File Upload Plugin PHP Class 8.3.1

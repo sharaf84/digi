@@ -5,7 +5,6 @@ namespace common\models\base;
 use Yii;
 use yii\helpers\Url;
 use common\helpers\MediaHelper;
-use common\models\core\ActiveRecord;
 
 /**
  * This is the model class for table "base_media".
@@ -27,7 +26,7 @@ use common\models\core\ActiveRecord;
  * @property string $created
  * @property string $updated
  */
-class Media extends ActiveRecord {
+class Media extends Base {
 
     /**
      * @inheritdoc
@@ -73,6 +72,16 @@ class Media extends ActiveRecord {
             'created' => 'Created',
             'updated' => 'Updated',
         ];
+    }
+    
+    public function behaviors() {
+        return array_merge_recursive(parent::behaviors(), [
+            'Sortable' => [
+                'class' => \digi\sortable\behaviors\Sortable::className(),
+                'query' => static::find(),
+                'orderAttribute' => 'sort'
+            ],
+        ]);
     }
 
     public function afterDelete() {

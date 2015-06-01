@@ -25,18 +25,29 @@ use digi\metronic\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
 
     <?=
-    $form->field($model, 'body')->widget(\dosamigos\ckeditor\CKEditor::className(), [
-        'options' => ['rows' => 6],
-        'preset' => 'standerd' //full,standerd,basic
+            $form->field($model, 'body')
+            ->widget(\dosamigos\ckeditor\CKEditor::className(), [
+                'options' => ['rows' => 6],
+                'preset' => 'standerd' //full,standerd,basic
+            ])
+            ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
+    ?>
+    
+    <h3 class="form-section">SEO:  <small>Meta Tags</small></h3>
+    
+    <?=
+    digi\metaTags\MetaTags::widget([
+        'model' => $model,
+        'form' => $form,
+        'multiLanguage' => true,
     ])
     ?>
-
 </div>
 <div class="form-actions">
     <div class="row">
         <div class="col-md-offset-3 col-md-9">
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn green']) ?>
-            <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
+<?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn green']) ?>
+<?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
         </div>
     </div>
 </div>

@@ -2,8 +2,6 @@
 
 namespace common\models\base;
 
-use common\models\core\ActiveRecord;
-
 /**
  * This is the model class for table "base_tree".
  *
@@ -109,7 +107,7 @@ class Tree extends \kartik\tree\models\Tree {
      * @inheritdoc
      */
     public function behaviors() {
-        return array_merge_recursive(ActiveRecord::behaviors(), parent::behaviors(), [
+        return array_merge_recursive(Base::behaviors(), parent::behaviors(), [
             'SluggableBehavior' => [
                 'class' => \yii\behaviors\SluggableBehavior::className(),
                 'attribute' => 'name',
@@ -127,6 +125,13 @@ class Tree extends \kartik\tree\models\Tree {
     public static function find() {
         //Set default condition
         return (new query\Tree(get_called_class()))->andWhere(static::ROOT ? ['root' => static::ROOT] : null);
+    }
+
+    public function beforeDelete() {
+        if (parent::beforeDelete()) {
+            return !($this->isRoot() && ($this->root == static::ROOT));
+        }
+        return false;
     }
 
 }

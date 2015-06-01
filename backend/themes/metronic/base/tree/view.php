@@ -14,14 +14,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="page-content tree-view">
 
     <!-- BEGIN STYLE CUSTOMIZER -->
-    <?=  $this->render('@metronicTheme/layouts/themePanel.php'); ?>
+    <?= $this->render('@metronicTheme/layouts/themePanel.php'); ?>
     <!-- END STYLE CUSTOMIZER -->
     <!-- BEGIN PAGE HEADER-->
     <h3 class="page-title">
         <?= Html::encode($this->title) ?>
     </h3>
     <div class="page-bar">
-        <?=         \digi\metronic\widgets\Breadcrumbs::widget([
+        <?=
+        \digi\metronic\widgets\Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ])
         ?>
@@ -32,16 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
-                        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => '']) ?>
+<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => '']) ?>
                     </li>
                     <li>
-                        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+                        <?=
+                        Html::a('Delete', ['delete', 'id' => $model->id], [
                             'class' => '',
                             'data' => [
                                 'confirm' => 'Are you sure you want to delete this item?',
-                                //'method' => 'post',
+                            //'method' => 'post',
                             ],
-                        ]) ?>
+                        ])
+                        ?>
                     </li>
                 </ul>
             </div>
@@ -55,43 +58,45 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="portlet box grey-cascade">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i><?= ucfirst($this->context->id)?> Details
+                        <i class="fa fa-cogs"></i><?= ucfirst($this->context->id) ?> Details
                     </div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse"></a>
                     </div>
                 </div>
                 <div class="portlet-body">
-                        <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'root',
-            'lft',
-            'rgt',
-            'lvl',
-            'name',
-            'slug',
-            'link',
-            'description:ntext',
-            'icon',
-            'icon_type',
-            'active',
-            'selected',
-            'disabled',
-            'readonly',
-            'visible',
-            'collapsed',
-            'movable_u',
-            'movable_d',
-            'movable_l',
-            'movable_r',
-            'removable',
-            'removable_all',
-            'created',
-            'updated',
-        ],
-    ]) ?>
+                    <?=
+                    DetailView::widget([
+                        'model' => $model,
+                        'attributes' => [
+                            'id',
+                            'root',
+                            'lft',
+                            'rgt',
+                            'lvl',
+                            'name',
+                            'slug',
+                            'link',
+                            'description:ntext',
+                            'icon',
+                            'icon_type',
+                            'active',
+                            'selected',
+                            'disabled',
+                            'readonly',
+                            'visible',
+                            'collapsed',
+                            'movable_u',
+                            'movable_d',
+                            'movable_l',
+                            'movable_r',
+                            'removable',
+                            'removable_all',
+                            'created',
+                            'updated',
+                        ],
+                    ])
+                    ?>
                 </div>
             </div>
         </div>

@@ -162,9 +162,9 @@ echo $renderContent(Module::VIEW_PART_1);
     <div class="row">
         <div class="col-sm-12">
             <?= $keyField ?>
-            <?= $form->field($node, $nameAttribute)->textInput($inputOpts) ?>
+            <?= $form->field($node, $nameAttribute)->textInput($inputOpts)->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className()) ?>
             <?= $form->field($node, 'link')->textInput(); ?>
-            <?= $form->field($node, 'description')->textArea(); ?>
+            <?= $form->field($node, 'description')->textArea()->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']); ?>
             <?= $form->field($node, 'root')->hiddenInput(['value' => $node::ROOT])->label(false); ?>
         </div>
     </div>

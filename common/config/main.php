@@ -10,10 +10,13 @@ return [
         '@digi/metronic' => '@common/digisoft/digi-metronic',
         '@digi/fancybox' => '@common/digisoft/digi-fancybox',
         '@digi/sortable' => '@common/digisoft/digi-sortable',
+        '@digi/metaTags' => '@common/digisoft/digi-meta-tags',
         '@uploadPath' => '@sharedPath/uploads',
         '@uploadUrl' => '@sharedUrl/uploads',
         '@metronicPath' => '@sharedPath/themes/metronic',
         '@metronicUrl' => '@sharedUrl/themes/metronic',
+        '@frontThemePath' => '@sharedPath/themes/frontend',
+        '@frontThemeUrl' => '@sharedUrl/themes/frontend',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
