@@ -17,6 +17,28 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'category_id')->textInput() ?>
 
+    <div class="form-group">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <?=
+            kartik\tree\TreeViewInput::widget([
+                // single query fetch to render the tree
+                'query' => \common\models\custom\Category::find()->andWhere('lvl > 0')->addOrderBy('root, lft'),
+                'headingOptions' => ['label' => 'Categories'],
+                'name' => 'Product[category_id]', // input name
+                'value' => $model->category_id, // values selected (comma separated for multiple select)
+                'asDropdown' => true, // will render the tree input widget as a dropdown.
+                'multiple' => false, // set to false if you do not need multiple selection
+                'fontAwesome' => false, // render font awesome icons
+                'rootOptions' => [
+                    'label' => '<i class="fa fa-tree"></i>',
+                    'class' => 'text-success'
+                ], // custom root label
+                    //'options'         => ['disabled' => true],
+            ]);
+            ?>
+        </div>
+    </div>
     <?= $form->field($model, 'brand_id')->textInput() ?>
 
     <?= $form->field($model, 'size_id')->textInput() ?>
@@ -32,7 +54,6 @@ use digi\metronic\widgets\ActiveForm;
     <?= $form->field($model, 'slug')->textInput() ?>
 
     <?php
-
     echo $form->field($model, 'color')->widget(\kartik\color\ColorInput::classname(), [
         'options' => ['placeholder' => 'Select color ...'],
     ]);
@@ -75,7 +96,7 @@ use digi\metronic\widgets\ActiveForm;
     <div class="row">
         <div class="col-md-offset-3 col-md-9">
             <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => 'btn green']) ?>
-<?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
+            <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn default']) ?>
         </div>
     </div>
 </div>
