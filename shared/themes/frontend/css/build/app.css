@@ -10602,6 +10602,7 @@ header {
   height: 622px;
   background-size: cover;
   padding-top: 20;
+  position: relative;
   -webkit-transition: background-image, 0.5s, ease-in-out;
   -moz-transition: background-image, 0.5s, ease-in-out;
   transition: background-image, 0.5s, ease-in-out;
@@ -10630,7 +10631,11 @@ header {
     -moz-transition: 0.3s, ease, all;
     transition: 0.3s, ease, all; }
     header .header-top-bar.skrollable-after {
-      border-bottom: 3px solid #ed2024; }
+      border-bottom: 3px solid #ed2024;
+      width: 100% !important;
+      left: 0% !important;
+      border-radius: 0px !important;
+      top: -20px !important; }
     header .header-top-bar.fixed {
       box-shadow: 0 0 5px #111;
       border-radius: 0;
@@ -10651,7 +10656,8 @@ header {
     margin: 0;
     padding: 0; }
     header .main-nav ul li {
-      display: inline-block; }
+      display: inline-block;
+      position: relative; }
       header .main-nav ul li a {
         color: #252525;
         font: 500 14px "PT Sans", arial, sans-serif;
@@ -10672,6 +10678,13 @@ header {
           border-top: 5px solid; }
   header form {
     margin-top: 19px; }
+    header form i {
+      color: #ed2024;
+      display: block;
+      position: absolute;
+      right: 22px;
+      font-size: 24px;
+      top: 20px; }
     header form input[type='search'] {
       color: #9c9c9c;
       font: 400 16px/24px "PT Sans", arial, sans-serif;
@@ -10739,6 +10752,8 @@ header {
     border-bottom: 3px solid #ed2024; }
     header.single-header .header-top-bar {
       margin: 0; }
+      header.single-header .header-top-bar.skrollable-after {
+        top: 0 !important; }
 
 /**
  * Homepage center features icons:
@@ -10792,10 +10807,10 @@ header {
       width: 50%;
       outline: none !important; }
       .home-tabs ul.tabs li.tab-title a {
-        font: 500 17px "PT Sans", arial, sans-serif;
+        font: 600 20px "PT Sans", arial, sans-serif;
         text-transform: uppercase;
         text-align: center;
-        padding: 20px; }
+        line-height: 21px; }
       .home-tabs ul.tabs li.tab-title.active a {
         background: #e61b1e;
         color: #fff;
@@ -10850,7 +10865,9 @@ header {
  * Homepage article section:
  */
 .article-section {
-  margin-top: 30px; }
+  margin-top: 30px;
+  border-bottom: 1px solid #dcdcdc;
+  padding-bottom: 29px; }
   .article-section h4 {
     color: #e61b1e;
     font: 600 31px/29px "PT Sans", arial, sans-serif;

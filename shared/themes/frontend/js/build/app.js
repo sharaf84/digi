@@ -126,22 +126,25 @@ TSS.header = function () {
 	var self        = this;
 	var rowWidth    = $('.row').width();
 	var totalGutter = window.innerWidth - rowWidth;
-	$('header:not(.single-header) .header-top-bar').attr({
-		'data-top-top': 'position:fixed;',
-		'data-edge-strategy': 'set',
-		'data-0': 'top:0px;border-radius:8px;position:fixed;width: ' + (rowWidth/window.innerWidth)*100 + '%;left: ' + ((totalGutter/2/window.innerWidth)*100) + '%',
-		'data-100': 'width: 80%; left: 10%;border-radius:8px;top:-5px;',
-		'data-200': 'width: 90%; left: 5%;border-radius:4px;top:-10px;',
-		'data-300': 'width: 100%; left: 0%;border-radius:0px;top:-20px;',
-	});
 
-	$('header.single-header .header-top-bar').attr({
-		'data-top-top': 'position:fixed;',
-		'data-edge-strategy': 'set',
+	//$('header:not(.single-header) .header-top-bar').attr({
+		//'data-top-top': 'position:fixed;',
+		//'data-anchor-target': '#checkpoint-a',
+		//..'data-edge-strategy': 'set',
+		//'data-0': 'top:0px;border-radius:8px;position:fixed;width: ' + (rowWidth/window.innerWidth)*100 + '%;left: ' + ((totalGutter/2/window.innerWidth)*100) + '%',
+		//'data-100': 'width: 80%; left: 10%;border-radius:8px;top:-5px;',
+		//'data-200': 'width: 90%; left: 5%;border-radius:4px;top:-10px;',
+		//'data-end-end': 'width: 100%; left: 0%;border-radius:0px;top:-20px;',
+	//});
+
+	$('header .header-top-bar').attr({
+		'data-anchor-target': '#checkpoint-a',
 		'data-0': 'top:0px;border-radius:8px;position:fixed;width: ' + (rowWidth/window.innerWidth)*100 + '%;left: ' + ((totalGutter/2/window.innerWidth)*100) + '%',
-		'data-100': 'width: 80%; left: 10%;border-radius:8px;',
-		'data-200': 'width: 90%; left: 5%;border-radius:4px;',
-		'data-300': 'width: 100%; left: 0%;border-radius:0px;',
+		// 'data-top-top': 'position:fixed;',
+		// 'data-edge-strategy': 'set',
+		// 'data-100': 'width: 80%; left: 10%;border-radius:8px;',
+		// 'data-200': 'width: 90%; left: 5%;border-radius:4px;',
+		// 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
 	});
 
 	$('.header-top-bar').css({
@@ -149,7 +152,7 @@ TSS.header = function () {
 		left: ((totalGutter/2/window.innerWidth)*100) + '%'
 	});
 
-	self.s          = skrollr.init();
+	self.s = skrollr.init();
 };
 
 TSS.customComponents = function () {

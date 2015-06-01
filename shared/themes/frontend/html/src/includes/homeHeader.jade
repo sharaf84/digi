@@ -18,6 +18,7 @@ header
 
 			.large-3.medium-3.small-3.columns
 				form(action='/products')
+					i.md.md-search
 					input(type='search', name='key', placeholder='Search')
 			.large-2.medium-2.small-2.columns.show-for-medium-up
 				.shopping-cart
@@ -27,7 +28,7 @@ header
 				.lang-switcher
 					.language-switcher AR
 	.row
-		.header-slider.swiper-container
+		#checkpoint-a.header-slider.swiper-container
 			.swiper-wrapper
 				.header-product.swiper-slide
 					img(src= imagesPath + 'home-slide-1.png', alt='')
