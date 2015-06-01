@@ -1,0 +1,53 @@
+header
+	.row
+		//.header-top-bar(data-magellan-expedition='fixed')
+		.header-top-bar
+			.large-2.medium-2.small-2.columns.show-for-small
+				i.md.md-more-vert.left-off-canvas-toggle
+			.large-2.medium-2.small-2.columns
+				a.logo(href='./') TSS
+			.large-5.medium-5.small-5.columns.show-for-medium-up
+				nav.main-nav
+					ul
+						li
+							a.active(href='./') Home
+						li
+							a(href='./store') Store
+						li
+							a(href='./articles') Articles
+
+			.large-3.medium-3.small-3.columns
+				form(action='/products')
+					input(type='search', name='key', placeholder='Search')
+			.large-2.medium-2.small-2.columns.show-for-medium-up
+				.shopping-cart
+					i.icon-cart
+				.user-avatar
+					img(src='http://lorempixel.com/50/50/people', alt='')
+				.lang-switcher
+					.language-switcher AR
+	.row
+		.header-slider.swiper-container
+			.swiper-wrapper
+				.header-product.swiper-slide
+					img(src= imagesPath + 'home-slide-1.png', alt='')
+					h2 The BSN Push Training Guide
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.
+					a.shop-now(href='#')
+						i.md.md-shopping-cart
+						| Shop Now 1
+				.header-product.swiper-slide
+					img(src= imagesPath + 'home-slide-2.png', alt='')
+					h2 The BSN Push Training Guide
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.
+					a.shop-now(href='#')
+						i.md.md-shopping-cart
+						| Shop Now 2
+				.header-product.swiper-slide
+					img(src= imagesPath + 'home-slide-3.png', alt='')
+					h2 The BSN Push Training Guide
+					p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.
+					a.shop-now(href='#')
+						i.md.md-shopping-cart
+						| Shop Now 3
+			.swiper-pagination

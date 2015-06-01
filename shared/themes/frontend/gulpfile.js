@@ -15,6 +15,7 @@ TSS = function() {
 	self.mainBowerFiles      = require('main-bower-files');
 	self.uglify              = require('gulp-uglify');
 	self.gzip                = require('gulp-gzip');
+	self.jade                = require('gulp-jade');
 };
 
 Builder = new TSS();
@@ -23,18 +24,31 @@ Builder.gulp.task('default', function() {
 	console.info('Sorry, there are no default task. Please try a sepcific task!');
 });
 
-// SASS Styles:
-Builder.gulp.task('sass', ['watchSASS'], function() {
+// Dev:
+Builder.gulp.task('dev', ['watchSASS', 'watchJade'], function() {
     Builder.gulp.src('./css/src/*.scss')
         .pipe(Builder.sass())
         .pipe(Builder.sourcemaps.write('.'))
-        .pipe(Builder.gulp.dest('./css/front'));
+        .pipe(Builder.gulp.dest('./css/build'));
+
+	Builder.gulp.src('./html/src/*.jade')
+		.pipe(Builder.jade({
+			'pretty': true,
+			'path': './html/src/includes/'
+		}))
+		.pipe(Builder.gulp.dest('./html/build'));
+
 });
 
 // SASS Watcher
 Builder.gulp.task('watchSASS', function() {
-    Builder.gulp.watch('./css/src/*.scss', ['sass']);
+    Builder.gulp.watch('./css/src/*.scss', ['dev']);
 });
+// Jade Watcher
+Builder.gulp.task('watchJade', function() {
+	Builder.gulp.watch('./html/src/*.jade', ['dev']);
+});
+
 
 // Build Release:
 Builder.gulp.task('js', function() {

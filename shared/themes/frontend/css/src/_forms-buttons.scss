@@ -1,7 +1,7 @@
 #{$all-buttons} {
 	background: #e61b1e;
 	color: #fff;
-	font: 400 18px $roboto;
+	font: 400 18px $myriad;
 	padding: 14px;
 	display: block;
 	max-width: 160px;
@@ -21,7 +21,7 @@
 }
 #{$all-text-inputs} {
 	color: #9c9c9c;
-	font: 400 16px / 24px $roboto;
+	font: 400 16px / 24px $myriad;
 	border: 1px solid #ed2024;
 }
 
@@ -38,4 +38,20 @@
 	border: 1px solid #111;
 	background: #ed2024;
 	color: #111;
+}
+.select-component {
+	position: relative;
+	.md-arrow-drop-up {
+		@include position(absolute, 3px 5px null null)
+	}
+	.md-arrow-drop-down {
+		@include position(absolute, 10px 5px null null)
+	}
+}
+select {
+	background: #dedede;
+	border-radius: 3px;
+	padding-right: 40px;
+	outline: none;
+	&:active, &focus { outline: none; }
 }
