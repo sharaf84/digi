@@ -29,7 +29,8 @@
         "kotchuprik/yii2-sortable-widgets": "dev-master",
         "2amigos/yii2-ckeditor-widget": "~1.0",
         "v0lume/yii2-meta-tags": "*",
-        "webvimark/multilanguage": "*"
+        "webvimark/multilanguage": "*",
+        "kartik-v/yii2-widgets": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

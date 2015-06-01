@@ -15,14 +15,20 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'type')->hiddenInput(['value' => $model::TYPE])->label(false); ?>
 
-    <?php //echo $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
-    <?=
-            $form->field($model, 'title')
-            ->textInput(['maxlength' => 255])
-            ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className())
-    ?>
+    <?= $form->field($model, 'title')->textInput(['maxlength' => 255])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className()) ?>
 
     <?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
+
+    <?=
+    $form->field($model, 'date')->textInput()->widget(\yii\jui\DatePicker::classname(), [
+            //'language' => 'en',
+            'dateFormat' => 'yyyy-MM-dd',
+    ])
+    ?>
+
+    <?= $form->field($model, 'brief')->textarea(['rows' => 6])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
+
+    <?= $form->field($model, 'description')->textarea(['rows' => 6])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 
     <?=
             $form->field($model, 'body')
@@ -32,9 +38,10 @@ use digi\metronic\widgets\ActiveForm;
             ])
             ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
     ?>
-    
+
+
     <h3 class="form-section">SEO:  <small>Meta Tags</small></h3>
-    
+
     <?=
     digi\metaTags\MetaTags::widget([
         'model' => $model,

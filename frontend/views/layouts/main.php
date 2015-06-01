@@ -1,76 +1,43 @@
 <?php
+
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
-use frontend\widgets\Alert;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
-AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-    <?php $this->beginBody() ?>
-    <div class="wrap">
-        <?php
-            NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
-                ],
-            ]);
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
-            ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-            } else {
-                $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ];
-            }
-            echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $menuItems,
-            ]);
-            NavBar::end();
-        ?>
-
-        <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+<html>
+    <head>
+        <title><?= Html::encode($this->title) ?></title>
+        <meta charset="<?= Yii::$app->charset ?>"/>
+        <meta name="utf-8" content="width=device-width,initial-scale=1">
+        <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|Bowlby+One+SC" rel="stylesheet" type="text/css">
+        <?= Html::csrfMetaTags() ?>
+        <?php $this->head() ?>
+    </head>
+    <body>
+        <?php $this->beginBody() ?>
+        <div data-offcanvas class="off-canvas-wrap">
+            <div class="inner-wrap">
+                <a href="#" class="left-off-canvas-toggle, menu-icon, show-for-touch"><i class="md md-menu"></i></a>
+                <!-- BEGIN ASIDE -->
+                <?php include_once 'aside.php'; ?>
+                <!-- END ASIDE -->
+                <!-- BEGIN HEADER -->
+                <?php include_once 'header.php'; ?>
+                <!-- END HEADER -->
+                <!-- BEGIN CONTAINER -->
+                <?php echo $content; ?>
+                <!-- END CONTAINER -->
+                <!-- BEGIN FOOTER -->
+                <?php include_once 'footer.php'; ?>
+                <!-- END FOOTER -->
+                <a class="exit-off-canvas"></a>
+            </div>
         </div>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
-    </footer>
-
-    <?php $this->endBody() ?>
-</body>
+        <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
+        <?php $this->endBody() ?>
+    </body>
 </html>
 <?php $this->endPage() ?>

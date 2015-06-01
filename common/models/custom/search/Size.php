@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 /**
  * Tree represents the model behind the search form about `common\models\base\Tree`.
  */
-class Menu extends \common\models\custom\Menu {
+class Size extends \common\models\custom\Size {
 
     /**
      * @inheritdoc
