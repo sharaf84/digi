@@ -15,6 +15,8 @@ return [
         '@uploadUrl' => '@sharedUrl/uploads',
         '@metronicPath' => '@sharedPath/themes/metronic',
         '@metronicUrl' => '@sharedUrl/themes/metronic',
+        '@frontThemePath' => '@sharedPath/themes/frontend',
+        '@frontThemeUrl' => '@sharedUrl/themes/frontend',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
