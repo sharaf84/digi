@@ -8,7 +8,7 @@ use \yii\helpers\Html;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
-use common\models\custom\Media;
+use common\models\base\Media;
 
 class MediaHelper {
 
@@ -26,7 +26,7 @@ class MediaHelper {
     public static function getImgUrl($oMedia, $size = null, $placeholder = true, $overwrite = false) {
         $imgConfig = require(__DIR__ . '/../config/image.php');
 
-        if (!(is_file($oMedia->getFilePath()) && exif_imagetype($oMedia->getFilePath())) && $placeholder) {
+        if (!($oMedia && is_file($oMedia->getFilePath()) && exif_imagetype($oMedia->getFilePath())) && $placeholder) {
             ($placeholder === true || !array_key_exists($placeholder, $imgConfig['placeholders'])) and $placeholder = 'default';
             $oMedia = new Media($imgConfig['placeholders'][$placeholder]);
         }
@@ -35,6 +35,10 @@ class MediaHelper {
             static::generateImgSizes($oMedia->getFilePath(), $size);
 
         return $oMedia->getFileUrl($size);
+    }
+    
+    public static function getPlaceholderUrl($size = null, $placeholder = true, $overwrite = false) {
+        return self::getImgUrl(null, $size, $placeholder, $overwrite); 
     }
 
     /**

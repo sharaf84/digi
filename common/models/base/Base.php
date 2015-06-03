@@ -2,6 +2,9 @@
 
 namespace common\models\base;
 
+use yii\helpers\StringHelper;
+use common\helpers\MediaHelper;
+
 class Base extends \yii\db\ActiveRecord {
 
     use \webvimark\behaviors\multilanguage\MultiLanguageTrait;
@@ -44,6 +47,24 @@ class Base extends \yii\db\ActiveRecord {
                 ],
             ],
         ];
+    }
+    
+    /**
+     * Global Media hasMany Relation
+     */
+    public function getMedia() {
+        return $this->hasMany(Media::className(), ['model_id' => 'id'])->where(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
+    
+    /**
+     * Global Media hasOne Relation
+     */
+    public function getFirstMedia() {
+        return $this->hasOne(Media::className(), ['model_id' => 'id'])->where(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
+    
+    public function getFeaturedImgUrl($size){
+        return $this->firstMedia ? $this->firstMedia->getImgUrl($size) : MediaHelper::getPlaceholderUrl($size);
     }
 
 }

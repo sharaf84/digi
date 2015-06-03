@@ -10,7 +10,6 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -18,7 +17,8 @@ use yii\filters\AccessControl;
  * Site controller
  */
 class SiteController extends \frontend\components\BaseController {
-
+    
+    public $defaultAction = 'home';
     /**
      * @inheritdoc
      */
@@ -64,11 +64,13 @@ class SiteController extends \frontend\components\BaseController {
         ];
     }
 
-    public function actionIndex() {
+    public function actionHome() {
         //$oPage = new \common\models\custom\Page;
-        //var_dump($oPage->getHomeSlider()->media);die;
-        return $this->render('index', [
-            'homeSlider' => \common\models\custom\Page::getHomeSlider()
+        //var_dump($oPage->getHomeSlider());die;
+        $this->view->params['homeSlider'] = \common\models\custom\Page::getHomeSlider();
+        return $this->render('home', [
+            'featuredProducts' => \common\models\custom\Product::getFeatured(),
+            'latestArticles' => \common\models\custom\Article::getLatest()
         ]);
     }
 

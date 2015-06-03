@@ -17,7 +17,7 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => 255])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className()) ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
+    <?= !$model->isNewRecord ? $form->field($model, 'slug')->textInput() : '' ?>
 
     <?=
     $form->field($model, 'date')->textInput()->widget(\yii\jui\DatePicker::classname(), [

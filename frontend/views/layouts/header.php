@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Url; ?>
+use yii\helpers\Url; 
+?>
 <header>
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
@@ -33,18 +34,18 @@ use yii\helpers\Url; ?>
     <div class="row">
         <div class="header-slider swiper-container">
             <div class="swiper-wrapper">
-                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-1.png" alt="">
-                    <h2>The BSN Push Training Guide</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 1</a>
+                <?php foreach($this->params['homeSlider']->media as $oMedia){?>
+                <div class="header-product swiper-slide">
+                    <img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
+                    <h2><?= $oMedia->title ?></h2>
+                    <p><?= $oMedia->description ?></p>
+                    <a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
                 </div>
-                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-2.png" alt="">
-                    <h2>The BSN Push Training Guide</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 2</a>
-                </div>
-                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-3.png" alt="">
+                <?php } ?>
+<!--                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-3.png" alt="">
                     <h2>The BSN Push Training Guide</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 3</a>
-                </div>
+                </div>-->
             </div>
             <div class="swiper-pagination"></div>
         </div>
