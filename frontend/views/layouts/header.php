@@ -9,8 +9,8 @@
                 <nav class="main-nav">
                     <ul>
                         <li><a href="./" class="active">Home</a></li>
-                        <li><a href="./store" data-dropdown="#store-dropdown">Store</a></li>
-                        <li><a href="./articles" data-dropdown="#articles-dropdown">Articles</a></li>
+                        <li><a href="./store" data-drop-down="#store-dropdown">Store</a></li>
+                        <li><a href="./articles" data-drop-down="#articles-dropdown">Articles</a></li>
                     </ul>
                 </nav>
             </div>

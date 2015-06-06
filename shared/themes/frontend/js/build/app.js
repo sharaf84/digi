@@ -152,15 +152,15 @@ TSS.header = function () {
 		left: ((totalGutter/2/window.innerWidth)*100) + '%'
 	});
 
-	$('[data-dropdown]').mouseenter(function( e ) {
-		var id = $(this).data('dropdown');
-		$('[data-dropdown]').removeClass('active');
+	$('[data-drop-down]').mouseenter(function( e ) {
+		var id = $(this).data('dropDown');
+		$('[data-drop-down]').removeClass('active');
 		$(this).addClass('active');
 		$('.drop-down').removeClass('active');
 		$(id).addClass('active');
 	});
 	$('.drop-down').mouseleave(function( e ) {
-		$('[data-dropdown]').removeClass('active');
+		$('[data-drop-down]').removeClass('active');
 		$('.drop-down').removeClass('active');
 	});
 	$('input[type="search"]').focus(function( e ) {
