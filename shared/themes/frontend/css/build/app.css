@@ -10630,12 +10630,20 @@ header {
     -webkit-transition: 0.3s, ease, all;
     -moz-transition: 0.3s, ease, all;
     transition: 0.3s, ease, all; }
+    header .header-top-bar .drop-down.active {
+      top: 68px !important; }
+      header .header-top-bar .drop-down.active .tabs-cont {
+        padding: 0 !important; }
     header .header-top-bar.skrollable-after {
       border-bottom: 3px solid #ed2024;
       width: 100% !important;
       left: 0% !important;
       border-radius: 0px !important;
       top: -20px !important; }
+      header .header-top-bar.skrollable-after .drop-down.active {
+        top: 74px  !important; }
+        header .header-top-bar.skrollable-after .drop-down.active .tabs-cont {
+          padding: 0 0 0 10% !important; }
     header .header-top-bar.fixed {
       box-shadow: 0 0 5px #111;
       border-radius: 0;
@@ -10676,14 +10684,118 @@ header {
           color: #ed2024;
           padding-top: 22px;
           border-top: 5px solid; }
+  header .drop-down {
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    top: -600px;
+    z-index: 1;
+    border-bottom: 3px solid #ed2024;
+    -webkit-transition: 0.3s, ease, all;
+    -moz-transition: 0.3s, ease, all;
+    transition: 0.3s, ease, all; }
+    header .drop-down.active {
+      top: 74px;
+      overflow: hidden; }
+    header .drop-down .tabs-cont {
+      background: #e9e9e9;
+      padding: 0 0 0 10%;
+      height: 340px; }
+      header .drop-down .tabs-cont ul {
+        margin: 0;
+        list-style: none;
+        padding: 20px; }
+        header .drop-down .tabs-cont ul li {
+          outline: none; }
+          header .drop-down .tabs-cont ul li a {
+            color: #333;
+            font-weight: bold;
+            font-size: 15px;
+            text-transform: uppercase;
+            display: block;
+            padding: 0 15px;
+            outline: none;
+            line-height: 37px; }
+            header .drop-down .tabs-cont ul li a:hover {
+              background: #ed2024;
+              color: #fff; }
+          header .drop-down .tabs-cont ul li.active {
+            outline: none; }
+            header .drop-down .tabs-cont ul li.active a {
+              background: #ed2024;
+              color: #fff;
+              outline: none; }
+    header .drop-down .products-cont {
+      padding: 0;
+      display: none; }
+      header .drop-down .products-cont.active {
+        display: block; }
+    header .drop-down .brands-cont {
+      max-width: 700px;
+      margin: 0 auto;
+      height: 340px; }
+      header .drop-down .brands-cont .brand-list {
+        padding: 40px 0 0 0; }
+        header .drop-down .brands-cont .brand-list li a {
+          color: #000;
+          text-decoration: underline; }
+          header .drop-down .brands-cont .brand-list li a:hover {
+            text-decoration: none;
+            color: #e61b1e; }
+    header .drop-down .dropdown-product-item {
+      border-bottom: 1px solid #eaeaea;
+      border-right: 1px solid #eaeaea;
+      padding: 2px 0 0 0;
+      height: 170px;
+      overflow: hidden;
+      -webkit-transition: 0.3s, ease, all;
+      -moz-transition: 0.3s, ease, all;
+      transition: 0.3s, ease, all; }
+      header .drop-down .dropdown-product-item:hover {
+        background: rgba(233, 233, 233, 0.31); }
+      header .drop-down .dropdown-product-item .dropdown-product-item--img {
+        padding: 0; }
+        header .drop-down .dropdown-product-item .dropdown-product-item--img img {
+          width: 81%;
+          display: block;
+          margin: 12px auto 0 auto; }
+      header .drop-down .dropdown-product-item .dropdown-product-item--desc h3 {
+        font-weight: bold;
+        color: #252525;
+        margin: 14px 0 7px 0;
+        text-transform: uppercase;
+        line-height: 20px;
+        font-size: 17px; }
+      header .drop-down .dropdown-product-item .dropdown-product-item--desc p {
+        color: #252525;
+        margin: 0;
+        line-height: 20px;
+        font-size: 13px; }
+      header .drop-down .dropdown-product-item .dropdown-product-item--desc a.more-on-this-product {
+        color: #ed2024;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 12px; }
+        header .drop-down .dropdown-product-item .dropdown-product-item--desc a.more-on-this-product i {
+          font-size: 14px; }
+    header .drop-down .articles-cont {
+      padding: 0 25px; }
+      header .drop-down .articles-cont .dropdown-product-item {
+        border: none;
+        height: 245px;
+        cursor: pointer; }
+        header .drop-down .articles-cont .dropdown-product-item .dropdown-product-item--img img {
+          width: 90%;
+          display: block;
+          margin: 12px auto 0 auto; }
   header form {
     margin-top: 19px; }
     header form i {
       color: #ed2024;
-      display: block;
+      display: block !important;
       position: absolute;
       right: 22px;
-      font-size: 24px;
+      font-size: 24px !important;
       top: 20px; }
     header form input[type='search'] {
       color: #9c9c9c;
@@ -10691,15 +10803,28 @@ header {
       border: 1px solid #ed2024; }
   header .shopping-cart {
     position: absolute;
-    top: 23px;
+    top: 26px;
     right: 110px;
     display: block;
     width: 31px;
     height: 80px; }
+    header .shopping-cart span {
+      position: absolute;
+      top: -10px;
+      right: 0;
+      display: block;
+      background: #ed2024;
+      color: #fff;
+      font-weight: bold;
+      font-size: 12px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 22px;
+      border-radius: 50%; }
     header .shopping-cart i {
       font-size: 25px;
-      color: #ed2024;
-      margin: 11px 0 0 0; }
+      color: #252525; }
   header .user-avatar {
     position: absolute;
     top: 20px;
@@ -10715,7 +10840,10 @@ header {
     top: 24px;
     right: 14px;
     width: 31px;
-    height: 80px; }
+    height: 80px;
+    cursor: pointer; }
+    header .lang-switcher:hover {
+      color: #ed2024; }
   header .shop-now {
     margin: 20px 0 0 15px; }
   header .header-slider {
