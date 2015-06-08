@@ -34,7 +34,7 @@ $this->title = 'TSS Home Page';
             <?php foreach ($featuredProducts as $oProduct){?>
             <div class="large-4 medium-4 small-12 columns product-item">
                 <img src="<?= $oProduct->getFeaturedImgUrl('home-product') ?>" alt="">
-                <h4><?= $oProduct->title ?> - <span><?php //echo $oProduct->category->name ?></span></h4>
+                <h4><?= $oProduct->title ?> - <span><?php echo $oProduct->category->name ?></span></h4>
                 <p><?= $oProduct->brief ?></p>
                 <a href="<?= $oProduct->getInnerUrl() ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
             </div>

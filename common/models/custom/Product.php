@@ -160,7 +160,7 @@ class Product extends \common\models\base\Base {
      * @return type
      */
     public static function getFeatured($limit = 3) {
-        return self::find()->andWhere(['featured' => 1])->with('firstMedia')->limit($limit)->all();
+        return self::find()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
     }
 
     public static function getParentsList() {
