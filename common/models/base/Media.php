@@ -83,6 +83,11 @@ class Media extends Base {
             ],
         ]);
     }
+    
+    public static function find() {
+        //Set default condition
+        return parent::find()->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
 
     public function afterDelete() {
         //var_dump($this);die;
@@ -131,5 +136,6 @@ class Media extends Base {
     public function getImgUrl($size = null, $placeholder = true, $overwrite = false) {
         return MediaHelper::getImgUrl($this, $size, $placeholder, $overwrite);
     }
-
+    
+    
 }

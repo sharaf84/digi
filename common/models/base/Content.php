@@ -3,7 +3,6 @@
 namespace common\models\base;
 
 use Yii;
-use yii\helpers\StringHelper;
 
 /**
  * This is the model class for table "base_content".
@@ -86,10 +85,6 @@ class Content extends Base {
                 'orderAttribute' => 'sort'
             ],
         ]);
-    }
-
-    public function getMedia() {
-        return $this->hasMany(Media::className(), ['model' => StringHelper::basename(static::className()), 'model_id' => 'id']);
     }
 
     public static function find() {

@@ -19,7 +19,6 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "mdmsoft/yii2-admin": "~1.0",
-        "bower-asset/admin-lte": "*",
         "clevertech/yii-booster": "v3.0.0",
         "2amigos/yii2-file-upload-widget": "*",
         "himiklab/yii2-colorbox-widget": "*",

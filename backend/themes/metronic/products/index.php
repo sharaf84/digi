@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
 use digi\metronic\grid\GridView;
 use digi\metronic\widgets\Breadcrumbs;
@@ -35,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
-<?= Html::a(Yii::t('app', 'Create Product'), ['create'], ['class' => '']) ?>
+                        <?= Html::a(Yii::t('app', 'Create Product'), ['create'], ['class' => '']) ?>
                     </li>
                 </ul>
             </div>
@@ -61,7 +62,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="btn-group">
-<?= Html::a('Add New <i class="fa fa-plus"></i>', ['create'], ['class' => 'btn green']) ?> 
+                                    <?= Html::a('Add New <i class="fa fa-plus"></i>', ['create'], ['class' => 'btn green']) ?> 
                                 </div>
                             </div>
                         </div>
@@ -74,6 +75,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
+                            [
+                                'class' => \digi\sortable\grid\Column::className(),
+                                'sortUrl' => Url::to(['sort']),
+                                'sortModel' => '\common\models\custom\Product',
+                                'sortAttr' => 'sort',
+                            ],
                             ['class' => 'yii\grid\SerialColumn'],
                             'id',
                             //'parent_id',
@@ -81,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'brand_id',
                             'size_id',
                             'flavor_id',
-                             'title',
+                            'title',
                             // 'slug',
                             'color',
                             'price',
@@ -101,7 +108,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                     ]);
                     ?>
-<?php Pjax::end(); ?>
+                    <?php Pjax::end(); ?>
 
                 </div>
             </div>

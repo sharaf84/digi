@@ -3,7 +3,9 @@
 namespace common\models\custom;
 
 use Yii;
-
+use yii\helpers\Url;
+use yii\helpers\ArrayHelper;
+use common\models\base\Tree;
 /**
  * This is the model class for table "product".
  *
@@ -67,11 +69,11 @@ class Product extends \common\models\base\Base {
     public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
-            'parent_id' => Yii::t('app', 'Parent ID'),
-            'category_id' => Yii::t('app', 'Category ID'),
-            'brand_id' => Yii::t('app', 'Brand ID'),
-            'size_id' => Yii::t('app', 'Size ID'),
-            'flavor_id' => Yii::t('app', 'Flavor ID'),
+            'parent_id' => Yii::t('app', 'Parent'),
+            'category_id' => Yii::t('app', 'Category'),
+            'brand_id' => Yii::t('app', 'Brand'),
+            'size_id' => Yii::t('app', 'Size'),
+            'flavor_id' => Yii::t('app', 'Flavor'),
             'title' => Yii::t('app', 'Title'),
             'slug' => Yii::t('app', 'Slug'),
             'color' => Yii::t('app', 'Color'),
@@ -87,7 +89,7 @@ class Product extends \common\models\base\Base {
             'updated' => Yii::t('app', 'Updated'),
         ];
     }
-    
+
     public function behaviors() {
         return array_merge_recursive(parent::behaviors(), [
             'SluggableBehavior' => [
@@ -96,7 +98,7 @@ class Product extends \common\models\base\Base {
                 'slugAttribute' => 'slug',
                 'immutable' => true,
                 'ensureUnique' => true,
-                //'uniqueValidator' => ['targetAttribute' => ['slug', 'type']]
+            //'uniqueValidator' => ['targetAttribute' => ['slug', 'type']]
             ],
             'Sortable' => [
                 'class' => \digi\sortable\behaviors\Sortable::className(),
@@ -116,7 +118,7 @@ class Product extends \common\models\base\Base {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProducts() {
+    public function getChilds() {
         return $this->hasMany(Product::className(), ['parent_id' => 'id']);
     }
 
@@ -124,28 +126,53 @@ class Product extends \common\models\base\Base {
      * @return \yii\db\ActiveQuery
      */
     public function getCategory() {
-        return $this->hasOne(BaseTree::className(), ['id' => 'category_id']);
+        return $this->hasOne(Tree::className(), ['id' => 'category_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getBrand() {
-        return $this->hasOne(BaseTree::className(), ['id' => 'brand_id']);
+        return $this->hasOne(Tree::className(), ['id' => 'brand_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getSize() {
-        return $this->hasOne(BaseTree::className(), ['id' => 'size_id']);
+        return $this->hasOne(Tree::className(), ['id' => 'size_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getFlavor() {
-        return $this->hasOne(BaseTree::className(), ['id' => 'flavor_id']);
+        return $this->hasOne(Tree::className(), ['id' => 'flavor_id']);
+    }
+
+    public static function find() {
+        //Set default condition
+        return parent::find()->addOrderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
+
+    /**
+     * Get Featured Products
+     * @return type
+     */
+    public static function getFeatured($limit = 3) {
+        return self::find()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
+    }
+
+    public static function getParentsList() {
+        return ArrayHelper::map(static::getParents(), 'id', 'title');
+    }
+
+    public static function getParents() {
+        return static::find()->andWhere('parent_id IS NULL')->all();
+    }
+
+    public function getInnerUrl() {
+        return Url::to(['product/' . $this->slug]);
     }
 
 }

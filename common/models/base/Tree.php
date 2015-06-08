@@ -2,6 +2,7 @@
 
 namespace common\models\base;
 
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "base_tree".
  *
@@ -124,7 +125,7 @@ class Tree extends \kartik\tree\models\Tree {
      */
     public static function find() {
         //Set default condition
-        return (new query\Tree(get_called_class()))->andWhere(static::ROOT ? ['root' => static::ROOT] : null);
+        return (new query\Tree(get_called_class()))->andWhere(static::ROOT ? ['root' => static::ROOT] : null)->addOrderBy('root, lft');
     }
 
     public function beforeDelete() {
@@ -133,5 +134,9 @@ class Tree extends \kartik\tree\models\Tree {
         }
         return false;
     }
-
+    
+    
+    public static function getList($lvl = 1) {
+        return ArrayHelper::map(static::find()->andWhere(['lvl' => $lvl])->all(), 'id', 'name');
+    }
 }

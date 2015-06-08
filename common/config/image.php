@@ -14,6 +14,9 @@ return [
     ],
     'sizes' => [
         'micro' => ['thumbnail', 50, 50],
-        'thumb' => ['thumbnail', 200, 100],
+        'home-slider' => ['thumbnail', 1231, 673],
+        'home-product' => ['thumbnail', 207, 395],
+        'home-article' => ['thumbnail', 220, 307],
+        'slide-article' => ['thumbnail', 303, 197],
     ]
 ];

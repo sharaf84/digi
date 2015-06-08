@@ -5,42 +5,9 @@ use yii\helpers\Url; ?>
     <div class="row">
         <div class="footer-slider swiper-container">
             <div class="swiper-wrapper">
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Universal.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BPI.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Brand-logos-IA-Black.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/gorillawearlogo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/GRENADE_LOGO1.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/inner-armor.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/l.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BetanCourt.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Muscle-Tech.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/musclepharm_logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/NOW_Foods_Logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/twinlab.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Universal.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BPI.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Brand-logos-IA-Black.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/gorillawearlogo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/GRENADE_LOGO1.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/inner-armor.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/l.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BetanCourt.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Muscle-Tech.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/musclepharm_logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/NOW_Foods_Logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/twinlab.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Universal.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BPI.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Brand-logos-IA-Black.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/gorillawearlogo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/GRENADE_LOGO1.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/inner-armor.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/l.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/BetanCourt.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/Muscle-Tech.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/musclepharm_logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/NOW_Foods_Logo.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
-                <div style="background: url(<?= Url::to('@frontThemeUrl') ?>/images/src/twinlab.png) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
+                <?php foreach (\common\models\custom\Brand::getFooterSlider() as $oBrand) { ?>
+                    <div style="background: url(<?= $oBrand->getFeaturedImgUrl() ?>) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
+                <?php } ?>
             </div>
         </div>
         <div class="prev-nav"><i class="md md-chevron-left"></i></div>

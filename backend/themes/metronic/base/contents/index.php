@@ -75,12 +75,12 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
-                            [
-                                'class' => \digi\sortable\grid\Column::className(),
-                                'sortUrl' => Url::to(['sort']),
-                                'sortModel' => $this->context->model,
-                                'sortAttr' => 'sort',
-                            ],
+//                            [
+//                                'class' => \digi\sortable\grid\Column::className(),
+//                                'sortUrl' => Url::to(['sort']),
+//                                'sortModel' => $this->context->model,
+//                                'sortAttr' => 'sort',
+//                            ],
                             ['class' => 'yii\grid\SerialColumn'],
                             'id',
                             'title',

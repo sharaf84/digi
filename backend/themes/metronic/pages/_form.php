@@ -22,7 +22,7 @@ use digi\metronic\widgets\ActiveForm;
             ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className())
     ?>
 
-    <?= $form->field($model, 'slug')->textInput(['maxlength' => 255]) ?>
+    <?= !$model->isNewRecord ? $form->field($model, 'slug')->textInput() : '' ?>
 
     <?=
             $form->field($model, 'body')

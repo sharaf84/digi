@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use digi\metronic\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\custom\Product */
@@ -12,47 +13,25 @@ use digi\metronic\widgets\ActiveForm;
 
 <div class="form-body">
     <h3 class="form-section">Note:  <small>fields marked with asterisk (*) are required.</small></h3>
-
-    <?= $form->field($model, 'parent_id')->textInput() ?>
-
-    <?= $form->field($model, 'category_id')->textInput() ?>
-
-    <div class="form-group">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <?=
-            kartik\tree\TreeViewInput::widget([
-                // single query fetch to render the tree
-                'query' => \common\models\custom\Category::find()->andWhere('lvl > 0')->addOrderBy('root, lft'),
-                'headingOptions' => ['label' => 'Categories'],
-                'name' => 'Product[category_id]', // input name
-                'value' => $model->category_id, // values selected (comma separated for multiple select)
-                'asDropdown' => true, // will render the tree input widget as a dropdown.
-                'multiple' => false, // set to false if you do not need multiple selection
-                'fontAwesome' => false, // render font awesome icons
-                'rootOptions' => [
-                    'label' => '<i class="fa fa-tree"></i>',
-                    'class' => 'text-success'
-                ], // custom root label
-                    //'options'         => ['disabled' => true],
-            ]);
-            ?>
-        </div>
-    </div>
-    <?= $form->field($model, 'brand_id')->textInput() ?>
-
-    <?= $form->field($model, 'size_id')->textInput() ?>
-
-    <?= $form->field($model, 'flavor_id')->textInput() ?>
-
+    
     <?=
             $form->field($model, 'title')
             ->textInput(['maxlength' => 255])
             ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className())
     ?>
 
-    <?= $form->field($model, 'slug')->textInput() ?>
+    <?= !$model->isNewRecord ? $form->field($model, 'slug')->textInput() : '' ?>
+    
+    <?= $form->field($model, 'parent_id')->dropDownList(common\models\custom\Product::getParentsList(), ['prompt' => 'Please Select']) ?>
 
+    <?= $form->field($model, 'category_id')->dropDownList(common\models\custom\Category::getList(), ['prompt' => 'Please Select']) ?>
+
+    <?= $form->field($model, 'brand_id')->dropDownList(common\models\custom\Brand::getList(), ['prompt' => 'Please Select']) ?>
+
+    <?= $form->field($model, 'size_id')->dropDownList(common\models\custom\Size::getList(), ['prompt' => 'Please Select']) ?>
+
+    <?= $form->field($model, 'flavor_id')->dropDownList(common\models\custom\Flavor::getList(), ['prompt' => 'Please Select']) ?>
+    
     <?php
     echo $form->field($model, 'color')->widget(\kartik\color\ColorInput::classname(), [
         'options' => ['placeholder' => 'Select color ...'],
@@ -63,9 +42,9 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'qty')->textInput() ?>
 
-    <?= $form->field($model, 'featured')->textInput() ?>
+    <?= $form->field($model, 'featured')->checkbox() ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?php //echo $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'brief')->textarea(['rows' => 6])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 
