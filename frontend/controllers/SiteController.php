@@ -61,8 +61,8 @@ class SiteController extends \frontend\components\BaseController {
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            // page action renders "static" pages stored under 'protected/views/site/pages'
-            // They can be accessed via: index.php?r=site/static&view=FileName
+            // page action renders "static" pages stored under 'frontend/views/site/pages'
+            // They can be accessed via: site/static?view=FileName
             'static' => [
                 'class' => \yii\web\ViewAction::className(),
             ],
