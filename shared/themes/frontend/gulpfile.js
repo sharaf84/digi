@@ -25,19 +25,28 @@ Builder.gulp.task('default', function() {
 });
 
 // Dev:
-Builder.gulp.task('dev', ['watchSASS', 'watchJade'], function() {
+Builder.gulp.task('dev', ['watchSASS'], function() {
     Builder.gulp.src('./css/src/*.scss')
         .pipe(Builder.sass())
         .pipe(Builder.sourcemaps.write('.'))
         .pipe(Builder.gulp.dest('./css/build'));
 
+	// Builder.gulp.src('./html/src/*.jade')
+	// 	.pipe(Builder.jade({
+	// 		'pretty': true,
+	// 		'path': './html/src/includes/'
+	// 	}))
+	// 	.pipe(Builder.gulp.dest('./html/build'));
+
+});
+
+Builder.gulp.task('jade', function() {
 	Builder.gulp.src('./html/src/*.jade')
 		.pipe(Builder.jade({
 			'pretty': true,
 			'path': './html/src/includes/'
 		}))
 		.pipe(Builder.gulp.dest('./html/build'));
-
 });
 
 // SASS Watcher
@@ -45,9 +54,9 @@ Builder.gulp.task('watchSASS', function() {
     Builder.gulp.watch('./css/src/*.scss', ['dev']);
 });
 // Jade Watcher
-Builder.gulp.task('watchJade', function() {
-	Builder.gulp.watch('./html/src/*.jade', ['dev']);
-});
+// Builder.gulp.task('watchJade', function() {
+// 	Builder.gulp.watch('./html/src/*.jade', ['dev']);
+// });
 
 
 // Build Release:
