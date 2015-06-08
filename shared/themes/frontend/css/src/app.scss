@@ -778,6 +778,14 @@ header {
 			@extend .product-carousel-item;
 		}
 	}
+	
+	.admin-content {
+		p {
+			color: #383838;
+			font-size: 18px;
+			line-height: 1.2;
+		}
+	}
 }
 
 .archive-page {

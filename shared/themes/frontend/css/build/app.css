@@ -11179,6 +11179,10 @@ header {
       font: bold 22px "PT Sans", arial, sans-serif;
       color: #252525;
       margin-top: 50px; }
+  .single-page .admin-content p {
+    color: #383838;
+    font-size: 18px;
+    line-height: 1.2; }
 
 .archive-page {
   margin-top: 70px; }

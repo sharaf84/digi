@@ -111,10 +111,6 @@ class SiteController extends \frontend\components\BaseController {
             ]);
         }
     }
-
-    public function actionAbout() {
-        return $this->render('about');
-    }
 	
 	/**
 	 * @author Islam Magdy
@@ -123,12 +119,11 @@ class SiteController extends \frontend\components\BaseController {
 	public function actionProductsList() {
         return $this->render('productsList');
     }
-	/**
-	 * @author Islam Magdy
-	 * @desc Dummy static page
-	 */
 	public function actionSingleProduct() {
         return $this->render('singleProduct');
+    }
+	public function actionAbout() {
+        return $this->render('about');
     }
 
     public function actionSignup() {
