@@ -1,9 +1,6 @@
 <?php
-
-use yii\helpers\Html;
-
-/* @var $this \yii\web\View */
-/* @var $content string */
+	use yii\helpers\Html;
+	$isHome = Yii::$app->controller->action->id == 'home';
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -16,7 +13,7 @@ use yii\helpers\Html;
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
     </head>
-    <body>
+    <body class="<?php echo Yii::$app->controller->action->id; ?>-page">
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">
@@ -24,8 +21,10 @@ use yii\helpers\Html;
                 <!-- BEGIN ASIDE -->
                 <?php include_once 'aside.php'; ?>
                 <!-- END ASIDE -->
+                
                 <!-- BEGIN HEADER -->
                 <?php include_once 'header.php'; ?>
+                
                 <!-- END HEADER -->
                 <!-- BEGIN CONTAINER -->
                 <?php echo $content; ?>

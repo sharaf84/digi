@@ -13,36 +13,20 @@ TSS.helpers = function() {
 	self.isHome = function() {
 		return window.location.pathname === '/';
 	}
+	self.prepareProductBackgroundImage = function() {
+		if( $('[data-product-main-image]').length !== 0 ) {
+			var backgroundImage = $('[data-product-main-image]').data('productMainImage');
+			var productCoverTpl = '\n\
+				<div class="product-background-cover">\n\
+					<img src="' + backgroundImage + '" alt="">\n\
+				</div>\n\
+			';
+			$('body').prepend(productCoverTpl);
+		}
+	}
 };
 
 Helpers = new TSS.helpers();
-
-TSS.onReady = function() {
-	var self = this;
-
-	self.events = function() {
-		$('#newsletter-form-js').on('valid.fndtn.abide', function( e ) {
-			e.preventDefault();
-			TSS.newsletter();
-		});
-	};
-
-	self.initializeFoundation = function() {
-		$(document).foundation({
-			'magellan-expedition': {
-				active_class: 'active',
-				threshold: 20,
-				destination_threshold: 20,
-				throttle_delay: 50,
-				fixed_top: 0,
-				offset_by_height: true
-			}
-		});
-	};
-
-	self.initializeFoundation();
-	self.events();
-};
 
 TSS.homepageManager = function() {
 	var self = this;
@@ -83,9 +67,6 @@ TSS.homepageManager = function() {
 	});
 };
 
-/**
- * Footer Newsletter Form:
- */
 TSS.newsletter = function() {
 	var emailAddress = $('#newsletter-form-js input');
 	$.ajax({
@@ -179,13 +160,65 @@ TSS.dataRoutes = function () {
 	});
 };
 
-jQuery(document).ready(function( $ ) {
+TSS.formsManager = function() {
+	
+	var self = this;
+	
+	self.directSubmit = function( formId ) {
+		$(formId).submit();
+	};
+	
+	self.ajaxSubmit = function( formId, htmlRewrite ) {
+		$.ajax({
+			url: $(formId).attr('action'),
+			method: 'POST'
+		}).done(function( res ) {
+			var htmlString = $(res).find(htmlRewrite);
+			$(htmlRewrite).html( htmlString );
+			TSS.onReady();
+		}).fail(function(){
+			alert('Failed!');
+		});
+	};
+	
+};
 
+
+TSS.onReady = function() {
+	var self = this;
+
+	self.events = function() {
+		$('#newsletter-form-js').on('valid.fndtn.abide', function( e ) {
+			e.preventDefault();
+			TSS.newsletter();
+		});
+	};
+
+	self.initializeFoundation = function() {
+		$(document).foundation({
+			'magellan-expedition': {
+				active_class: 'active',
+				threshold: 20,
+				destination_threshold: 20,
+				throttle_delay: 50,
+				fixed_top: 0,
+				offset_by_height: true
+			}
+		});
+	};
+	
+	self.initializeFoundation();
+	self.events();
 	TSS.header();
-	TSS.onReady();
 	TSS.homepageManager();
 	TSS.productFilters();
 	TSS.dataRoutes();
+	TSS.Form = new TSS.formsManager();
+	Helpers.prepareProductBackgroundImage();
+};
 
-
+jQuery(document).ready(function( $ ) {
+	
+	TSS.onReady();
+	
 });

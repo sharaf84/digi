@@ -1,15 +1,18 @@
-<?php use yii\helpers\Url; ?>
-<header>
+<?php
+	use yii\helpers\Url;
+	$isHome = Yii::$app->controller->action->id == 'home';
+?>
+<header class="<?php echo $isHome ? '' : 'single-header'; ?>">
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar">
             <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert left-off-canvas-toggle"></i></div>
-            <div class="large-2 medium-2 small-2 columns"><a href="./" class="logo">TSS</a></div>
+            <div class="large-2 medium-2 small-2 columns"><a href="/" class="logo">TSS</a></div>
             <div class="large-5 medium-5 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="./" class="active">Home</a></li>
-                        <li><a href="./store" data-drop-down="#store-dropdown">Store</a></li>
+                        <li><a href="/site/products-list" data-drop-down="#store-dropdown">Store</a></li>
                         <li><a href="./articles" data-drop-down="#articles-dropdown">Articles</a></li>
                     </ul>
                 </nav>
@@ -243,23 +246,25 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div id="checkpoint-a" class="header-slider swiper-container">
-            <div class="swiper-wrapper">
-                <?php foreach($this->params['homeSlider']->media as $oMedia){?>
-                <div class="header-product swiper-slide">
-                    <img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
-                    <h2><?= $oMedia->title ?></h2>
-                    <p><?= $oMedia->description ?></p>
-                    <a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
-                </div>
-                <?php } ?>
-<!--                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-3.png" alt="">
-                    <h2>The BSN Push Training Guide</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 3</a>
-                </div>-->
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
+	<?php if($isHome) { ?>
+		<div class="row">
+			<div id="checkpoint-a" class="header-slider swiper-container">
+				<div class="swiper-wrapper">
+					<?php foreach($this->params['homeSlider']->media as $oMedia){?>
+					<div class="header-product swiper-slide">
+						<img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
+						<h2><?= $oMedia->title ?></h2>
+						<p><?= $oMedia->description ?></p>
+						<a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
+					</div>
+					<?php } ?>
+	<!--                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-3.png" alt="">
+						<h2>The BSN Push Training Guide</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 3</a>
+					</div>-->
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	<?php } ?>
 </header>
