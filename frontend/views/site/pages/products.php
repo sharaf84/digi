@@ -3,6 +3,7 @@
 	use yii\helpers\Url;
 	$this->title = 'Products List';
 	$this->params['breadcrumbs'][] = $this->title;
+        
 ?>
 <div id="checkpoint-a" class="single-page archive-page row">
 	<div class="page-title large-12 medium-12 small-12 columns">
