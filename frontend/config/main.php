@@ -14,6 +14,12 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'treemanager' => [
+            'class' => 'kartik\tree\Module',
+        // other module settings, refer detailed documentation
+        ]
+    ],
     'components' => [
         'request' => [
             'baseUrl' => $baseUrl,

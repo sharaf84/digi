@@ -24,7 +24,6 @@ class BaseController extends Controller {
     
     protected function setFooterBrands(){
         $this->view->params['footerBrands'] = \common\models\custom\Brand::getFooterSlider();
-        var_dump($this->view->params);die;
     }
 
 }
