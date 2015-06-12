@@ -11075,6 +11075,15 @@ header {
 .single-page {
   /**
 	 * Single Product Page:
+	 */
+  /**
+	 * Contact Us:
+	 */
+  /**
+	 * Blog Listing:
+	 */
+  /**
+	 * Single Blog:
 	 */ }
   .single-page .page-title {
     background: url(../../images/src/page-title-bg.png) no-repeat;
@@ -11115,6 +11124,22 @@ header {
         border-radius: 5px 0 0 5px; }
       .single-page ul.pagination.filters li:last-child.current a {
         border-radius: 0 5px 5px 0; }
+  .single-page .pagination.normalize {
+    width: 400px;
+    margin: 45px auto; }
+    .single-page .pagination.normalize li a {
+      color: #252525;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 28px; }
+    .single-page .pagination.normalize li.current a {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 28px;
+      background: #252525;
+      color: #fff; }
   .single-page.single-product h1 {
     font-size: 26px;
     font-weight: bold;
@@ -11183,6 +11208,131 @@ header {
     color: #383838;
     font-size: 18px;
     line-height: 1.2; }
+  .single-page.contact-us-page .company-meta p {
+    font-size: 15px; }
+  .single-page.contact-us-page .company-meta strong {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold; }
+  .single-page.contact-us-page .form-group {
+    position: relative; }
+    .single-page.contact-us-page .form-group input, .single-page.contact-us-page .form-group textarea {
+      background: #dadada;
+      border: none; }
+    .single-page.contact-us-page .form-group.has-error .help-block {
+      background: #ed2024;
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      padding: 6px;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bolder;
+      text-align: center; }
+  .single-page.blog-listing article {
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 30px;
+    padding-bottom: 30px; }
+    .single-page.blog-listing article h3 {
+      font-weight: bold;
+      font-size: 21px;
+      color: #e61b1e;
+      margin: 20px 0 10px 0; }
+    .single-page.blog-listing article p {
+      color: #1a1e27;
+      font-size: 16px; }
+    .single-page.blog-listing article .article-meta {
+      color: #525151;
+      font-size: 12px; }
+    .single-page.blog-listing article .shop-now {
+      font-weight: bolder;
+      text-transform: uppercase; }
+    .single-page.blog-listing article:last-child {
+      border: none; }
+    .single-page.blog-listing article.article-list-item h3 {
+      margin: 0; }
+  .single-page.blog-listing .home-bottom-articles {
+    margin-bottom: 50px; }
+  .single-page.single-blog video, .single-page.single-blog iframe {
+    display: block;
+    margin: 40px auto;
+    width: 100%;
+    padding: 30px;
+    background: #323232; }
+  .single-page.single-blog .comments .comments-title {
+    background: #414243;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 0 30px 0;
+    position: relative; }
+    .single-page.single-blog .comments .comments-title h3 {
+      color: #fff;
+      font-size: 19px;
+      margin: 0; }
+    .single-page.single-blog .comments .comments-title .comments-meta {
+      color: #fff;
+      text-align: right;
+      margin: 0;
+      font-size: 13px;
+      line-height: 26px; }
+    .single-page.single-blog .comments .comments-title .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #414243;
+      position: absolute;
+      top: -10px;
+      left: 15px; }
+  .single-page.single-blog .comments .comment-item {
+    border-bottom: 1px solid #dedede;
+    margin: 0 0 30px 0;
+    padding-bottom: 30px;
+    position: relative; }
+    .single-page.single-blog .comments .comment-item h3 {
+      font-weight: bold;
+      font-size: 16px;
+      color: #2c3945;
+      margin: 0 0 10px 0; }
+    .single-page.single-blog .comments .comment-item p {
+      color: #1a1e27;
+      font-size: 16px; }
+    .single-page.single-blog .comments .comment-item .article-meta {
+      color: #525151;
+      font-size: 12px; }
+    .single-page.single-blog .comments .comment-item .date-time {
+      color: #9d9d9d;
+      font-size: 13px;
+      position: absolute;
+      right: 15px;
+      top: 0; }
+    .single-page.single-blog .comments .comment-item .avatar-cont {
+      padding: 0; }
+      .single-page.single-blog .comments .comment-item .avatar-cont img {
+        border-radius: 5px; }
+  .single-page.single-blog .comments form .comment-reply {
+    position: relative; }
+    .single-page.single-blog .comments form .comment-reply .submit-btn {
+      position: absolute;
+      bottom: 0;
+      margin: 0;
+      right: 0;
+      width: 130px; }
+
+.contact-us-map-cont {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  margin-bottom: 50px; }
+
+#contact-us-map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px; }
 
 .archive-page {
   margin-top: 70px; }
@@ -11207,22 +11357,6 @@ header {
         color: #ed2024;
         font-size: 15px;
         font-weight: bold; }
-    .archive-page .products-list .pagination.normalize {
-      width: 400px;
-      margin: 45px auto; }
-      .archive-page .products-list .pagination.normalize li a {
-        color: #252525;
-        font-weight: bold;
-        font-size: 14px;
-        line-height: 28px; }
-      .archive-page .products-list .pagination.normalize li.current a {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-        line-height: 28px;
-        background: #252525;
-        color: #fff; }
 
 /**
  * Footer:
