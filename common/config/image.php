@@ -17,6 +17,8 @@ return [
         'home-slider' => ['thumbnail', 1231, 673],
         'home-product' => ['thumbnail', 207, 395],
         'home-article' => ['thumbnail', 220, 307],
-        'slide-article' => ['thumbnail', 303, 197],
+        'bottom-article' => ['thumbnail', 303, 197],
+        'bottom-product' => ['thumbnail', 164, 314],
+        'list-product' => ['thumbnail', 220, 238],
     ]
 ];

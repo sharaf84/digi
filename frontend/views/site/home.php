@@ -26,8 +26,8 @@ $this->title = 'TSS Home Page';
 </div>
 <div class="home-tabs">
     <ul data-tab class="tabs">
-        <li class="tab-title active"><a href="#featured-products">Featured Products</a></li>
-        <li class="tab-title"><a href="#best-seller">Best Seller</a></li>
+        <li class="tab-title active"><a href="#featured-products"><?= Yii::t('app', 'Featured Products') ?></a></li>
+        <li class="tab-title"><a href="#best-seller"><?= Yii::t('app', 'Best Seller') ?></a></li>
     </ul>
     <div class="tabs-content">
         <div id="featured-products" class="content row active">
@@ -41,18 +41,14 @@ $this->title = 'TSS Home Page';
             <?php }?>
         </div>
         <div id="best-seller" class="content row">
-            <div class="large-4 medium-4 small-12 columns product-item"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/Platinum-Pure-Whey.png" alt="">
-                <h4>Platinum&trade; - <span>Creatine</span></h4>
-                <p>Platinum is an ultra-premium leanla gainer engineered to deliver quality</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
+            <?php foreach ($bestSellerProducts as $oProduct){?>
+            <div class="large-4 medium-4 small-12 columns product-item">
+                <img src="<?= $oProduct->getFeaturedImgUrl('home-product') ?>" alt="">
+                <h4><?= $oProduct->title ?> - <span><?php echo $oProduct->category->name ?></span></h4>
+                <p><?= $oProduct->brief ?></p>
+                <a href="<?= $oProduct->getInnerUrl() ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
             </div>
-            <div class="large-4 medium-4 small-12 columns product-item"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/Platinum-Pure-Whey.png" alt="">
-                <h4>Platinum&trade; - <span>Creatine</span></h4>
-                <p>Platinum is an ultra-premium leanla gainer engineered to deliver quality</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
-            </div>
-            <div class="large-4 medium-4 small-12 columns product-item"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/Platinum-Pure-Whey.png" alt="">
-                <h4>Platinum&trade; - <span>Creatine</span></h4>
-                <p>Platinum is an ultra-premium leanla gainer engineered to deliver quality</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
-            </div>
+            <?php }?>
         </div>
     </div>
 </div>
@@ -85,7 +81,7 @@ $this->title = 'TSS Home Page';
 <div class="home-bottom-articles row">
 <?php foreach ($latestArticles as $oArticle) { ?>
     <div class="large-4 medium-4 small-12 columns">
-        <img src="<?= $oArticle->getFeaturedImgUrl('slide-article') ?>" alt="">
+        <img src="<?= $oArticle->getFeaturedImgUrl('bottom-article') ?>" alt="">
         <h5><?= $oArticle->title ?></h5>
         <p><?= $oArticle->brief ?></p>
         <p class="article-meta">

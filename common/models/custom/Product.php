@@ -6,6 +6,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 use common\models\base\Tree;
+
 /**
  * This is the model class for table "product".
  *
@@ -152,7 +153,7 @@ class Product extends \common\models\base\Base {
 
     public static function find() {
         //Set default condition
-        return parent::find()->addOrderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+        return (new query\Product(get_called_class()))->addOrderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
 
     /**
@@ -160,7 +161,15 @@ class Product extends \common\models\base\Base {
      * @return type
      */
     public static function getFeatured($limit = 3) {
-        return self::find()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
+        return self::find()->parents()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
+    }
+
+    /**
+     * Get Best Seller Products
+     * @return type
+     */
+    public static function getBestSeller($limit = 3) {
+        return self::find()->parents()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
     }
 
     public static function getParentsList() {

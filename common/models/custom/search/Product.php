@@ -10,13 +10,12 @@ use common\models\custom\Product as ProductModel;
 /**
  * Product represents the model behind the search form about `common\models\custom\Product`.
  */
-class Product extends ProductModel
-{
+class Product extends ProductModel {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'parent_id', 'category_id', 'brand_id', 'size_id', 'flavor_id', 'qty', 'featured', 'sort', 'status'], 'integer'],
             [['title', 'slug', 'color', 'brief', 'description', 'body', 'created', 'updated'], 'safe'],
@@ -27,8 +26,7 @@ class Product extends ProductModel
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,12 +38,14 @@ class Product extends ProductModel
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = ProductModel::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 20,
+            ],
         ]);
 
         $this->load($params);
@@ -73,12 +73,13 @@ class Product extends ProductModel
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'slug', $this->slug])
-            ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'brief', $this->brief])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'body', $this->body]);
+                ->andFilterWhere(['like', 'slug', $this->slug])
+                ->andFilterWhere(['like', 'color', $this->color])
+                ->andFilterWhere(['like', 'brief', $this->brief])
+                ->andFilterWhere(['like', 'description', $this->description])
+                ->andFilterWhere(['like', 'body', $this->body]);
 
         return $dataProvider;
     }
+
 }
