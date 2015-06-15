@@ -11,5 +11,9 @@ class Product extends \yii\db\ActiveQuery {
     public function parents() {
         return $this->andWhere('parent_id IS NULL');
     }
+    
+    public function defaultOrder() {
+        return $this->addOrderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
 
 }

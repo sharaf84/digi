@@ -43,8 +43,8 @@ class Product extends ProductModel {
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'pagination' => [
-                'pageSize' => 5,
+            'sort' => [
+                'defaultOrder' => ['sort' => SORT_ASC, 'id' => SORT_DESC]
             ],
         ]);
 

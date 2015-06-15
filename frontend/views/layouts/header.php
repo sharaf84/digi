@@ -11,9 +11,9 @@
             <div class="large-5 medium-5 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="./" class="active">Home</a></li>
-                        <li><a href="/site/products-list" data-drop-down="#store-dropdown">Store</a></li>
-                        <li><a href="./articles" data-drop-down="#articles-dropdown">Articles</a></li>
+                        <li><a href="<?= Url::home() ?>" class="active">Home</a></li>
+                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown">Store</a></li>
+                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown">Articles</a></li>
                     </ul>
                 </nav>
             </div>
