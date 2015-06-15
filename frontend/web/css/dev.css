@@ -1,0 +1,7 @@
+.single-page .pagination.normalize li.disabled span{
+    color: #252525;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 28px;
+    padding: 0.0625rem 0.625rem;
+}

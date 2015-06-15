@@ -1,4 +1,4 @@
-<?php use yii\helpers\Url; var_dump(\common\models\custom\Brand::getFooterSlider()); die;?>
+<?php use yii\helpers\Url;?>
 <div class="page-content">
     <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
     <div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
