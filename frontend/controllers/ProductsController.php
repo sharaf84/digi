@@ -11,6 +11,8 @@ use common\models\custom\search\Product as ProductSearch;
  */
 class ProductsController extends \frontend\components\BaseController {
     
+    public $defaultAction = 'list';
+
     public function actionList() {
         $oProductSearch = new ProductSearch();
         $oProductDataProvider = $oProductSearch->search([]);
