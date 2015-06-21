@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-
+use yii\widgets\Pjax;
 $this->title = 'Products List';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="page-title large-12 medium-12 small-12 columns">
         <h2>Muscle Building</h2>
     </div>
-    <form action="/products" class="row">
+    <form action="/store" class="row">
         <div class="large-10 medium-10 small-12 columns">
             <div class="alphabet-filter">
                 <input type="hidden" id="filterCharValue" value="">
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </form>
     <div class="products-list">
-        <?php \yii\widgets\Pjax::begin(['id' => 'pjaxProductsList']); ?>
+        <?php Pjax::begin(); ?>
         <?=
         \yii\widgets\ListView::widget([
             'dataProvider' => $oProductDataProvider,
@@ -78,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ])
         ?>
-        <?php \yii\widgets\Pjax::end(); ?>
+        <?php Pjax::end(); ?>
     </div>
     <div class="page-title large-12 medium-12 small-12 columns">
         <h2>Best Seller</h2>
