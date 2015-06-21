@@ -184,24 +184,25 @@ TSS.formsManager = function() {
 };
 
 TSS.contactUsPage = function() {
-	
-	google.maps.event.addDomListener(window, 'load', init);
+	if (typeof google !== 'undefined' ) {
+		google.maps.event.addDomListener(window, 'load', init);
 
-	function init() {
-		var mapOptions = {
-			zoom: 11,
-			center: new google.maps.LatLng(30.065227, 31.216546),
-			styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#ED2024"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#ED2024"},{"weight":1.2}]},{"featureType":"administrative.locality","elementType":"geometry.fill","stylers":[{"lightness":"-1"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"lightness":"0"},{"saturation":"0"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ED2024"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#99282f"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.stroke","stylers":[{"color":"#99282f"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#090228"}]}]
-		};
+		function init() {
+			var mapOptions = {
+				zoom: 11,
+				center: new google.maps.LatLng(30.065227, 31.216546),
+				styles: [{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#ED2024"}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#ED2024"},{"weight":1.2}]},{"featureType":"administrative.locality","elementType":"geometry.fill","stylers":[{"lightness":"-1"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"lightness":"0"},{"saturation":"0"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.stroke","stylers":[{"weight":"0.01"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#ED2024"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#99282f"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry.stroke","stylers":[{"color":"#99282f"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#99282f"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#090228"}]}]
+			};
 
-		var mapElement = document.getElementById('contact-us-map');
-		var map = new google.maps.Map(mapElement, mapOptions);
-		new google.maps.Marker({
-			position: new google.maps.LatLng(30.065227, 31.216546),
-			map: map,
-			title: 'TSS Zamalek',
-			icon: '/shared/themes/frontend/images/src/map-marker-black.png'
-		});
+			var mapElement = document.getElementById('contact-us-map');
+			var map = new google.maps.Map(mapElement, mapOptions);
+			new google.maps.Marker({
+				position: new google.maps.LatLng(30.065227, 31.216546),
+				map: map,
+				title: 'TSS Zamalek',
+				icon: '/shared/themes/frontend/images/src/map-marker-black.png'
+			});
+		}
 	}
 };
 
@@ -224,6 +225,18 @@ TSS.onReady = function() {
 				throttle_delay: 50,
 				fixed_top: 0,
 				offset_by_height: true
+			},
+			tooltip: {
+				selector : '[data-tooltip]',
+				additional_inheritable_classes : [],
+				tooltip_class : '.tooltip',
+				touch_close_text: 'tap to close',
+				disable_for_touch: false,
+				tip_template : function (selector, content) {
+				return '<span data-selector="' + selector + '" class="'
+					+ Foundation.libs.tooltip.settings.tooltip_class.substring(1)
+					+ '">' + content + '<span class="nub"></span></span>';
+				}
 			}
 		});
 	};

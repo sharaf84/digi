@@ -11084,6 +11084,12 @@ header {
 	 */
   /**
 	 * Single Blog:
+	 */
+  /**
+	 * Profiles Page:
+	 */
+  /**
+	 * Signup Page:
 	 */ }
   .single-page .page-title {
     background: url(../../images/src/page-title-bg.png) no-repeat;
@@ -11320,6 +11326,137 @@ header {
       margin: 0;
       right: 0;
       width: 130px; }
+  .single-page.profile-page {
+    margin-top: 20px; }
+    .single-page.profile-page .user-info h3 {
+      color: #252525;
+      font-size: 19px;
+      font-weight: 600;
+      margin: 20px 0; }
+    .single-page.profile-page .user-info p strong {
+      color: #ed2024;
+      margin-top: 5px;
+      display: inline-block; }
+    .single-page.profile-page .user-info .edit-profile {
+      display: block;
+      position: absolute;
+      color: #252525;
+      top: 0;
+      right: 20px;
+      font-size: 23px; }
+    .single-page.profile-page .profile-section {
+      margin: 40px 0; }
+      .single-page.profile-page .profile-section h3 {
+        border-top: 2px solid #252525;
+        margin-bottom: 25px; }
+        .single-page.profile-page .profile-section h3 span {
+          background: #252525;
+          color: #fff;
+          font-size: 21px;
+          font-weight: 500;
+          padding: 8px 48px; }
+      .single-page.profile-page .profile-section p {
+        font-size: 15px;
+        color: #000; }
+      .single-page.profile-page .profile-section .activity-item {
+        font-size: 16px;
+        margin-bottom: 6px; }
+        .single-page.profile-page .profile-section .activity-item i {
+          display: inline-block;
+          font-size: 22px;
+          line-height: 21px;
+          margin-right: 12px; }
+  .single-page.register-page .input-cont {
+    position: relative;
+    margin-bottom: 1rem; }
+    .single-page.register-page .input-cont input, .single-page.register-page .input-cont textarea {
+      background: #dadada;
+      border: none; }
+    .single-page.register-page .input-cont.error .error {
+      background: #ed2024;
+      color: #fff;
+      position: absolute;
+      top: 22px;
+      font-style: normal;
+      right: 15px;
+      width: 233px;
+      padding: 10px 6px;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: bolder;
+      text-align: center; }
+  .single-page.register-page button[type="submit"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-weight: bold;
+    font-size: 14px; }
+  .single-page.register-page .facebook-signup {
+    background: #3162a2;
+    color: #fff;
+    text-align: center;
+    padding: 9px 0;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 50px; }
+  .single-page.register-page .or-alternate-method {
+    color: #7a7979;
+    font-size: 12px;
+    margin-top: -13px;
+    margin-bottom: 6px; }
+
+/**
+ * Tables:
+ */
+.as-table {
+  border: none;
+  width: 100%; }
+  .as-table .as-caption {
+    background: #252525;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 3px 3px 0 0;
+    font-weight: bold; }
+  .as-table .as-table-head {
+    border: none;
+    background: #e61b1e;
+    color: #fff; }
+  .as-table .as-table-head-cell {
+    padding: 10px 10px;
+    font-weight: bold;
+    text-align: center; }
+  .as-table .as-table-row {
+    border-bottom: 1px solid #bbb;
+    margin-top: 10px !important; }
+  .as-table .as-table-cell .product-image-cont {
+    padding: 0; }
+    .as-table .as-table-cell .product-image-cont img {
+      width: 60%;
+      display: block;
+      margin: 20px auto; }
+  .as-table .as-table-cell .product-info-cont {
+    padding: 20px; }
+    .as-table .as-table-cell .product-info-cont h4 {
+      font-size: 18px;
+      color: #252525;
+      font-weight: bold; }
+    .as-table .as-table-cell .product-info-cont p {
+      margin: 0; }
+  .as-table .as-table-cell span {
+    padding: 0;
+    min-height: 110px;
+    text-align: center;
+    display: block;
+    line-height: 110px;
+    font-weight: bold; }
+    .as-table .as-table-cell span.pending {
+      color: orange; }
+    .as-table .as-table-cell span.canceled {
+      color: #e61b1e; }
+    .as-table .as-table-cell span.delivered {
+      color: #178e4a; }
 
 .contact-us-map-cont {
   width: 100%;
