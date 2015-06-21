@@ -108,6 +108,14 @@ class Product extends \common\models\base\Base {
             ],
         ]);
     }
+    
+    /**
+     * @inheritdoc
+     */
+    public static function find() {
+        //Set default condition
+        return (new query\Product(get_called_class()));//->defaultOrder();
+    }
 
     /**
      * @return \yii\db\ActiveQuery
@@ -151,17 +159,17 @@ class Product extends \common\models\base\Base {
         return $this->hasOne(Tree::className(), ['id' => 'flavor_id']);
     }
 
-    public static function find() {
-        //Set default condition
-        return (new query\Product(get_called_class()))->addOrderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
-    }
-
     /**
      * Get Featured Products
      * @return type
      */
     public static function getFeatured($limit = 3) {
-        return self::find()->parents()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
+        return self::find()
+                ->parents()
+                ->andWhere(['featured' => 1])
+                ->with('firstMedia', 'category')
+                ->defaultOrder()
+                ->limit($limit)->all();
     }
 
     /**
@@ -169,17 +177,35 @@ class Product extends \common\models\base\Base {
      * @return type
      */
     public static function getBestSeller($limit = 3) {
-        return self::find()->parents()->andWhere(['featured' => 1])->with('firstMedia', 'category')->limit($limit)->all();
+        /**
+         * @todo change the condition to get best seller products
+         */
+        return self::find()
+                ->parents()
+                ->andWhere(['featured' => 1])
+                ->with('firstMedia', 'category')
+                ->defaultOrder()
+                ->limit($limit)->all();
     }
-
+    
+    /**
+     * Get Parents List
+     * @return array of parents as [id => title] used for dropdown
+     */
     public static function getParentsList() {
         return ArrayHelper::map(static::getParents(), 'id', 'title');
     }
-
+    
+    /**
+     * Gets all parents
+     */
     public static function getParents() {
-        return static::find()->andWhere('parent_id IS NULL')->all();
+        return static::find()->parents()->defaultOrder()->all();
     }
-
+    
+    /**
+     * @return string url to product inner page
+     */
     public function getInnerUrl() {
         return Url::to(['product/' . $this->slug]);
     }

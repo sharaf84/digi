@@ -41,7 +41,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            'class' => \webvimark\behaviors\multilanguage\MultiLanguageUrlManager::className(),
+            //'class' => \webvimark\behaviors\multilanguage\MultiLanguageUrlManager::className(),
             'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
             'showScriptName' => false,

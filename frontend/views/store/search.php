@@ -59,12 +59,17 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </form>
     <div class="products-list">
+        <?php \yii\widgets\Pjax::begin(['id' => 'pjaxProductsList']); ?>
         <?=
         \yii\widgets\ListView::widget([
             'dataProvider' => $oProductDataProvider,
             'itemOptions' => ['class' => 'single-product-item row'],
             'itemView' => '_productItem',
-            'summary' => false,
+            'layout' => "{sorter}\n{items}\n{pager}",
+            //'summary' => false,
+            'sorter'=>[
+                'attributes'=>['price']
+            ],
             'pager' => [
                 'options' => ['class' => 'pagination normalize'],
                 'activePageCssClass' => 'current',
@@ -73,6 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ])
         ?>
+        <?php \yii\widgets\Pjax::end(); ?>
     </div>
     <div class="page-title large-12 medium-12 small-12 columns">
         <h2>Best Seller</h2>
@@ -86,13 +92,5 @@ $this->params['breadcrumbs'][] = $this->title;
                 <a href="<?= $oProduct->getInnerUrl() ?>" class="more-on-this-product"><?= Yii::t('app', 'Find Out More') ?><i class="md md-keyboard-arrow-right"></i></a>
             </div>
         <?php } ?>
-        <div class="large-3 medium-3 small-12 columns product-item">
-            <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/Platinum-Pure-Whey.png" alt="">
-            <h4>Platinum&trade; -
-                <span>Creatine</span>
-            </h4>
-            <p>Platinum is an ultra-premium leanla gainer engineered to deliver quality</p>
-            <a href="#" class="more-on-this-product">Find Out More<i class="md md-keyboard-arrow-right"></i></a>
-        </div>
     </div>
 </div>
