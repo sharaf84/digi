@@ -184,8 +184,11 @@ TSS.formsManager = function() {
 };
 
 TSS.contactUsPage = function() {
-	
-	google.maps.event.addDomListener(window, 'load', init);
+	/**
+         * commented by sharaf
+         * makes errors with others
+         */
+	//google.maps.event.addDomListener(window, 'load', init);
 
 	function init() {
 		var mapOptions = {
