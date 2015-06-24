@@ -17,12 +17,14 @@ class UIAsset extends AssetBundle {
     public $baseUrl = '@frontThemeUrl';
     
     public $css = [
+        'ui-deps/font-awesome/css/font-awesome.min.css',
         'ui-deps/swiper/dist/css/swiper.min.css',
         'ui-deps/animate.css/animate.min.css',
         'css/build/app.css',
     ];
 
     public $js = [
+        'ui-deps/modernizr/modernizr.js',
         'ui-deps/foundation/js/foundation.min.js',
         'ui-deps/swiper/dist/js/swiper.jquery.min.js',
         'ui-deps/skrollr/dist/skrollr.min.js',
