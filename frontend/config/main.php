@@ -1,4 +1,6 @@
 <?php
+define('CURRENCY_SYMBOL', 'LE');
+
 use \yii\web\Request;
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
 
@@ -8,6 +10,8 @@ $params = array_merge(
     require(__DIR__ . '/params.php'),
     require(__DIR__ . '/params-local.php')
 );
+
+
 
 return [
     'id' => 'app-frontend',
@@ -55,6 +59,7 @@ return [
                 // custom rules
                 'store/search' => 'store',
                 'store/<category:\S+>' => 'store',
+                'product/<slug:\S+>' => 'store/product',
                 //'about' => '/site/page/slug/about',
             ],
         ]

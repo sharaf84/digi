@@ -16,7 +16,7 @@ class StoreController extends \frontend\components\BaseController {
     public function actionSearch($category = null) {
         $oProductQuery = Product::find();
         $oSearchForm = new \frontend\models\SearchForm();
-                        
+
         if ($oSearchForm->load(Yii::$app->request->get()) && $oSearchForm->validate()) {
             if ($oSearchForm->key) {
                 $oProductQuery->joinWith(['category']);
@@ -31,7 +31,7 @@ class StoreController extends \frontend\components\BaseController {
             $oProductQuery->joinWith(['category']);
             $oProductQuery->andWhere(['base_tree.slug' => $category]);
         }
-        
+
         $oProductDataProvider = new \yii\data\ActiveDataProvider([
             'query' => $oProductQuery,
             'sort' => [
@@ -41,11 +41,19 @@ class StoreController extends \frontend\components\BaseController {
                 'pageSize' => 1,
             ],
         ]);
-
+        
+        $this->view->params['searchKey'] = $oSearchForm->key;
         return $this->render('search', [
                     'category' => $category,
                     'oSearchForm' => $oSearchForm,
                     'oProductDataProvider' => $oProductDataProvider,
+                    'bestSellerProducts' => Product::getBestSeller(4),
+        ]);
+    }
+
+    public function actionProduct($slug) {
+        return $this->render('product', [
+                    'oProduct' => Product::find()->where(['slug' => $slug])->with('firstMedia', 'category', 'size', 'flavor')->one(),
                     'bestSellerProducts' => Product::getBestSeller(4),
         ]);
     }

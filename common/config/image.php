@@ -20,5 +20,7 @@ return [
         'bottom-article' => ['thumbnail', 303, 197],
         'bottom-product' => ['thumbnail', 164, 314],
         'list-product' => ['thumbnail', 220, 238],
+        'inner-product' => ['thumbnail', 251, 496],
+        //'background-product' => ['thumbnail', 251, 496],
     ]
 ];

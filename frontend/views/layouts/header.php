@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use yii\helpers\Html;
 
 $isHome = Yii::$app->controller->action->id == 'home';
 ?>
@@ -21,8 +22,8 @@ $isHome = Yii::$app->controller->action->id == 'home';
             </div>
             <div class="large-3 medium-3 small-3 columns">
                 <form action="<?= Url::to(['/store/search']) ?>">
-                    <i class="md md-search" onclick="$(this).parent('form').submit()" value></i>
-                    <input type="search" name="SearchForm[key]" placeholder="Search">
+                    <i class="md md-search" onclick="$(this).parent('form').submit()"></i>
+                    <input type="search" name="SearchForm[key]" placeholder="Search" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
                 </form>
             </div>
             <div class="large-2 medium-2 small-2 columns show-for-medium-up">
