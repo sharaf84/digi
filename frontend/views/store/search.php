@@ -6,7 +6,7 @@ use yii\widgets\Pjax;
 use yii\helpers\Inflector;
 
 
-$this->title = 'Store';
+$this->title = Yii::t('app', 'Store');
 ?>
 <div id="checkpoint-a" class="single-page archive-page row">
     <div class="page-title large-12 medium-12 small-12 columns">
@@ -19,7 +19,7 @@ $this->title = 'Store';
     <div class="products-list">
         <?=
         \yii\widgets\ListView::widget([
-            'dataProvider' => $oProductDataProvider,
+            'dataProvider' => $oProductsDP,
             'itemOptions' => ['class' => 'single-product-item row'],
             'itemView' => '_productItem',
             'layout' => "{items}\n{pager}",

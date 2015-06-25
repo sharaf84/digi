@@ -1,7 +1,3 @@
-<?php
-
-use yii\helpers\Url;
-?>
 <div class="large-3 medium-3 small-12 columns">
     <img src="<?= $model->getFeaturedImgUrl('list-product') ?>" alt="<?= $model->title ?>">
 </div>

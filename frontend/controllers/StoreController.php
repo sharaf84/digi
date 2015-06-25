@@ -3,11 +3,11 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use common\models\custom\Product;
-use common\models\custom\search\Product as ProductSearch;
 
 /**
- * Products controller
+ * Store controller
  */
 class StoreController extends \frontend\components\BaseController {
 
@@ -32,7 +32,7 @@ class StoreController extends \frontend\components\BaseController {
             $oProductQuery->andWhere(['base_tree.slug' => $category]);
         }
 
-        $oProductDataProvider = new \yii\data\ActiveDataProvider([
+        $oProductsDP = new \yii\data\ActiveDataProvider([
             'query' => $oProductQuery,
             'sort' => [
                 'defaultOrder' => ['sort' => SORT_ASC, 'id' => SORT_DESC]
@@ -41,19 +41,21 @@ class StoreController extends \frontend\components\BaseController {
                 'pageSize' => 1,
             ],
         ]);
-        
         $this->view->params['searchKey'] = $oSearchForm->key;
         return $this->render('search', [
                     'category' => $category,
                     'oSearchForm' => $oSearchForm,
-                    'oProductDataProvider' => $oProductDataProvider,
+                    'oProductsDP' => $oProductsDP,
                     'bestSellerProducts' => Product::getBestSeller(4),
         ]);
     }
 
     public function actionProduct($slug) {
+        $oProduct = Product::find()->where(['slug' => $slug])->with('firstMedia', 'category', 'size', 'flavor')->one();
+        if(!$oProduct)
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         return $this->render('product', [
-                    'oProduct' => Product::find()->where(['slug' => $slug])->with('firstMedia', 'category', 'size', 'flavor')->one(),
+                    'oProduct' => $oProduct,
                     'bestSellerProducts' => Product::getBestSeller(4),
         ]);
     }

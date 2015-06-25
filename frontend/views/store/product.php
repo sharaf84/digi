@@ -8,7 +8,7 @@
 	
 	<div class="product-header row">
 		<div class="large-4 medium-4 small-12 columns product-image">
-			<img src="<?= $oProduct->getFeaturedImgUrl('inner-product') ?>" alt="<?= $oProduct->title ?>">
+			<img src="<?= $oProduct->getFeaturedImgUrl('main-product') ?>" alt="<?= $oProduct->title ?>">
 		</div>
 		<div class="large-8 medium-8 small-12 columns">
 			<h1><?= $oProduct->title ?></h1>

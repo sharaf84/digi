@@ -221,7 +221,7 @@ class Product extends \common\models\base\Base {
      * @return string url to product inner page
      */
     public function getInnerUrl() {
-        return Url::to(['product/' . $this->slug]);
+        return Url::to(['/product/' . $this->slug]);
     }
 
 }
