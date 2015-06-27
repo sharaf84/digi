@@ -161,7 +161,6 @@ class Product extends \common\models\base\Base {
 
     /**
      * Get Featured Products
-     * @return type
      */
     public static function getFeatured($limit = 3) {
         return self::find()
@@ -169,12 +168,12 @@ class Product extends \common\models\base\Base {
                 ->andWhere(['featured' => 1])
                 ->with('firstMedia', 'category')
                 ->defaultOrder()
-                ->limit($limit)->all();
+                ->limit($limit)
+                ->all();
     }
 
     /**
      * Get Best Seller Products
-     * @return type
      */
     public static function getBestSeller($limit = 3) {
         /**
@@ -185,7 +184,22 @@ class Product extends \common\models\base\Base {
                 ->andWhere(['featured' => 1])
                 ->with('firstMedia', 'category')
                 ->defaultOrder()
-                ->limit($limit)->all();
+                ->limit($limit)
+                ->all();
+    }
+    
+    /**
+     * Get Related Products
+     */
+    public function getRelated($limit = 4) {
+        return self::find()
+                ->parents()
+                ->andWhere(['!=', 'id', $this->id])
+                ->andWhere(['category_id' => $this->category_id])
+                ->with('firstMedia', 'category')
+                ->defaultOrder()
+                ->limit($limit)
+                ->all();
     }
     
     /**
@@ -207,7 +221,7 @@ class Product extends \common\models\base\Base {
      * @return string url to product inner page
      */
     public function getInnerUrl() {
-        return Url::to(['product/' . $this->slug]);
+        return Url::to(['/product/' . $this->slug]);
     }
 
 }

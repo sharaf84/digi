@@ -13,10 +13,14 @@ class Article extends \common\models\base\Content {
     }
     
     public function getInnerUrl() {
-        return Url::to(['article/' . $this->slug]);
+        return Url::to(['/article/' . $this->slug]);
     }
     
     public function getSlideDate(){
         return date('F j, Y', strtotime($this->date));
+    }
+    
+    public function getListDate(){
+        return date('j F Y', strtotime($this->date));
     }
 }

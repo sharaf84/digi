@@ -3,7 +3,7 @@
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-$this->title = 'TSS Home Page';
+$this->title = Yii::t('app', 'TSS Home Page');
 //var_dump($homeSlider->media);
 ?>
 <div class="center-features row">
@@ -70,7 +70,7 @@ $this->title = 'TSS Home Page';
             <div class="large-9 medium-9 small-12 columns">
                 <h4><?= $latestArticles[0]->title ?></h4>
                 <p><?= $latestArticles[0]->brief ?></p>
-                <a href="<?= Url::to(['article/' . $latestArticles[0]->slug]) ?>" class="shop-now"><?= Yii::t('app', 'Read More') ?></a>
+                <a href="<?= $latestArticles[0]->getInnerUrl() ?>" class="shop-now"><?= Yii::t('app', 'Read More') ?></a>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@ $this->title = 'TSS Home Page';
         <p><?= $oArticle->brief ?></p>
         <p class="article-meta">
             <span class="date-time"><?= $oArticle->getSlideDate();?></span>
-            <a href="<?= $oArticle->getInnerUrl() ?>" class="read-more">Read More</a>
+            <a href="<?= $oArticle->getInnerUrl() ?>" class="read-more"><?= Yii::t('app', 'Read More') ?></a>
         </p>
     </div>
 <?php } ?>
