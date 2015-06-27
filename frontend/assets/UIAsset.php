@@ -15,7 +15,7 @@ class UIAsset extends AssetBundle {
     //public $sourcePath = '@frontThemePath';
     public $basePath = '@frontThemePath';
     public $baseUrl = '@frontThemeUrl';
-    
+
     public $css = [
         'ui-deps/font-awesome/css/font-awesome.min.css',
         'ui-deps/swiper/dist/css/swiper.min.css',
@@ -28,9 +28,10 @@ class UIAsset extends AssetBundle {
         'ui-deps/foundation/js/foundation.min.js',
         'ui-deps/swiper/dist/js/swiper.jquery.min.js',
         'ui-deps/skrollr/dist/skrollr.min.js',
+        'ui-deps/jquery-number/jquery.number.min.js',
         'js/build/app.js',
     ];
-    
+
     public $depends = [
         'yii\web\YiiAsset',
     ];

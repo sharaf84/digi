@@ -1,7 +1,5 @@
-<?php
-	use yii\helpers\Url;
-	$isHome = Yii::$app->controller->action->id == 'home';
-?>
+<?php use yii\helpers\Url; $isHome = Yii::$app->controller->action->id == 'home'; ?>
+
 <header class="<?php echo $isHome ? '' : 'single-header'; ?>">
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
@@ -23,16 +21,60 @@
                     <input type="search" name="key" placeholder="Search">
                 </form>
             </div>
+
+            <?php if(! Yii::$app->user->isGuest ): ?>
             <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                 <div class="shopping-cart">
                     <span>25</span>
                     <i class="icon-cart"></i>
                 </div>
-                <div class="user-avatar"><img src="http://lorempixel.com/50/50/people" alt=""></div>
+                <div class="user-avatar usermenu-cont">
+						<img src="http://lorempixel.com/50/50/people" alt="" data-drop-down="#usermenu-dropdown">
+						<div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
+							<span class="arrow-up"></span>
+							<img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
+							<h3><a href="/profile">Islam Magdy</a></h3>
+							<div class="row user-buttons-cont">
+								<div class="large-6 medium-6 small-12 columns view-profile-cont">
+									<button>View Profile</button>
+								</div>
+								<div class="large-6 medium-6 small-12 columns logout-cont">
+									<button>Logout</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 <div class="lang-switcher" data-route="/ar">
                     <div class="language-switcher">AR</div>
                 </div>
             </div>
+            <?php else: ?>
+				<div class="large-2 medium-2 small-2 columns show-for-medium-up">
+					<div class="user-avatar login-cont">
+						<span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> Login</span>
+						<div class="login-dropdown drop-down" id="login-dropdown">
+							<span class="arrow-up"></span>
+							<a href="/register" class="signup-btn">Sign Up</a>
+							<form action="/login" method="post">
+								<input type="email" placeholder="Email address..." name="userEmail">
+								<input type="password" placeholder="Password" name="password">
+								<label>
+									<input type="checkbox">
+									Remember Password?
+								</label>
+								<button type="submit">Sign In</button>
+								<div class="or-sep"><span>Or</span></div>
+								<a href="#" class="facebook-login">
+									<i class="fa fa-facebook"></i> Sign in with Facebook
+								</a>
+							</form>
+						</div>
+					</div>
+					<div class="lang-switcher" data-route="/ar">
+						<div class="language-switcher">AR</div>
+					</div>
+				</div>
+            <?php endif; ?>
 
             <div id="articles-dropdown" class="drop-down">
                 <div class="row">
