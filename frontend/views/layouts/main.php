@@ -1,6 +1,7 @@
 <?php
 	use yii\helpers\Html;
-	$isHome = Yii::$app->controller->action->id == 'home';
+	$isHome 	= Yii::$app->controller->action->id == 'home';
+	$isArabic 	= true;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
     </head>
-    <body class="<?php echo Yii::$app->controller->action->id; ?>-page">
+    <body class="<?php echo Yii::$app->controller->action->id; ?>-page<?php echo $isArabic ? ' ar-layout' : ''; ?>">
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">
@@ -21,10 +22,10 @@
                 <!-- BEGIN ASIDE -->
                 <?php include_once 'aside.php'; ?>
                 <!-- END ASIDE -->
-                
+
                 <!-- BEGIN HEADER -->
                 <?php include_once 'header.php'; ?>
-                
+
                 <!-- END HEADER -->
                 <!-- BEGIN CONTAINER -->
                 <?php echo $content; ?>
