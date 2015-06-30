@@ -20,7 +20,7 @@ class UIAsset extends AssetBundle {
         'ui-deps/font-awesome/css/font-awesome.min.css',
         'ui-deps/swiper/dist/css/swiper.min.css',
         'ui-deps/animate.css/animate.min.css',
-        'css/build/app.css',
+        //'css/build/app.css',
     ];
 
     public $js = [

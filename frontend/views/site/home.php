@@ -84,7 +84,7 @@ $this->title = Yii::t('app', 'TSS Home Page');
         <img src="<?= $oArticle->getFeaturedImgUrl('bottom-article') ?>" alt="">
         <h5><?= $oArticle->title ?></h5>
         <p><?= $oArticle->brief ?></p>
-        <p class="article-meta">
+        <p class="article-meta clearfix">
             <span class="date-time"><?= $oArticle->getSlideDate();?></span>
             <a href="<?= $oArticle->getInnerUrl() ?>" class="read-more"><?= Yii::t('app', 'Read More') ?></a>
         </p>

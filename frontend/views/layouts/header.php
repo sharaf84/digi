@@ -14,16 +14,16 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <div class="large-5 medium-5 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="<?= Url::home() ?>" class="active">Home</a></li>
-                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown">Store</a></li>
-                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown">Articles</a></li>
+                        <li><a href="<?= Url::home() ?>" class="active">الرئيسية</a></li>
+                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown">المنتجات</a></li>
+                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown">المقالات</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="large-3 medium-3 small-3 columns">
                 <form action="<?= Url::to(['/store/search']) ?>">
                     <i class="md md-search" onclick="$(this).parent('form').submit()"></i>
-                    <input type="search" name="SearchForm[key]" placeholder="Search" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
+                    <input type="search" name="SearchForm[key]" placeholder="ابحث" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
                 </form>
             </div>
 

@@ -6,13 +6,18 @@
 TSS = function () {
     var self = this;
     self.version = '1.0.0';
-}
+};
 
 TSS.helpers = function () {
     var self = this;
     self.isHome = function () {
         return window.location.pathname === '/';
-    }
+    };
+
+    self.isMobile = function () {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    };
+
     self.prepareProductBackgroundImage = function () {
         if ($('[data-product-main-image]').length !== 0) {
             var backgroundImage = $('[data-product-main-image]').data('productMainImage');
@@ -23,7 +28,7 @@ TSS.helpers = function () {
 			';
             $('body').prepend(productCoverTpl);
         }
-    }
+    };
 };
 
 Helpers = new TSS.helpers();
@@ -149,7 +154,9 @@ TSS.header = function () {
     }).blur(function (e) {
         $(this).parents('form').find('i').css('opacity', '1');
     });
-    self.s = skrollr.init();
+    if (! Helpers.isMobile() ) {
+        self.s = skrollr.init();
+    }
 };
 
 TSS.dataRoutes = function () {
@@ -265,28 +272,10 @@ TSS.shoppingCart = function () {
 
 TSS.onReady = function() {
 	var self = this;
-    self.initializeFoundation = function () {
-        $(document).foundation({
-            'magellan-expedition': {
-                active_class: 'active',
-                threshold: 20,
-                destination_threshold: 20,
-                throttle_delay: 50,
-                fixed_top: 0,
-                offset_by_height: true
-            },
-            tooltip: {
-                selector: '[data-tooltip]',
-                additional_inheritable_classes: [],
-                tooltip_class: '.tooltip',
-                touch_close_text: 'tap to close',
-                disable_for_touch: false,
-                tip_template: function (selector, content) {
-                    return '<span data-selector="' + selector + '" class="'
-                            + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
-                            + '">' + content + '<span class="nub"></span></span>';
-                }
-            }
+    self.events = function () {
+        $('#newsletter-form-js').on('valid.fndtn.abide', function (e) {
+            e.preventDefault();
+            TSS.newsletter();
         });
     };
 
