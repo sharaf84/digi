@@ -284,7 +284,7 @@ TSS.onReady = function() {
         }).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
             $('body').css('overflow', 'auto');
         });
-        $('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+        //$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
     };
 
 	self.initializeFoundation = function() {
