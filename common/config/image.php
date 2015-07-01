@@ -5,7 +5,7 @@
  * controlles all image sizes and manipulations using yii\imagine\Image class
  * @author Ahmed Sharaf <sharaf.developer@gmail.com>
  */
-use Yii;
+//use Yii;
 
 return [
     'placeholders' => [
