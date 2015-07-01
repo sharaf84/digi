@@ -1,6 +1,3 @@
-<div class="page-title large-12 medium-12 small-12 columns">
-    <h2><?= $title ?></h2>
-</div>
 <div class="row">
     <?php foreach ($products as $oProduct) { ?>
         <div class="large-3 medium-3 small-12 columns product-item">

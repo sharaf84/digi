@@ -60,6 +60,7 @@ return [
                 'store/search' => 'store',
                 'store/<category:\S+>' => 'store',
                 'product/<slug:\S+>' => 'store/product',
+                'article/<slug:\S+>' => 'articles/view',
                 //'about' => '/site/page/slug/about',
             ],
         ]
