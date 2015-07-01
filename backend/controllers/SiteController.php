@@ -25,6 +25,10 @@ class SiteController extends BaseController {
     public function actionIndex() {
         return $this->render('index');
     }
+    
+    public function actionComponents() {
+        return $this->render('components');
+    }
 
     public function actionLogin() {
         $this->layout = 'login';
