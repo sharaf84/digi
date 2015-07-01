@@ -24,8 +24,20 @@
                 </li>
             </ul>
         </li>
-        <li><a href="#">The Mayors</a></li>
-        <li><a href="#">The Traders</a></li>
-        <li><a href="#">The Merchant Princes</a></li>
+        <li><a href="#">Articles</a></li>
+        <li><a href="#">View Cart</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Language</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+            <a href="#"><i class="fa fa-pinterest"></i></a>
+            <form action="/">
+                <input type="search" placeholder="Email Address...">
+            </form>
+        </li>
     </ul>
 </aside>

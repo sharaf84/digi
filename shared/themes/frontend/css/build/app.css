@@ -6290,9 +6290,6 @@ th.hide-for-touch {
   .show-for-print {
     display: none !important; } }
 
-/**
- * Dependancies:
- */
 /*!
  *  Material Design Iconic Font 1.0.1 by Sergey Kupletsky (@zavoloklom) - http://zavoloklom.github.io/material-design-iconic-font/
  *  License - https://github.com/zavoloklom/material-design-iconic-font/blob/gh-pages/License.md (Attribution-ShareAlike 4.0 International license)
@@ -10458,6 +10455,9 @@ th.hide-for-touch {
 .fa-medium:before {
   content: ""; }
 
+/**
+ * Dependancies:
+ */
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   background: #e61b1e;
   color: #fff;
@@ -10832,7 +10832,7 @@ header {
           margin: 12px auto 0 auto; }
   header form {
     margin-top: 19px; }
-    header form i {
+    header form i.md-search {
       color: #ed2024;
       display: block !important;
       position: absolute;
@@ -10869,7 +10869,7 @@ header {
       color: #252525; }
   header .user-avatar {
     position: absolute;
-    top: 20px;
+    top: 23px;
     right: 65px;
     width: 31px;
     height: 80px; }
@@ -10877,6 +10877,127 @@ header {
       width: 30px;
       height: 30px;
       border-radius: 50%; }
+    header .user-avatar.login-cont {
+      width: 64px; }
+      header .user-avatar.login-cont span.login-btn {
+        color: #ed2024;
+        cursor: pointer; }
+      header .user-avatar.login-cont .login-dropdown {
+        top: -500px;
+        overflow: visible;
+        width: 240px;
+        background: #383838;
+        padding: 30px 10px 10px 10px;
+        color: #b4bbc2;
+        position: absolute;
+        right: 0; }
+        header .user-avatar.login-cont .login-dropdown.active {
+          top: 58px !important;
+          border: none; }
+      header .user-avatar.login-cont .facebook-login {
+        display: block;
+        background: #3162a2;
+        color: #fff;
+        text-align: center;
+        padding: 9px 0;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 7px; }
+      header .user-avatar.login-cont .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #ED2024;
+        position: absolute;
+        top: -10px;
+        right: 15px; }
+      header .user-avatar.login-cont .signup-btn {
+        color: #d6d6d6;
+        font-size: 13px;
+        text-transform: uppercase;
+        display: block;
+        width: 60px;
+        position: absolute;
+        right: 0;
+        top: 15px; }
+      header .user-avatar.login-cont label {
+        color: #b4bbc2;
+        display: block;
+        margin: 0 0 5px 1px;
+        font-weight: bold;
+        font-size: 13px; }
+      header .user-avatar.login-cont button {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 9px 0; }
+      header .user-avatar.login-cont .or-sep {
+        color: #c6ccd2;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 0 0 19px 0;
+        border-bottom: 1px solid;
+        line-height: 0px; }
+        header .user-avatar.login-cont .or-sep span {
+          background: #383838;
+          padding: 0 5px; }
+    header .user-avatar.usermenu-cont .usermenu-dropdown {
+      top: 50px;
+      overflow: visible;
+      width: 240px;
+      background: #383838;
+      padding: 10px;
+      color: #b4bbc2;
+      position: absolute;
+      right: 0; }
+      header .user-avatar.usermenu-cont .usermenu-dropdown.active {
+        top: 58px !important;
+        border: none; }
+    header .user-avatar.usermenu-cont .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #ED2024;
+      position: absolute;
+      top: -10px;
+      right: 15px; }
+    header .user-avatar.usermenu-cont .menu-avatar {
+      width: 40%;
+      height: 40%;
+      border-radius: 50%;
+      display: block;
+      border: 1px solid #777777;
+      padding: 2px;
+      margin: 10px auto; }
+    header .user-avatar.usermenu-cont h3 {
+      text-align: center;
+      font-size: 18px;
+      border-bottom: 1px solid #666;
+      padding-bottom: 17px;
+      margin-bottom: 0; }
+      header .user-avatar.usermenu-cont h3 a {
+        color: #fff; }
+    header .user-avatar.usermenu-cont .user-buttons-cont {
+      width: 100%; }
+    header .user-avatar.usermenu-cont .view-profile-cont, header .user-avatar.usermenu-cont .logout-cont {
+      padding: 0 4px 0 4px; }
+    header .user-avatar.usermenu-cont .view-profile-cont button {
+      width: 95%;
+      font-size: 14px;
+      padding: 13px 10px;
+      margin: 9px 0 0 15px;
+      font-weight: bold;
+      line-height: 11px; }
+    header .user-avatar.usermenu-cont .logout-cont button {
+      width: 95%;
+      font-size: 14px;
+      padding: 13px 10px;
+      margin: 9px 0 0 15px;
+      font-weight: bold;
+      line-height: 11px; }
   header .lang-switcher {
     position: absolute;
     top: 24px;

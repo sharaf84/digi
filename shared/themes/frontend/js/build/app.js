@@ -274,6 +274,19 @@ TSS.shoppingCart = function () {
 TSS.onReady = function() {
 	var self = this;
 
+    self.events = function () {
+        $('#newsletter-form-js').on('valid.fndtn.abide', function (e) {
+            e.preventDefault();
+            TSS.newsletter();
+        });
+        $(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+            $('body').css('overflow', 'hidden');
+        }).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+            $('body').css('overflow', 'auto');
+        });
+        $('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+    };
+
 	self.initializeFoundation = function() {
 		$(document).foundation({
 			'magellan-expedition': {
