@@ -25,7 +25,7 @@
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">
-                <a href="#" class="left-off-canvas-toggle, menu-icon, show-for-touch"><i class="md md-menu"></i></a>
+
                 <!-- BEGIN ASIDE -->
                 <?php include_once 'aside.php'; ?>
                 <!-- END ASIDE -->

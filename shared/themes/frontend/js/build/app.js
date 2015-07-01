@@ -157,6 +157,7 @@ TSS.header = function () {
     if (! Helpers.isMobile() ) {
         self.s = skrollr.init();
     }
+    self.s = skrollr.init();
 };
 
 TSS.dataRoutes = function () {
@@ -272,12 +273,6 @@ TSS.shoppingCart = function () {
 
 TSS.onReady = function() {
 	var self = this;
-    self.events = function () {
-        $('#newsletter-form-js').on('valid.fndtn.abide', function (e) {
-            e.preventDefault();
-            TSS.newsletter();
-        });
-    };
 
 	self.initializeFoundation = function() {
 		$(document).foundation({
@@ -298,7 +293,11 @@ TSS.onReady = function() {
 				tip_template : function (selector, content) {
 				return '<span data-selector="' + selector + '" class="' + Foundation.libs.tooltip.settings.tooltip_class.substring(1) + '">' + content + '<span class="nub"></span></span>';
 				}
-			}
+			},
+            offcanvas : {
+                open_method: 'move',
+                close_on_click : true
+              }
 		});
 	};
 
