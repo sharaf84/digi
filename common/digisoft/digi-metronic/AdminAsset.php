@@ -12,7 +12,10 @@ use yii\web\AssetBundle;
 
 class AdminAsset extends AssetBundle {
 
-    public $sourcePath = '@metronicPath/assets/';
+    //public $sourcePath = '@metronicPath/assets/';
+    public $basePath = '@metronicPath/assets/';
+    public $baseUrl = '@metronicUrl/assets/';
+    
     public $css = [
         /** BEGIN GLOBAL MANDATORY STYLES **/
         'global/plugins/font-awesome/css/font-awesome.min.css',
@@ -31,7 +34,7 @@ class AdminAsset extends AssetBundle {
         'global/css/components.css',
         'global/css/plugins.css',
         'admin/layout/css/layout.css',
-        'admin/layout/css/themes/default.css',
+        'admin/layout/css/themes/dgtree.css',
         'admin/layout/css/custom.css',
         /** END THEME STYLES **/
     ];
