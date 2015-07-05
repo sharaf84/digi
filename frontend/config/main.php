@@ -1,6 +1,6 @@
 <?php
 define('CURRENCY_SYMBOL', 'LE');
-define('APP_LANG', 'ar');
+define('APP_LANG', 'en');
 
 use \yii\web\Request;
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
@@ -30,7 +30,8 @@ return [
             'baseUrl' => $baseUrl,
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'class' => 'digi\web\User',
+            'identityClass' => 'common\models\base\User',
             'enableAutoLogin' => true,
         ],
         'log' => [
@@ -54,7 +55,7 @@ return [
                 // multilanguage rules
                 '<_c:[\w \-]+>/<id:\d+>' => '<_c>/view',
                 '<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_c>/<_a>',
-//                '<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_c>/<_a>',
+                //'<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_c>/<_a>',//Make confiflect with cutome routes
                 '<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_m>/<_c>/<_a>',
                 '<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
                 // custom rules

@@ -1,7 +1,7 @@
 <?php
 namespace frontend\models;
 
-use common\models\User;
+use common\models\custom\User;
 use yii\base\Model;
 use Yii;
 
@@ -10,9 +10,12 @@ use Yii;
  */
 class SignupForm extends Model
 {
-    public $username;
+    public $name;
     public $email;
     public $password;
+    public $phone;
+    public $city;
+    public $address;
 
     /**
      * @inheritdoc
@@ -20,18 +23,44 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'required'],
+            ['name', 'string', 'min' => 3, 'max' => 255],
 
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+            ['email', 'unique', 'targetClass' => '\common\models\custom\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            
+            ['phone', 'filter', 'filter' => 'trim'],
+            ['phone', 'required'],
+            ['phone', 'string', 'length' => 11],
+            ['phone', 'number', 'integerOnly' => true],
+            
+            ['city', 'filter', 'filter' => 'trim'],
+            ['city', 'required'],
+            //['city', 'string', 'min' => 3, 'max' => 255],
+            
+            ['address', 'filter', 'filter' => 'trim'],
+            ['address', 'required'],
+            ['address', 'string', 'min' => 10],
+        ];
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels() {
+        return [
+            'name' => Yii::t('app', 'Full Name'),
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
+            'phone' => Yii::t('app', 'Mobile Number'),
+            'city' => Yii::t('app', 'City'),
+            'address' => Yii::t('app', 'Address'),
         ];
     }
 
@@ -44,7 +73,7 @@ class SignupForm extends Model
     {
         if ($this->validate()) {
             $user = new User();
-            $user->username = $this->username;
+            $user->username = $this->email;
             $user->email = $this->email;
             $user->setPassword($this->password);
             $user->generateAuthKey();
@@ -52,7 +81,6 @@ class SignupForm extends Model
                 return $user;
             }
         }
-
         return null;
     }
 }

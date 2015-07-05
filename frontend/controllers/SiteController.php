@@ -17,8 +17,9 @@ use yii\filters\AccessControl;
  * Site controller
  */
 class SiteController extends \frontend\components\BaseController {
-    
+
     public $defaultAction = 'home';
+
     /**
      * @inheritdoc
      */
@@ -74,9 +75,9 @@ class SiteController extends \frontend\components\BaseController {
         //var_dump($oPage->getHomeSlider());die;
         $this->view->params['homeSlider'] = \common\models\custom\Page::getHomeSlider();
         return $this->render('home', [
-            'featuredProducts' => \common\models\custom\Product::getFeatured(),
-            'bestSellerProducts' => \common\models\custom\Product::getBestSeller(),
-            'latestArticles' => \common\models\custom\Article::getLatest()
+                    'featuredProducts' => \common\models\custom\Product::getFeatured(),
+                    'bestSellerProducts' => \common\models\custom\Product::getBestSeller(),
+                    'latestArticles' => \common\models\custom\Article::getLatest()
         ]);
     }
 
@@ -117,18 +118,12 @@ class SiteController extends \frontend\components\BaseController {
             ]);
         }
     }
-	
-	/**
-	 * @author Islam Magdy
-	 * @desc Dummy static page
-	 */
-	public function actionProductsList() {
-        return $this->render('productsList');
-    }
-	public function actionSingleProduct() {
-        return $this->render('singleProduct');
-    }
-	public function actionAbout() {
+
+    /**
+     * @author Islam Magdy
+     * @desc Dummy static page
+     */
+    public function actionAbout() {
         return $this->render('about');
     }
 

@@ -2892,7 +2892,7 @@ fieldset {
   color: #FFFFFF; }
 
 [data-abide] span.error, [data-abide] small.error, [data-abide] span.error {
-  display: none; }
+  display: block; }
 
 span.error, small.error, span.error {
   display: block;
