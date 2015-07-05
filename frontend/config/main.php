@@ -1,5 +1,6 @@
 <?php
 define('CURRENCY_SYMBOL', 'LE');
+define('APP_LANG', 'ar');
 
 use \yii\web\Request;
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
@@ -60,6 +61,7 @@ return [
                 'store/search' => 'store',
                 'store/<category:\S+>' => 'store',
                 'product/<slug:\S+>' => 'store/product',
+                'article/<slug:\S+>' => 'articles/view',
                 //'about' => '/site/page/slug/about',
             ],
         ]

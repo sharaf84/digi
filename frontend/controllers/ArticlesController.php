@@ -21,17 +21,17 @@ class ArticlesController extends \frontend\components\BaseController {
 
         return $this->render('index', [
                     'oArticlesDP' => $oArticlesDP,
-                    //'mostReadArticles' => Article::getMostRead(3),
+                    'mostReadArticles' => Article::getMostRead(3),
         ]);
     }
 
     public function actionView($slug) {
-        $oArticle = Article::find()->where(['slug' => $slug])->with('firstMedia', 'category', 'size', 'flavor')->one();
+        $oArticle = Article::find()->where(['slug' => $slug])->with('firstMedia')->one();
         if(!$oArticle)
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        return $this->render('article', [
+        return $this->render('view', [
                     'oArticle' => $oArticle,
-                    //'mostReadArticles' => Article::getMostRead(3),
+                    'mostReadArticles' => Article::getMostRead(3),
         ]);
     }
 

@@ -36,10 +36,10 @@ use yii\helpers\Url; ?>
     </div>
     <div class="footer-copy row">
         <hr>
-        <div class="large-6 medium-6 small-12 columns">
+        <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' left' : '' ?>">
             <p>&copy; 2015 Digitree, All Rights Reserved</p>
         </div>
-        <div class="large-6 medium-6 small-12 columns">
+        <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' right' : '' ?>">
             <p class="footer-links">
 
                 <a href="#">About Us</a> - <a href="#">Contact Us</a> - <a href="#">Terms Of Service</a> - <a href="#">Privacy Policy</a>

@@ -10,32 +10,76 @@ $isHome = Yii::$app->controller->action->id == 'home';
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar">
             <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert left-off-canvas-toggle"></i></div>
-            <div class="large-2 medium-2 small-2 columns"><a href="/" class="logo">TSS</a></div>
+            <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo">TSS</a></div>
             <div class="large-5 medium-5 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="<?= Url::home() ?>" class="active">Home</a></li>
-                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown">Store</a></li>
-                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown">Articles</a></li>
+                        <li><a href="<?= Url::home() ?>" class="active">الرئيسية</a></li>
+                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown">المنتجات</a></li>
+                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown">المقالات</a></li>
                     </ul>
                 </nav>
             </div>
             <div class="large-3 medium-3 small-3 columns">
                 <form action="<?= Url::to(['/store/search']) ?>">
                     <i class="md md-search" onclick="$(this).parent('form').submit()"></i>
-                    <input type="search" name="SearchForm[key]" placeholder="Search" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
+                    <input type="search" name="SearchForm[key]" placeholder="ابحث" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
                 </form>
             </div>
+
+            <?php if(! Yii::$app->user->isGuest ): ?>
             <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                 <div class="shopping-cart">
                     <span>25</span>
                     <i class="icon-cart"></i>
                 </div>
-                <div class="user-avatar"><img src="http://lorempixel.com/50/50/people" alt=""></div>
+                <div class="user-avatar usermenu-cont">
+						<img src="http://lorempixel.com/50/50/people" alt="" data-drop-down="#usermenu-dropdown">
+						<div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
+							<span class="arrow-up"></span>
+							<img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
+							<h3><a href="/profile">Islam Magdy</a></h3>
+							<div class="row user-buttons-cont">
+								<div class="large-6 medium-6 small-12 columns view-profile-cont">
+									<button>View Profile</button>
+								</div>
+								<div class="large-6 medium-6 small-12 columns logout-cont">
+									<button>Logout</button>
+								</div>
+							</div>
+						</div>
+					</div>
                 <div class="lang-switcher" data-route="/ar">
                     <div class="language-switcher">AR</div>
                 </div>
             </div>
+            <?php else: ?>
+				<div class="large-2 medium-2 small-2 columns show-for-medium-up">
+					<div class="user-avatar login-cont">
+						<span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> Login</span>
+						<div class="login-dropdown drop-down" id="login-dropdown">
+							<span class="arrow-up"></span>
+							<a href="/register" class="signup-btn">Sign Up</a>
+							<form action="/login" method="post">
+								<input type="email" placeholder="Email address..." name="userEmail">
+								<input type="password" placeholder="Password" name="password">
+								<label>
+									<input type="checkbox">
+									Remember Password?
+								</label>
+								<button type="submit">Sign In</button>
+								<div class="or-sep"><span>Or</span></div>
+								<a href="#" class="facebook-login">
+									<i class="fa fa-facebook"></i> Sign in with Facebook
+								</a>
+							</form>
+						</div>
+					</div>
+					<div class="lang-switcher" data-route="/ar">
+						<div class="language-switcher">AR</div>
+					</div>
+				</div>
+            <?php endif; ?>
 
             <div id="articles-dropdown" class="drop-down">
                 <div class="row">
@@ -105,12 +149,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                 <div class="row">
                     <div class="large-3 medium-3 small-3 columns tabs-cont">
                         <ul data-tab>
-                            <li><a href="#header-tabs--1" class="active">Muscle Building</a></li>
-                            <li><a href="#header-tabs--2">Weight Gaining</a></li>
-                            <li><a href="#header-tabs--3">Pre-Workout</a></li>
-                            <li><a href="#header-tabs--4">Weight Loss</a></li>
-                            <li><a href="#header-tabs--5">Health &amp; Wellness</a></li>
-                            <li><a href="#header-tabs--6">Accessories</a></li>
+                            <?php include_once 'store-menu.php'; ?>
                             <li><a href="#header-tabs--7">Brands</a></li>
                         </ul>
                     </div>

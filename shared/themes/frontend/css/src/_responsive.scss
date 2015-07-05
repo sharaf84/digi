@@ -42,12 +42,13 @@ $googleColor	: #ce3e26;
 	header {
 		background-size: 244%;
 		background-position: top right;
-		
+		height: 537px;
+
 		.header-top-bar {
 			margin: 0;
 			border-radius: 0;
 		}
-		
+
 		.shop-now {
 			width: 100%;
 			left: 0;
@@ -56,7 +57,7 @@ $googleColor	: #ce3e26;
 			max-width: 100%;
 			padding: 18px 0;
 		}
-		
+
 		.left-off-canvas-toggle {
 			font-size: 40px;
 			position: absolute;
@@ -73,9 +74,35 @@ $googleColor	: #ce3e26;
 		form {
 			position: absolute;
 			right: -126px;
+			i {
+				right: 3px;
+				top: 2px;
+			}
 		}
 	}
-	
+	header .header-slider {
+		height: 438px;
+	}
+	header .header-slider h2 {
+		font-size: 33px;
+	}
+	header .header-slider p {
+		font-size: 16px;
+	}
+	header .shop-now {
+		margin: 40px 0 0 0;
+	}
+	.home-tabs ul.tabs li.tab-title { float: left; }
+	.home-tabs ul.tabs li.tab-title a { font-size: 14px; }
+	.home-tabs .product-item {
+		margin: 0 auto;
+		display: block;
+	}
+	.home-bottom-articles p.article-meta .read-more {
+		width: 81%;
+	}
+
+
 	.home-tabs ul.tabs .tab-title {
 		float: none;
 		width: 100%;
@@ -91,6 +118,7 @@ $googleColor	: #ce3e26;
 	}
 	.home-bottom-articles img {
 		height: auto;
+		width: 100%;
 	}
-	
+
 }

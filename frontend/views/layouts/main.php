@@ -1,30 +1,38 @@
 <?php
 	use yii\helpers\Html;
-	$isHome = Yii::$app->controller->action->id == 'home';
+	use yii\helpers\Url;
+	$isHome 	= Yii::$app->controller->action->id == 'home';
 ?>
+
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html>
+<html dir="<?php echo APP_LANG == 'ar' ? 'rtl' : 'ltr'; ?>" lang="<?php echo APP_LANG == 'ar' ? 'ar' : 'en'; ?>">
     <head>
         <title><?= Html::encode($this->title) ?></title>
         <meta charset="<?= Yii::$app->charset ?>"/>
-        <meta name="utf-8" content="width=device-width,initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic|Bowlby+One+SC" rel="stylesheet" type="text/css">
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
+
+		<?php if (APP_LANG == 'ar'): ?>
+			<link rel="stylesheet" href="<?= Url::to('@frontThemeUrl') ?>/css/build/app_ar.css" charset="utf-8">
+		<?php else: ?>
+			<link rel="stylesheet" href="<?= Url::to('@frontThemeUrl') ?>/css/build/app.css" charset="utf-8">
+		<?php endif; ?>
     </head>
-    <body class="<?php echo Yii::$app->controller->action->id; ?>-page">
+    <body class="<?php echo Yii::$app->controller->action->id; ?>-page" id="<?php echo APP_LANG == 'ar' ? 'ar-layout' : 'en-layout'; ?>">
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">
-                <a href="#" class="left-off-canvas-toggle, menu-icon, show-for-touch"><i class="md md-menu"></i></a>
+
                 <!-- BEGIN ASIDE -->
                 <?php include_once 'aside.php'; ?>
                 <!-- END ASIDE -->
-                
+
                 <!-- BEGIN HEADER -->
                 <?php include_once 'header.php'; ?>
-                
+
                 <!-- END HEADER -->
                 <!-- BEGIN CONTAINER -->
                 <?php echo $content; ?>
@@ -35,7 +43,6 @@
                 <a class="exit-off-canvas"></a>
             </div>
         </div>
-        <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
         <?php $this->endBody() ?>
     </body>
 </html>
