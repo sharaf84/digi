@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Signup';
+$this->title = Yii::t('app', 'Sign Up');
 ?>
 
 <div class="single-page register-page">
     <div id="checkpoint-a" class="row">
         <div class="page-title large-12 medium-12 small-12 columns">
-            <h2>Sign Up</h2>
+            <h2><?= Yii::t('app', 'Sign Up')?></h2>
         </div>
     </div>
 
@@ -25,28 +25,28 @@ $this->title = 'Signup';
     ?>
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'name'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'name'); ?>
             <!--<input type="text" required pattern="[a-zA-Z]+">-->
-            <?= Html::activeTextInput($model, 'name'); ?>
+            <?= Html::activeTextInput($oSignupForm, 'name'); ?>
         </label>
-        <?= Html::error($model, 'name', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'name', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'email'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'email'); ?>
             <!--<input type="email" required>-->
-            <?= Html::activeTextInput($model, 'email'); ?>
+            <?= Html::activeTextInput($oSignupForm, 'email'); ?>
         </label>
-        <?= Html::error($model, 'email', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'email', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'password'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'password'); ?>
             <!--<input type="password" required>-->
-            <?= Html::activePasswordInput($model, 'password'); ?>
+            <?= Html::activePasswordInput($oSignupForm, 'password'); ?>
         </label>
-        <?= Html::error($model, 'password', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'password', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
     <!--    <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
@@ -57,37 +57,38 @@ $this->title = 'Signup';
         </div>-->
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'phone'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'phone'); ?>
             <!--<input type="text" required pattern="number">-->
-            <?= Html::activeTextInput($model, 'phone'); ?>
+            <?= Html::activeTextInput($oSignupForm, 'phone'); ?>
         </label>
-        <?= Html::error($model, 'phone', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'phone', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'city'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'city'); ?>
             <div class="select-component"><i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
 <!--                <select id="price-filter" required>
                     <option value="">Select your city</option>
                     <option value="1">Cairo</option>
                     <option value="2">Alex</option>
                 </select>-->
-                <?= Html::activeDropDownList($model, 'city', ['Select Your City', 'Cairo', 'Alex']); ?>
+                <?= Html::activeDropDownList($oSignupForm, 'city', common\models\custom\City::getList(), ['prompt' => Yii::t('app', 'Select Your City')]); ?>
+
             </div>
         </label>
-        <?= Html::error($model, 'city', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'city', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
     <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($model, 'address'); ?>
+        <label><?= Html::activeLabel($oSignupForm, 'address'); ?>
             <!--<input type="text" required>-->
-            <?= Html::activeTextInput($model, 'address'); ?>
+            <?= Html::activeTextInput($oSignupForm, 'address'); ?>
         </label>
-        <?= Html::error($model, 'address', ['tag' => 'small', 'class' => 'error']); ?>
+        <?= Html::error($oSignupForm, 'address', ['tag' => 'small', 'class' => 'error']); ?>
     </div>
 
     <div class="large-5 medium-5 small-12 columns large-centered medium-centered">
-        <button type="submit">Register</button>
+        <button type="submit"><?= Yii::t('app', 'Sign Up')?></button>
     </div>
 
     <div class="large-5 medium-5 small-12 columns large-centered medium-centered text-center or-alternate-method">
@@ -96,7 +97,7 @@ $this->title = 'Signup';
 
     <div class="large-5 medium-5 small-12 columns large-centered medium-centered">
         <div class="facebook-signup">
-            <i class="fa fa-facebook"></i> Sign in with Facebook
+            <i class="fa fa-facebook"></i> <?= Yii::t('app', 'Sign in with Facebook')?>
         </div>
     </div>
 

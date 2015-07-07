@@ -71,8 +71,6 @@ class SiteController extends \frontend\components\BaseController {
     }
 
     public function actionHome() {
-        //$oPage = new \common\models\custom\Page;
-        //var_dump($oPage->getHomeSlider());die;
         $this->view->params['homeSlider'] = \common\models\custom\Page::getHomeSlider();
         return $this->render('home', [
                     'featuredProducts' => \common\models\custom\Product::getFeatured(),
@@ -128,17 +126,18 @@ class SiteController extends \frontend\components\BaseController {
     }
 
     public function actionSignup() {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
+        $oSignupForm = new SignupForm();
+        if ($oSignupForm->load(Yii::$app->request->post())) {
+            if ($oUser = $oSignupForm->signup()) {
+                if (Yii::$app->getUser()->login($oUser)) {
+                    //die(var_dump($oUser->email, Yii::$app->user->isGuest));
                     return $this->goHome();
                 }
             }
         }
 
         return $this->render('signup', [
-                    'model' => $model,
+                    'oSignupForm' => $oSignupForm,
         ]);
     }
 
