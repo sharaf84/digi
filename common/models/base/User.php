@@ -28,6 +28,10 @@ class User extends Base implements IdentityInterface {
     const STATUS_SUSPENDED = 1;
     const STATUS_VERIFIED = 2;
     const STATUS_BANNED = 3;
+    
+    const TOKEN_TYPE_VERIFY = 1;
+    const TOKEN_TYPE_PASSWORD_RESET = 2;
+    
 
     /**
      * @inheritdoc
@@ -105,28 +109,25 @@ class User extends Base implements IdentityInterface {
      * @return static|null
      */
     public static function findByPasswordResetToken($token) {
-        if (!static::isPasswordResetTokenValid($token)) {
-            return null;
-        }
-
-        return static::findOne([
-                    'password_reset_token' => $token,
+        $oUser = static::findOne([
+                    'token' => $token,
                     'status' => self::STATUS_VERIFIED,
         ]);
+        
+        return ($oUser && $oUser->isValidPasswordResetToken()) ? $oUser : null;
     }
 
     /**
      * Finds out if password reset token is valid
      *
-     * @param string $token password reset token
      * @return boolean
      */
-    public static function isPasswordResetTokenValid($token) {
-        if (empty($token)) {
+    public function isValidPasswordResetToken() {
+        if (!$this->token || $this->tokent_type != self::TOKEN_TYPE_PASSWORD_RESET) {
             return false;
         }
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
-        $parts = explode('_', $token);
+        $parts = explode('_', $this->token);
         $timestamp = (int) end($parts);
         return $timestamp + $expire >= time();
     }
@@ -183,7 +184,8 @@ class User extends Base implements IdentityInterface {
      * Generates new password reset token
      */
     public function generatePasswordResetToken() {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->tokent_type = self::TOKEN_TYPE_PASSWORD_RESET;
     }
 
     /**
@@ -191,6 +193,21 @@ class User extends Base implements IdentityInterface {
      */
     public function removePasswordResetToken() {
         $this->token = null;
+    }
+    
+    /**
+     * Generates verify token
+     */
+    public function generateVerifyToken() {
+        $this->token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token_type = self::TOKEN_TYPE_VERIFY;
+    }
+
+    /**
+     * Removes tokens
+     */
+    public function removeTokens() {
+        $this->token = $this->tokent_type = null;
     }
 
     //////////////////Sharaf///////////////////////////

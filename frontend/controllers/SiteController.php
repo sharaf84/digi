@@ -4,7 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\base\form\Login;
-use frontend\models\PasswordResetRequestForm;
+use frontend\models\RequestPasswordResetForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
@@ -142,9 +142,9 @@ class SiteController extends \frontend\components\BaseController {
     }
 
     public function actionRequestPasswordReset() {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
+        $oRequestPasswordResetForm = new RequestPasswordResetForm();
+        if ($oRequestPasswordResetForm->load(Yii::$app->request->post()) && $oRequestPasswordResetForm->validate()) {
+            if ($oRequestPasswordResetForm->sendEmail()) {
                 Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
 
                 return $this->goHome();
@@ -153,26 +153,26 @@ class SiteController extends \frontend\components\BaseController {
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
-                    'model' => $model,
+        return $this->render('requestPasswordReset', [
+                    'oRequestPasswordResetForm' => $oRequestPasswordResetForm,
         ]);
     }
 
     public function actionResetPassword($token) {
         try {
-            $model = new ResetPasswordForm($token);
+            $oResetPasswordForm = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+        if ($oResetPasswordForm->load(Yii::$app->request->post()) && $oResetPasswordForm->validate() && $oResetPasswordForm->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
             return $this->goHome();
         }
 
         return $this->render('resetPassword', [
-                    'model' => $model,
+                    'oResetPasswordForm' => $oResetPasswordForm,
         ]);
     }
 

@@ -4,7 +4,7 @@ use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\PasswordResetRequestForm */
+/* @var $oRequestPasswordResetForm \frontend\models\RequestPasswordResetForm */
 
 $this->title = 'Request password reset';
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <div class="col-lg-5">
             <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($oRequestPasswordResetForm, 'email') ?>
                 <div class="form-group">
                     <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
                 </div>
