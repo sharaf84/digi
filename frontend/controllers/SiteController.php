@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\base\form\Login;
+use common\models\base\User;
 use frontend\models\RequestPasswordResetForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -129,9 +130,12 @@ class SiteController extends \frontend\components\BaseController {
         $oSignupForm = new SignupForm();
         if ($oSignupForm->load(Yii::$app->request->post())) {
             if ($oUser = $oSignupForm->signup()) {
-                if (Yii::$app->getUser()->login($oUser)) {
-                    //die(var_dump($oUser->email, Yii::$app->user->isGuest));
+                if ($oSignupForm->sendEmail($oUser)) {
+                    Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Check your email for further instructions.'));
                     return $this->goHome();
+                } else {
+                    Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, error sendin email.'));
+                    $oUser->delete();
                 }
             }
         }
@@ -141,15 +145,28 @@ class SiteController extends \frontend\components\BaseController {
         ]);
     }
 
+    public function actionVerify($token) {
+
+        $oUser = User::findByVerificationToken($token);
+
+        if ($oUser && $oUser->verify()) {
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Congratulations, your account verified successfully.'));
+            Yii::$app->getUser()->login($oUser);
+        } else
+            throw new InvalidParamException(Yii::t('app', 'Wrong verification token.'));
+
+        return $this->goHome();
+    }
+
     public function actionRequestPasswordReset() {
         $oRequestPasswordResetForm = new RequestPasswordResetForm();
         if ($oRequestPasswordResetForm->load(Yii::$app->request->post()) && $oRequestPasswordResetForm->validate()) {
             if ($oRequestPasswordResetForm->sendEmail()) {
-                Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
+                Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Check your email for further instructions.'));
 
                 return $this->goHome();
             } else {
-                Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
+                Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, we are unable to reset password for email provided.'));
             }
         }
 

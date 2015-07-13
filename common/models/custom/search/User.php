@@ -16,7 +16,7 @@ class User extends \common\models\custom\User {
      */
     public function rules() {
         return [
-            [['id', 'tokent_type', 'status'], 'integer'],
+            [['id', 'token_type', 'status'], 'integer'],
             [['username', 'email', 'password', 'token', 'auth_key', 'sso_key', 'last_login', 'created', 'updated'], 'safe'],
         ];
     }
@@ -53,7 +53,7 @@ class User extends \common\models\custom\User {
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'tokent_type' => $this->tokent_type,
+            'token_type' => $this->token_type,
             'status' => $this->status,
             'last_login' => $this->last_login,
             'created' => $this->created,
