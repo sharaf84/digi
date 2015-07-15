@@ -1,37 +1,62 @@
 <?php
+
 namespace frontend\models;
 
-use common\models\User;
 use yii\base\Model;
+use common\models\base\User;
+use common\models\custom\Profile;
 use Yii;
 
 /**
  * Signup form
  */
-class SignupForm extends Model
-{
-    public $username;
+class SignupForm extends Model {
+
+    public $name;
     public $email;
     public $password;
+    public $phone;
+    public $city;
+    public $address;
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            ['username', 'filter', 'filter' => 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
+            ['name', 'filter', 'filter' => 'trim'],
+            ['name', 'required'],
+            ['name', 'string', 'min' => 3, 'max' => 255],
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
-
+            ['email', 'unique', 'targetClass' => '\common\models\base\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['phone', 'filter', 'filter' => 'trim'],
+            ['phone', 'required'],
+            ['phone', 'string', 'length' => 11],
+            ['phone', 'number', 'integerOnly' => true],
+            ['city', 'filter', 'filter' => 'trim'],
+            ['city', 'required'],
+            ['city', 'exist', 'targetClass' => '\common\models\base\Tree', 'targetAttribute' => 'id', 'message' => Yii::t('app', 'Invalid City.')],
+            ['address', 'filter', 'filter' => 'trim'],
+            ['address', 'required'],
+            ['address', 'string', 'min' => 10],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels() {
+        return [
+            'name' => Yii::t('app', 'Full Name'),
+            'email' => Yii::t('app', 'Email'),
+            'password' => Yii::t('app', 'Password'),
+            'phone' => Yii::t('app', 'Mobile Number'),
+            'city' => Yii::t('app', 'City'),
+            'address' => Yii::t('app', 'Address'),
         ];
     }
 
@@ -40,19 +65,42 @@ class SignupForm extends Model
      *
      * @return User|null the saved model or null if saving fails
      */
-    public function signup()
-    {
+    public function signup() {
         if ($this->validate()) {
-            $user = new User();
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->setPassword($this->password);
-            $user->generateAuthKey();
-            if ($user->save()) {
-                return $user;
-            }
+            $oUser = new User();
+            $oProfile = new Profile();
+            $oUser->username = $oUser->email = $this->email;
+            $oUser->status = User::STATUS_SUSPENDED;
+            $oUser->setPassword($this->password);
+            $oUser->generateAuthKey();
+            $oUser->generateVerificationToken();
+            $oProfile->first_name = $this->name;
+            $oProfile->phone = $this->phone;
+            $oProfile->address = $this->address;
+            $oProfile->city_id = $this->city;
+            $oDBTransaction = Yii::$app->db->beginTransaction();
+            if ($oUser->save() && $oProfile->setUserId($oUser->id) && $oProfile->save()) {
+                $oDBTransaction->commit();
+                return $oUser;
+            } else
+                $oDBTransaction->rollBack();
         }
 
         return null;
     }
+
+    /**
+     * Sends an email with a link, for verification.
+     *
+     * @return boolean whether the email was send
+     */
+    public function sendEmail($oUser) {
+
+        return \Yii::$app->mailer->compose(['html' => 'verificationToken-html'], ['oUser' => $oUser])
+                        ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
+                        ->setTo($oUser->email)
+                        ->setSubject('Verification for ' . \Yii::$app->name)
+                        ->send();
+    }
+
 }

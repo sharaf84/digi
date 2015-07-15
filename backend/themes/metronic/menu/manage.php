@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 echo TreeView::widget([
                     // single query fetch to render the tree
                     'query' => $query,
-                    'headingOptions' => ['label' => 'Menu Header'],
+                    'headingOptions' => ['label' =>$this->title],
                     'rootOptions' => ['label' => 'Root'],
                     'nodeView' => '@metronicTheme/base/tree/_manageForm',
                     'fontAwesome' => false,

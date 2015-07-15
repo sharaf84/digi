@@ -14,7 +14,7 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $password
  * @property string $token
- * @property integer $tokent_type
+ * @property integer $token_type
  * @property string $auth_key
  * @property string $sso_key
  * @property integer $status
@@ -28,6 +28,10 @@ class User extends Base implements IdentityInterface {
     const STATUS_SUSPENDED = 1;
     const STATUS_VERIFIED = 2;
     const STATUS_BANNED = 3;
+    
+    const TOKEN_TYPE_VERIFY = 1;
+    const TOKEN_TYPE_PASSWORD_RESET = 2;
+    
 
     /**
      * @inheritdoc
@@ -45,12 +49,12 @@ class User extends Base implements IdentityInterface {
             //['email', 'email'],
             ['status', 'default', 'value' => self::STATUS_SUSPENDED],
             //['status', 'in', 'range' => [self::STATUS_VERIFIED, self::STATUS_DELETED]],
-            [['tokent_type', 'status'], 'integer'],
+            [['token_type', 'status'], 'integer'],
             [['username'], 'string', 'min' => 3, 'max' => 64],
             [['email'], 'string', 'max' => 128],
             [['password', 'token', 'auth_key', 'sso_key'], 'string', 'max' => 123],
             [['username', 'email', 'token', 'auth_key', 'sso_key'], 'unique'],
-            [['token', 'tokent_type', 'last_login', 'created', 'updated'], 'safe'],
+            [['token', 'token_type', 'last_login', 'created', 'updated'], 'safe'],
         ];
     }
 
@@ -64,7 +68,7 @@ class User extends Base implements IdentityInterface {
             'email' => 'Email',
             'password' => 'Password',
             'token' => 'Token',
-            'tokent_type' => 'Tokent Type',
+            'token_type' => 'Tokent Type',
             'auth_key' => 'Auth Key',
             'sso_key' => 'Sso Key',
             'status' => 'Status',
@@ -97,6 +101,22 @@ class User extends Base implements IdentityInterface {
     public static function findByUsername($username) {
         return static::findOne(['username' => $username, 'status' => self::STATUS_VERIFIED]);
     }
+    
+    /**
+     * Finds user by verification reset token
+     *
+     * @param string $token verification token
+     * @return static|null
+     */
+    public static function findByVerificationToken($token) {
+        $oUser = static::findOne([
+                    'token' => $token,
+                    'token_type' => self::TOKEN_TYPE_VERIFY,
+                    'status' => self::STATUS_SUSPENDED,
+        ]);
+        
+        return ($oUser && static::isValidToken($oUser->token, Yii::$app->params['user.verificationTokenExpire'])) ? $oUser : null;
+    }
 
     /**
      * Finds user by password reset token
@@ -105,32 +125,27 @@ class User extends Base implements IdentityInterface {
      * @return static|null
      */
     public static function findByPasswordResetToken($token) {
-        if (!static::isPasswordResetTokenValid($token)) {
-            return null;
-        }
-
-        return static::findOne([
-                    'password_reset_token' => $token,
+        $oUser = static::findOne([
+                    'token' => $token,
+                    'token_type' => self::TOKEN_TYPE_PASSWORD_RESET,
                     'status' => self::STATUS_VERIFIED,
         ]);
+        
+        return ($oUser && static::isValidToken($oUser->token, Yii::$app->params['user.passwordResetTokenExpire'])) ? $oUser : null;
     }
 
     /**
-     * Finds out if password reset token is valid
-     *
-     * @param string $token password reset token
-     * @return boolean
+     * Finds out if token is valid
+     * @param string $token
+     * @param timestamp $expire
+     * @return bool
      */
-    public static function isPasswordResetTokenValid($token) {
-        if (empty($token)) {
-            return false;
-        }
-        $expire = Yii::$app->params['user.passwordResetTokenExpire'];
+    public static function isValidToken($token, $expire) {
         $parts = explode('_', $token);
         $timestamp = (int) end($parts);
         return $timestamp + $expire >= time();
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -178,12 +193,21 @@ class User extends Base implements IdentityInterface {
     public function generateAuthKey() {
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
-
+    
+    /**
+     * Generates verification token
+     */
+    public function generateVerificationToken() {
+        $this->token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token_type = self::TOKEN_TYPE_VERIFY;
+    }
+    
     /**
      * Generates new password reset token
      */
     public function generatePasswordResetToken() {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token_type = self::TOKEN_TYPE_PASSWORD_RESET;
     }
 
     /**
@@ -192,12 +216,35 @@ class User extends Base implements IdentityInterface {
     public function removePasswordResetToken() {
         $this->token = null;
     }
+    
 
-    //////////////////Sharaf///////////////////////////
 
+    /**
+     * Removes tokens
+     */
+    public function removeTokens() {
+        $this->token = $this->token_type = null;
+    }
+    
+    /**
+     * Restes password
+     * @param string $password
+     * @return bool
+     */
     public function resetPassword($password) {
         $this->setPassword($password);
-        $this->removePasswordResetToken();
+        $this->removeTokens();
+        return $this->save(false);
+    }
+    
+    /**
+     * Verify 
+     * @param string $password
+     * @return bool
+     */
+    public function verify() {
+        $this->status = self::STATUS_VERIFIED;
+        $this->removeTokens();
         return $this->save(false);
     }
 

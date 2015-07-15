@@ -4,26 +4,24 @@ use yii\helpers\Html;
 use digi\metronic\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\BaseUser */
+/* @var $model common\models\custom\Profile */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Profiles'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="page-content user-view">
+<div class="page-content profile-view">
 
     <!-- BEGIN STYLE CUSTOMIZER -->
-    <?= $this->render('@metronicTheme/layouts/themePanel.php'); ?>
+    <?=  $this->render('@metronicTheme/layouts/themePanel.php'); ?>
     <!-- END STYLE CUSTOMIZER -->
     <!-- BEGIN PAGE HEADER-->
     <h3 class="page-title">
         <?= Html::encode($this->title) ?>
     </h3>
-    
     <div class="page-bar">
-        <?=
-        \digi\metronic\widgets\Breadcrumbs::widget([
+        <?=         \digi\metronic\widgets\Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ])
         ?>
@@ -34,18 +32,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 </button>
                 <ul class="dropdown-menu pull-right" role="menu">
                     <li>
-<?= Html::a('Update', ['update', 'id' => $model->id], ['class' => '']) ?>
+                        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => '']) ?>
                     </li>
                     <li>
-                        <?=
-                        Html::a('Delete', ['delete', 'id' => $model->id], [
+                        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
                             'class' => '',
                             'data' => [
-                                'confirm' => 'Are you sure you want to delete this item?',
-                            //'method' => 'post',
+                                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                //'method' => 'post',
                             ],
-                        ])
-                        ?>
+                        ]) ?>
                     </li>
                 </ul>
             </div>
@@ -59,32 +55,31 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="portlet box grey-cascade">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-cogs"></i>User Details
+                        <i class="fa fa-cogs"></i>Profile Details
                     </div>
                     <div class="tools">
                         <a href="javascript:;" class="collapse"></a>
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <?=
-                    DetailView::widget([
-                        'model' => $model,
-                        'attributes' => [
-                            'id',
-                            'username',
-                            'email:email',
-                            'password',
-                            'token',
-                            'token_type',
-                            'auth_key',
-                            'sso_key',
-                            'status',
-                            'last_login',
-                            'created',
-                            'updated',
-                        ],
-                    ])
-                    ?>
+                        <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'user_id',
+            'city_id',
+            'first_name',
+            'last_name',
+            'bio:ntext',
+            'gender',
+            'address:ntext',
+            'country_phone_code',
+            'phone',
+            'status',
+            'created',
+            'updated',
+        ],
+    ]) ?>
                 </div>
             </div>
         </div>
