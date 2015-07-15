@@ -34,6 +34,29 @@ $ar_font: 'Droid Arabic Kufi', 'PT Sans', arial, sans-serif !important;
         left: 0;
     }
 
+    .md-chevron-left { @include transform( rotate(180deg) ); }
+    .md-chevron-right, .md-keyboard-arrow-right { @include transform( rotate(-180deg) ); }
+    .next-nav .md-chevron-right, .prev-nav .md-chevron-left { @include transform( rotate(0deg) ); }
+
+    .single-page ul.pagination.filters li:first-child.current a {
+        border-radius: 0 5px 5px 0;
+        margin-right: -1px;
+    }
+    .single-page ul.pagination.filters li:last-child a {
+        border-left: none;
+        border-right: 1px solid;
+    }
+	.single-page.single-blog .comments .comments-title .arrow-up {
+		left: auto;
+		right: 20px;
+	}
+	.cart-quantity {
+		padding-right: 22px
+	}
+	.single-page.profile-page .user-info .edit-profile {
+		right: auto;
+		left: 30px;
+	}
 }
 
 

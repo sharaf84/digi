@@ -157,7 +157,6 @@ TSS.header = function () {
     if (! Helpers.isMobile() ) {
         self.s = skrollr.init();
     }
-    self.s = skrollr.init();
 };
 
 TSS.dataRoutes = function () {
