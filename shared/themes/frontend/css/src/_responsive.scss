@@ -166,6 +166,112 @@ $googleColor	: #ce3e26;
 		transform: scale(0.9);
 		border-radius: 4px;
 	}
+	
+	
+	aside {
+		.mobile-user-avatar {
+			padding: 0;
+			img {
+				border-radius: 50%;
+				margin: 20px auto;
+				display: block;
+				border: 1px solid #ed2024;
+				padding: 5px;
+			}
+			i {
+				font-size: 100px;
+				color: #acacac;
+				display: block;
+				margin: 20px auto;
+				width: 102px;
+				height: 103px;
+				line-height: 104px;
+				text-align: center;
+				text-indent: 0;
+				padding: 5px;
+				border-radius: 50%;
+				background: #5c5c5c;
+				box-shadow: 0 0 0 6px #333, 0 0 0 7px #ACACAC;
+			}
+		}
+		.mobile-user-name {
+			padding: 0;
+			h3 {
+				text-align: center;
+				color: #e5e5e5;
+				padding: 0;
+				margin: -7px 0 20px 0;
+			}
+			h4 {
+				color: #acacac;
+				font: 12px $myriad;
+				a {
+					color: #fff;
+					font-size: 14px;
+					span { text-decoration: underline; }
+					i { line-height: 17px; }
+				}
+			}
+		}
+		.mobile-menu-shopping-cart {
+			position: relative;
+			span {
+				background: red;
+				color: #fff;
+				display: block;
+				position: absolute;
+				right: 12px;
+				top: 12px;
+				width: 25px;
+				height: 25px;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				line-height: 27px;
+				border-radius: 50%;
+			}
+		}
+		.mobile-menu-social-icons {
+			a {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				margin: 15px 0 15px 11px;
+				line-height: 31px;
+				font-size: 26px;
+				float: left;
+				text-align: center;
+				background: #fff !important;
+				color: #292929 !important;
+				border-radius: 50%;
+			}
+		}
+		form {
+			position: relative;
+			margin: 20px auto;
+			width: 95%;
+			input {
+				margin-bottom: 0;
+			}
+			i.md-chevron-right {
+				color: rgb(217, 217, 217);
+				background: rgb(146, 146, 146);
+				display: block;
+				width: 37px;
+				height: 37px;
+				@include position(absolute, 0 0 null null);
+				font-size: 32px;
+				line-height: 36px;
+				text-align: center;
+				cursor: pointer;
+				@include transition(0.3s, ease, all);
+				&:hover {
+					background: rgb(217, 217, 217);
+					color: rgb(146, 146, 146);
+				}
+			}
+		}
+	}
 
 	// Responsive for Arabic:
 	#ar-layout {
@@ -192,6 +298,20 @@ $googleColor	: #ce3e26;
 			left: 30px;
 			right: auto;
 		}
+		
+		aside {
+			.mobile-user-name h4 { text-align: center; }
+			.mobile-menu-shopping-cart span {
+				right: auto;
+				left: 15px;
+			}
+			aside form i.md-chevron-right {
+				right: auto;
+				left: 0;
+			}
+		}
+		
+		
 	}
 
 }

@@ -278,12 +278,7 @@ TSS.onReady = function() {
             e.preventDefault();
             TSS.newsletter();
         });
-        $(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
-            $('body').css('overflow', 'hidden');
-        }).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
-            $('body').css('overflow', 'auto');
-        });
-        //$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+        //$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-left');
     };
 
 	self.initializeFoundation = function() {
@@ -309,7 +304,7 @@ TSS.onReady = function() {
             offcanvas : {
                 open_method: 'move',
                 close_on_click : true
-              }
+            }
 		});
 	};
 

@@ -11821,6 +11821,98 @@ footer {
     padding: 30px 10px 10px 10px;
     transform: scale(0.9);
     border-radius: 4px; }
+  aside .mobile-user-avatar {
+    padding: 0; }
+    aside .mobile-user-avatar img {
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+      border: 1px solid #ed2024;
+      padding: 5px; }
+    aside .mobile-user-avatar i {
+      font-size: 100px;
+      color: #acacac;
+      display: block;
+      margin: 20px auto;
+      width: 102px;
+      height: 103px;
+      line-height: 104px;
+      text-align: center;
+      text-indent: 0;
+      padding: 5px;
+      border-radius: 50%;
+      background: #5c5c5c;
+      box-shadow: 0 0 0 6px #333, 0 0 0 7px #ACACAC; }
+  aside .mobile-user-name {
+    padding: 0; }
+    aside .mobile-user-name h3 {
+      text-align: center;
+      color: #e5e5e5;
+      padding: 0;
+      margin: -7px 0 20px 0; }
+    aside .mobile-user-name h4 {
+      color: #acacac;
+      font: 12px "PT Sans", arial, sans-serif; }
+      aside .mobile-user-name h4 a {
+        color: #fff;
+        font-size: 14px; }
+        aside .mobile-user-name h4 a span {
+          text-decoration: underline; }
+        aside .mobile-user-name h4 a i {
+          line-height: 17px; }
+  aside .mobile-menu-shopping-cart {
+    position: relative; }
+    aside .mobile-menu-shopping-cart span {
+      background: red;
+      color: #fff;
+      display: block;
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      line-height: 27px;
+      border-radius: 50%; }
+  aside .mobile-menu-social-icons a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 15px 0 15px 11px;
+    line-height: 31px;
+    font-size: 26px;
+    float: left;
+    text-align: center;
+    background: #fff !important;
+    color: #292929 !important;
+    border-radius: 50%; }
+  aside form {
+    position: relative;
+    margin: 20px auto;
+    width: 95%; }
+    aside form input {
+      margin-bottom: 0; }
+    aside form i.md-chevron-right {
+      color: #d9d9d9;
+      background: #929292;
+      display: block;
+      width: 37px;
+      height: 37px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 32px;
+      line-height: 36px;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: 0.3s, ease, all;
+      -moz-transition: 0.3s, ease, all;
+      transition: 0.3s, ease, all; }
+      aside form i.md-chevron-right:hover {
+        background: #d9d9d9;
+        color: #929292; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {
@@ -11838,7 +11930,15 @@ footer {
   #ar-layout .single-page.profile-page .user-info .edit-profile {
     top: 0;
     left: 30px;
-    right: auto; } }
+    right: auto; }
+  #ar-layout aside .mobile-user-name h4 {
+    text-align: center; }
+  #ar-layout aside .mobile-menu-shopping-cart span {
+    right: auto;
+    left: 15px; }
+  #ar-layout aside aside form i.md-chevron-right {
+    right: auto;
+    left: 0; } }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
   header {
@@ -11936,6 +12036,98 @@ footer {
     padding: 30px 10px 10px 10px;
     transform: scale(0.9);
     border-radius: 4px; }
+  aside .mobile-user-avatar {
+    padding: 0; }
+    aside .mobile-user-avatar img {
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+      border: 1px solid #ed2024;
+      padding: 5px; }
+    aside .mobile-user-avatar i {
+      font-size: 100px;
+      color: #acacac;
+      display: block;
+      margin: 20px auto;
+      width: 102px;
+      height: 103px;
+      line-height: 104px;
+      text-align: center;
+      text-indent: 0;
+      padding: 5px;
+      border-radius: 50%;
+      background: #5c5c5c;
+      box-shadow: 0 0 0 6px #333, 0 0 0 7px #ACACAC; }
+  aside .mobile-user-name {
+    padding: 0; }
+    aside .mobile-user-name h3 {
+      text-align: center;
+      color: #e5e5e5;
+      padding: 0;
+      margin: -7px 0 20px 0; }
+    aside .mobile-user-name h4 {
+      color: #acacac;
+      font: 12px "PT Sans", arial, sans-serif; }
+      aside .mobile-user-name h4 a {
+        color: #fff;
+        font-size: 14px; }
+        aside .mobile-user-name h4 a span {
+          text-decoration: underline; }
+        aside .mobile-user-name h4 a i {
+          line-height: 17px; }
+  aside .mobile-menu-shopping-cart {
+    position: relative; }
+    aside .mobile-menu-shopping-cart span {
+      background: red;
+      color: #fff;
+      display: block;
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      line-height: 27px;
+      border-radius: 50%; }
+  aside .mobile-menu-social-icons a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 15px 0 15px 11px;
+    line-height: 31px;
+    font-size: 26px;
+    float: left;
+    text-align: center;
+    background: #fff !important;
+    color: #292929 !important;
+    border-radius: 50%; }
+  aside form {
+    position: relative;
+    margin: 20px auto;
+    width: 95%; }
+    aside form input {
+      margin-bottom: 0; }
+    aside form i.md-chevron-right {
+      color: #d9d9d9;
+      background: #929292;
+      display: block;
+      width: 37px;
+      height: 37px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 32px;
+      line-height: 36px;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: 0.3s, ease, all;
+      -moz-transition: 0.3s, ease, all;
+      transition: 0.3s, ease, all; }
+      aside form i.md-chevron-right:hover {
+        background: #d9d9d9;
+        color: #929292; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {
@@ -11953,7 +12145,15 @@ footer {
   #ar-layout .single-page.profile-page .user-info .edit-profile {
     top: 0;
     left: 30px;
-    right: auto; } }
+    right: auto; }
+  #ar-layout aside .mobile-user-name h4 {
+    text-align: center; }
+  #ar-layout aside .mobile-menu-shopping-cart span {
+    right: auto;
+    left: 15px; }
+  #ar-layout aside aside form i.md-chevron-right {
+    right: auto;
+    left: 0; } }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait) {
   header {
@@ -12051,6 +12251,98 @@ footer {
     padding: 30px 10px 10px 10px;
     transform: scale(0.9);
     border-radius: 4px; }
+  aside .mobile-user-avatar {
+    padding: 0; }
+    aside .mobile-user-avatar img {
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+      border: 1px solid #ed2024;
+      padding: 5px; }
+    aside .mobile-user-avatar i {
+      font-size: 100px;
+      color: #acacac;
+      display: block;
+      margin: 20px auto;
+      width: 102px;
+      height: 103px;
+      line-height: 104px;
+      text-align: center;
+      text-indent: 0;
+      padding: 5px;
+      border-radius: 50%;
+      background: #5c5c5c;
+      box-shadow: 0 0 0 6px #333, 0 0 0 7px #ACACAC; }
+  aside .mobile-user-name {
+    padding: 0; }
+    aside .mobile-user-name h3 {
+      text-align: center;
+      color: #e5e5e5;
+      padding: 0;
+      margin: -7px 0 20px 0; }
+    aside .mobile-user-name h4 {
+      color: #acacac;
+      font: 12px "PT Sans", arial, sans-serif; }
+      aside .mobile-user-name h4 a {
+        color: #fff;
+        font-size: 14px; }
+        aside .mobile-user-name h4 a span {
+          text-decoration: underline; }
+        aside .mobile-user-name h4 a i {
+          line-height: 17px; }
+  aside .mobile-menu-shopping-cart {
+    position: relative; }
+    aside .mobile-menu-shopping-cart span {
+      background: red;
+      color: #fff;
+      display: block;
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      width: 25px;
+      height: 25px;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      line-height: 27px;
+      border-radius: 50%; }
+  aside .mobile-menu-social-icons a {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 15px 0 15px 11px;
+    line-height: 31px;
+    font-size: 26px;
+    float: left;
+    text-align: center;
+    background: #fff !important;
+    color: #292929 !important;
+    border-radius: 50%; }
+  aside form {
+    position: relative;
+    margin: 20px auto;
+    width: 95%; }
+    aside form input {
+      margin-bottom: 0; }
+    aside form i.md-chevron-right {
+      color: #d9d9d9;
+      background: #929292;
+      display: block;
+      width: 37px;
+      height: 37px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 32px;
+      line-height: 36px;
+      text-align: center;
+      cursor: pointer;
+      -webkit-transition: 0.3s, ease, all;
+      -moz-transition: 0.3s, ease, all;
+      transition: 0.3s, ease, all; }
+      aside form i.md-chevron-right:hover {
+        background: #d9d9d9;
+        color: #929292; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {
@@ -12068,4 +12360,12 @@ footer {
   #ar-layout .single-page.profile-page .user-info .edit-profile {
     top: 0;
     left: 30px;
-    right: auto; } }
+    right: auto; }
+  #ar-layout aside .mobile-user-name h4 {
+    text-align: center; }
+  #ar-layout aside .mobile-menu-shopping-cart span {
+    right: auto;
+    left: 15px; }
+  #ar-layout aside aside form i.md-chevron-right {
+    right: auto;
+    left: 0; } }

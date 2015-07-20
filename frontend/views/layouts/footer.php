@@ -20,7 +20,7 @@ use yii\helpers\Url; ?>
                 <h3>Get the latest sales and new product announcements right to your inbox</h3>
             </div>
             <div class="large-7 medium-7 small-12 column">
-                <form action="/" id="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
+                <form action="/" class="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
                     <input type="email" required placeholder="Email address"><span class="error">Sorry, wrong email</span>
                 </form>
             </div>
