@@ -27,7 +27,7 @@ use digi\metronic\widgets\ActiveForm;
 
     <?= $form->field($model, 'token') ?>
 
-    <?php // echo $form->field($model, 'tokent_type') ?>
+    <?php // echo $form->field($model, 'token_type') ?>
 
     <?php // echo $form->field($model, 'auth_key') ?>
 

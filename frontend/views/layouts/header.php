@@ -9,7 +9,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar">
-            <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert left-off-canvas-toggle"></i></div>
+            <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
             <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo">TSS</a></div>
             <div class="large-5 medium-5 small-5 columns show-for-medium-up">
                 <nav class="main-nav">

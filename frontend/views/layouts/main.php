@@ -25,21 +25,26 @@
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">
-
+                <!-- BEGIN HEADER -->
+                <?php include_once 'flashMsg.php'; ?>
+                <!-- END HEADER -->
+                
                 <!-- BEGIN ASIDE -->
                 <?php include_once 'aside.php'; ?>
                 <!-- END ASIDE -->
 
                 <!-- BEGIN HEADER -->
                 <?php include_once 'header.php'; ?>
-
                 <!-- END HEADER -->
+                
                 <!-- BEGIN CONTAINER -->
                 <?php echo $content; ?>
                 <!-- END CONTAINER -->
+                
                 <!-- BEGIN FOOTER -->
                 <?php include_once 'footer.php'; ?>
                 <!-- END FOOTER -->
+                
                 <a class="exit-off-canvas"></a>
             </div>
         </div>

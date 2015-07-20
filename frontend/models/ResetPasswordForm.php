@@ -14,7 +14,7 @@ class ResetPasswordForm extends Model
     public $password;
 
     /**
-     * @var \common\models\User
+     * @var \common\models\base\User
      */
     private $_user;
 
@@ -56,10 +56,10 @@ class ResetPasswordForm extends Model
      */
     public function resetPassword()
     {
-        $user = $this->_user;
-        $user->password = $this->password;
-        $user->removePasswordResetToken();
+        $oUser = $this->_user;
+        $oUser->setPassword($this->password);
+        $oUser->removeTokens();
 
-        return $user->save();
+        return $oUser->save();
     }
 }

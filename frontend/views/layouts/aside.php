@@ -1,6 +1,6 @@
 <?php use yii\helpers\Url; ?>
 
-<aside class="left-off-canvas-menu">
+<aside class="<?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-menu">
     <ul class="off-canvas-list">
         <li><a href="#">Home</a></li>
         <li class="has-submenu">
