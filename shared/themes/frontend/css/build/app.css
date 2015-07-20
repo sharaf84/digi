@@ -10877,6 +10877,136 @@ header {
       width: 30px;
       height: 30px;
       border-radius: 50%; }
+    header .user-avatar.login-cont {
+      width: 64px; }
+      header .user-avatar.login-cont span.login-btn {
+        color: #ed2024;
+        cursor: pointer; }
+      header .user-avatar.login-cont .login-dropdown {
+        top: -500px;
+        overflow: visible;
+        width: 240px;
+        background: #383838;
+        padding: 30px 10px 10px 10px;
+        color: #b4bbc2;
+        position: absolute;
+        right: 0; }
+        header .user-avatar.login-cont .login-dropdown.active {
+          top: 58px !important;
+          border: none; }
+      header .user-avatar.login-cont .facebook-login {
+        display: block;
+        background: #3162a2;
+        color: #fff;
+        text-align: center;
+        padding: 9px 0;
+        font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 7px;
+        position: relative; }
+        header .user-avatar.login-cont .facebook-login i {
+          color: #fff;
+          font-size: 15px !important;
+          left: auto;
+          right: auto;
+          top: auto;
+          position: relative;
+          display: inline !important; }
+      header .user-avatar.login-cont .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid #ED2024;
+        position: absolute;
+        top: -10px;
+        right: 15px; }
+      header .user-avatar.login-cont .signup-btn {
+        color: #d6d6d6;
+        font-size: 13px;
+        text-transform: uppercase;
+        display: block;
+        width: 60px;
+        position: absolute;
+        right: 0;
+        top: 15px; }
+      header .user-avatar.login-cont label {
+        color: #b4bbc2;
+        display: block;
+        margin: 0 0 5px 1px;
+        font-weight: bold;
+        font-size: 13px; }
+      header .user-avatar.login-cont button {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 9px 0; }
+      header .user-avatar.login-cont .or-sep {
+        color: #c6ccd2;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 0 0 19px 0;
+        border-bottom: 1px solid;
+        line-height: 0px; }
+        header .user-avatar.login-cont .or-sep span {
+          background: #383838;
+          padding: 0 5px; }
+    header .user-avatar.usermenu-cont .usermenu-dropdown {
+      top: 50px;
+      overflow: visible;
+      width: 240px;
+      background: #383838;
+      padding: 10px;
+      color: #b4bbc2;
+      position: absolute;
+      right: 0; }
+      header .user-avatar.usermenu-cont .usermenu-dropdown.active {
+        top: 58px !important;
+        border: none; }
+    header .user-avatar.usermenu-cont .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #ED2024;
+      position: absolute;
+      top: -10px;
+      right: 15px; }
+    header .user-avatar.usermenu-cont .menu-avatar {
+      width: 40%;
+      height: 40%;
+      border-radius: 50%;
+      display: block;
+      border: 1px solid #777777;
+      padding: 2px;
+      margin: 10px auto; }
+    header .user-avatar.usermenu-cont h3 {
+      text-align: center;
+      font-size: 18px;
+      border-bottom: 1px solid #666;
+      padding-bottom: 17px;
+      margin-bottom: 0; }
+      header .user-avatar.usermenu-cont h3 a {
+        color: #fff; }
+    header .user-avatar.usermenu-cont .user-buttons-cont {
+      width: 100%; }
+    header .user-avatar.usermenu-cont .view-profile-cont, header .user-avatar.usermenu-cont .logout-cont {
+      padding: 0 4px 0 4px; }
+    header .user-avatar.usermenu-cont .view-profile-cont button {
+      width: 95%;
+      font-size: 14px;
+      padding: 13px 10px;
+      margin: 9px 0 0 15px;
+      font-weight: bold;
+      line-height: 11px; }
+    header .user-avatar.usermenu-cont .logout-cont button {
+      width: 95%;
+      font-size: 14px;
+      padding: 13px 10px;
+      margin: 9px 0 0 15px;
+      font-weight: bold;
+      line-height: 11px; }
   header .lang-switcher {
     position: absolute;
     top: 24px;
@@ -11692,10 +11822,12 @@ footer {
       top: 10px; }
     header .logo {
       margin-left: 22px;
-      text-indent: -101%; }
+      text-indent: -101%;
+      background: url(../../images/src/logo.png) no-repeat 0 6px;
+      background-size: 86%; }
     header form {
       position: absolute;
-      right: -126px; }
+      right: -107px; }
       header form i {
         right: 3px;
         top: 2px; }
@@ -11855,6 +11987,68 @@ footer {
       aside form i.md-chevron-right:hover {
         background: #d9d9d9;
         color: #929292; }
+  #mobile-login-form, #mobile-signup-form {
+    display: none;
+    background: #292929;
+    position: fixed;
+    top: 74px;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    padding: 60px; }
+    #mobile-login-form .signup-btn, #mobile-signup-form .signup-btn {
+      color: #d6d6d6;
+      font-size: 13px;
+      text-transform: uppercase;
+      display: block;
+      width: 60px;
+      position: absolute;
+      right: 0;
+      top: 15px; }
+    #mobile-login-form label, #mobile-signup-form label {
+      color: #b4bbc2;
+      display: block;
+      margin: 0 0 5px 1px;
+      font-weight: bold;
+      font-size: 13px; }
+    #mobile-login-form button, #mobile-signup-form button {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 9px 0; }
+    #mobile-login-form .or-sep, #mobile-signup-form .or-sep {
+      color: #c6ccd2;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 19px 0;
+      border-bottom: 1px solid;
+      line-height: 0px; }
+      #mobile-login-form .or-sep span, #mobile-signup-form .or-sep span {
+        background: #292929;
+        padding: 0 5px; }
+    #mobile-login-form .facebook-login, #mobile-signup-form .facebook-login {
+      display: block;
+      background: #3162a2;
+      color: #fff;
+      text-align: center;
+      padding: 9px 0;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 7px;
+      position: relative; }
+      #mobile-login-form .facebook-login i, #mobile-signup-form .facebook-login i {
+        color: #fff;
+        font-size: 15px !important;
+        left: auto;
+        right: auto;
+        top: auto;
+        position: relative;
+        display: inline !important; }
+  #mobile-signup-form {
+    overflow-y: auto;
+    padding-bottom: 100px; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {
@@ -11907,10 +12101,12 @@ footer {
       top: 10px; }
     header .logo {
       margin-left: 22px;
-      text-indent: -101%; }
+      text-indent: -101%;
+      background: url(../../images/src/logo.png) no-repeat 0 6px;
+      background-size: 86%; }
     header form {
       position: absolute;
-      right: -126px; }
+      right: -107px; }
       header form i {
         right: 3px;
         top: 2px; }
@@ -12070,6 +12266,68 @@ footer {
       aside form i.md-chevron-right:hover {
         background: #d9d9d9;
         color: #929292; }
+  #mobile-login-form, #mobile-signup-form {
+    display: none;
+    background: #292929;
+    position: fixed;
+    top: 74px;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    padding: 60px; }
+    #mobile-login-form .signup-btn, #mobile-signup-form .signup-btn {
+      color: #d6d6d6;
+      font-size: 13px;
+      text-transform: uppercase;
+      display: block;
+      width: 60px;
+      position: absolute;
+      right: 0;
+      top: 15px; }
+    #mobile-login-form label, #mobile-signup-form label {
+      color: #b4bbc2;
+      display: block;
+      margin: 0 0 5px 1px;
+      font-weight: bold;
+      font-size: 13px; }
+    #mobile-login-form button, #mobile-signup-form button {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 9px 0; }
+    #mobile-login-form .or-sep, #mobile-signup-form .or-sep {
+      color: #c6ccd2;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 19px 0;
+      border-bottom: 1px solid;
+      line-height: 0px; }
+      #mobile-login-form .or-sep span, #mobile-signup-form .or-sep span {
+        background: #292929;
+        padding: 0 5px; }
+    #mobile-login-form .facebook-login, #mobile-signup-form .facebook-login {
+      display: block;
+      background: #3162a2;
+      color: #fff;
+      text-align: center;
+      padding: 9px 0;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 7px;
+      position: relative; }
+      #mobile-login-form .facebook-login i, #mobile-signup-form .facebook-login i {
+        color: #fff;
+        font-size: 15px !important;
+        left: auto;
+        right: auto;
+        top: auto;
+        position: relative;
+        display: inline !important; }
+  #mobile-signup-form {
+    overflow-y: auto;
+    padding-bottom: 100px; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {
@@ -12122,10 +12380,12 @@ footer {
       top: 10px; }
     header .logo {
       margin-left: 22px;
-      text-indent: -101%; }
+      text-indent: -101%;
+      background: url(../../images/src/logo.png) no-repeat 0 6px;
+      background-size: 86%; }
     header form {
       position: absolute;
-      right: -126px; }
+      right: -107px; }
       header form i {
         right: 3px;
         top: 2px; }
@@ -12285,6 +12545,68 @@ footer {
       aside form i.md-chevron-right:hover {
         background: #d9d9d9;
         color: #929292; }
+  #mobile-login-form, #mobile-signup-form {
+    display: none;
+    background: #292929;
+    position: fixed;
+    top: 74px;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    padding: 60px; }
+    #mobile-login-form .signup-btn, #mobile-signup-form .signup-btn {
+      color: #d6d6d6;
+      font-size: 13px;
+      text-transform: uppercase;
+      display: block;
+      width: 60px;
+      position: absolute;
+      right: 0;
+      top: 15px; }
+    #mobile-login-form label, #mobile-signup-form label {
+      color: #b4bbc2;
+      display: block;
+      margin: 0 0 5px 1px;
+      font-weight: bold;
+      font-size: 13px; }
+    #mobile-login-form button, #mobile-signup-form button {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      padding: 9px 0; }
+    #mobile-login-form .or-sep, #mobile-signup-form .or-sep {
+      color: #c6ccd2;
+      font-size: 14px;
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0 0 19px 0;
+      border-bottom: 1px solid;
+      line-height: 0px; }
+      #mobile-login-form .or-sep span, #mobile-signup-form .or-sep span {
+        background: #292929;
+        padding: 0 5px; }
+    #mobile-login-form .facebook-login, #mobile-signup-form .facebook-login {
+      display: block;
+      background: #3162a2;
+      color: #fff;
+      text-align: center;
+      padding: 9px 0;
+      font-weight: bold;
+      font-size: 14px;
+      margin-bottom: 7px;
+      position: relative; }
+      #mobile-login-form .facebook-login i, #mobile-signup-form .facebook-login i {
+        color: #fff;
+        font-size: 15px !important;
+        left: auto;
+        right: auto;
+        top: auto;
+        position: relative;
+        display: inline !important; }
+  #mobile-signup-form {
+    overflow-y: auto;
+    padding-bottom: 100px; }
   #ar-layout .product-background-cover {
     opacity: 0.2; }
   #ar-layout header form {

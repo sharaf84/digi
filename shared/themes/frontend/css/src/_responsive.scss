@@ -70,10 +70,12 @@ $googleColor	: #ce3e26;
 		.logo {
 			margin-left: 22px;
 			text-indent: -101%;
+			background: url(../../images/src/logo.png) no-repeat 0 6px;
+			background-size: 86%;
 		}
 		form {
 			position: absolute;
-			right: -126px;
+			right: -107px;
 			i {
 				right: 3px;
 				top: 2px;
@@ -271,6 +273,82 @@ $googleColor	: #ce3e26;
 				}
 			}
 		}
+	}
+	
+	#mobile-login-form {
+		display: none;
+		background: #292929;
+		position: fixed;
+		top: 74px;
+		left: 0;
+		z-index: 99999;
+		width: 100%;
+		height: 100%;
+		padding: 60px;
+		.signup-btn {
+			color: #d6d6d6;
+			font-size: 13px;
+			text-transform: uppercase;
+			display: block;
+			width: 60px;
+			position: absolute;
+			right: 0;
+			top: 15px;
+		}
+		label {
+			color: #b4bbc2;
+			display: block;
+			margin: 0 0 5px 1px;
+			font-weight: bold;
+			font-size: 13px;
+		}
+		button {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			padding: 9px 0;
+		}
+		.or-sep {
+			color: #c6ccd2;
+			font-size: 14px;
+			text-transform: uppercase;
+			text-align: center;
+			margin: 0 0 19px 0;
+			border-bottom: 1px solid;
+			line-height: 0px;
+			span {
+				background: #292929;
+				padding: 0 5px;
+			}
+		}
+		.facebook-login {
+			display: block;
+			background: #3162a2;
+			color: #fff;
+			text-align: center;
+			padding: 9px 0;
+			font-weight: bold;
+			font-size: 14px;
+			margin-bottom: 7px;
+			position: relative;
+			i {
+				color: #fff;
+				font-size: 15px !important;
+				left: auto;
+				right: auto;
+				top: auto;
+				position: relative;
+				display: inline !important;
+			}
+		}
+	}
+	
+	#mobile-signup-form {
+		@extend #mobile-login-form;
+		
+		//display: block;
+		overflow-y: auto;
+		padding-bottom: 100px;
 	}
 
 	// Responsive for Arabic:

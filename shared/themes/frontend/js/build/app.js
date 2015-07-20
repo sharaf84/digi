@@ -110,7 +110,7 @@ TSS.productFilters = function () {
 TSS.header = function () {
 
     var self = this;
-    var rowWidth = $('.row').width();
+    var rowWidth = 1000; //$('.row').width();
     var totalGutter = window.innerWidth - rowWidth;
 
     //$('header:not(.single-header) .header-top-bar').attr({
@@ -132,10 +132,12 @@ TSS.header = function () {
         // 'data-200': 'width: 90%; left: 5%;border-radius:4px;',
         // 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
     });
+	
+	console.log(rowWidth);
 
     $('.header-top-bar').css({
-        width: rowWidth,
-        left: ((totalGutter / 2 / window.innerWidth) * 100) + '%'
+        width: Helpers.isMobile() ? window.innerWidth : 1000,
+        left: Helpers.isMobile() ? 0 : ((totalGutter / 2 / window.innerWidth) * 100) + '%'
     });
 
     $('[data-drop-down]').mouseenter(function (e) {

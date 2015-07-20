@@ -62,3 +62,99 @@
         </li>
     </ul>
 </aside>
+
+
+
+<div id="mobile-login-form">
+	<a href="/register" class="signup-btn">Sign Up</a>
+	<form action="/login" method="post">
+		<input type="email" placeholder="Email address..." name="userEmail">
+		<input type="password" placeholder="Password" name="password">
+		<label>
+			<input type="checkbox">
+			Remember Password?
+		</label>
+		<button type="submit">Sign In</button>
+		<div class="or-sep"><span>Or</span></div>
+		<a href="#" class="facebook-login">
+			<i class="fa fa-facebook"></i> Sign in with Facebook
+		</a>
+	</form>
+</div>
+
+
+<div id="mobile-signup-form">
+	<a href="/register" class="signup-btn">Sign In</a>
+	<form action="/register" class="row" data-abide>
+
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Full Name
+				<input type="text" required pattern="[a-zA-Z]+">
+			</label>
+			<small class="error">Name is required and must be a string.</small>
+		</div>
+
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Password
+				<input type="password" required>
+			</label>
+			<small class="error">Password is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Re-type Password
+				<input type="password" required>
+			</label>
+			<small class="error">Password confirmation is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Email
+				<input type="email" required>
+			</label>
+			<small class="error">An email address is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Mobile Number
+				<input type="text" required pattern="number">
+			</label>
+			<small class="error">Mobile Number is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>City
+				<div class="select-component"><i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
+					<select id="price-filter" required>
+						<option value="">Select your city</option>
+						<option value="1">Cairo</option>
+						<option value="2">Alex</option>
+						<option value="3">...</option>
+						<option value="4">... </option>
+						<option value="5">... </option>
+						<option value="6">... </option>
+						<option value="7">... </option>
+					</select>
+				</div>
+			</label>
+			<small class="error">City is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<label>Address
+				<input type="text" required>
+			</label>
+			<small class="error">Address is required.</small>
+		</div>
+		
+		<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+			<button type="submit">Sign In</button>
+			<div class="or-sep"><span>Or</span></div>
+			<a href="#" class="facebook-login">
+				<i class="fa fa-facebook"></i> Sign in with Facebook
+			</a>
+		</div>
+
+		
+	</form>
+</div>
