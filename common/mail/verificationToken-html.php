@@ -4,7 +4,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $user common\models\User */
 
-$resetLink = Yii::$app->urlManager->createAbsoluteUrl(['site/verify', 'token' => $oUser->token]);
+$resetLink = Yii::$app->urlManager->createAbsoluteUrl(['user/verify', 'token' => $oUser->token]);
 ?>
 <div class="password-reset">
     <p>Hello <?= Html::encode($oUser->username) ?>,</p>
