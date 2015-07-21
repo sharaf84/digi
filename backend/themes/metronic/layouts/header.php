@@ -2,10 +2,11 @@
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner">
+        <div class="container">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
-                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/logo.png');?>" alt="logo" class="logo-default"/>
+            <a class="logo-bg" href="index.html">
+                <img src="<?= Url::to(['/images/logo.png']);?>" alt="logo" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler hide">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -22,10 +23,12 @@
         <!-- BEGIN TOP NAVIGATION MENU -->
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
+
+
                 <!-- BEGIN NOTIFICATION DROPDOWN -->
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <i class="icon-bell"></i>
+                        <i class="iconBell"></i>
                         <span class="badge badge-default">
                             7 </span>
                     </a>
@@ -131,7 +134,7 @@
                 <!-- BEGIN INBOX DROPDOWN -->
                 <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <i class="icon-envelope-open"></i>
+                        <i class="iconChat"></i>
                         <span class="badge badge-default">
                             4 </span>
                     </a>
@@ -231,9 +234,9 @@
                 <!-- BEGIN TODO DROPDOWN -->
                 <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <i class="icon-calendar"></i>
-                        <span class="badge badge-default">
-                            3 </span>
+                        <i class="iconSetting"></i>
+                        <!--<span class="badge badge-default">
+                            3 </span>-->
                     </a>
                     <ul class="dropdown-menu extended tasks">
                         <li>
@@ -366,7 +369,7 @@
                 </li>
                 <!-- END TODO DROPDOWN -->
                 <!-- BEGIN USER LOGIN DROPDOWN -->
-                <li class="dropdown dropdown-user">
+                <!--<li class="dropdown dropdown-user">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <img alt="" class="img-circle hide1" src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar3_small.jpg');?>"/>
                         <span class="username username-hide-on-mobile">
@@ -405,18 +408,19 @@
                                 <i class="icon-key"></i> Log Out </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
                 <!-- END USER LOGIN DROPDOWN -->
                 <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                <li class="dropdown dropdown-quick-sidebar-toggler">
+                <!--<li class="dropdown dropdown-quick-sidebar-toggler">
                     <a href="javascript:;" class="dropdown-toggle">
                         <i class="icon-logout"></i>
                     </a>
-                </li>
+                </li>-->
                 <!-- END QUICK SIDEBAR TOGGLER -->
             </ul>
         </div>
         <!-- END TOP NAVIGATION MENU -->
+    </div>
     </div>
     <!-- END HEADER INNER -->
 </div>
