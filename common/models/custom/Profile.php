@@ -73,4 +73,8 @@ class Profile extends \common\models\base\Base
     public function setUserId($id) {
         return $this->user_id = $id;
     }
+    
+    public function getName() {
+        return \yii\helpers\Html::encode($this->first_name . ' ' . $this->last_name);
+    }
 }

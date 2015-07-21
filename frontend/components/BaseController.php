@@ -9,20 +9,22 @@ use frontend\assets\AppAsset;
  * Base controller
  */
 class BaseController extends Controller {
+    
+    public $oAuthUser = null;
 
     public function init() {
         parent::init();
         \webvimark\behaviors\multilanguage\MultiLanguageHelper::catchLanguage();
         $this->regiterAssets();
-        //$this->setFooterBrands();
+        $this->setAuthUser();
     }
 
     protected function regiterAssets() {
         AppAsset::register($this->view);
     }
 
-    protected function setFooterBrands(){
-        $this->view->params['footerBrands'] = \common\models\custom\Brand::getFooterSlider();
+    protected function setAuthUser(){
+        $this->oAuthUser = !Yii::$app->user->isGuest ? \common\models\custom\User::findOne(Yii::$app->user->id) : null;
     }
 
 }

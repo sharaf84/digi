@@ -33,6 +33,7 @@ return [
             'class' => 'digi\web\User',
             'identityClass' => 'common\models\base\User',
             'enableAutoLogin' => true,
+            'loginUrl' => '/',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -62,6 +63,10 @@ return [
                 'store/search' => 'store',
                 'store/<category:\S+>' => 'store',
                 'product/<slug:\S+>' => 'store/product',
+                'article/<slug:\S+>' => 'articles/view',
+                'signup' => 'user/signup',
+                'login' => 'user/login',
+                'logout' => 'user/logout',
                 'article/<slug:\S+>' => 'articles/view',
                 //'about' => '/site/page/slug/about',
             ],

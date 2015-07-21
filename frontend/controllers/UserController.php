@@ -41,27 +41,25 @@ class UserController extends \frontend\components\BaseController {
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'logout' => ['post'],
-                ],
-            ],
+//            'verbs' => [
+//                'class' => VerbFilter::className(),
+//                'actions' => [
+//                    'logout' => ['post'],
+//                ],
+//            ],
         ];
     }
-
+    
     public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
-        $model = new Login();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        $oLoginForm = new Login();
+        if ($oLoginForm->load(Yii::$app->request->post()) && $oLoginForm->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
-                        'model' => $model,
-            ]);
+            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, wrong email or password. Please try again.'));
+            return $this->goHome();
         }
     }
 
