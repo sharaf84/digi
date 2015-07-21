@@ -105,8 +105,8 @@ Page Header
   color: #999999;
 }
 .page-header.navbar .hor-menu .navbar-nav > li .dropdown-menu li > a:hover {
-  color: #f1f1f1;
-  background: #d64635;
+  color: #333333;
+  background: #C8DCBA;
 }
 
 /* Light Horizontal Menu */

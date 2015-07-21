@@ -238,7 +238,24 @@
                         <!--<span class="badge badge-default">
                             3 </span>-->
                     </a>
-                    <ul class="dropdown-menu extended tasks">
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="extra_profile.html">
+                                <i class="icon-settings"></i> Settings </a>
+                        </li>
+                        <li>
+                            <a href="page_calendar.html">
+                                <i class="icon-key"></i> Change Password </a>
+                        </li>
+                        <li class="divider">
+                        </li>
+                        <li>
+                            <a href="<?= Url::to(['site/logout']);?>">
+                                <i class="icon-logout"></i> Log Out </a>
+                        </li>
+                    </ul>
+                    
+                    <!--<ul class="dropdown-menu extended tasks">
                         <li>
                             <p>
                                 You have 12 pending tasks
@@ -365,7 +382,7 @@
                                 See all tasks <i class="m-icon-swapright"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li>
                 <!-- END TODO DROPDOWN -->
                 <!-- BEGIN USER LOGIN DROPDOWN -->
