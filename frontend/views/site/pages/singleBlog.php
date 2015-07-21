@@ -54,10 +54,10 @@
 			<input type="hidden" name="userId" value="123">
 			<input type="hidden" name="blogPostId" value="456">
 			<span class="date-time">2 hours ago</span>
-			<div class="large-1 medium-1 small-12 columns avatar-cont">
+			<div class="large-1 medium-1 small-3 columns avatar-cont">
 				<img src="<?= Url::to('@frontThemeUrl') ?>/images/src/article-list-item.jpg" alt="">
 			</div>
-			<div class="large-11 medium-11 small-12 columns">
+			<div class="large-11 medium-11 small-9 columns">
 				<h3>Userfirstname Userlastname</h3>
 				<div class="comment-reply">
 					<textarea name="comment-reply" cols="10" rows="3" placeholder="Enter your reply here..."></textarea>
@@ -68,10 +68,10 @@
 
 		<div class="comment-item row">
 			<span class="date-time">2 hours ago</span>
-			<div class="large-1 medium-1 small-12 columns avatar-cont">
+			<div class="large-1 medium-1 small-3 columns avatar-cont">
 				<img src="<?= Url::to('@frontThemeUrl') ?>/images/src/article-list-item.jpg" alt="">
 			</div>
-			<div class="large-11 medium-11 small-12 columns">
+			<div class="large-11 medium-11 small-9 columns">
 				<h3>Userfirstname Userlastname</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reprehenderit sequi iste inventore, fugit harum possimus quisquam. Culpa maxime totam rerum ipsam necessitatibus ullam libero, porro voluptatibus, enim nisi ipsa.</p>
 			</div>
@@ -79,10 +79,10 @@
 
 		<div class="comment-item row">
 			<span class="date-time">2 hours ago</span>
-			<div class="large-1 medium-1 small-12 columns avatar-cont">
+			<div class="large-1 medium-1 small-3 columns avatar-cont">
 				<img src="<?= Url::to('@frontThemeUrl') ?>/images/src/article-list-item.jpg" alt="">
 			</div>
-			<div class="large-11 medium-11 small-12 columns">
+			<div class="large-11 medium-11 small-9 columns">
 				<h3>Userfirstname Userlastname</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reprehenderit sequi iste inventore, fugit harum possimus quisquam. Culpa maxime totam rerum ipsam necessitatibus ullam libero, porro voluptatibus, enim nisi ipsa.</p>
 			</div>
@@ -90,10 +90,10 @@
 
 		<div class="comment-item row">
 			<span class="date-time">2 hours ago</span>
-			<div class="large-1 medium-1 small-12 columns avatar-cont">
+			<div class="large-1 medium-1 small-3 columns avatar-cont">
 				<img src="<?= Url::to('@frontThemeUrl') ?>/images/src/article-list-item.jpg" alt="">
 			</div>
-			<div class="large-11 medium-11 small-12 columns">
+			<div class="large-11 medium-11 small-9 columns">
 				<h3>Userfirstname Userlastname</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reprehenderit sequi iste inventore, fugit harum possimus quisquam. Culpa maxime totam rerum ipsam necessitatibus ullam libero, porro voluptatibus, enim nisi ipsa.</p>
 			</div>
@@ -101,10 +101,10 @@
 
 		<div class="comment-item row">
 			<span class="date-time">2 hours ago</span>
-			<div class="large-1 medium-1 small-12 columns avatar-cont">
+			<div class="large-1 medium-1 small-3 columns avatar-cont">
 				<img src="<?= Url::to('@frontThemeUrl') ?>/images/src/article-list-item.jpg" alt="">
 			</div>
-			<div class="large-11 medium-11 small-12 columns">
+			<div class="large-11 medium-11 small-9 columns">
 				<h3>Userfirstname Userlastname</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima reprehenderit sequi iste inventore, fugit harum possimus quisquam. Culpa maxime totam rerum ipsam necessitatibus ullam libero, porro voluptatibus, enim nisi ipsa.</p>
 			</div>

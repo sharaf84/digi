@@ -21,7 +21,7 @@
 				<!-- Product ID -->
 				<input type="hidden" name="productId" value="1234567890">
 				
-				<div class="large-4 medium-4 small-12 columns select-component">
+				<div class="large-4 medium-4 small-6 columns select-component">
 					<i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
 					<select name="product-size">
 						<option value="0">Choose Size</option>
@@ -31,7 +31,7 @@
 						<option value="4">Size of 4 LBS</option>
 					</select>
 				</div>
-				<div class="large-4 medium-4 small-12 columns select-component end">
+				<div class="large-4 medium-4 small-6 columns select-component end">
 					<i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
 					<select name="product-size">
 						<option value="0">Choose Flavor</option>

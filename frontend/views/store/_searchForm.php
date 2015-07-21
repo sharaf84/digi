@@ -3,6 +3,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Url;
 
 $form = ActiveForm::begin([
+            'id' => 'searchForm',
             'action' => Url::to(['/store/' . $category ? $category : 'search']),
             'method' => 'get',
             'options' => ['data-pjax' => true, 'class' => 'row'],

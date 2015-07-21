@@ -42,12 +42,13 @@ $googleColor	: #ce3e26;
 	header {
 		background-size: 244%;
 		background-position: top right;
-		
+		height: 537px;
+
 		.header-top-bar {
 			margin: 0;
 			border-radius: 0;
 		}
-		
+
 		.shop-now {
 			width: 100%;
 			left: 0;
@@ -56,7 +57,7 @@ $googleColor	: #ce3e26;
 			max-width: 100%;
 			padding: 18px 0;
 		}
-		
+
 		.left-off-canvas-toggle {
 			font-size: 40px;
 			position: absolute;
@@ -69,13 +70,41 @@ $googleColor	: #ce3e26;
 		.logo {
 			margin-left: 22px;
 			text-indent: -101%;
+			background: url(../../images/src/logo.png) no-repeat 0 6px;
+			background-size: 86%;
 		}
 		form {
 			position: absolute;
-			right: -126px;
+			right: -107px;
+			i {
+				right: 3px;
+				top: 2px;
+			}
 		}
 	}
-	
+	header .header-slider {
+		height: 438px;
+	}
+	header .header-slider h2 {
+		font-size: 33px;
+	}
+	header .header-slider p {
+		font-size: 16px;
+	}
+	header .shop-now {
+		margin: 40px 0 0 0;
+	}
+	.home-tabs ul.tabs li.tab-title { float: left; }
+	.home-tabs ul.tabs li.tab-title a { font-size: 14px; }
+	.home-tabs .product-item {
+		margin: 0 auto;
+		display: block;
+	}
+	.home-bottom-articles p.article-meta .read-more {
+		width: 81%;
+	}
+
+
 	.home-tabs ul.tabs .tab-title {
 		float: none;
 		width: 100%;
@@ -91,6 +120,276 @@ $googleColor	: #ce3e26;
 	}
 	.home-bottom-articles img {
 		height: auto;
+		width: 100%;
+	}
+
+	.single-page .page-title {
+        background-size: 225%;
+    }
+	.alphabet-filter {
+		margin-bottom: 32px;
+	}
+	.single-page ul.pagination.filters li a {
+		padding: 6px 2.9px;
+	}
+	.single-page ul.pagination.filters li:hover, .single-page ul.pagination.filters li.current {
+		@include transform( scale(2) );
+	}
+
+	.single-page.single-product .tabs-content .content {
+		max-width: 100%;
+		padding: 20px 58px 20px 20px;
+	}
+
+	.single-page.single-product .product-image img {
+		max-width: 43%;
+	}
+	.article-list-item .article-image img {
+		display: block;
+		margin: 0 auto 30px auto;
+		border-radius: 50%;
+	}
+
+	.as-table .as-table-row {
+		padding: 0 42px;
+	}
+
+	.single-page.shopping-cart .single-product .product-image-cont img {
+		width: 100%;
+	}
+	.single-page.shopping-cart .remove-product {
+		top: 0;
+		left: 16px;
+	}
+	.single-page.shopping-cart .single-product {
+		position: relative;
+		border: 1px solid rgb(187, 187, 187);
+		padding: 30px 10px 10px 10px;
+		transform: scale(0.9);
+		border-radius: 4px;
 	}
 	
+	
+	aside {
+		.mobile-user-avatar {
+			padding: 0;
+			img {
+				border-radius: 50%;
+				margin: 20px auto;
+				display: block;
+				border: 1px solid #ed2024;
+				padding: 5px;
+			}
+			i {
+				font-size: 100px;
+				color: #acacac;
+				display: block;
+				margin: 20px auto;
+				width: 102px;
+				height: 103px;
+				line-height: 104px;
+				text-align: center;
+				text-indent: 0;
+				padding: 5px;
+				border-radius: 50%;
+				background: #5c5c5c;
+				box-shadow: 0 0 0 6px #333, 0 0 0 7px #ACACAC;
+			}
+		}
+		.mobile-user-name {
+			padding: 0;
+			h3 {
+				text-align: center;
+				color: #e5e5e5;
+				padding: 0;
+				margin: -7px 0 20px 0;
+			}
+			h4 {
+				color: #acacac;
+				font: 12px $myriad;
+				a {
+					color: #fff;
+					font-size: 14px;
+					span { text-decoration: underline; }
+					i { line-height: 17px; }
+				}
+			}
+		}
+		.mobile-menu-shopping-cart {
+			position: relative;
+			span {
+				background: red;
+				color: #fff;
+				display: block;
+				position: absolute;
+				right: 12px;
+				top: 12px;
+				width: 25px;
+				height: 25px;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				line-height: 27px;
+				border-radius: 50%;
+			}
+		}
+		.mobile-menu-social-icons {
+			a {
+				display: inline-block;
+				width: 25px;
+				height: 25px;
+				margin: 15px 0 15px 11px;
+				line-height: 31px;
+				font-size: 26px;
+				float: left;
+				text-align: center;
+				background: #fff !important;
+				color: #292929 !important;
+				border-radius: 50%;
+			}
+		}
+		form {
+			position: relative;
+			margin: 20px auto;
+			width: 95%;
+			input {
+				margin-bottom: 0;
+			}
+			i.md-chevron-right {
+				color: rgb(217, 217, 217);
+				background: rgb(146, 146, 146);
+				display: block;
+				width: 37px;
+				height: 37px;
+				@include position(absolute, 0 0 null null);
+				font-size: 32px;
+				line-height: 36px;
+				text-align: center;
+				cursor: pointer;
+				@include transition(0.3s, ease, all);
+				&:hover {
+					background: rgb(217, 217, 217);
+					color: rgb(146, 146, 146);
+				}
+			}
+		}
+	}
+	
+	#mobile-login-form {
+		display: none;
+		background: #292929;
+		position: fixed;
+		top: 74px;
+		left: 0;
+		z-index: 99999;
+		width: 100%;
+		height: 100%;
+		padding: 60px;
+		.signup-btn {
+			color: #d6d6d6;
+			font-size: 13px;
+			text-transform: uppercase;
+			display: block;
+			width: 60px;
+			position: absolute;
+			right: 0;
+			top: 15px;
+		}
+		label {
+			color: #b4bbc2;
+			display: block;
+			margin: 0 0 5px 1px;
+			font-weight: bold;
+			font-size: 13px;
+		}
+		button {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			padding: 9px 0;
+		}
+		.or-sep {
+			color: #c6ccd2;
+			font-size: 14px;
+			text-transform: uppercase;
+			text-align: center;
+			margin: 0 0 19px 0;
+			border-bottom: 1px solid;
+			line-height: 0px;
+			span {
+				background: #292929;
+				padding: 0 5px;
+			}
+		}
+		.facebook-login {
+			display: block;
+			background: #3162a2;
+			color: #fff;
+			text-align: center;
+			padding: 9px 0;
+			font-weight: bold;
+			font-size: 14px;
+			margin-bottom: 7px;
+			position: relative;
+			i {
+				color: #fff;
+				font-size: 15px !important;
+				left: auto;
+				right: auto;
+				top: auto;
+				position: relative;
+				display: inline !important;
+			}
+		}
+	}
+	
+	#mobile-signup-form {
+		@extend #mobile-login-form;
+		
+		//display: block;
+		overflow-y: auto;
+		padding-bottom: 100px;
+	}
+
+	// Responsive for Arabic:
+	#ar-layout {
+
+		.product-background-cover { opacity: 0.2; }
+
+		header form {
+			right: auto;
+			left: -126px;
+			top: 4px;
+		}
+		header .logo {
+			margin-left: 0;
+			margin-right: 22px;
+			background-size: 81%;
+			background-position: 14px 8px;
+		}
+		header .left-off-canvas-toggle {
+			left: auto;
+			right: -5px;
+		}
+		.single-page.profile-page .user-info .edit-profile {
+			top: 0;
+			left: 30px;
+			right: auto;
+		}
+		
+		aside {
+			.mobile-user-name h4 { text-align: center; }
+			.mobile-menu-shopping-cart span {
+				right: auto;
+				left: 15px;
+			}
+			aside form i.md-chevron-right {
+				right: auto;
+				left: 0;
+			}
+		}
+		
+		
+	}
+
 }

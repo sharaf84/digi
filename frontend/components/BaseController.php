@@ -1,7 +1,6 @@
 <?php
 
 namespace frontend\components;
-
 use Yii;
 use yii\web\Controller;
 use frontend\assets\AppAsset;
@@ -21,7 +20,7 @@ class BaseController extends Controller {
     protected function regiterAssets() {
         AppAsset::register($this->view);
     }
-    
+
     protected function setFooterBrands(){
         $this->view->params['footerBrands'] = \common\models\custom\Brand::getFooterSlider();
     }

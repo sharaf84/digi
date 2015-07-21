@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'email:email',
                             'password',
                             'token',
-                            'tokent_type',
+                            'token_type',
                             'auth_key',
                             'sso_key',
                             'status',

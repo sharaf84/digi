@@ -1,0 +1,90 @@
+/**
+ * Arabic:
+ */
+$text-direction: rtl;
+// Libraries:
+@import url('http://fonts.googleapis.com/earlyaccess/droidarabickufi.css');
+@import '../../ui-deps/foundation/scss/foundation';
+@import 'styles';
+
+$ar_font: 'Droid Arabic Kufi', 'PT Sans', arial, sans-serif !important;
+
+#ar-layout {
+    font-family: $ar_font;
+    header .main-nav ul li a,
+    header form input[type='search'],
+    header .lang-switcher,
+    header .user-avatar { font-family: $ar_font; }
+    header form i {
+        right: auto;
+        left: 22px;
+    }
+    header form input[type='search'] { line-height: 30px; }
+    .home-bottom-articles p.article-meta .date-time { float: left; }
+	
+	header .user-avatar.login-cont .login-dropdown.active {
+		right: auto;
+		left: 80px;
+	}
+	header .user-avatar.login-cont .arrow-up {
+		left: 16px;
+		right: auto;
+	}
+	header .user-avatar.login-cont .signup-btn {
+		padding-right: 11px;
+		width: 94%;
+	}
+	header .user-avatar.login-cont .facebook-login i {
+		color: #fff;
+		font-size: 15px !important;
+		left: auto;
+		right: auto;
+		top: auto;
+		position: relative;
+		display: inline !important;
+	}
+	
+    footer form i.md-chevron-right {
+        right: auto;
+      left: 0;
+      @include transform( rotate(180deg) );
+    }
+    .single-page .page-title h2 {
+        padding: 3px 0 3px 15px;
+    }
+    .single-page.contact-us-page .form-group.has-error .help-block {
+        right: auto;
+        left: 0;
+    }
+
+    .md-chevron-left { @include transform( rotate(180deg) ); }
+    .md-chevron-right, .md-keyboard-arrow-right { @include transform( rotate(-180deg) ); }
+    .next-nav .md-chevron-right, .prev-nav .md-chevron-left { @include transform( rotate(0deg) ); }
+
+    .single-page ul.pagination.filters li:first-child.current a {
+        border-radius: 0 5px 5px 0;
+        margin-right: -1px;
+    }
+    .single-page ul.pagination.filters li:last-child a {
+        border-left: none;
+        border-right: 1px solid;
+    }
+	.single-page.single-blog .comments .comments-title .arrow-up {
+		left: auto;
+		right: 20px;
+	}
+	.cart-quantity {
+		padding-right: 22px
+	}
+	.single-page.profile-page .user-info .edit-profile {
+		right: auto;
+		left: 30px;
+	}
+}
+
+
+
+
+
+
+@import "responsive";

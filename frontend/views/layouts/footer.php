@@ -20,7 +20,7 @@ use yii\helpers\Url; ?>
                 <h3>Get the latest sales and new product announcements right to your inbox</h3>
             </div>
             <div class="large-7 medium-7 small-12 column">
-                <form action="/" id="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
+                <form action="/" class="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
                     <input type="email" required placeholder="Email address"><span class="error">Sorry, wrong email</span>
                 </form>
             </div>
@@ -36,10 +36,10 @@ use yii\helpers\Url; ?>
     </div>
     <div class="footer-copy row">
         <hr>
-        <div class="large-6 medium-6 small-12 columns">
+        <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' left' : '' ?>">
             <p>&copy; 2015 Digitree, All Rights Reserved</p>
         </div>
-        <div class="large-6 medium-6 small-12 columns">
+        <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' right' : '' ?>">
             <p class="footer-links">
 
                 <a href="#">About Us</a> - <a href="#">Contact Us</a> - <a href="#">Terms Of Service</a> - <a href="#">Privacy Policy</a>

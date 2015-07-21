@@ -37,5 +37,11 @@ $this->title = Yii::t('app', 'Store');
         ?>
     </div>
     <?php Pjax::end(); ?>
-    <?= $this->render('_bottomProducts', ['title' => Yii::t('app', 'Best Seller'), 'products' => $bestSellerProducts]) ?>
+    
+    <div class="page-title large-12 medium-12 small-12 columns">
+        <h2><?= Yii::t('app', 'Best Seller') ?></h2>
+    </div>
+    
+    <?= $this->render('_bottomProducts', ['products' => $bestSellerProducts]) ?>
+    
 </div>
