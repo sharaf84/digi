@@ -21,6 +21,29 @@ $ar_font: 'Droid Arabic Kufi', 'PT Sans', arial, sans-serif !important;
     }
     header form input[type='search'] { line-height: 30px; }
     .home-bottom-articles p.article-meta .date-time { float: left; }
+	
+	header .user-avatar.login-cont .login-dropdown.active {
+		right: auto;
+		left: 80px;
+	}
+	header .user-avatar.login-cont .arrow-up {
+		left: 16px;
+		right: auto;
+	}
+	header .user-avatar.login-cont .signup-btn {
+		padding-right: 11px;
+		width: 94%;
+	}
+	header .user-avatar.login-cont .facebook-login i {
+		color: #fff;
+		font-size: 15px !important;
+		left: auto;
+		right: auto;
+		top: auto;
+		position: relative;
+		display: inline !important;
+	}
+	
     footer form i.md-chevron-right {
         right: auto;
       left: 0;

@@ -44,7 +44,7 @@ AppAsset::register($this);
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="index.html">
-                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/logo-big.png');?>" alt=""/>
+                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/logo-digi.png');?>" alt=""/>
             </a>
         </div>
         <!-- END LOGO -->
@@ -58,7 +58,7 @@ AppAsset::register($this);
         <!-- END LOGIN -->
         <!-- BEGIN COPYRIGHT -->
         <div class="copyright">
-            <?= date('Y') ?> &copy; CMS By <a href="http://digitreeinc.com" target="blanck">Digitree</a>.
+             Copyright &copy; All Rights Reserved <a href="http://digitreeinc.com" target="blanck">Digitree </a><?= date('Y') ?>.
         </div>
         <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
         <?php $this->endBody() ?>

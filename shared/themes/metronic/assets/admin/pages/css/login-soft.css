@@ -3,37 +3,77 @@ Login page
 ***/
 /* logo page */
 .login {
-  background-color: #666 !important;
+  background-color: #eeeeee !important;
 }
 
 .login .logo {
+  display: none;
+  width: 132px;
   margin: 0 auto;
   margin-top: 60px;
   padding: 15px;
   text-align: center;
 }
+.login .logo img {width: 100%}
+/*.login .content {
+  background: url(../img/bg-white-lock.png) repeat;
+  width: 700px;
+  margin: 0 auto;
+  margin-bottom: 0px;
+  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+} */
+.digitreeBG {
+  float: left;
+}
+.digitreeBG img {
+  width: 86%
+}
 
 .login .content {
-  background: url(../img/bg-white-lock.png) repeat;
-  width: 360px;
+  background: url(../../../../../../../backend/web/images/login-Desktop.png) repeat;
+  background-position: left center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  width: 560px;
+  height: 290px;
   margin: 0 auto;
+  margin-top:130px;
   margin-bottom: 0px;
   padding: 30px;
   padding-top: 20px;
   padding-bottom: 15px;
 }
 
+#login-form{
+  width: 248px;
+  margin-left: 246px;
+}
+ 
+
+.login .content:after {
+  display: block;
+  clear: both;
+}
+
 .login .content h3 {
-  color: #eee;
+  color: #343434;
 }
 
 .login .content h4 {
-  color: #eee;
+  color: #288d38;
+  text-decoration: underline;
 }
 
 .login .content p,
 .login .content label {
   color: #fff;
+}
+
+.login .content label {
+  color: #288d38;
 }
 
 .login .content .login-form,
@@ -54,8 +94,10 @@ Login page
   display: none;
 }
 
-.login .content .form-title {
-  font-weight: 300;
+.login .content .form-title { 
+  text-align: center;
+  font-weight: 500;
+  color: #A0A0A0;
   margin-bottom: 25px;
 }
 
@@ -139,10 +181,29 @@ Login page
 .login .copyright {
   text-align: center;
   margin: 0 auto;
-  padding: 10px;
-  color: #eee;
-  font-size: 13px;
+  padding: 14px;
+  color: #b4b4b4;
+  font-size: 14px;
 }
+.login .copyright a {color: #b4b4b4;}
+
+@media (max-width: 768px) {
+  .login .logo {
+    display: block;
+  }
+  .login .content {
+    background:none;
+    background-color: #fff;
+    width: 420px;
+    height: 290px;
+    margin-top:0px;
+  }
+  #login-form {
+    width: 100%;
+    margin-left: 0px
+  }
+}
+
 
 @media (max-width: 480px) {
   /***
@@ -154,7 +215,7 @@ Login page
 
   .login .content {
     padding: 30px;
-    width: 222px;
+    width: 288px;
   }
 
   .login .content h3 {
@@ -165,3 +226,6 @@ Login page
     font-size: 13px;
   }
 }
+
+.green.btn {  color: white;
+  background-color: #68a040;}

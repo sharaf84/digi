@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use digi\metronic\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -10,13 +11,22 @@ use digi\metronic\widgets\ActiveForm;
 //$this->title = 'Login';
 ?>
 
+
 <!-- BEGIN LOGIN FORM -->
 
 <?php $form = ActiveForm::begin(['id' => 'login-form', 'layout' => 'default']); ?>
+
+<!-- background image  -->
+<!--<div class="digitreeBG">
+    <img src="<?/*= Url::to(['/images/login-desktop.png']);*/?>" />
+</div>-->
+<!-- background image  -->
+
+
 <div class="form-body">
     <!--<form class="login-form" method="post">-->
 
-    <h3 class="form-title">Login to your account</h3>
+    <h3 class="form-title">TSS - Backyard</h3>
     <div class="alert alert-danger display-hide">
         <button class="close" data-close="alert"></button>
         <span>
@@ -31,21 +41,26 @@ use digi\metronic\widgets\ActiveForm;
 <!--        <label class="checkbox">
             <input type="checkbox" name="remember" value="1"/> Remember me 
         </label>-->
-        <button type="submit" class="btn blue pull-right">
+        <button type="submit" class="btn green pull-right">
             Login <i class="m-icon-swapright m-icon-white"></i>
         </button>
     </div>
-    <div class="forget-password">
+    <!--<div class="forget-password">
         <h4>Forgot your password ?</h4>
         <p>
             no worries, click <a href="javascript:;" id="forget-password"> here </a> to reset your password.
         </p>
-    </div>
+    </div> -->
     <div class="create-account"></div>
 </div>
 <?php ActiveForm::end(); ?>
 <!--</form>-->
 <!-- END LOGIN FORM -->
+
+
+
+
+
 <!-- BEGIN FORGOT PASSWORD FORM -->
 <form class="forget-form" action="index.html" method="post">
     <h3>Forget Password ?</h3>
