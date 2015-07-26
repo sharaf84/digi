@@ -1,4 +1,5 @@
 <?php
+
 Yii::setAlias('root', dirname(dirname(__DIR__)) . '/');
 Yii::setAlias('sharedPath', dirname(dirname(__DIR__)) . '/shared');
 Yii::setAlias('sharedUrl', '/shared');
@@ -22,6 +23,9 @@ return [
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
         ],
     ],
 ];

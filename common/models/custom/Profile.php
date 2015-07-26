@@ -3,6 +3,8 @@
 namespace common\models\custom;
 
 use Yii;
+use yii\helpers\Html;
+use common\models\custom\City;
 
 /**
  * This is the model class for table "profile".
@@ -39,11 +41,14 @@ class Profile extends \common\models\base\Base
         return [
             [['user_id', 'city_id', 'gender', 'status'], 'integer'],
             [['user_id', 'city_id', 'first_name', 'address', 'phone'], 'required'],
-            [['bio', 'address'], 'string'],
-            [['first_name'], 'string', 'max' => 255],
+            [['first_name', 'phone', 'address', 'bio'], 'filter', 'filter' => 'trim'],
+            ['first_name', 'string', 'min' => 3, 'max' => 255],
             [['last_name'], 'string', 'max' => 32],
             [['country_phone_code'], 'string', 'max' => 5],
-            [['phone'], 'string', 'max' => 20],
+            ['phone', 'string', 'length' => 11],
+            ['phone', 'number', 'integerOnly' => true],
+            ['city_id', 'exist', 'targetClass' => '\common\models\base\Tree', 'targetAttribute' => 'id', 'message' => Yii::t('app', 'Invalid City.')],
+            [['address', 'bio'], 'string', 'min' => 10],
             [['created', 'updated'], 'safe']
         ];
     }
@@ -55,9 +60,9 @@ class Profile extends \common\models\base\Base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'user_id' => Yii::t('app', 'User ID'),
-            'city_id' => Yii::t('app', 'City ID'),
-            'first_name' => Yii::t('app', 'First Name'),
+            'user_id' => Yii::t('app', 'User'),
+            'city_id' => Yii::t('app', 'City'),
+            'first_name' => Yii::t('app', 'Full Name'),
             'last_name' => Yii::t('app', 'Last Name'),
             'bio' => Yii::t('app', 'Bio'),
             'gender' => Yii::t('app', 'Gender'),
@@ -75,6 +80,10 @@ class Profile extends \common\models\base\Base
     }
     
     public function getName() {
-        return \yii\helpers\Html::encode($this->first_name . ' ' . $this->last_name);
+        return Html::encode($this->first_name . ' ' . $this->last_name);
+    }
+    
+    public function getCity() {
+        return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
 }
