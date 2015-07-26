@@ -32,7 +32,7 @@ Login page
 }
 
 .login .content {
-  background: url(../../../../../../../backend/web/images/login-Desktop.png) repeat;
+  background: url(/admin/images/login-desktop.png) repeat;
   background-position: left center;
   background-size: contain;
   background-repeat: no-repeat;

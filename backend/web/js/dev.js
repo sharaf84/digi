@@ -27,6 +27,8 @@ Dev.onReady = function () {
     $(document).ajaxSuccess(function (event, xhr, options) {
         Dev.reInit();
     });
+
+    Dev.manageProductForm();
 };
 
 /**
@@ -40,7 +42,7 @@ Dev.reInit = function () {
      */
     $('.colorboxIframe').colorbox({"iframe": true, "width": "80%", "height": "80%"});
     $('.colorboxImg').colorbox({"rel": "colorboxGroup", "width": "80%", "height": "80%"});
-    
+
     /**
      * reinit sortable
      */
@@ -95,6 +97,28 @@ Dev.mainInit = function () {
     Demo.init(); // init demo features
 };
 
+
+/**
+ * Manage product Form
+ */
+Dev.manageProductForm = function () {
+    if ($('#product-parent_id').val()) {
+        $('.childFields').show();
+        $('.parentFields').hide();
+    } else {
+        $('.childFields').hide();
+        $('.parentFields').show();
+    }
+    $('#product-parent_id').change(function () {
+        if ($(this).val()) {
+            $('.childFields').show();
+            $('.parentFields').hide();
+        } else {
+            $('.childFields').hide();
+            $('.parentFields').show();
+        }
+    });
+};
 
 $(document).ready(function () {
     Dev.onReady();

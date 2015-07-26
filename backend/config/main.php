@@ -95,7 +95,7 @@ return [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             //'rbac/*', // add or remove allowed actions to this list
-            'site/*',
+            'site/login',
         ]
     ],
     'params' => $params,
