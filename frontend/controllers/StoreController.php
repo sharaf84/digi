@@ -35,7 +35,7 @@ class StoreController extends \frontend\components\BaseController {
                         `brand`.`name` LIKE :key', [':key' => ('%' . strtr($oSearchForm->key, $escape) . '%')]
                 );
             }
-            $oSearchForm->alpha and $oProductQuery->andWhere('`product`.`title` LIKE :alpha%', [':alpha' => ('%' . strtr($oSearchForm->alpha, $escape) . '%')]);
+            $oSearchForm->alpha and $oProductQuery->andWhere('`product`.`title` LIKE :alpha', [':alpha' => (strtr($oSearchForm->alpha, $escape) . '%')]);
         }
         if ($slug) {
             if (!$oSearchForm->key) {
