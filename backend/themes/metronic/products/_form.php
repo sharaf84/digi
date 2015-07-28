@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use digi\metronic\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
+//use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\custom\Product */

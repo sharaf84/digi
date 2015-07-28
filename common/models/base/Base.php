@@ -66,5 +66,9 @@ class Base extends \yii\db\ActiveRecord {
     public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = false){
         return $this->firstMedia ? $this->firstMedia->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
+    
+    public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = false){
+        return ($this->media && !empty($this->media[$index])) ? $this->media[$index]->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
+    }
 
 }

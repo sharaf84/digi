@@ -135,7 +135,10 @@ class Tree extends \kartik\tree\models\Tree {
         return false;
     }
     
-    
+    /**
+     * @param int $lvl tree level
+     * @return array of tree node as id => name
+     */
     public static function getList($lvl = 1) {
         return ArrayHelper::map(static::find()->andWhere(['lvl' => $lvl])->all(), 'id', 'name');
     }

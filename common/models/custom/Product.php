@@ -5,7 +5,10 @@ namespace common\models\custom;
 use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use common\models\base\Tree;
+use common\models\custom\Category;
+use common\models\custom\Brand;
+use common\models\custom\Size;
+use common\models\custom\Flavor;
 
 /**
  * This is the model class for table "product".
@@ -53,6 +56,7 @@ class Product extends \common\models\base\Base {
         return [
             [['title', 'category_id', 'brand_id'], 'required', 'on' => 'parent'],
             [['size_id', 'price', 'qty'], 'required', 'on' => 'child'],
+            [['size_id'], 'ruleValidateSize', 'on' => 'child'],
             [['price', 'featured', 'qty'], 'default', 'value' => 0],
             [['slug'], 'match', 'pattern' => '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'],
             [['slug'], 'unique'],
@@ -110,6 +114,13 @@ class Product extends \common\models\base\Base {
         ]);
     }
 
+    public function ruleValidateSize($attribute, $params) {
+        if (!$this->hasErrors()) {
+            if (empty($this->flavor_id) && empty($this->color))
+                $this->addError('size_id', Yii::t('app', 'Choose flover or color'));
+        }
+    }
+
     public function beforeSave($insert) {
         if ($this->isChild() && $insert) {
             $oParentProduct = self::findOne($this->parent_id);
@@ -120,7 +131,7 @@ class Product extends \common\models\base\Base {
         }
         return parent::beforeSave($insert);
     }
-    
+
     public function afterSave($insert, $changedAttributes) {
         if ($this->isChild()) {
             $this->parent->autoUpdate();
@@ -161,28 +172,28 @@ class Product extends \common\models\base\Base {
      * @return \yii\db\ActiveQuery
      */
     public function getCategory() {
-        return $this->hasOne(Tree::className(), ['id' => 'category_id']);
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getBrand() {
-        return $this->hasOne(Tree::className(), ['id' => 'brand_id']);
+        return $this->hasOne(Brand::className(), ['id' => 'brand_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getSize() {
-        return $this->hasOne(Tree::className(), ['id' => 'size_id']);
+        return $this->hasOne(Size::className(), ['id' => 'size_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getFlavor() {
-        return $this->hasOne(Tree::className(), ['id' => 'flavor_id']);
+        return $this->hasOne(Flavor::className(), ['id' => 'flavor_id']);
     }
 
     /**
@@ -250,30 +261,79 @@ class Product extends \common\models\base\Base {
         return Url::to(['/product/' . $this->slug]);
     }
 
+    /**
+     * @return bool true if parent product
+     */
     public function isParent() {
         return !$this->parent_id;
     }
 
+    /**
+     * @return bool true if child product
+     */
     public function isChild() {
         return $this->parent_id;
     }
+    
+    
+    /**
+     * @return bool true if product category is "Accessories"
+     */
+    public function isAccessory() {
+        return $this->category->slug == 'accessories';
+    }
+    
 
+    /**
+     * @return string min product childs price 
+     */
     public function getMinChildsPrice() {
         return self::find()
                         ->childs($this->id)
                         ->min('price');
     }
 
+    /**
+     * @return string total product childs qty 
+     */
     public function getTotalChildsQty() {
         return self::find()
                         ->childs($this->id)
                         ->sum('qty');
     }
 
+    /**
+     * Updates parent product with min childs price and total childs qty.
+     */
     public function autoUpdate() {
-        $this->price = $this->getMinChildsPrice();
-        $this->qty = $this->getTotalChildsQty();
-        $this->save(false);
+        if ($this->isParent()) {
+            $this->price = $this->getMinChildsPrice();
+            $this->qty = $this->getTotalChildsQty();
+            $this->save(false);
+        }
+    }
+
+    /**
+     * @return array product childs sizes
+     */
+    public function getChildsSizes() {
+        return ArrayHelper::map($this->childs, 'size.id', 'size.name');
+    }
+
+    /**
+     * @return array product childs falvors 
+     */
+    public function getChildsFlavors($size = null) {
+        $falvors = ArrayHelper::map($this->childs, 'flavor.id', 'flavor.name', $size ? 'size_id' : null);
+        return $size ? $falvors[$size] : $falvors;
+    }
+
+    /**
+     * @return array product childs colors 
+     */
+    public function getChildsColors($size = null) {
+        $colors = ArrayHelper::map($this->childs, 'color', 'color', $size ? 'size_id' : null);
+        return $size ? $colors[$size] : $colors;
     }
 
 }

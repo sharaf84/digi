@@ -61,7 +61,7 @@ return [
                 '<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
                 // custom rules
                 'store/search' => 'store',
-                'store/<category:\S+>' => 'store',
+                'store/<slug:\S+>' => 'store',
                 'product/<slug:\S+>' => 'store/product',
                 'article/<slug:\S+>' => 'articles/view',
                 'signup' => 'user/signup',

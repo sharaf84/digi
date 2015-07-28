@@ -2,89 +2,74 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
-$this->title = $oProduct->title;
+$this->title = Html::encode($oProduct->title);
 ?>
 
-<div id="checkpoint-a" class="single-page single-product row" data-product-main-image="<?= $oProduct->getFeaturedImgUrl() ?>">
+<?php Pjax::begin(); ?>
+<div id="checkpoint-a" class="single-page single-product row" data-product-main-image="<?= $oChildProduct ? $oChildProduct->getImgUrlByIndex(0, 'main-product') : $oProduct->getFeaturedImgUrl('main-product') ?>">
 
     <div class="product-header row">
         <div class="large-4 medium-4 small-12 columns product-image">
-            <img src="<?= $oProduct->getFeaturedImgUrl('main-product') ?>" alt="<?= $oProduct->title ?>">
+            <img src="<?= $oChildProduct ? $oChildProduct->getImgUrlByIndex(0, 'main-product') : $oProduct->getFeaturedImgUrl('main-product') ?>" alt="<?= $oProduct->title ?>">
         </div>
         <div class="large-8 medium-8 small-12 columns">
-            <h1><?= $oProduct->title ?></h1>
-            <p><?= $oProduct->description ?></p>
-            <p class="pricing"><?= $oProduct->price ?> <?= CURRENCY_SYMBOL ?></p>
-            <form action="./single-product" method="post" class="row" id="productForm">
+            <h1><?= Html::encode($oProduct->title) ?></h1>
+            <p><?= Html::encode($oProduct->description) ?></p>
+            <p class="pricing"><?= $oChildProduct ? $oChildProduct->price : Yii::t('app', 'Lowest: ') . $oProduct->price ?> <?= CURRENCY_SYMBOL ?></p>
 
-                <!-- Product ID -->
-                <input type="hidden" name="productId" value="1234567890">
+            <?php
+            echo $this->render('_productForm', [
+                'oProduct' => $oProduct,
+                'oChildProduct' => $oChildProduct,
+                'oProductForm' => $oProductForm,
+                'sizes' => $oProduct->getChildsSizes(),
+                'flavors' => $flavors,
+                'colors' => $colors,
+            ]);
+            ?>
 
-                <div class="large-4 medium-4 small-12 columns select-component">
-                    <i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
-                    <select name="product-size">
-                        <option value="0">Choose Size</option>
-                        <option value="1">Size of 1 LBS</option>
-                        <option value="2">Size of 2 LBS</option>
-                        <option value="3">Size of 3 LBS</option>
-                        <option value="4">Size of 4 LBS</option>
-                    </select>
-                </div>
-                <div class="large-4 medium-4 small-12 columns select-component end">
-                    <i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
-                    <select name="product-size">
-                        <option value="0">Choose Flavor</option>
-                        <option value="1">Chocolate</option>
-                        <option value="2">Caramel</option>
-                        <option value="3">Vanilla</option>
-                        <option value="4">Green Apple</option>
-                    </select>
-                </div>
-            </form>
             <div class="row">
                 <div class="large-8 medium-8 small-12 columns">
-                    <a href="#" class="shop-now" onclick="TSS.Form.ajaxSubmit('#productForm', '.single-product');"><i class="md md-shopping-cart"></i> Add To Cart</a>
+                    <?php if ($oChildProduct) { ?>
+                        <a href="#" class="shop-now" onclick="TSS.Form.ajaxSubmit('#productForm', '.single-product');"><i class="md md-shopping-cart"></i> Add To Cart</a>
+                    <?php } else { ?>
+                        <span class="shop-now"><i class="md md-shopping-cart"></i> Add To Cart</span>
+                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="row">
         <div class="product-tabs">
-            <ul data-tab class="tabs">
-                <li class="tab-title active"><a href="#product-info">Product Info</a></li>
-                <li class="tab-title"><a href="#nutrition-facts">Nutrition Facts</a></li>
-            </ul>
+            <?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
+                <ul data-tab class="tabs">
+                    <li class="tab-title active"><a href="#product-info">Product Info</a></li>
+                    <li class="tab-title"><a href="#nutrition-facts">Nutrition Facts</a></li>
+                </ul>
+            <?php } ?>
             <div class="tabs-content">
                 <div id="product-info" class="content row active">
-<?= $oProduct->body ?>
+                    <?= $oProduct->body ?>
                 </div>
-                <div id="nutrition-facts" class="content row">
-                    <h2>FORTIFY YOUR BODY FROM WITHIN</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <h3>FORTIFY YOUR BODY FROM WITHIN</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <h2>FORTIFY YOUR BODY FROM WITHIN</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <h3>FORTIFY YOUR BODY FROM WITHIN</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi rem rerum eum nesciunt autem quo dicta nobis, recusandae odit sunt, eligendi amet cum ullam quas, ipsum et eius reiciendis labore.</p>
-                </div>
+                <?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
+                    <div id="nutrition-facts" class="content row">
+                        <img src="<?= $oChildProduct->getImgUrlByIndex(1) ?>" >
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
 
-    <div class="page-title large-12 medium-12 small-12 columns">
-        <h2><?= Yii::t('app', 'Related Products') ?></h2>
-    </div>
-    
-    <?= $this->render('_bottomProducts', ['products' => $oProduct->getRelated(4)]) ?>
+    <?php if ($relatedProducts) { ?>
+        <div class="page-title large-12 medium-12 small-12 columns">
+            <h2><?= Yii::t('app', 'Related Products') ?></h2>
+        </div>
 
+        <?= $this->render('_bottomProducts', ['products' => $relatedProducts]) ?>
+    <?php } ?>
+    
 </div>
+<?php Pjax::end(); ?>

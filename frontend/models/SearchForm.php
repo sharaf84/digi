@@ -5,7 +5,7 @@ use yii\base\Model;
 use Yii;
 
 /**
- * Signup form
+ * Search form
  */
 class SearchForm extends Model
 {

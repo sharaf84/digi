@@ -5,7 +5,6 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 use yii\helpers\Inflector;
 
-
 $this->title = Yii::t('app', 'Store');
 ?>
 <div id="checkpoint-a" class="single-page archive-page row">
@@ -13,9 +12,9 @@ $this->title = Yii::t('app', 'Store');
         <h2><?= $category ? Inflector::camel2words($category) : Yii::t('app', 'Search results of: {key}', ['key' => $oSearchForm->key]) ?></h2>
     </div>
     <?php Pjax::begin(); ?>
-    
-    <?php echo $this->render('_searchForm', ['oSearchForm' => $oSearchForm, 'category' => $category, ]);?>
-    
+
+    <?php echo $this->render('_searchForm', ['oSearchForm' => $oSearchForm, 'category' => $category,]); ?>
+
     <div class="products-list">
         <?=
         \yii\widgets\ListView::widget([
@@ -37,11 +36,12 @@ $this->title = Yii::t('app', 'Store');
         ?>
     </div>
     <?php Pjax::end(); ?>
-    
-    <div class="page-title large-12 medium-12 small-12 columns">
-        <h2><?= Yii::t('app', 'Best Seller') ?></h2>
-    </div>
-    
-    <?= $this->render('_bottomProducts', ['products' => $bestSellerProducts]) ?>
-    
+
+    <?php if ($bestSellerProducts) { ?>
+        <div class="page-title large-12 medium-12 small-12 columns">
+            <h2><?= Yii::t('app', 'Best Seller') ?></h2>
+        </div>
+
+        <?= $this->render('_bottomProducts', ['products' => $bestSellerProducts]) ?>
+    <?php } ?>
 </div>

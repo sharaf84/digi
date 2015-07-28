@@ -18,6 +18,13 @@ var Dev = Dev || {};
  */
 Dev.onReady = function () {
     Dev.mainInit();
+    
+    /**
+     * Auto submit product form
+     */
+    $('body').on('change', '#productForm select', function(){
+        $('#productForm').submit();
+    });
 };
 
 /**

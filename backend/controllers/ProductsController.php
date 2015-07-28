@@ -47,7 +47,7 @@ class ProductsController extends BaseController {
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->scenario = ($model->parent_id) ? 'child' : 'parent'; 
+            $model->scenario = ($model->isChild()) ? 'child' : 'parent'; 
             if ($model->save())
                 return $this->redirect(['view', 'id' => $model->id]);
         }
@@ -62,7 +62,7 @@ class ProductsController extends BaseController {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-
+        $model->scenario = ($model->isChild()) ? 'child' : 'parent';
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
