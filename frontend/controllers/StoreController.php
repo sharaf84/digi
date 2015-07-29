@@ -56,7 +56,7 @@ class StoreController extends \frontend\components\BaseController {
         ]);
         $this->view->params['searchKey'] = $oSearchForm->key;
         return $this->render('search', [
-                    'category' => $slug,
+                    'slug' => $slug,
                     'oSearchForm' => $oSearchForm,
                     'oProductsDP' => $oProductsDP,
                     'bestSellerProducts' => Product::getBestSeller(4),

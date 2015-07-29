@@ -18,19 +18,40 @@ var Dev = Dev || {};
  */
 Dev.onReady = function () {
     Dev.mainInit();
-    
-    /**
-     * Auto submit product form
-     */
-    $('body').on('change', '#productForm select', function(){
-        $('#productForm').submit();
-    });
+    Dev.globalEvents();
 };
+
+/**
+ * Manages global application events.
+ * @author Ahmed Sharaf (sharaf.developer@gmail.com)
+ */
+Dev.globalEvents = function () {
+    var self = this;
+
+    self.AutoSubmitProductForm = function () {
+        $('body').on('change', '#productForm select', function () {
+            $('#productForm').submit();
+        });
+    };
+
+    self.AutoSubmitSearchForm = function () {
+        $('body').on('change', '#searchForm select', function () {
+            $('#searchForm').submit();
+        });
+        $('body').on('click', '#alphabetChar li', function () {
+            $('#searchform-alpha').val($(this).data('id'));
+            $('#searchForm').submit();
+        });
+        //$('#alphabetChar li[data-id="' + $('#searchform-alpha').val() + '"]').addClass('current');
+    };
+
+    self.AutoSubmitProductForm();
+    self.AutoSubmitSearchForm();
+}
 
 /**
  * Re Initialize some components after ajax event.
  * @author Ahmed Sharaf (sharaf.developer@gmail.com)
- * @todo Find more smart solution
  */
 Dev.reInit = function () {};
 
@@ -43,4 +64,9 @@ Dev.mainInit = function () {};
 
 $(document).ready(function () {
     Dev.onReady();
+});
+
+//ajaxSuccess event callback  
+$(document).ajaxSuccess(function (event, xhr, options) {
+    Dev.reInit();
 });

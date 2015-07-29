@@ -23,11 +23,6 @@ Dev.onReady = function () {
 //    $(document).on('pjax:success', function (event, data, status, xhr, options) {
 //        Dev.reInit();
 //    });
-    //ajaxSuccess event callback  
-    $(document).ajaxSuccess(function (event, xhr, options) {
-        Dev.reInit();
-    });
-
     Dev.manageProductForm();
 };
 
@@ -122,4 +117,9 @@ Dev.manageProductForm = function () {
 
 $(document).ready(function () {
     Dev.onReady();
+});
+
+//ajaxSuccess event callback  
+$(document).ajaxSuccess(function (event, xhr, options) {
+    Dev.reInit();
 });
