@@ -1,6 +1,6 @@
 # yii console command
 /yii
-
+shared/uploads/*
 #Node
 node_modules/
 shared/themes/frontend/node_modules/
