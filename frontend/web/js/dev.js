@@ -53,13 +53,16 @@ Dev.globalEvents = function () {
  * Re Initialize some components after ajax event.
  * @author Ahmed Sharaf (sharaf.developer@gmail.com)
  */
-Dev.reInit = function () {};
+Dev.reInit = function () {
+    TSS.initializeFoundation();
+};
 
 /**
  * Initialize main components required to run the application
  * @author Ahmed Sharaf (sharaf.developer@gmail.com)
  */
-Dev.mainInit = function () {};
+Dev.mainInit = function () {
+};
 
 
 $(document).ready(function () {

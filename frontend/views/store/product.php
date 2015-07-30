@@ -5,6 +5,7 @@ use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 $this->title = Html::encode($oProduct->title);
+Yii::$app->metaTags->register($oProduct);
 ?>
 
 <?php Pjax::begin(); ?>

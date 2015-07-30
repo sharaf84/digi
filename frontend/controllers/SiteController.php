@@ -38,6 +38,7 @@ class SiteController extends \frontend\components\BaseController {
         return $this->render('home', [
                     'featuredProducts' => \common\models\custom\Product::getFeatured(),
                     'bestSellerProducts' => \common\models\custom\Product::getBestSeller(),
+                    'homeBanner' => \common\models\custom\Page::getHomeBanner(),
                     'latestArticles' => \common\models\custom\Article::getLatest()
         ]);
     }

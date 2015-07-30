@@ -70,7 +70,12 @@ return [
                 'article/<slug:\S+>' => 'articles/view',
                 //'about' => '/site/page/slug/about',
             ],
-        ]
+        ],
+        'metaTags' => [
+            'class' => 'digi\metaTags\MetaTagsComponent',
+            'generateCsrf' => false,
+            'generateOg' => true,
+        ],
     ],
     'params' => $params,
 ];
