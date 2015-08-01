@@ -138,7 +138,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                 <div class="row">
                     <div class="large-3 medium-3 small-3 columns tabs-cont">
                         <ul data-tab>
-                            <?php include_once 'store-menu.php'; ?>
+                            <?php include 'store-menu.php'; ?>
                             <li><a href="#header-tabs--7">Brands</a></li>
                         </ul>
                     </div>

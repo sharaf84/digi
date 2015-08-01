@@ -159,6 +159,12 @@ TSS.header = function () {
     if (! Helpers.isMobile() ) {
         self.s = skrollr.init();
     }
+	$('.open-login-js').click(function (e) {
+        $('#mobile-login-form').removeClass('hide').show();
+    });
+	$('.open-signup-js').click(function (e) {
+        $('#mobile-signup-form').removeClass('hide').show();
+    });
 };
 
 TSS.dataRoutes = function () {

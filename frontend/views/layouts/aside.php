@@ -15,7 +15,7 @@
 			<i class="md md-person"></i>
 		</div>
 		<div class="mobile-user-name small-12 columns">
-			<h4><a href="#"><i class="md md-lock-outline"></i> <span>Login</span></a> or <a href="#"><span>Register</span></a> </h4>
+			<h4><a href="#" class="open-login-js"><i class="md md-lock-outline"></i> <span>Login</span></a> or <a href="#" class="open-signup-js"><span>Register</span></a> </h4>
 		</div>
 		<?php endif; ?>
 	</div>
@@ -65,7 +65,7 @@
 
 
 
-<div id="mobile-login-form">
+<div id="mobile-login-form" class="hide">
 	<a href="/register" class="signup-btn">Sign Up</a>
 	<form action="/login" method="post">
 		<input type="email" placeholder="Email address..." name="userEmail">
@@ -83,7 +83,7 @@
 </div>
 
 
-<div id="mobile-signup-form">
+<div id="mobile-signup-form" class="hide">
 	<a href="/register" class="signup-btn">Sign In</a>
 	<form action="/register" class="row" data-abide>
 
