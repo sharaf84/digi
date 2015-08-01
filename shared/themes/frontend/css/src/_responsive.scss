@@ -129,11 +129,14 @@ $googleColor	: #ce3e26;
 	.alphabet-filter {
 		margin-bottom: 32px;
 	}
+	.single-page ul.pagination.filters li {
+		font-size: 10% !important;
+	}
 	.single-page ul.pagination.filters li a {
 		padding: 6px 2.9px;
 	}
 	.single-page ul.pagination.filters li:hover, .single-page ul.pagination.filters li.current {
-		@include transform( scale(2) );
+		@include transform( scale(1) );
 	}
 
 	.single-page.single-product .tabs-content .content {

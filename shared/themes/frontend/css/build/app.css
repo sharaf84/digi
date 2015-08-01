@@ -11865,14 +11865,16 @@ footer {
     background-size: 225%; }
   .alphabet-filter {
     margin-bottom: 32px; }
+  .single-page ul.pagination.filters li {
+    font-size: 10% !important; }
   .single-page ul.pagination.filters li a {
     padding: 6px 2.9px; }
   .single-page ul.pagination.filters li:hover, .single-page ul.pagination.filters li.current {
-    -webkit-transform: scale(2);
-    -moz-transform: scale(2);
-    -ms-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2); }
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
   .single-page.single-product .tabs-content .content {
     max-width: 100%;
     padding: 20px 58px 20px 20px; }
@@ -12144,14 +12146,16 @@ footer {
     background-size: 225%; }
   .alphabet-filter {
     margin-bottom: 32px; }
+  .single-page ul.pagination.filters li {
+    font-size: 10% !important; }
   .single-page ul.pagination.filters li a {
     padding: 6px 2.9px; }
   .single-page ul.pagination.filters li:hover, .single-page ul.pagination.filters li.current {
-    -webkit-transform: scale(2);
-    -moz-transform: scale(2);
-    -ms-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2); }
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
   .single-page.single-product .tabs-content .content {
     max-width: 100%;
     padding: 20px 58px 20px 20px; }
@@ -12423,14 +12427,16 @@ footer {
     background-size: 225%; }
   .alphabet-filter {
     margin-bottom: 32px; }
+  .single-page ul.pagination.filters li {
+    font-size: 10% !important; }
   .single-page ul.pagination.filters li a {
     padding: 6px 2.9px; }
   .single-page ul.pagination.filters li:hover, .single-page ul.pagination.filters li.current {
-    -webkit-transform: scale(2);
-    -moz-transform: scale(2);
-    -ms-transform: scale(2);
-    -o-transform: scale(2);
-    transform: scale(2); }
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1); }
   .single-page.single-product .tabs-content .content {
     max-width: 100%;
     padding: 20px 58px 20px 20px; }
