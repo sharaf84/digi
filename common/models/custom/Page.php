@@ -9,4 +9,8 @@ class Page extends \common\models\base\Content {
     public static function getHomeSlider(){
         return self::findOne(['slug' => 'home-slider']);
     }
+    
+    public static function getHomeBanner(){
+        return self::findOne(['slug' => 'home-banner']);
+    }
 }
