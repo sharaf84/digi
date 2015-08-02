@@ -52,6 +52,8 @@ $this->title = Yii::t('app', 'TSS Home Page');
         </div>
     </div>
 </div>
+
+<?php if($homeBanner && $homeBanner->firstMedia){?>
 <div class="dark-section">
     <div class="row">
         <div class="large-6 medium-6 small-12 columns hide-for-small">
@@ -63,6 +65,8 @@ $this->title = Yii::t('app', 'TSS Home Page');
         </div>
     </div>
 </div>
+<?php }?>
+
 <?php if (!empty($latestArticles)) { ?>
     <div class="article-section">
         <div class="row">
