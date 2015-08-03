@@ -24,7 +24,7 @@ class BaseController extends Controller {
     }
 
     protected function setAuthUser(){
-        $this->oAuthUser = !Yii::$app->user->isGuest ? \common\models\custom\User::findOne(Yii::$app->user->id) : null;
+        $this->oAuthUser = \common\models\custom\User::getAuthUser();
     }
 
 }
