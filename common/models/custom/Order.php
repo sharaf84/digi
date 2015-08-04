@@ -110,9 +110,9 @@ class Order extends \common\models\base\Base {
         ];
     }
     
-    public static function createCartOrder($userId) {
+    public static function createCartOrder($userId = null) {
         $oOrder = new Order();
-        $oOrder->user_id = $userId;
+        $oOrder->user_id = $userId ? $userId : Yii::$app->user->id;
         $oOrder->status = self::STATUS_CART;
         return $oOrder->save() ? $oOrder : null;
     }

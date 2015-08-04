@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\custom\Article;
+use yii\web\NotFoundHttpException;
 
 /**
  * Articles controller

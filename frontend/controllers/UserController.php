@@ -10,15 +10,11 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * User controller
  */
 class UserController extends \frontend\components\BaseController {
-
-    //public $defaultAction = 'home';
 
     /**
      * @inheritdoc
@@ -26,11 +22,11 @@ class UserController extends \frontend\components\BaseController {
     public function behaviors() {
         return [
             'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'class' => \yii\filters\AccessControl::className(),
+                //'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['signup', 'login', 'verify', 'request-password-reset', 'reset-password'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -41,15 +37,15 @@ class UserController extends \frontend\components\BaseController {
                     ],
                 ],
             ],
-//            'verbs' => [
-//                'class' => VerbFilter::className(),
-//                'actions' => [
-//                    'logout' => ['post'],
-//                ],
-//            ],
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::className(),
+                'actions' => [
+                    'login' => ['post'],
+                ],
+            ],
         ];
     }
-    
+
     public function actionLogin() {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();

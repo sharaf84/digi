@@ -5,9 +5,10 @@
     line-height: 28px;
     padding: 0.0625rem 0.625rem;
 }
-span.shop-now {
+span.shop-now, span.shop-now:hover {
     background: #cccccc;
 }
-span.shop-now:hover {
-    background: #cccccc;
+
+span.at-cart, span.at-cart:hover {
+    background: #252525;
 }

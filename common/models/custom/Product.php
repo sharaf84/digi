@@ -290,9 +290,9 @@ class Product extends \common\models\base\Base {
     }
 
     /**
-     * @return bool true if product at cart
+     * @return bool true if product in cart
      */
-    public function atCart() {
+    public function inCart() {
         return Cart::find()
                         ->with([
                             'order' => function ($query) {
