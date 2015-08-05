@@ -31,14 +31,15 @@ class CartController extends \frontend\components\BaseController {
             'verbs' => [
                 'class' => \yii\filters\VerbFilter::className(),
                 'actions' => [
-                    //'login' => ['post'],
+                    //'add' => ['post'],
                 ],
             ],
         ];
     }
 
     public function actionIndex() {
-        return $this->render('index', ['cartItems' => $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder->items : null]);
+        return $this->render('index', ['cartItems' => $this->oAuthUser->cartItems]);
+        //return $this->render('index', ['cartItems' => $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder->items : null]);
     }
 
     /**

@@ -27,6 +27,11 @@ class User extends \common\models\base\User {
         return $this->hasOne(Order::className(), ['user_id' => 'id'])->andWhere(['status' => Order::STATUS_CART]);
     }
     
-    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCartItems() {
+        return $this->hasMany(Cart::className(), ['order_id' => 'id'])->via('cartOrder');
+    }
 
 }

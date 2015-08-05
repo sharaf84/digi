@@ -66,7 +66,15 @@ class Cart extends \common\models\base\Base {
     public function getOrder() {
         return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
-
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserCartOrder() {
+        return $this->hasOne(Order::className(), ['id' => 'order_id'])
+                ->andWhere(['`order`.`status`' => Order::STATUS_CART, '`order`.`user_id`' => Yii::$app->user->id]);
+    }
+    
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -81,5 +89,15 @@ class Cart extends \common\models\base\Base {
         $oCart->qty = 1;
         return $oCart->save();
     }
-
+    
+    /**
+     * @return bool true if product in cart
+     */
+    public static function hasItem($itemId) {
+        return Cart::find()
+                        ->joinWith('userCartOrder')
+                        ->andWhere(['item_id' => $itemId])
+                        ->exists();
+    }
+    
 }

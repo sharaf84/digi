@@ -290,21 +290,6 @@ class Product extends \common\models\base\Base {
     }
 
     /**
-     * @return bool true if product in cart
-     */
-    public function inCart() {
-        return Cart::find()
-                        ->with([
-                            'order' => function ($query) {
-                                $query->andWhere(['status' => Order::STATUS_CART, 'user_id' => Yii::$app->user->id]);
-                            },
-                        ])
-                        ->andWhere(['item_id' => $this->id])
-                        //->andWhere(['item_id' => $this->id, 'order.status' => Order::STATUS_CART, 'order.user_id' => Yii::$app->user->id])
-                        ->exists();
-    }
-
-    /**
      * @return bool true if product category is "Accessories"
      */
     public function isAccessory() {

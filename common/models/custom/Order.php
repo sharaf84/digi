@@ -24,11 +24,10 @@ use Yii;
  * @property BaseUser $user
  */
 class Order extends \common\models\base\Base {
-    
+
     const STATUS_CART = 0;
     const STATUS_PENDING = 1;
     const STATUS_DELIVERED = 2;
-    
     const METHOD_CASH_ON_DELIVERY = 1;
     const METHOD_BANK = 2;
 
@@ -85,10 +84,17 @@ class Order extends \common\models\base\Base {
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getProducts() {
+        return $this->hasMany(Product::className(), ['id' => 'item_id'])->via('items');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
-    
+
     /**
      * Retrieves status list
      */
@@ -99,7 +105,7 @@ class Order extends \common\models\base\Base {
             self::STATUS_DELIVERED => Yii::t('app', 'Delivered'),
         ];
     }
-    
+
     /**
      * Retrieves payment method list
      */
@@ -109,7 +115,12 @@ class Order extends \common\models\base\Base {
             self::METHOD_BANK => Yii::t('app', 'Bank'),
         ];
     }
-    
+
+    /**
+     * Ceate Cart Order
+     * @param int $userId
+     * @return Order
+     */
     public static function createCartOrder($userId = null) {
         $oOrder = new Order();
         $oOrder->user_id = $userId ? $userId : Yii::$app->user->id;
