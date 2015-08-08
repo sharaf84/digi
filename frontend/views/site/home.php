@@ -52,10 +52,13 @@ $this->title = Yii::t('app', 'TSS Home Page');
         </div>
     </div>
 </div>
+
+<?php if($homeBanner && $homeBanner->firstMedia){?>
 <div class="dark-section">
     <div class="row">
         <div class="large-6 medium-6 small-12 columns hide-for-small">
-            <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/MergedLayers.png" alt=""></div>
+            <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/MergedLayers.png" alt="">
+        </div>
         <div class="large-6 medium-6 small-12 columns">
             <h3><?= Html::encode($homeBanner->firstMedia->title) ?></h3>
             <p><?= Html::encode($homeBanner->firstMedia->description) ?></p>
@@ -63,6 +66,8 @@ $this->title = Yii::t('app', 'TSS Home Page');
         </div>
     </div>
 </div>
+<?php }?>
+
 <?php if (!empty($latestArticles)) { ?>
     <div class="article-section">
         <div class="row">

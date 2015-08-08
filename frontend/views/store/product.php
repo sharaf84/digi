@@ -33,10 +33,15 @@ Yii::$app->metaTags->register($oProduct);
 
             <div class="row">
                 <div class="large-8 medium-8 small-12 columns">
+                    <!--<a href="#" class="shop-now" onclick="TSS.Form.ajaxSubmit('#productForm', '.single-product');"><i class="md md-shopping-cart"></i> Add To Cart</a>-->
                     <?php if ($oChildProduct) { ?>
-                        <a href="#" class="shop-now" onclick="TSS.Form.ajaxSubmit('#productForm', '.single-product');"><i class="md md-shopping-cart"></i> Add To Cart</a>
+                        <?php if (\common\models\custom\Cart::hasItem($oChildProduct->id)) { ?>
+                            <span class="shop-now at-cart"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Already In Cart') ?></span>
+                        <?php } else { ?>
+                            <a href="<?= Url::to(['/cart/add', 'id' => $oChildProduct->id]) ?>" class="shop-now"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Add To Cart') ?></a>
+                        <?php } ?>
                     <?php } else { ?>
-                        <span class="shop-now"><i class="md md-shopping-cart"></i> Add To Cart</span>
+                        <span class="shop-now"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Add To Cart') ?></span>
                     <?php } ?>
                 </div>
             </div>
@@ -71,6 +76,6 @@ Yii::$app->metaTags->register($oProduct);
 
         <?= $this->render('_bottomProducts', ['products' => $relatedProducts]) ?>
     <?php } ?>
-    
+
 </div>
 <?php Pjax::end(); ?>

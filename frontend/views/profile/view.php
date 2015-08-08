@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = $this->context->oAuthUser->profile->getName();
+$this->title = $oProfile->getName();
 ?>
 
 <div id="checkpoint-a" class="single-page profile-page row">
@@ -20,10 +20,10 @@ $this->title = $this->context->oAuthUser->profile->getName();
 
             <a data-tooltip aria-haspopup="true" href="<?= Url::to(['/profile/edit']) ?>" title="<?= Yii::t('app', 'Edit Your Profile') ?>" class="edit-profile"> <i class="md md-edit"></i> </a>
 
-            <h3><?= $this->context->oAuthUser->profile->getName() ?></h3>
+            <h3><?= $oProfile->getName() ?></h3>
             <p>
-                <strong><?= Yii::t('app', 'Mobile') ?>:</strong> <?= Html::encode($this->context->oAuthUser->profile->phone) ?> <br />
-                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($this->context->oAuthUser->profile->address) ?>, <?= Html::encode($this->context->oAuthUser->profile->city->name) ?> <br />
+                <strong><?= Yii::t('app', 'Mobile') ?>:</strong> <?= Html::encode($oProfile->phone) ?> <br />
+                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->address) ?>, <?= Html::encode($oProfile->city->name) ?> <br />
                 <strong><?= Yii::t('app', 'Email') ?>:</strong> <?= Html::encode($this->context->oAuthUser->email) ?> <br />
             </p>
         </div>
@@ -35,7 +35,7 @@ $this->title = $this->context->oAuthUser->profile->getName();
                 <h3><span><?= Yii::t('app', 'Biography') ?></span></h3>
             </div>
             <div class="section-body">
-                <p><?= Html::encode($this->context->oAuthUser->profile->bio) ?></p>
+                <p><?= Html::encode($oProfile->bio) ?></p>
             </div>
         </div>
     </div>

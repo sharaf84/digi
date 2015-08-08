@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 
 /**
  * Profile controller
@@ -11,13 +12,35 @@ class ProfileController extends \frontend\components\BaseController {
 
     public $defaultAction = 'view';
 
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ]
+                ],
+            ],
+        ];
+    }
+
     public function actionView() {
-        return $this->render('view');
+        if(!$this->oAuthUser->profile) 
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        return $this->render('view', ['oProfile' => $this->oAuthUser->profile]);
     }
 
     public function actionEdit() {
         $oProfile = $this->oAuthUser->profile;
-
+        
+        if(!$oProfile) 
+            throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+        
         if ($oProfile->load(Yii::$app->request->post()) && $oProfile->save()) {
 //            if (Yii::$app->request->isAjax) {
 //                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -25,10 +48,8 @@ class ProfileController extends \frontend\components\BaseController {
 //            }
             Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Profile updated successfully'));
             return $this->redirect(['/profile']);
-        } else {
-            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Error, please try again.'));
-            return $this->render('edit', ['oProfile' => $oProfile]);
-        }
+        } 
+        return $this->render('edit', ['oProfile' => $oProfile]);
     }
 
 }

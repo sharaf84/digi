@@ -274,15 +274,27 @@ class Product extends \common\models\base\Base {
     public function isChild() {
         return $this->parent_id;
     }
-    
-    
+
+    /**
+     * @return bool true if qty > 0
+     */
+    public function inStock() {
+        return $this->qty > 0;
+    }
+
+    /**
+     * @return bool true if product is valid to cart
+     */
+    public function validToCart() {
+        return $this->isChild() && $this->inStock();
+    }
+
     /**
      * @return bool true if product category is "Accessories"
      */
     public function isAccessory() {
         return $this->category->slug == 'accessories';
     }
-    
 
     /**
      * @return string min product childs price 

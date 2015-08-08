@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = Html::encode($oArticle->title);
-Yii::$app->metaTags->register($oProduct);
+Yii::$app->metaTags->register($oArticle);
 ?>
 <div id="checkpoint-a" class="single-page blog-listing single-blog row">
     <div class="page-title large-12 medium-12 small-12 columns">

@@ -20,6 +20,7 @@ return [
         'list-product' => ['thumbnail', 220, 238],
         'main-product' => ['thumbnail', 251, 496],
         'bottom-product' => ['thumbnail', 164, 314],
+        'cart-product' => ['thumbnail', 53, 101],
         //'background-product' => ['thumbnail', 251, 496],
         'list-article' => ['thumbnail', 142, 140],
         'main-article' => ['thumbnail', 1000, 317],
