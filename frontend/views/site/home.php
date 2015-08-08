@@ -57,9 +57,9 @@ $this->title = Yii::t('app', 'TSS Home Page');
         <div class="large-6 medium-6 small-12 columns hide-for-small">
             <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/MergedLayers.png" alt=""></div>
         <div class="large-6 medium-6 small-12 columns">
-            <h3><?= Html::encode(is_object($homeBanner) ? $homeBanner->firstMedia->title : '') ?></h3>
-            <p><?= Html::encode(is_object($homeBanner) ? $homeBanner->firstMedia->description : '') ?></p>
-            <a href="<?= is_object($homeBanner) ? $homeBanner->firstMedia->link : '' ?>" class="shop-now" target="blanck"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Shop Now') ?></a>
+            <h3><?= Html::encode($homeBanner->firstMedia->title) ?></h3>
+            <p><?= Html::encode($homeBanner->firstMedia->description) ?></p>
+            <a href="<?= $homeBanner->firstMedia->link ?>" class="shop-now" target="blanck"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Shop Now') ?></a>
         </div>
     </div>
 </div>
