@@ -133,8 +133,6 @@ TSS.header = function () {
         // 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
     });
 
-    console.log(rowWidth);
-
     $('.header-top-bar').css({
         width: Helpers.isMobile() ? window.innerWidth : 1000,
         left: Helpers.isMobile() ? 0 : ((totalGutter / 2 / window.innerWidth) * 100) + '%'
@@ -150,6 +148,15 @@ TSS.header = function () {
     $('.drop-down').mouseleave(function (e) {
         $('[data-drop-down]').removeClass('active');
         $('.drop-down').removeClass('active');
+    });
+    $('#store-dropdown ul li a').mouseenter(function (e) {
+        e.stopPropagation();
+        $(this).click();
+    }).click(function (e) {
+         if(e.hasOwnProperty('originalEvent')) {
+            var url = $(this).data('categoryUri');
+            window.location.href = url;
+        }
     });
     $('input[type="search"]').focus(function (e) {
         $(this).parents('form').find('i').css('opacity', '0.2');
@@ -281,7 +288,7 @@ TSS.shoppingCart = function () {
 /**
  * Initialize Foundation
  * @modified by Ahmed Sharaf
- * in order to recall it at my dev.js after success ajax request. 
+ * in order to recall it at my dev.js after success ajax request.
  */
 TSS.initializeFoundation = function () {
     $(document).foundation({
@@ -318,9 +325,14 @@ TSS.onReady = function () {
             e.preventDefault();
             TSS.newsletter();
         });
-        //$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-left');
+        $(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+            $('html').css('overflow', 'hidden');
+        });
+        $(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+            $('html').css('overflow', 'auto');
+        });
     };
-    
+
     TSS.initializeFoundation();// Changed by Ahmed Sharaf instead of self.initializeFoundation();
     self.events();
     TSS.header();

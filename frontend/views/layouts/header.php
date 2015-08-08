@@ -12,7 +12,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
         <div class="header-top-bar">
             <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
             <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo">TSS</a></div>
-            <div class="large-5 medium-5 small-5 columns show-for-medium-up">
+            <div class="large-5 medium-6 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="<?= Url::home() ?>" class="active"><?= Yii::t('app', 'Home') ?></a></li>
@@ -21,7 +21,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                     </ul>
                 </nav>
             </div>
-            <div class="large-3 medium-3 small-3 columns">
+            <div class="large-3 medium-3 small-3 columns header-search-cont hide-for-medium">
                 <form action="<?= Url::to(['/store/search']) ?>">
                     <i class="md md-search" onclick="$(this).parent('form').submit()"></i>
                     <input type="search" name="SearchForm[key]" placeholder="<?= Yii::t('app', 'Search') ?>" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">

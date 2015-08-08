@@ -3,7 +3,7 @@
 	use yii\helpers\Url;
 	$this->title = 'Products List';
 	$this->params['breadcrumbs'][] = $this->title;
-        
+
 ?>
 <div id="checkpoint-a" class="single-page archive-page row">
 	<div class="page-title large-12 medium-12 small-12 columns">
@@ -13,7 +13,7 @@
 		<div class="large-10 medium-10 small-12 columns">
 			<div class="alphabet-filter">
 				<input type="hidden" id="filterCharValue" value="">
-				<ul class="pagination filters">
+				<ul class="pagination filters clearfix">
 					<li data-id="" class="current"><a href="#">All</a></li>
 					<li data-id="a"><a href="#">a</a></li>
 					<li data-id="b"><a href="#">b</a></li>

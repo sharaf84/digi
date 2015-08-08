@@ -740,7 +740,13 @@ header {
 		margin-top: 80px;
 	}
 	p {
-		font: 400 14px $myriad;
+		font: 400 21px $myriad;
+		font-style: italic;
+		color: #252525;
+	}
+	.shop-now {
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 }
 
@@ -1274,10 +1280,11 @@ header {
 		.single-product {
 			position: relative;
 			.product-image-cont {
+				padding: 0 !important;
 				img {
 					width: 50%;
 					margin: 0;
-					float: right;
+					float: left;
 					clear: both;
 				}
 			}

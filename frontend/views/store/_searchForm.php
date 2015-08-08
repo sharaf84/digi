@@ -15,7 +15,7 @@ echo $form->field($oSearchForm, 'alpha')->hiddenInput()->label(false);
 ?>
 <div class="large-10 medium-10 small-12 columns">
     <div class="alphabet-filter">
-        <ul class="pagination filters" id="alphabetChar">
+        <ul class="pagination filters clearfix" id="alphabetChar">
             <li data-id="" class="<?= !$oSearchForm->alpha ? 'current' : '' ?>"><a href="#">All</a></li>
             <?php foreach (range('a', 'z') as $alpha) { ?>
                 <li data-id="<?= $alpha ?>" class="<?= ($alpha == $oSearchForm->alpha) ? 'current' : '' ?>">

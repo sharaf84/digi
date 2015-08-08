@@ -4883,7 +4883,12 @@ header {
     text-transform: uppercase;
     margin-top: 80px; }
   .article-section p {
-    font: 400 14px "PT Sans", arial, sans-serif; }
+    font: 400 21px "PT Sans", arial, sans-serif;
+    font-style: italic;
+    color: #252525; }
+  .article-section .shop-now {
+    font-weight: bold;
+    text-transform: uppercase; }
 
 /**
  * Homepage bottom articles:
@@ -5286,11 +5291,13 @@ header {
     padding: 13px 0; }
   .single-page.shopping-cart .single-product {
     position: relative; }
-    .single-page.shopping-cart .single-product .product-image-cont img {
-      width: 50%;
-      margin: 0;
-      float: right;
-      clear: both; }
+    .single-page.shopping-cart .single-product .product-image-cont {
+      padding: 0 !important; }
+      .single-page.shopping-cart .single-product .product-image-cont img {
+        width: 50%;
+        margin: 0;
+        float: left;
+        clear: both; }
   .single-page.shopping-cart .remove-product {
     display: block;
     position: absolute;
