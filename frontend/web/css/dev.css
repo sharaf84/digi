@@ -9,6 +9,6 @@ span.shop-now, span.shop-now:hover {
     background: #cccccc;
 }
 
-span.at-cart, span.at-cart:hover {
+a.at-cart, a.at-cart:hover {
     background: #252525;
 }

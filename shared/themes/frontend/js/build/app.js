@@ -341,7 +341,7 @@ TSS.onReady = function () {
     TSS.productFilters();
     TSS.dataRoutes();
     TSS.Form = new TSS.formsManager();
-    TSS.shoppingCart();
+    //TSS.shoppingCart();
     Helpers.prepareProductBackgroundImage();
 };
 

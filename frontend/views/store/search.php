@@ -9,7 +9,7 @@ $this->title = Yii::t('app', 'Store');
     <div class="page-title large-12 medium-12 small-12 columns">
         <h2><?= $slug ? Inflector::camel2words($slug) : Yii::t('app', 'Search results of: {key}', ['key' => $oSearchForm->key]) ?></h2>
     </div>
-    <?php Pjax::begin(); ?>
+    <?php Pjax::begin(['id' => 'pjaxStore']); ?>
 
     <?php echo $this->render('_searchForm', ['oSearchForm' => $oSearchForm, 'slug' => $slug,]); ?>
 

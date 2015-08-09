@@ -30,6 +30,13 @@ class Cart extends \common\models\base\Base {
     }
 
     /**
+     * @return item calss name
+     */
+    public static function itemClassName() {
+        return Product::className();
+    }
+
+    /**
      * @inheritdoc
      */
     public function rules() {
@@ -66,38 +73,45 @@ class Cart extends \common\models\base\Base {
     public function getOrder() {
         return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getUserCartOrder() {
         return $this->hasOne(Order::className(), ['id' => 'order_id'])
-                ->andWhere(['`order`.`status`' => Order::STATUS_CART, '`order`.`user_id`' => Yii::$app->user->id]);
+                        ->andWhere(['`order`.`status`' => Order::STATUS_CART, '`order`.`user_id`' => Yii::$app->user->id]);
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getItem() {
-        return $this->hasOne(Product::className(), ['id' => 'item_id']);
-    }
-    
-    public function Add($itemId, $orderId) {
-        $oCart = new Cart();
-        $oCart->item_id = $itemId;
-        $oCart->order_id = $orderId;
-        $oCart->qty = 1;
-        return $oCart->save();
+        return $this->hasOne(static::itemClassName(), ['id' => 'item_id']);
     }
     
     /**
-     * @return bool true if product in cart
+     * Add to cart
+     * @param int $orderId
+     * @param int $itemId
+     * @param int $qty
+     * @return bool
      */
-    public static function hasItem($itemId) {
+//    public function Add($orderId, $itemId, $qty = 1) {
+//        $oCart = new Cart();
+//        $oCart->item_id = $itemId;
+//        $oCart->order_id = $orderId;
+//        $oCart->qty = $qty;
+//        return $oCart->save();
+//    }
+
+    /**
+     * @return bool true if item in user cart order
+     */
+    public static function isItemInUserCartOrder($itemId) {
         return Cart::find()
                         ->joinWith('userCartOrder')
                         ->andWhere(['item_id' => $itemId])
                         ->exists();
     }
-    
+
 }

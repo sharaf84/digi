@@ -6,6 +6,11 @@ use yii\helpers\StringHelper;
 use common\helpers\MediaHelper;
 
 class Base extends \yii\db\ActiveRecord {
+    
+    /** @var string  */
+    const SLUG_PATTERN = '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'; // '/^[0-9a-z-]{0,128}$/';
+    /** @var string  */
+    const PHONE_PATTERN = '/^[\d\s-\+\(\)]+$/';
 
     use \webvimark\behaviors\multilanguage\MultiLanguageTrait;
 

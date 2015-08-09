@@ -2,10 +2,12 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\widgets\Pjax;
 
 $this->title = Yii::t('app', 'Cart');
 ?>
 
+<?php Pjax::begin(['id' => 'pjaxCart']); ?>
 <div class="single-page shopping-cart">
     <div id="checkpoint-a" class="row">
         <div class="page-title large-12 medium-12 small-12 columns">
@@ -13,11 +15,11 @@ $this->title = Yii::t('app', 'Cart');
         </div>
     </div>
     <div class="row">
-        <div class="shopping-cart-empty <?= !empty($cartItems) ? 'hide' : '';?>">
+        <div class="shopping-cart-empty <?= !empty($cartItems) ? 'hide' : ''; ?>">
             <?= Yii::t('app', 'Your shopping cart is empty!') ?>
         </div>
     </div>
-    
+
     <?php if (!empty($cartItems)) { ?>
         <form class="as-table checkout-form" action="." method="post">
             <div class="row as-table-head hide-for-small">
@@ -35,40 +37,6 @@ $this->title = Yii::t('app', 'Cart');
                 </div>
             </div>
 
-            <!-- Product Item -->
-            <div class="row as-table-row single-product" data-product>
-                <input type="hidden" name="productId[]" value="123">
-                <input type="hidden" name="productFlavor[]" value="456">
-                <input type="hidden" name="productSize[]" value="789">
-
-                <span class="remove-product">&times;</span>
-                <div class="large-6 medium-6 small-12 columns as-table-cell">
-                    <div class="row">
-                        <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
-                            <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/NITRO-TECH.png" alt="">
-                        </div>
-                        <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
-                            <h4>Casin-Peak ihner armor</h4>
-                            <p><strong>Flavour:</strong> chocolate - <strong>Size:</strong> 150g</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="large-2 medium-2 small-4 columns as-table-cell">
-                    <span data-product-price="199">199 LE</span>
-                </div>
-                <div class="large-2 medium-2 small-4 columns as-table-cell">
-                    <span class="cart-quantity-cont">
-                        <i class="fa fa-chevron-up increase-quantity"></i>
-                        <i class="fa fa-chevron-down decrease-quantity"></i>
-                        <input type="text" name="productQuantity[]" min="1" max="1000" value="1" class="cart-quantity">
-                    </span>
-                </div>
-                <div class="large-2 medium-2 small-4 columns as-table-cell">
-                    <span data-product-total="199">199 LE</span>
-                </div>
-            </div>
-            <!-- [/] Product Item -->
-
             <?php
             $itemTotalPrice = $cartTotalPrice = 0;
             foreach ($cartItems as $oCart) {
@@ -78,11 +46,7 @@ $this->title = Yii::t('app', 'Cart');
                 ?>
                 <!-- Product Item -->
                 <div class="row as-table-row single-product" data-product>
-        <!--                    <input type="hidden" name="productId[]" value="123">
-                    <input type="hidden" name="productFlavor[]" value="456">
-                    <input type="hidden" name="productSize[]" value="789">-->
-
-                    <span class="remove-product">&times;</span>
+                    <a href="<?= Url::to(['/cart/remove', 'id' => $oCart->item_id]) ?>"><span class="remove-product">&times;</span></a>
                     <div class="large-6 medium-6 small-12 columns as-table-cell">
                         <div class="row">
                             <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
@@ -92,7 +56,7 @@ $this->title = Yii::t('app', 'Cart');
                                 <h4><?= Html::encode($oCart->item->title); ?></h4>
                                 <p>
                                     <?php if ($oCart->item->isAccessory()) { ?>
-                                        <strong><?= Yii::t('app', 'Color') ?>:</strong> <?= $oCart->item->color->name ?>
+                                        <strong><?= Yii::t('app', 'Color') ?>:</strong> <?= $oCart->item->color ?>
                                     <?php } else { ?>
                                         <strong><?= Yii::t('app', 'Flavour') ?>:</strong> <?= $oCart->item->flavor->name ?>
                                     <?php } ?>
@@ -107,9 +71,9 @@ $this->title = Yii::t('app', 'Cart');
                     </div>
                     <div class="large-2 medium-2 small-4 columns as-table-cell">
                         <span class="cart-quantity-cont">
-                            <i class="fa fa-chevron-up increase-quantity"></i>
-                            <i class="fa fa-chevron-down decrease-quantity"></i>
-                            <input type="text" name="productQuantity[]" min="1" max="<?= $oCart->item->qty ?>" value="<?= $oCart->qty ?>" class="cart-quantity">
+                            <a href="<?= Url::to(['/cart/increase', 'id' => $oCart->item_id]) ?>"><i class="fa fa-chevron-up increase-quantity"></i></a>
+                            <a href="<?= Url::to(['/cart/decrease', 'id' => $oCart->item_id]) ?>"><i class="fa fa-chevron-down decrease-quantity"></i></a>
+                            <input type="number" name="productQuantity[]" readonly = "readonly" min="1" max="<?= $oCart->item->qty ?>" value="<?= $oCart->qty ?>" class="cart-quantity">
                         </span>
                     </div>
                     <div class="large-2 medium-2 small-4 columns as-table-cell">
@@ -135,3 +99,4 @@ $this->title = Yii::t('app', 'Cart');
         </form>
     <?php } ?>
 </div>
+<?php Pjax::end(); ?>

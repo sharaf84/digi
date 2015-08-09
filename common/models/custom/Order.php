@@ -25,9 +25,17 @@ use Yii;
  */
 class Order extends \common\models\base\Base {
 
+    /**
+     * Status
+     */
     const STATUS_CART = 0;
     const STATUS_PENDING = 1;
-    const STATUS_DELIVERED = 2;
+    const STATUS_IN_PROGRESS = 2;
+    const STATUS_DELIVERED = 3;
+
+    /**
+     * Payment Methods
+     */
     const METHOD_CASH_ON_DELIVERY = 1;
     const METHOD_BANK = 2;
 
@@ -36,6 +44,13 @@ class Order extends \common\models\base\Base {
      */
     public static function tableName() {
         return 'order';
+    }
+
+    /**
+     * @return item calss name
+     */
+    public static function itemClassName() {
+        return Product::className();
     }
 
     /**
@@ -75,21 +90,30 @@ class Order extends \common\models\base\Base {
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \yii\db\ActiveQuery of order cart items
      */
-    public function getItems() {
+    public function getCartItems() {
         return $this->hasMany(Cart::className(), ['order_id' => 'id']);
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * 
+     * @param int $itemId cart item_id
+     * @return \yii\db\ActiveQuery of order cart item
      */
-    public function getProducts() {
-        return $this->hasMany(Product::className(), ['id' => 'item_id'])->via('items');
+    public function getCartItem($itemId) {
+        return $this->hasOne(Cart::className(), ['order_id' => 'id'])->andWhere(['item_id' => $itemId]);
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return \yii\db\ActiveQuery of order items
+     */
+    public function getItems() {
+        return $this->hasMany(static::itemClassName(), ['id' => 'item_id'])->via('CartItems');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery of order user
      */
     public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
@@ -102,6 +126,7 @@ class Order extends \common\models\base\Base {
         return [
             self::STATUS_CART => Yii::t('app', 'Cart'),
             self::STATUS_PENDING => Yii::t('app', 'Pending'),
+            self::STATUS_IN_PROGRESS => Yii::t('app', 'In Progress'),
             self::STATUS_DELIVERED => Yii::t('app', 'Delivered'),
         ];
     }
@@ -126,6 +151,56 @@ class Order extends \common\models\base\Base {
         $oOrder->user_id = $userId ? $userId : Yii::$app->user->id;
         $oOrder->status = self::STATUS_CART;
         return $oOrder->save() ? $oOrder : null;
+    }
+
+    public function isCartOrder() {
+        return $this->status == self::STATUS_CART;
+    }
+
+    /**
+     * @return bool true if item in cart
+     */
+    public function hasCartItem($itemId) {
+        return Cart::find()
+                        ->andWhere(['item_id' => $itemId, 'order_id' => $this->id])
+                        ->exists();
+    }
+
+    public function addCartItem($itemId, $qty = 1, $increaseOnDuplicate = false) {
+        $oCart = ($increaseOnDuplicate && $this->getCartItem($itemId)->one()) ? $this->getCartItem($itemId)->one() : new Cart();
+        $oCart->item_id = $itemId;
+        $oCart->order_id = $this->id;
+        $oCart->qty += $qty;
+        return $oCart->save();
+    }
+
+    public function increaseCartItem($itemId) {
+        $oCart = $this->getCartItem($itemId)->one();
+        if (!$oCart || $oCart->qty == $oCart->item->qty)
+            return false;
+        $oCart->qty = ($oCart->qty > $oCart->item->qty) ? $oCart->item->qty : $oCart->qty + 1;
+        return $oCart->save();
+    }
+
+    public function decreaseCartItem($itemId) {
+        $oCart = $this->getCartItem($itemId)->one();
+        if (!$oCart || $oCart->qty <= 1)
+            return false;
+        $oCart->qty = ($oCart->qty > $oCart->item->qty) ? $oCart->item->qty : $oCart->qty - 1;
+        return $oCart->save();
+    }
+
+    public function updateCartItem($itemId, $qty) {
+        $oCart = $this->getCartItem($itemId)->one();
+        if (!$oCart)
+            return false;
+        $oCart->qty = $qty;
+        return $oCart->save();
+    }
+
+    public function removeCartItem($itemId) {
+        $oCart = $this->getCartItem($itemId)->one();
+        return $oCart ? $oCart->delete() : false;
     }
 
 }

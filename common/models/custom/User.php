@@ -33,5 +33,15 @@ class User extends \common\models\base\User {
     public function getCartItems() {
         return $this->hasMany(Cart::className(), ['order_id' => 'id'])->via('cartOrder');
     }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function hasCartItem($itemId) {
+        return $this->hasOne(Cart::className(), ['order_id' => 'id'])
+                ->via('cartOrder')
+                ->andWhere(['item_id' => $itemId])
+                ->exists();
+    }
 
 }
