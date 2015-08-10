@@ -30,12 +30,12 @@ class CartController extends \frontend\components\BaseController {
             ],
             'verbs' => [
                 'class' => \yii\filters\VerbFilter::className(),
-//                'actions' => [
-//                    'add' => ['post'],
-//                    'increase' => ['post'],
-//                    'decrease' => ['post'],
-//                    'remove' => ['post'],
-//                ],
+                'actions' => [
+                    'add' => ['post'],
+                    'increase' => ['post'],
+                    'decrease' => ['post'],
+                    'remove' => ['post'],
+                ],
             ],
         ];
     }

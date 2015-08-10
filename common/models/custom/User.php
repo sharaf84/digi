@@ -37,11 +37,23 @@ class User extends \common\models\base\User {
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getCartCount() {
+        return $this->getCartItems()->sum('qty');
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function hasCartItem($itemId) {
         return $this->hasOne(Cart::className(), ['order_id' => 'id'])
                 ->via('cartOrder')
                 ->andWhere(['item_id' => $itemId])
                 ->exists();
+    }
+    
+    
+    public function getName() {
+        return $this->profile ? $this->profile->getName() : $this->email;
     }
 
 }

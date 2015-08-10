@@ -107,15 +107,23 @@ class Cart extends \common\models\base\Base {
                         ->exists();
     }
     
-    
+    /**
+     * @return bool true if cart qty < item qty
+     */
     public function canIncrease(){
         return $this->qty < $this->item->qty;
     }
     
+    /**
+     * @return bool true if cart qty > 1
+     */
     public function canDecrease(){
         return $this->qty > 1;
     }
     
+    /**
+     * @return bool true if cart qty > item qty
+     */
     public function isOverflow(){
         return $this->qty > $this->item->qty;
     }
