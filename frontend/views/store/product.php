@@ -38,7 +38,7 @@ Yii::$app->metaTags->register($oProduct);
                         <?php if (common\models\custom\Cart::isItemInUserCartOrder($oChildProduct->id)) { ?>
                             <a href="<?= Url::to(['/cart']) ?>" class="shop-now at-cart"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Already In Cart') ?></a>
                         <?php } else { ?>
-                            <a href="<?= Url::to(['/cart/add', 'id' => $oChildProduct->id]) ?>" class="shop-now"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Add To Cart') ?></a>
+                            <a href="<?= Url::to(['/cart/add', 'id' => $oChildProduct->id]) ?>" class="shop-now" data-method="post"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Add To Cart') ?></a>
                         <?php } ?>
                     <?php } else { ?>
                         <span class="shop-now"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Add To Cart') ?></span>

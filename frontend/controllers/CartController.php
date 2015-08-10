@@ -30,33 +30,32 @@ class CartController extends \frontend\components\BaseController {
             ],
             'verbs' => [
                 'class' => \yii\filters\VerbFilter::className(),
-                'actions' => [
-                //'add' => ['post'],
-                ],
+//                'actions' => [
+//                    'add' => ['post'],
+//                    'increase' => ['post'],
+//                    'decrease' => ['post'],
+//                    'remove' => ['post'],
+//                ],
             ],
         ];
     }
 
     public function actionIndex() {
         return $this->render('index', ['cartItems' => $this->oAuthUser->cartItems]);
-        //return $this->render('index', ['cartItems' => $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder->items : null]);
+        //return $this->render('index', ['cartItems' => $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder->cartItems : null]);
     }
 
     /**
      * Add to cart
-     * @param int $id product id
+     * @param int $id item id
      */
     public function actionAdd($id) {
-        $oProduct = Product::findOne($id);
-        if (!$oProduct || !$oProduct->validToCart())
-            throw new BadRequestHttpException(Yii::t('app', 'Invalid product.'));
-
         $oAuthUserCartOrder = $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder : Order::createCartOrder();
         if (!$oAuthUserCartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        if ($oAuthUserCartOrder->addCartItem($oProduct->id)) {
-            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Item added successfully'));
+        if ($oAuthUserCartOrder->addCartItem($id)) {
+            Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Item added successfully.'));
             return $this->redirect(['/cart']);
         } else {
             Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Error, please try again.'));
@@ -65,8 +64,51 @@ class CartController extends \frontend\components\BaseController {
     }
 
     /**
-     * Remove item from cart
-     * @param int $id product id
+     * Increase cart item 
+     * @param int $id item id
+     */
+    public function actionIncrease($id) {
+
+        if (!$this->oAuthUser->cartOrder)
+            throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
+
+        $this->oAuthUser->cartOrder->increaseCartItem($id);
+        
+        return $this->actionIndex();
+
+    }
+
+    /**
+     * Decrease cart item 
+     * @param int $id item id
+     */
+    public function actionDecrease($id) {
+
+        if (!$this->oAuthUser->cartOrder)
+            throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
+
+        $this->oAuthUser->cartOrder->decreaseCartItem($id);
+        
+        return $this->actionIndex();
+    }
+    
+    /**
+     * Matches cart item qty with the avaliable item qty
+     * @param int $id item id
+     */
+    public function actionMatch($id) {
+
+        if (!$this->oAuthUser->cartOrder)
+            throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
+
+        $this->oAuthUser->cartOrder->matchCartItem($id);
+        
+        return $this->actionIndex();
+    }
+
+    /**
+     * Remove cart item
+     * @param int $id item id
      */
     public function actionRemove($id) {
 
@@ -75,44 +117,7 @@ class CartController extends \frontend\components\BaseController {
 
         $this->oAuthUser->cartOrder->removeCartItem($id);
 
-        if (Yii::$app->request->isAjax)
-            $this->actionIndex();
-        else
-            return $this->redirect(['/cart']);
-    }
-
-    /**
-     * Increase cart item 
-     * @param int $id product id
-     */
-    public function actionIncrease($id) {
-
-        if (!$this->oAuthUser->cartOrder)
-            throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
-
-        $this->oAuthUser->cartOrder->increaseCartItem($id);
-
-        if (Yii::$app->request->isAjax)
-            $this->actionIndex();
-        else
-            return $this->redirect(['/cart']);
-    }
-
-    /**
-     * Decrease cart item 
-     * @param int $id product id
-     */
-    public function actionDecrease($id) {
-
-        if (!$this->oAuthUser->cartOrder)
-            throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
-
-        $this->oAuthUser->cartOrder->decreaseCartItem($id);
-
-        if (Yii::$app->request->isAjax)
-            $this->actionIndex();
-        else
-            return $this->redirect(['/cart']);
+        return $this->actionIndex();
     }
 
 }

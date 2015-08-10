@@ -41,6 +41,7 @@ class UserController extends \frontend\components\BaseController {
                 'class' => \yii\filters\VerbFilter::className(),
                 'actions' => [
                     'login' => ['post'],
+                    'logout' => ['post'],
                 ],
             ],
         ];

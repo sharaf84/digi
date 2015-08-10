@@ -152,7 +152,10 @@ class Order extends \common\models\base\Base {
         $oOrder->status = self::STATUS_CART;
         return $oOrder->save() ? $oOrder : null;
     }
-
+    
+    /**
+     * @return boolean wheather is cart order
+     */
     public function isCartOrder() {
         return $this->status == self::STATUS_CART;
     }
@@ -165,7 +168,14 @@ class Order extends \common\models\base\Base {
                         ->andWhere(['item_id' => $itemId, 'order_id' => $this->id])
                         ->exists();
     }
-
+    
+    /**
+     * Add item to cart
+     * @param int $itemId
+     * @param int $qty
+     * @param bool $increaseOnDuplicate
+     * @return boolean
+     */
     public function addCartItem($itemId, $qty = 1, $increaseOnDuplicate = false) {
         $oCart = ($increaseOnDuplicate && $this->getCartItem($itemId)->one()) ? $this->getCartItem($itemId)->one() : new Cart();
         $oCart->item_id = $itemId;
@@ -173,31 +183,69 @@ class Order extends \common\models\base\Base {
         $oCart->qty += $qty;
         return $oCart->save();
     }
-
+    
+    /**
+     * Increase one item to exists cart item
+     * @param int $itemId
+     * @return boolean
+     */
     public function increaseCartItem($itemId) {
         $oCart = $this->getCartItem($itemId)->one();
-        if (!$oCart || $oCart->qty == $oCart->item->qty)
-            return false;
-        $oCart->qty = ($oCart->qty > $oCart->item->qty) ? $oCart->item->qty : $oCart->qty + 1;
-        return $oCart->save();
+        if ($oCart && $oCart->canIncrease()) {
+            $oCart->qty++;
+            return $oCart->save();
+        }
+        return false;
     }
-
+    
+    /**
+     * Decrease one item from exists cart item
+     * @param int $itemId
+     * @return boolean
+     */
     public function decreaseCartItem($itemId) {
         $oCart = $this->getCartItem($itemId)->one();
-        if (!$oCart || $oCart->qty <= 1)
-            return false;
-        $oCart->qty = ($oCart->qty > $oCart->item->qty) ? $oCart->item->qty : $oCart->qty - 1;
-        return $oCart->save();
+        if ($oCart && $oCart->canDecrease()) {
+            $oCart->qty--;
+            return $oCart->save();
+        }
+        return false;
     }
-
+    
+    /**
+     * Matches cart item qty with the avaliable item qty
+     * @param int $itemId
+     * @return boolean
+     */
+    public function matchCartItem($itemId) {
+        $oCart = $this->getCartItem($itemId)->one();
+        if ($oCart && $oCart->isOverflow()) {
+            $oCart->qty = $oCart->item->qty;
+            return $oCart->save();
+        }
+        return false;
+    }
+    
+    /**
+     * Update cart item with qty
+     * @param int $itemId
+     * @param int $qty
+     * @return boolean
+     */
     public function updateCartItem($itemId, $qty) {
         $oCart = $this->getCartItem($itemId)->one();
-        if (!$oCart)
-            return false;
-        $oCart->qty = $qty;
-        return $oCart->save();
+        if ($oCart) {
+            $oCart->qty = $qty;
+            return $oCart->save();
+        }
+        return false;
     }
-
+    
+    /**
+     * Remove cart item
+     * @param int $itemId
+     * @return boolean
+     */
     public function removeCartItem($itemId) {
         $oCart = $this->getCartItem($itemId)->one();
         return $oCart ? $oCart->delete() : false;

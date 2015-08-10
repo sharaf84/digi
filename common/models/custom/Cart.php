@@ -43,7 +43,14 @@ class Cart extends \common\models\base\Base {
         return [
             [['order_id', 'item_id', 'qty'], 'required'],
             [['item_id', 'order_id'], 'unique', 'targetAttribute' => ['item_id', 'order_id']],
-            [['order_id', 'item_id', 'qty', 'status'], 'integer'],
+            [['qty'], 'number', 'integerOnly' => true, 'min' => 1],
+            ['item_id', 'exist',
+                'targetClass' => static::itemClassName(),
+                'targetAttribute' => 'id',
+                'filter' => function($query){$query->validToCart($this->qty);},
+                'message' =>  Yii::t('app', 'Invalid item.')
+            ],
+            [['status'], 'integer'],
             [['price'], 'number'],
             [['created', 'updated'], 'safe'],
             [['title'], 'string', 'max' => 255]
@@ -88,21 +95,7 @@ class Cart extends \common\models\base\Base {
     public function getItem() {
         return $this->hasOne(static::itemClassName(), ['id' => 'item_id']);
     }
-    
-    /**
-     * Add to cart
-     * @param int $orderId
-     * @param int $itemId
-     * @param int $qty
-     * @return bool
-     */
-//    public function Add($orderId, $itemId, $qty = 1) {
-//        $oCart = new Cart();
-//        $oCart->item_id = $itemId;
-//        $oCart->order_id = $orderId;
-//        $oCart->qty = $qty;
-//        return $oCart->save();
-//    }
+
 
     /**
      * @return bool true if item in user cart order
@@ -113,5 +106,17 @@ class Cart extends \common\models\base\Base {
                         ->andWhere(['item_id' => $itemId])
                         ->exists();
     }
-
+    
+    
+    public function canIncrease(){
+        return $this->qty < $this->item->qty;
+    }
+    
+    public function canDecrease(){
+        return $this->qty > 1;
+    }
+    
+    public function isOverflow(){
+        return $this->qty > $this->item->qty;
+    }
 }

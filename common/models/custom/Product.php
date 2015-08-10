@@ -5,10 +5,7 @@ namespace common\models\custom;
 use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use common\models\custom\Category;
-use common\models\custom\Brand;
-use common\models\custom\Size;
-use common\models\custom\Flavor;
+
 
 /**
  * This is the model class for table "product".
@@ -276,17 +273,17 @@ class Product extends \common\models\base\Base {
     }
 
     /**
-     * @return bool true if qty > 0
+     * @return bool true if $qty in stock
      */
-    public function inStock() {
-        return $this->qty > 0;
+    public function inStock($qty = 1) {
+        return $this->qty >= $qty;
     }
 
     /**
      * @return bool true if product is valid to cart
      */
-    public function validToCart() {
-        return $this->isChild() && $this->inStock();
+    public function validToCart($qty = 1) {
+        return $this->isChild() && $this->inStock($qty);
     }
 
     /**

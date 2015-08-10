@@ -45,7 +45,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                     <a href="<?=Url::to(['/profile']) ?>"><button>View Profile</button></a>
                                 </div>
                                 <div class="large-6 medium-6 small-12 columns logout-cont">
-                                    <a href="<?=Url::to(['/logout']) ?>"><button>Logout</button></a>
+                                    <a href="<?=Url::to(['/user/logout']) ?>" data-method="post"><button>Logout</button></a>
                                 </div>
                             </div>
                         </div>
