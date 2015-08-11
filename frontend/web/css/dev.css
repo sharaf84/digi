@@ -12,7 +12,7 @@ a.at-cart, a.at-cart:hover {background: #252525;}
 a.cart-overflow{color: #ec111b;}
 
 header .drop-down {-webkit-transition-duration: 0s !important;-moz-transition-duration: 0s !important;-o-transition-duration: 0s !important;transition-duration: 0s !important}
-header .main-nav ul li a {font-family: 'Levenim MT' !important;text-transform:uppercase;font-weight:bold !important;font-size:18px !important;font-smooth:none;-webkit-font-smoothing:none}
+header .main-nav ul li a {font-family: 'Levenim MT' !important;text-transform:uppercase;font-weight:bold !important;font-size:14px !important;font-smooth:none;-webkit-font-smoothing:none}
 header .user-avatar.usermenu-cont .usermenu-dropdown, header .user-avatar.login-cont .login-dropdown {top:-500px !important;width:auto !important;background-color:transparent !important;padding:0 !important}
 html header .user-avatar.usermenu-cont .usermenu-dropdown.active {top:24px !important}
 html header .user-avatar.login-cont .login-dropdown.active {top:22px !important}
