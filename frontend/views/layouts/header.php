@@ -39,17 +39,20 @@ $isHome = Yii::$app->controller->action->id == 'home';
                     <div class="user-avatar usermenu-cont">
                         <img src="http://lorempixel.com/50/50/people" alt="" data-drop-down="#usermenu-dropdown">
                         <div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
-                            <span class="arrow-up"></span>
-                            <img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
-                            <h3><a href="<?= Url::to(['/profile']) ?>"><?= $this->context->oAuthUser->getName() ?></a></h3>
-                            <div class="row user-buttons-cont">
-                                <div class="large-6 medium-6 small-12 columns view-profile-cont">
-                                    <a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
-                                </div>
-                                <div class="large-6 medium-6 small-12 columns logout-cont">
-                                    <a href="<?= Url::to(['/user/logout']) ?>" data-method="post"><button><?= Yii::t('app', 'Logout') ?></button></a>
-                                </div>
-                            </div>
+							<div class="usermenu-dropdownSpace"></div>
+							<div class="usermenu-dropdownBox">
+								<span class="arrow-up"></span>
+								<img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
+								<h3><a href="<?= Url::to(['/profile']) ?>"><?= $this->context->oAuthUser->getName() ?></a></h3>
+								<div class="row user-buttons-cont">
+									<div class="large-6 medium-6 small-12 columns view-profile-cont">
+										<a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
+									</div>
+									<div class="large-6 medium-6 small-12 columns logout-cont">
+										<a href="<?= Url::to(['/user/logout']) ?>" data-method="post"><button><?= Yii::t('app', 'Logout') ?></button></a>
+									</div>
+								</div>
+							</div>
                         </div>
                     </div>
                     <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">
@@ -61,9 +64,12 @@ $isHome = Yii::$app->controller->action->id == 'home';
                     <div class="user-avatar login-cont">
                         <span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> <?= Yii::t('app', 'Login') ?></span>
                         <div class="login-dropdown drop-down" id="login-dropdown">
-                            <span class="arrow-up"></span>
-                            <a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
-                            <?php echo $this->render('//user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
+							<div class="login-dropdownSpace"></div>
+							<div class="login-dropdownBox">
+								<span class="arrow-up"></span>
+								<a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
+								<?php echo $this->render('//user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
+							</div>
                         </div>
                     </div>
                     <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">

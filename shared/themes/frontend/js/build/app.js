@@ -145,6 +145,16 @@ TSS.header = function () {
         $('.drop-down').removeClass('active');
         $(id).addClass('active');
     });
+	// Added By Muhammad Ali
+	// Start 
+    $('[data-drop-down]').mouseleave(function (e) {
+		 $(this).removeClass('active');
+		$('.drop-down').removeClass('active');
+    });
+    $('.drop-down').mouseenter(function (e) {
+		 $(this).addClass('active');
+    });
+	// End
     $('.drop-down').mouseleave(function (e) {
         $('[data-drop-down]').removeClass('active');
         $('.drop-down').removeClass('active');
