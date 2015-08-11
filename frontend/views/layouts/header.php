@@ -11,8 +11,8 @@ $isHome = Yii::$app->controller->action->id == 'home';
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar">
             <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
-            <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo">TSS</a></div>
-            <div class="large-5 medium-5 small-5 columns show-for-medium-up">
+            <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo"><?= Yii::t('app', 'TSS') ?></a></div>
+            <div class="large-5 medium-6 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="<?= Url::home() ?>" class="active"><?= Yii::t('app', 'Home') ?></a></li>
@@ -21,7 +21,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                     </ul>
                 </nav>
             </div>
-            <div class="large-3 medium-3 small-3 columns">
+            <div class="large-3 medium-3 small-3 columns header-search-cont hide-for-medium">
                 <form action="<?= Url::to(['/store/search']) ?>">
                     <i class="md md-search" onclick="$(this).parent('form').submit()"></i>
                     <input type="search" name="SearchForm[key]" placeholder="<?= Yii::t('app', 'Search') ?>" value="<?= isset($this->params['searchKey']) ? Html::encode($this->params['searchKey']) : '' ?>">
@@ -31,40 +31,42 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <?php if (!Yii::$app->user->isGuest) { ?>
                 <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                     <div class="shopping-cart">
-                        <span>25</span>
-                        <i class="icon-cart"></i>
+                        <span><?= $this->context->oAuthUser->cartCount ? $this->context->oAuthUser->cartCount : 0 ?></span>
+                        <a href="<?= Url::to(['/cart']) ?>">
+                            <i class="icon-cart"></i>
+                        </a>
                     </div>
                     <div class="user-avatar usermenu-cont">
                         <img src="http://lorempixel.com/50/50/people" alt="" data-drop-down="#usermenu-dropdown">
                         <div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
                             <span class="arrow-up"></span>
                             <img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
-                            <h3><a href="/profile">Islam Magdy</a></h3>
+                            <h3><a href="<?= Url::to(['/profile']) ?>"><?= $this->context->oAuthUser->getName() ?></a></h3>
                             <div class="row user-buttons-cont">
                                 <div class="large-6 medium-6 small-12 columns view-profile-cont">
-                                    <a href="<?=Url::to(['/profile']) ?>"><button>View Profile</button></a>
+                                    <a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
                                 </div>
                                 <div class="large-6 medium-6 small-12 columns logout-cont">
-                                    <a href="<?=Url::to(['/logout']) ?>"><button>Logout</button></a>
+                                    <a href="<?= Url::to(['/user/logout']) ?>" data-method="post"><button><?= Yii::t('app', 'Logout') ?></button></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="lang-switcher" data-route="/ar">
+                    <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">
                         <div class="language-switcher">AR</div>
                     </div>
                 </div>
             <?php } else { ?>
                 <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                     <div class="user-avatar login-cont">
-                        <span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> Login</span>
+                        <span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> <?= Yii::t('app', 'Login') ?></span>
                         <div class="login-dropdown drop-down" id="login-dropdown">
                             <span class="arrow-up"></span>
-                            <a href="<?= Url::to(['/signup']) ?>" class="signup-btn">Sign Up</a>
+                            <a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
                             <?php echo $this->render('//user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
                         </div>
                     </div>
-                    <div class="lang-switcher" data-route="/ar">
+                    <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">
                         <div class="language-switcher">AR</div>
                     </div>
                 </div>
@@ -289,10 +291,6 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             <a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
                         </div>
                     <?php } ?>
-    <!--                <div class="header-product swiper-slide"><img src="<?= Url::to('@frontThemeUrl') ?>/images/src/home-slide-3.png" alt="">
-                        <h2>The BSN Push Training Guide</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non quod numquam sit magni expedita.</p><a href="#" class="shop-now"><i class="md md-shopping-cart"></i>Shop Now 3</a>
-                </div>-->
                 </div>
                 <div class="swiper-pagination"></div>
             </div>

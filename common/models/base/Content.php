@@ -39,7 +39,7 @@ class Content extends Base {
         return [
             [['type'], 'default', 'value' => static::TYPE],
             [['title'], 'required'],
-            [['slug'], 'match', 'pattern' => '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'],
+            [['slug'], 'match', 'pattern' => static::SLUG_PATTERN],
             [['slug'], 'unique', 'targetAttribute' => ['slug', 'type']],
             [['type', 'sort', 'status'], 'integer'],
             [['brief', 'description', 'body'], 'string'],

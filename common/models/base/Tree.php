@@ -60,7 +60,7 @@ class Tree extends \kartik\tree\models\Tree {
         return [
             [['root'], 'default', 'value' => static::ROOT],
             [['name'], 'required'],
-            [['slug'], 'match', 'pattern' => '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'],
+            [['slug'], 'match', 'pattern' => static::SLUG_PATTERN],
             [['slug'], 'unique', 'targetAttribute' => ['slug', 'root']],
             [['active'], 'default', 'value' => 1],
             [['root', 'lft', 'rgt', 'lvl', 'icon_type', 'active', 'selected', 'disabled', 'readonly', 'visible', 'collapsed', 'movable_u', 'movable_d', 'movable_l', 'movable_r', 'removable', 'removable_all'], 'integer'],

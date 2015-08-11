@@ -5,10 +5,7 @@ namespace common\models\custom;
 use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
-use common\models\custom\Category;
-use common\models\custom\Brand;
-use common\models\custom\Size;
-use common\models\custom\Flavor;
+
 
 /**
  * This is the model class for table "product".
@@ -58,7 +55,7 @@ class Product extends \common\models\base\Base {
             [['size_id', 'price', 'qty'], 'required', 'on' => 'child'],
             [['size_id'], 'ruleValidateSize', 'on' => 'child'],
             [['price', 'featured', 'qty'], 'default', 'value' => 0],
-            [['slug'], 'match', 'pattern' => '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'],
+            [['slug'], 'match', 'pattern' => static::SLUG_PATTERN],
             [['slug'], 'unique'],
             [['price'], 'number'],
             [['brief', 'description', 'body'], 'string'],
@@ -274,15 +271,27 @@ class Product extends \common\models\base\Base {
     public function isChild() {
         return $this->parent_id;
     }
-    
-    
+
+    /**
+     * @return bool true if $qty in stock
+     */
+    public function inStock($qty = 1) {
+        return $this->qty >= $qty;
+    }
+
+    /**
+     * @return bool true if product is valid to cart
+     */
+    public function validToCart($qty = 1) {
+        return $this->isChild() && $this->inStock($qty);
+    }
+
     /**
      * @return bool true if product category is "Accessories"
      */
     public function isAccessory() {
         return $this->category->slug == 'accessories';
     }
-    
 
     /**
      * @return string min product childs price 

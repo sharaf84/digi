@@ -9,7 +9,7 @@ use yii\bootstrap\ActiveForm;
 $form = ActiveForm::begin([
             'id' => 'loginForm',
             'action' => Url::to(['/login']),
-                //'options' => ['class' => 'row', 'data-abide' => true],
+                'options' => [ 'data-abide' => true ],
         ]);
 ?>
 <?= Html::activeTextInput($oLoginForm, 'username', ['placeholder' => Yii::t('app', 'Email')]); ?>

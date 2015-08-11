@@ -6,6 +6,11 @@ use yii\helpers\StringHelper;
 use common\helpers\MediaHelper;
 
 class Base extends \yii\db\ActiveRecord {
+    
+    /** @var string  */
+    const SLUG_PATTERN = '/^[a-z0-9]+(?:-[a-z0-9]+)*$/'; // '/^[0-9a-z-]{0,128}$/';
+    /** @var string  */
+    const PHONE_PATTERN = '/^[\d\s-\+\(\)]+$/';
 
     use \webvimark\behaviors\multilanguage\MultiLanguageTrait;
 
@@ -53,14 +58,14 @@ class Base extends \yii\db\ActiveRecord {
      * Global Media hasMany Relation
      */
     public function getMedia() {
-        return $this->hasMany(Media::className(), ['model_id' => 'id'])->where(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+        return $this->hasMany(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
     
     /**
      * Global Media hasOne Relation
      */
     public function getFirstMedia() {
-        return $this->hasOne(Media::className(), ['model_id' => 'id'])->where(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+        return $this->hasOne(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]);//->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
     
     public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = false){

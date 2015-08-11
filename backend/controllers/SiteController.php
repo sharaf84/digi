@@ -11,6 +11,21 @@ use common\models\base\form\Login;
  */
 class SiteController extends BaseController {
 
+    
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() {
+        return [
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+    
     /**
      * @inheritdoc
      */

@@ -6,5 +6,6 @@ return [
     'Articles' => 'المقالات',
     'Search' => 'البحث',
     'Shop Now' => 'تسوق الان',
+    'Read More' => 'المزيد',
 ];
 
