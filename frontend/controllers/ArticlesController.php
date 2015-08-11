@@ -27,7 +27,7 @@ class ArticlesController extends \frontend\components\BaseController {
     }
 
     public function actionView($slug) {
-        $oArticle = Article::find()->where(['slug' => $slug])->with('firstMedia')->one();
+        $oArticle = Article::find()->andWhere(['slug' => $slug])->with('firstMedia')->one();
         if(!$oArticle)
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         return $this->render('view', [

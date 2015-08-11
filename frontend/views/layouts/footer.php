@@ -17,11 +17,11 @@ use yii\helpers\Url; ?>
         <div class="row">
             <div class="large-1 medium-1 small-1 column hide-for-small"><i class="md md-email envelope"></i></div>
             <div class="large-4 medium-4 small-12 column">
-                <h3>Get the latest sales and new product announcements right to your inbox</h3>
+                <h3><?= Yii::t('app', 'Get the latest sales and new product announcements right to your inbox') ?></h3>
             </div>
             <div class="large-7 medium-7 small-12 column">
                 <form action="/" class="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
-                    <input type="email" required placeholder="Email address"><span class="error">Sorry, wrong email</span>
+                    <input type="email" required placeholder="Email address"><span class="error"><?= Yii::t('app', 'Sorry, wrong email') ?></span>
                 </form>
             </div>
         </div>
@@ -37,12 +37,14 @@ use yii\helpers\Url; ?>
     <div class="footer-copy row">
         <hr>
         <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' left' : '' ?>">
-            <p>&copy; 2015 Digitree, All Rights Reserved</p>
+            <p><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></p>
         </div>
         <div class="large-6 medium-6 small-12 columns<?php echo APP_LANG == 'ar' ? ' right' : '' ?>">
             <p class="footer-links">
-
-                <a href="#">About Us</a> - <a href="#">Contact Us</a> - <a href="#">Terms Of Service</a> - <a href="#">Privacy Policy</a>
+                <a href="<?= Url::to(['/site/page', 'slug' => 'about-us']) ?>"><?= Yii::t('app', 'About Us') ?></a> - 
+                <a href="<?= Url::to(['/site/contact-us']) ?>"><?= Yii::t('app', 'Contact Us') ?></a> - 
+                <a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>"><?= Yii::t('app', 'Terms Of Service') ?></a> - 
+                <a href="<?= Url::to(['/site/page', 'slug' => 'privacy-policy']) ?>"><?= Yii::t('app', 'Privacy Policy') ?></a>
             </p>
         </div>
     </div>

@@ -163,7 +163,7 @@ TSS.header = function () {
         e.stopPropagation();
         $(this).click();
     }).click(function (e) {
-         if(e.hasOwnProperty('originalEvent')) {
+        if (e.hasOwnProperty('originalEvent')) {
             var url = $(this).data('categoryUri');
             window.location.href = url;
         }
@@ -176,10 +176,10 @@ TSS.header = function () {
     if (!Helpers.isMobile()) {
         self.s = skrollr.init();
     }
-	$('.open-login-js').click(function (e) {
+    $('.open-login-js').click(function (e) {
         $('#mobile-login-form').removeClass('hide').show();
     });
-	$('.open-signup-js').click(function (e) {
+    $('.open-signup-js').click(function (e) {
         $('#mobile-signup-form').removeClass('hide').show();
     });
 };
@@ -216,26 +216,26 @@ TSS.formsManager = function () {
 
 TSS.contactUsPage = function () {
 
-    if (typeof google !== 'undefined') {
-        google.maps.event.addDomListener(window, 'load', init);
+    //if (typeof google !== 'undefined') {
+    google.maps.event.addDomListener(window, 'load', init);
 
-        function init() {
-            var mapOptions = {
-                zoom: 11,
-                center: new google.maps.LatLng(30.065227, 31.216546),
-                styles: [{"featureType": "all", "elementType": "labels.text.fill", "stylers": [{"color": "#ffffff"}]}, {"featureType": "all", "elementType": "labels.text.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "all", "elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {"featureType": "administrative", "elementType": "geometry.fill", "stylers": [{"color": "#ED2024"}]}, {"featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{"color": "#ED2024"}, {"weight": 1.2}]}, {"featureType": "administrative.locality", "elementType": "geometry.fill", "stylers": [{"lightness": "-1"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.fill", "stylers": [{"lightness": "0"}, {"saturation": "0"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "administrative.land_parcel", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "landscape", "elementType": "geometry", "stylers": [{"color": "#ED2024"}]}, {"featureType": "poi", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road", "elementType": "geometry.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.arterial", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.local", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "transit", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "water", "elementType": "geometry", "stylers": [{"color": "#090228"}]}]
-            };
+    function init() {
+        var mapOptions = {
+            zoom: 11,
+            center: new google.maps.LatLng(30.065227, 31.216546),
+            styles: [{"featureType": "all", "elementType": "labels.text.fill", "stylers": [{"color": "#ffffff"}]}, {"featureType": "all", "elementType": "labels.text.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "all", "elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {"featureType": "administrative", "elementType": "geometry.fill", "stylers": [{"color": "#ED2024"}]}, {"featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{"color": "#ED2024"}, {"weight": 1.2}]}, {"featureType": "administrative.locality", "elementType": "geometry.fill", "stylers": [{"lightness": "-1"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.fill", "stylers": [{"lightness": "0"}, {"saturation": "0"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "administrative.land_parcel", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "landscape", "elementType": "geometry", "stylers": [{"color": "#ED2024"}]}, {"featureType": "poi", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road", "elementType": "geometry.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.arterial", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.local", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "transit", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "water", "elementType": "geometry", "stylers": [{"color": "#090228"}]}]
+        };
 
-            var mapElement = document.getElementById('contact-us-map');
-            var map = new google.maps.Map(mapElement, mapOptions);
-            new google.maps.Marker({
-                position: new google.maps.LatLng(30.065227, 31.216546),
-                map: map,
-                title: 'TSS Zamalek',
-                icon: '/shared/themes/frontend/images/src/map-marker-black.png'
-            });
-        }
+        var mapElement = document.getElementById('contact-us-map');
+        var map = new google.maps.Map(mapElement, mapOptions);
+        new google.maps.Marker({
+            position: new google.maps.LatLng(30.065227, 31.216546),
+            map: map,
+            title: 'TSS Zamalek',
+            icon: '/shared/themes/frontend/images/src/map-marker-black.png'
+        });
     }
+    //}
 };
 
 TSS.shoppingCart = function () {
@@ -335,10 +335,10 @@ TSS.onReady = function () {
             e.preventDefault();
             TSS.newsletter();
         });
-        $(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+        $(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
             $('html').css('overflow', 'hidden');
         });
-        $(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+        $(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
             $('html').css('overflow', 'auto');
         });
     };
@@ -347,7 +347,10 @@ TSS.onReady = function () {
     self.events();
     TSS.header();
     TSS.homepageManager();
-    TSS.contactUsPage();
+    // Changed by Ahmed Sharaf condition doesn't work on function (7aga 3ageba !!)
+    if (typeof google !== 'undefined') {
+        TSS.contactUsPage();
+    };
     TSS.productFilters();
     TSS.dataRoutes();
     TSS.Form = new TSS.formsManager();

@@ -8,11 +8,11 @@ class Article extends \common\models\base\Content {
     
     const TYPE = 2;
     
-    public static function getLatest($limit = 4){
+    public static function getLatest($limit = 1){
         return self::find()->with('firstMedia')->orderBy(['date' => SORT_DESC])->limit($limit)->all();
     }
     
-    public static function getMostRead($limit = 3){
+    public static function getMostRead($limit = 1){
         return self::find()->with('firstMedia')->orderBy(['date' => SORT_DESC])->limit($limit)->all();
     }
     

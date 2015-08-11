@@ -13,8 +13,6 @@ use frontend\models\ProductForm;
  */
 class StoreController extends \frontend\components\BaseController {
 
-    public $defaultAction = 'search';
-
     /**
      * Search Product
      * @param string $slug of category or brand

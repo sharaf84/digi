@@ -196,7 +196,7 @@ class Product extends \common\models\base\Base {
     /**
      * Get Featured Products
      */
-    public static function getFeatured($limit = 3) {
+    public static function getFeatured($limit = 1) {
         return self::find()
                         ->parents()
                         ->andWhere(['featured' => 1])
@@ -209,7 +209,7 @@ class Product extends \common\models\base\Base {
     /**
      * Get Best Seller Products
      */
-    public static function getBestSeller($limit = 3) {
+    public static function getBestSeller($limit = 1) {
         /**
          * @todo change the condition to get best seller products
          */
