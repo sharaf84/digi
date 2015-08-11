@@ -11,9 +11,6 @@ use yii\web\NotFoundHttpException;
  */
 class UsersController extends BaseController {
     
-    /**
-     * @var string used to find the view file if the child class doesn't has its own one.   
-     */
     public $baseViewPath = '/base/users';
     public $model = '\common\models\base\User';
     public $searchModel = '\common\models\base\search\User';

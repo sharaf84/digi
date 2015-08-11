@@ -12,9 +12,7 @@ use backend\components\BaseController;
 class TreeController extends BaseController {
 
     public $defaultAction = 'manage';
-    /**
-     * @var string used to find the view file if the child class doesn't has its own one.   
-     */
+
     public $baseViewPath = '/base/tree';
     public $model = '\common\models\base\Tree';
     public $searchModel = '\common\models\base\search\Tree';

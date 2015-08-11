@@ -12,9 +12,6 @@ use yii\web\NotFoundHttpException;
  */
 class MediaController extends BaseController {
 
-    /**
-     * @var string used to find the view file if the child class doesn't has its own one.   
-     */
     public $baseViewPath = '/base/media';
     public $model = '\common\models\base\Media';
     public $searchModel = '\common\models\base\search\Media';

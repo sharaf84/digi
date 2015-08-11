@@ -63,11 +63,11 @@ Pjax::begin([
                 <?php if ($oCart->isOverflow()) { ?>
                     <?php if ($oCart->item->inStock()) { ?>
                         <a href="<?= Url::to(['/cart/match', 'id' => $oCart->item_id]) ?>" data-method="post" class="cart-overflow">
-                            <?= Yii::t('app', 'Sorry, avalible quantity is {qty}. Match Quantity.', ['qty' => $oCart->item->qty]) ?>
+                            <?= Yii::t('app', 'Sorry, available quantity is {qty}. Match Quantity.', ['qty' => $oCart->item->qty]) ?>
                         </a>
                     <?php } else { ?>
                         <a href="<?= Url::to(['/cart/remove', 'id' => $oCart->item_id]) ?>" data-method="post" class="cart-overflow">
-                            <?= Yii::t('app', 'Sorry, Item is out of stoke. Remove Item.') ?>
+                            <?= Yii::t('app', 'Sorry, item is out of stoke. Remove Item.') ?>
                         </a>
                     <?php } ?>
                 <?php } ?>

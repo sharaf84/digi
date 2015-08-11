@@ -7,10 +7,10 @@ class Page extends \common\models\base\Content {
     const TYPE = 1;
     
     public static function getHomeSlider(){
-        return self::findOne(['slug' => 'home-slider']);
+        return self::find()->with('media')->andWhere(['slug' => 'home-slider'])->one();
     }
     
     public static function getHomeBanner(){
-        return self::findOne(['slug' => 'home-banner']);
+        return self::find()->with('firstMedia')->andWhere(['slug' => 'home-banner'])->one();
     }
 }
