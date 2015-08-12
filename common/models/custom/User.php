@@ -37,7 +37,7 @@ class User extends \common\models\base\User {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCartCount() {
+    public function getTotalCartCount() {
         return $this->getCartItems()->sum('qty');
     }
     

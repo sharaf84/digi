@@ -23,7 +23,7 @@ $this->title = $oProfile->getName();
             <h3><?= $oProfile->getName() ?></h3>
             <p>
                 <strong><?= Yii::t('app', 'Mobile') ?>:</strong> <?= Html::encode($oProfile->phone) ?> <br />
-                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->address) ?>, <?= Html::encode($oProfile->city->name) ?> <br />
+                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->getFullAddress()) ?> <br />
                 <strong><?= Yii::t('app', 'Email') ?>:</strong> <?= Html::encode($this->context->oAuthUser->email) ?> <br />
             </p>
         </div>

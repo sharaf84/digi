@@ -31,7 +31,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <?php if (!Yii::$app->user->isGuest) { ?>
                 <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                     <div class="shopping-cart">
-                        <span><?= $this->context->oAuthUser->cartCount ? $this->context->oAuthUser->cartCount : 0 ?></span>
+                        <span><?= $this->context->oAuthUser->totalCartCount ? $this->context->oAuthUser->totalCartCount : 0 ?></span>
                         <a href="<?= Url::to(['/cart']) ?>">
                             <i class="icon-cart"></i>
                         </a>

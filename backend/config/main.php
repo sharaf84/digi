@@ -60,7 +60,7 @@ return [
          *  here you can set theme used for your backend application 
          */
         'view' => [
-            //'class' => 'digi\web\View',// better: overwite the render function at BaseController
+            'class' => 'digi\web\View',
             'theme' => [
                 'pathMap' => ['@app/views' => '@metronicTheme'],
             ],

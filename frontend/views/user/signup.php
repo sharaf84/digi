@@ -20,7 +20,7 @@ $this->title = Yii::t('app', 'Sign Up');
                 //'action' => Url::to(['']),
                 //'enableClientValidation' => true,
                 //'validateOnSubmit' => true,
-                'options' => ['class' => 'row', 'data-abide' => true],
+                'options' => ['class' => 'row'],//'data-abide' => true
     ]);
     ?>
 
