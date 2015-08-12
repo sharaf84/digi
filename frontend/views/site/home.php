@@ -54,19 +54,14 @@ $this->title = Yii::t('app', 'TSS Home Page');
 </div>
 
 <?php if($homeBanner && $homeBanner->firstMedia){?>
-<div class="dark-section" style="background-image:url('<?= $homeBanner->getFeaturedImgUrl() ?>');">
+<div class="dark-section" style="background-image:url('<?= $homeBanner->getFeaturedImgUrl('home-banner') ?>');">
     <div class="row">
         <div class="large-6 medium-6 small-12 columns">
             <h3><?= Html::encode($homeBanner->firstMedia->title) ?></h3>
             <p><?= Html::encode($homeBanner->firstMedia->description) ?></p>
             <a href="<?= $homeBanner->firstMedia->link ?>" class="shop-now" target="blanck"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Shop Now') ?></a>
         </div>
-        <div class="large-6 medium-6 small-12 columns hide-for-small">
-			<!--
-            <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/MergedLayers.png" alt="">
-            <img src="<?= $homeBanner->getFeaturedImgUrl() ?>" alt="">
-			-->
-        </div>
+        <div class="large-6 medium-6 small-12 columns hide-for-small"></div>
     </div>
 </div>
 <?php }?>

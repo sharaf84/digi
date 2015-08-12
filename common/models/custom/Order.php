@@ -69,9 +69,9 @@ class Order extends \common\models\base\Base {
     public function rules() {
         return [
             [['user_id'], 'required'],
-            [['name', 'email', 'phone', 'address', 'payment_method'], 'required', 'on' => 'checkout'],//, 'amount', 'status', 'token'
+            [['name', 'email', 'phone', 'address', 'payment_method'], 'required', 'on' => 'checkout'], //, 'amount', 'status', 'token'
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
-            //[['amount'], 'number', 'integerOnly' => true, 'min' => 5],
+            [['amount'], 'number', 'min' => 5, 'max' => 10000],
             [['user_id', 'payment_method', 'new', 'status'], 'integer'],
             [['status'], 'in', 'range' => array_keys(static::getStatusList())],
             [['payment_method'], 'in', 'range' => array_keys(static::getPaymentMethodList())],
@@ -106,11 +106,32 @@ class Order extends \common\models\base\Base {
         ];
     }
 
-    public function beforeSave($insert) {
-        if ($this->scenario == 'checkout') {
-            $this->beforeCheckout();
+    public function afterSave($insert, $changedAttributes) {
+        parent::afterSave($insert, $changedAttributes);
+        if (!$insert) {
+            //var_dump($changedAttributes, $this->oldAttributes['status'], $this->status, $this->isAttributeChanged('status')); die;
+            if (isset($changedAttributes['status']) && $this->status != $changedAttributes['status']) {
+                /**
+                 * Call order custom callbacks (afterCheckout(), ...) based on status.
+                 */
+                switch ($this->status) {
+                    case self::STATUS_PENDING:
+                        //$this->afterCheckout();
+                        break;
+
+                    case self::STATUS_IN_PROGRESS:
+                        $this->afterProgress();
+                        break;
+
+                    case self::STATUS_DELIVERED:
+                        $this->afterDelivery();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
-        return parent::beforeSave($insert);
     }
 
     /**
@@ -135,6 +156,18 @@ class Order extends \common\models\base\Base {
     public function getLiveCartPrice() {
         //joinWith('item') is a relation at Cart model
         return $this->getCartItems()->joinWith('item')->sum('`cart`.`qty` * `' . static::itemTableName() . '`.`price`');
+    }
+
+    /**
+     * Gets total cart price from live items
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHasOverflowCart() {
+        //joinWith('item') is a relation at Cart model
+        return $this->getCartItems()
+                        ->joinWith('item')
+                        ->andWhere('`cart`.`qty` > `' . static::itemTableName() . '`.`qty`')
+                        ->exists();
     }
 
     /**
@@ -319,22 +352,65 @@ class Order extends \common\models\base\Base {
         $this->token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
+    public function checkout() {
+        $this->scenario = 'checkout';
+        if ($this->validate() && !$this->hasOverflowCart && $this->user_id == $this->oldAttributes['user_id']) {
+            $this->generateToken();
+            $this->amount = $this->liveCartPrice;
+            $this->status = static::STATUS_PENDING;
+            $oDBTransaction = Yii::$app->db->beginTransaction();
+            if ($this->save() && $this->afterCheckout()) {
+                $oDBTransaction->commit();
+                return true;
+            } else
+                $oDBTransaction->rollBack();
+        }
+        return false;
+    }
+
     /**
      * Updates cart attrs with live item values
      */
-    public function autoUpdateCartItems() {
+//    public function autoUpdateCartItems() {
+//        if (!$this->cartItems)
+//            return false;
+//        foreach ($this->cartItems as $oCart) {
+//            $oCart->price = $oCart->item->price;
+//            $oCart->title = $oCart->item->title;
+//            if (!$oCart->save())
+//                return false;
+//        }
+//        return true;
+//    }
+//    
+    ///////////// afterSave Actions ////////////////////
+
+    public function afterCheckout() {
+        /**
+         * Updates cart price and title with live item values
+         * Deduct cart qty from live item
+         * @todo enhancements
+         */
         foreach ($this->cartItems as $oCart) {
             $oCart->price = $oCart->item->price;
             $oCart->title = $oCart->item->title;
-            $oCart->save();
+            $oCart->item->qty -= $oCart->qty;
+            if(!($oCart->save() && $oCart->item->save()))
+                return false;
         }
+        return true;
     }
 
-    public function beforeCheckout() {
-        $this->generateToken();
-        $this->amount = $this->liveCartPrice;
-        $this->status = static::STATUS_PENDING;
-        $this->autoUpdateCartItems();
+    public function afterProgress() {
+        /**
+         * @todo implementation
+         */
+    }
+
+    public function afterDelivery() {
+        /**
+         * @todo implementation
+         */
     }
 
 }

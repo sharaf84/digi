@@ -15,6 +15,7 @@ return [
     'sizes' => [
         'micro' => ['thumbnail', 50, 50],
         'home-slider' => ['thumbnail', 1231, 673],
+        'home-banner' => ['thumbnail',  1231, 505],
         'home-product' => ['thumbnail', 207, 395],
         'home-article' => ['thumbnail', 220, 307],
         'list-product' => ['thumbnail', 220, 238],

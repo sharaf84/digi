@@ -41,6 +41,13 @@ $form = ActiveForm::begin([
 </div>
 
 <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
+    <label><?= Html::activeLabel($oCheckoutOrder, 'comment'); ?>
+        <?= Html::activeTextInput($oCheckoutOrder, 'comment'); ?>
+    </label>
+    <?= Html::error($oCheckoutOrder, 'comment', ['tag' => 'small', 'class' => 'error']); ?>
+</div>
+
+<div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
     <label><?= Html::activeLabel($oCheckoutOrder, 'payment_method'); ?>
         <div class="select-component"><i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
             <?= Html::activeDropDownList($oCheckoutOrder, 'payment_method', common\models\custom\Order::getPaymentMethodList(), ['prompt' => Yii::t('app', 'Select Payment Method')]); ?>

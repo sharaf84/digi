@@ -41,14 +41,18 @@ class OrdersController extends \frontend\components\BaseController {
         if (!$this->oAuthUser->cartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
         
+        if ($this->oAuthUser->cartOrder->hasOverflowCart){
+            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, please fix your cart.'));
+            return $this->redirect(['/cart']);
+        }
+        
         $oCheckoutOrder = $this->oAuthUser->cartOrder;
         $oCheckoutOrder->scenario = 'checkout';
         if ($oCheckoutOrder->load(Yii::$app->request->post())) {
-            if ($oCheckoutOrder->save()) {
+            if ($oCheckoutOrder->checkout()) {
                 Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Order sent successfully.'));
-                //return $this->redirect(['/profile']);
+                return $this->redirect(['/profile']);
             } else {
-                var_dump($oCheckoutOrder->errors);
                 Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, error sending order.'));
             }
         }else{
