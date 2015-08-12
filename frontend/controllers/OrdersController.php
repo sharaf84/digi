@@ -38,7 +38,7 @@ class OrdersController extends \frontend\components\BaseController {
     }
 
     public function actionCheckout() {
-        if (!$this->oAuthUser->cartOrder)
+        if (!($this->oAuthUser->cartOrder && $this->oAuthUser->cartOrder->cartItems))
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
         
         if ($this->oAuthUser->cartOrder->hasOverflowCart){
