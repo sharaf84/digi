@@ -31,7 +31,7 @@ use yii\helpers\Url; ?>
             <div class="large-3 medium-3 small-3 columns"><a href="#"><i class="fa fa-facebook"></i></a></div>
             <div class="large-3 medium-3 small-3 columns"><a href="#"><i class="fa fa-twitter"></i></a></div>
             <div class="large-3 medium-3 small-3 columns"><a href="#"><i class="fa fa-instagram"></i></a></div>
-            <div class="large-3 medium-3 small-3 columns"><a href="#"><i class="fa fa-pinterest"></i></a></div>
+            <div class="large-3 medium-3 small-3 columns"><a href="#"><i class="fa fa-pinterest-p"></i></a></div>
         </div>
     </div>
     <div class="footer-copy row">

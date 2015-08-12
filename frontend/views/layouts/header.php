@@ -6,18 +6,18 @@ use yii\widgets\ActiveForm;
 
 $isHome = Yii::$app->controller->action->id == 'home';
 ?>
-<header class="<?php echo $isHome ? '' : 'single-header'; ?>">
+<header class="<?php echo $isHome ? 'home-page' : 'single-header'; ?>">
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
-        <div class="header-top-bar">
+        <div class="header-top-bar" >
             <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
             <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo"><?= Yii::t('app', 'TSS') ?></a></div>
             <div class="large-5 medium-6 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="<?= Url::home() ?>" class="active"><?= Yii::t('app', 'Home') ?></a></li>
-                        <li><a href="<?= Url::to(['/store']) ?>" data-drop-down="#store-dropdown"><?= Yii::t('app', 'Store') ?></a></li>
-                        <li><a href="<?= Url::to(['/articles']) ?>" data-drop-down="#articles-dropdown"><?= Yii::t('app', 'Articles') ?></a></li>
+                        <li><a href="<?= Url::home() ?>" class="<?=   $isHome ? 'active' : '' ?>"><?= Yii::t('app', 'Home') ?></a></li>
+                        <li><a href="<?= Url::to(['/store']) ?>" class="<?=   (Yii::$app->controller->id  ==  'store' )  ? 'active' : '' ?>"  data-drop-down="#store-dropdown"><?= Yii::t('app', 'Store') ?></a></li>
+                        <li><a href="<?= Url::to(['/articles']) ?>" class="<?=   (Yii::$app->controller->id  ==  'articles' )  ? 'active' : '' ?>" data-drop-down="#articles-dropdown"><?= Yii::t('app', 'Articles') ?></a></li>
                     </ul>
                 </nav>
             </div>

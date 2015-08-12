@@ -9,6 +9,16 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
+<div id="checkpoint-a" class="single-page row">
+
+    <div class="page-title large-12 medium-12 small-12 columns">
+        <h2><?= Html::encode($this->title) ?></h2>
+    </div>
+
+    <div class="admin-content"><?= nl2br(Html::encode($message)) ?></div>
+
+</div>
+<!--
 <div class="site-error">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -25,3 +35,4 @@ $this->title = $name;
     </p>
 
 </div>
+-->
