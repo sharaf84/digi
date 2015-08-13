@@ -290,11 +290,11 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <div id="checkpoint-a" class="header-slider swiper-container">
                 <div class="swiper-wrapper">
                     <?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
-                        <div class="header-product swiper-slide">
+                        <div class="header-product swiper-slide" onclick="javascript:location='<?= $oMedia->link ?>'">
                             <img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
                             <h2><?= $oMedia->title ?></h2>
                             <p><?= $oMedia->description ?></p>
-                            <a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>
+                            <!--<a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>-->
                         </div>
                     <?php } ?>
                 </div>

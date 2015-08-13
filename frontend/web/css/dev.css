@@ -19,12 +19,12 @@ a.cart-overflow{color: #ec111b;}
 
 header .drop-down {-webkit-transition-duration:0s !important;-moz-transition-duration:0s !important;-o-transition-duration:0s !important;transition-duration:0s !important}
 
-header .main-nav ul li a {font-family: 'LevenimMTBold' !important;text-transform:uppercase;font-weight:bold !important;font-size:18px !important;font-smooth:none;-webkit-font-smoothing:none}
+header .main-nav ul li a {font-family: 'LevenimMTBold' !important;text-transform:uppercase;font-size:18px !important}
 
 .home-tabs ul.tabs li.tab-title:hover {background-color:transparent !important}
 .home-tabs ul.tabs li.tab-title a {margin:0 4px}
-.tabs dd > a, .tabs .tab-title > a {background-color:#292929 !important;color:#cccccc !important}
-.tabs dd > a:hover, .tabs .tab-title > a:hover {background-color:#181818 !important}
+.home-tabs dd > a, .home-tabs .tab-title > a {background-color:#292929 !important;color:#cccccc !important}
+.home-tabs dd > a:hover, .home-tabs .tab-title > a:hover {background-color:#181818 !important}
 .home-tabs ul.tabs li.tab-title.active a {background-color:#e61b1e !important;color:#fff !important}
 
 header .header-top-bar {-webkit-transition-duration:0s !important;-moz-transition-duration:0s !important;-o-transition-duration:0s !important;transition-duration:0s !important}
@@ -46,3 +46,15 @@ header .user-avatar.login-cont .login-dropdownBox {padding-top:30px}
 header .user-avatar.usermenu-cont .usermenu-dropdownSpace, header .user-avatar.login-cont .login-dropdownSpace {height: 38px}
 header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {top:28px !important}
 header .user-avatar.login-cont .signup-btn {top:42px !important}
+
+.flash-messagesBox {position:fixed;right:0;bottom:0;z-index:99999999;width:100%}
+	.flash-messagesClose {cursor:pointer;float:right;margin:12px 24px;color:#fff}
+	.flash-messages {}
+		.flash-message {padding:12px 24px;color:#fff}
+		.flash-message.error {background-color:#b71c1c}
+		.flash-message.information {background-color:#0d47a1}
+		.flash-message.warning {background-color:#f57f17}
+		.flash-message.success {background-color:#1b5e20}
+			.flash-message p {margin:0}
+			
+.swiper-slide {cursor:pointer}

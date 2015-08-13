@@ -60,14 +60,14 @@ TSS.homepageManager = function () {
             var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
             $('header').attr('style', 'background: #fff;');
             $('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
-            $('.header-slider h2').removeClass('animated slideInLeft');
+            //$('.header-slider h2').removeClass('animated slideInLeft');
         },
         onSlideChangeEnd: function (instance) {
             var slides = instance.slides;
             var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
             $('header').attr('style', 'background: #111;');
             $('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
-            $('.header-slider h2').addClass('animated slideInLeft');
+            //$('.header-slider h2').addClass('animated slideInLeft');
         }
     });
 };
@@ -183,6 +183,12 @@ TSS.header = function () {
     $('.open-signup-js').click(function (e) {
         $('#mobile-signup-form').removeClass('hide').show();
     });
+	// Added By Muhammad Ali
+	// Start
+	$('body').on('click', '.flash-messagesClose', function () {
+		$(this).parents('.flash-messagesBox').slideUp();
+	});
+	// End
 };
 
 TSS.dataRoutes = function () {
