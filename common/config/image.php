@@ -15,15 +15,18 @@ return [
     'sizes' => [
         'micro' => ['thumbnail', 50, 50],
         'home-slider' => ['thumbnail', 1231, 673],
+        'home-banner' => ['thumbnail',  1231, 505],
         'home-product' => ['thumbnail', 207, 395],
         'home-article' => ['thumbnail', 220, 307],
         'list-product' => ['thumbnail', 220, 238],
         'main-product' => ['thumbnail', 251, 496],
         'bottom-product' => ['thumbnail', 164, 314],
         'cart-product' => ['thumbnail', 53, 101],
+        'dropdown-product' => ['thumbnail', 87, 111],
         //'background-product' => ['thumbnail', 251, 496],
         'list-article' => ['thumbnail', 142, 140],
         'main-article' => ['thumbnail', 1000, 317],
         'bottom-article' => ['thumbnail', 303, 197],
+        'dropdown-article' => ['thumbnail', 193, 125],
     ]
 ];

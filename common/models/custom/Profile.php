@@ -86,4 +86,8 @@ class Profile extends \common\models\base\Base
     public function getCity() {
         return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
+    
+    public function getFullAddress() {
+        return Html::encode($this->address) . ', ' . Html::encode($this->city->name);
+    }
 }

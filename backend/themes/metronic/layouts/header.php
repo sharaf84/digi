@@ -1,13 +1,15 @@
 <?php
 
-use yii\helpers\Url; ?>
+use yii\helpers\Html;
+use yii\helpers\Url;
+?>
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner">
         <div class="container">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a class="logo-bg" href="index.html">
+                <a class="logo-bg" href="<?= Url::home(); //Url::to('/');  ?>">
                     <img src="<?= Url::to(['/images/logo.png']); ?>" alt="logo" class="logo-default"/>
                 </a>
                 <div class="menu-toggler sidebar-toggler hide">
@@ -242,17 +244,17 @@ use yii\helpers\Url; ?>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="extra_profile.html">
+                                <a href="<?= Url::to(['/settings'])?>">
                                     <i class="icon-settings"></i> Settings </a>
                             </li>
                             <li>
-                                <a href="page_calendar.html">
+                                <a href="<?= Url::to(['/users/change-password', 'id' => 1])?>">
                                     <i class="icon-key"></i> Change Password </a>
                             </li>
                             <li class="divider">
                             </li>
                             <li><?php
-                                echo yii\helpers\Html::a('<i class="icon-logout"></i> Log Out', Url::to(['site/logout']), [
+                                echo Html::a('<i class="icon-logout"></i> Log Out', Url::to(['/site/logout']), [
                                     'data-method' => 'post',
                                 ]);
                                 ?>

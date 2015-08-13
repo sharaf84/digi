@@ -9,7 +9,8 @@ span.shop-now, span.shop-now:hover {background: #cccccc;}
 a.at-cart, a.at-cart:hover {background: #252525;}
 .single-page.shopping-cart .cart-quantity-cont i.disable, .single-page.shopping-cart .cart-quantity-cont i.disable:hover {background: #252525; cursor: default}
 .cart-overflow{background: #f39997;}
-a.cart-overflow{color: #ec111b;}
+a.cart-overflow{color: #e61b1e;}
+.single-page.shopping-cart button[type="submit"].cart-overflow {background: #e61b1e; cursor: default;}
 
 @font-face {
   font-family: 'LevenimMTBold';

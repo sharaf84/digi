@@ -17,7 +17,21 @@ class User extends \common\models\base\User {
      * @return \yii\db\ActiveQuery
      */
     public function getOrders() {
-        return $this->hasMeny(Order::className(), ['user_id' => 'id']);
+        return $this->hasMany(Order::className(), ['user_id' => 'id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getActiveOrders() {
+        return $this->hasMany(Order::className(), ['user_id' => 'id'])->andWhere(['!=', 'status', Order::STATUS_CART]);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getActiveCartItems() {
+        return $this->hasMany(Cart::className(), ['order_id' => 'id'])->via('activeOrders');
     }
     
     /**
@@ -37,7 +51,7 @@ class User extends \common\models\base\User {
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCartCount() {
+    public function getTotalCartCount() {
         return $this->getCartItems()->sum('qty');
     }
     

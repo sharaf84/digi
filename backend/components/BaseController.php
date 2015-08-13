@@ -36,16 +36,16 @@ class BaseController extends Controller {
         AppAsset::register($this->view);
     }
     
-    /**
-     * @inheritdoc
-     * Overwite the function to render the view file at the $baseViewPath if it was not found at the default path.
-     */
-    public function render($view, $params = array()) {
-        try {
-            return parent::render($view, $params);
-        } catch (yii\base\InvalidParamException $exc) {
-            return parent::render($this->baseViewPath . DIRECTORY_SEPARATOR . $view, $params);
-        }
-    }
+//    /**
+//     * @inheritdoc
+//     * Overwite the function to render the view file at the $baseViewPath if it was not found at the default path.
+//     */
+//    public function render($view, $params = array()) {
+//        try {
+//            return parent::render($view, $params);
+//        } catch (yii\base\InvalidParamException $exc) {
+//            return parent::render($this->baseViewPath . DIRECTORY_SEPARATOR . $view, $params);
+//        }
+//    }
 
 }

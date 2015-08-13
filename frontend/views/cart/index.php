@@ -51,15 +51,16 @@ Pjax::begin([
         </div>
 
         <?php
-        $itemTotalPrice = $cartTotalPrice = 0;
+        $itemTotalPrice = $cartTotalPrice = $overflow = 0;
         foreach ($cartItems as $oCart) {
             $itemTotalPrice = $oCart->item->price * $oCart->qty;
             $cartTotalPrice += $itemTotalPrice;
+            $oCart->isOverflow() and $overflow = true;
             ?>
 
             <div class="row as-table-row single-product <?= $oCart->isOverflow() ? 'cart-overflow' : ''; ?>" data-product>
                 <!-- Product Item -->
-                
+
                 <?php if ($oCart->isOverflow()) { ?>
                     <?php if ($oCart->item->inStock()) { ?>
                         <a href="<?= Url::to(['/cart/match', 'id' => $oCart->item_id]) ?>" data-method="post" class="cart-overflow">
@@ -71,7 +72,7 @@ Pjax::begin([
                         </a>
                     <?php } ?>
                 <?php } ?>
-                
+
                 <?php
                 echo Html::a('<span class="remove-product">&times;</span>', Url::to(['/cart/remove', 'id' => $oCart->item_id]), [
                     //'data-confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
@@ -132,13 +133,14 @@ Pjax::begin([
 
         <div class="row as-table-row checkout-btn-cont">
             <div class="large-2 medium-2 small-12 columns right">
-                <button type="submit">Checkout</button>
+                <a href="<?= $overflow ? '#' : Url::to(['/orders/checkout']) ?>">
+                    <button type="submit" class="<?= $overflow ? 'cart-overflow' : ''?>"><?= Yii::t('app', 'Checkout') ?></button>
+                </a>
             </div>
         </div>
 
-        <?php
-        ActiveForm::end();
-    }
-    ?>
+        <?php ActiveForm::end(); ?>
+
+    <?php } ?>
 </div>
 <?php Pjax::end(); ?>

@@ -7,11 +7,20 @@ $this->title = Yii::t('app', 'Store');
 ?>
 <div id="checkpoint-a" class="single-page archive-page row">
     <div class="page-title large-12 medium-12 small-12 columns">
-        <h2><?= $slug ? Inflector::camel2words($slug) : Yii::t('app', 'Search results of: {key}', ['key' => $oSearchForm->key]) ?></h2>
+        <h2>
+            <?php
+            if ($slug) {
+                echo Inflector::camel2words($slug);
+            } elseif ($oSearchForm->key) {
+                echo Yii::t('app', 'Search results of: {key}', ['key' => $oSearchForm->key]);
+            }else
+                echo Yii::t('app', 'Store');
+            ?>
+        </h2>
     </div>
-    <?php Pjax::begin(['id' => 'pjaxStore']); ?>
+<?php Pjax::begin(['id' => 'pjaxStore']); ?>
 
-    <?php echo $this->render('_searchForm', ['oSearchForm' => $oSearchForm, 'slug' => $slug,]); ?>
+        <?php echo $this->render('_searchForm', ['oSearchForm' => $oSearchForm, 'slug' => $slug,]); ?>
 
     <div class="products-list">
         <?=
@@ -33,13 +42,13 @@ $this->title = Yii::t('app', 'Store');
         ])
         ?>
     </div>
-    <?php Pjax::end(); ?>
+<?php Pjax::end(); ?>
 
-    <?php if ($bestSellerProducts) { ?>
+<?php if ($bestSellerProducts) { ?>
         <div class="page-title large-12 medium-12 small-12 columns">
             <h2><?= Yii::t('app', 'Best Seller') ?></h2>
         </div>
 
-        <?= $this->render('_bottomProducts', ['products' => $bestSellerProducts]) ?>
-    <?php } ?>
+    <?= $this->render('_bottomProducts', ['products' => $bestSellerProducts]) ?>
+<?php } ?>
 </div>

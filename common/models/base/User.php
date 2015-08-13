@@ -133,18 +133,6 @@ class User extends Base implements IdentityInterface {
     }
 
     /**
-     * Finds out if token is valid
-     * @param string $token
-     * @param timestamp $expire
-     * @return bool
-     */
-    public static function isValidToken($token, $expire) {
-        $parts = explode('_', $token);
-        $timestamp = (int) end($parts);
-        return $timestamp + $expire >= time();
-    }
-
-    /**
      * @inheritdoc
      */
     public function getId() {

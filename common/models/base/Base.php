@@ -75,5 +75,16 @@ class Base extends \yii\db\ActiveRecord {
     public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = false){
         return ($this->media && !empty($this->media[$index])) ? $this->media[$index]->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
-
+    
+    /**
+     * Finds out if token is valid
+     * @param string $token
+     * @param timestamp $expire
+     * @return bool
+     */
+    public static function isValidToken($token, $expire) {
+        $parts = explode('_', $token);
+        $timestamp = (int) end($parts);
+        return $timestamp + $expire >= time();
+    }
 }

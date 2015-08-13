@@ -23,7 +23,7 @@ $this->title = $oProfile->getName();
             <h3><?= $oProfile->getName() ?></h3>
             <p>
                 <strong><?= Yii::t('app', 'Mobile') ?>:</strong> <?= Html::encode($oProfile->phone) ?> <br />
-                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->address) ?>, <?= Html::encode($oProfile->city->name) ?> <br />
+                <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->getFullAddress()) ?> <br />
                 <strong><?= Yii::t('app', 'Email') ?>:</strong> <?= Html::encode($this->context->oAuthUser->email) ?> <br />
             </p>
         </div>
@@ -88,123 +88,52 @@ $this->title = $oProfile->getName();
                         Total
                     </div>
                 </div>
+                <?php
+                foreach ($activeOrders as $oOrder) {
+                    $orderStatus = isset($oOrder->statusList[$oOrder->status]) ? $oOrder->statusList[$oOrder->status] : '';
+                    foreach ($oOrder->cartItems as $oCart) {
+                        ?>
 
-                <!-- Product Item -->
-                <div class="row as-table-row">
-                    <div class="large-4 medium-4 small-12 columns as-table-cell">
-                        <div class="row">
-                            <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
-                                <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/NITRO-TECH.png" alt="">
+                        <!-- Product Item -->
+                        <div class="row as-table-row">
+                            <div class="large-4 medium-4 small-12 columns as-table-cell">
+                                <div class="row">
+                                    <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
+                                        <img src="<?= $oCart->item->getFeaturedImgUrl('cart-product') ?>" alt="<?= Html::encode($oCart->title) ?>">
+                                    </div>
+                                    <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
+                                        <h4><?= Html::encode($oCart->title) ?></h4>
+                                        <p>
+                                            <?php if ($oCart->item->isAccessory()) { ?>
+                                                <strong><?= Yii::t('app', 'Color') ?>:</strong> <?= $oCart->item->color ?>
+                                            <?php } else { ?>
+                                                <strong><?= Yii::t('app', 'Flavour') ?>:</strong> <?= $oCart->item->flavor->name ?>
+                                            <?php } ?>
+                                            - 
+                                            <strong><?= Yii::t('app', 'Size') ?>:</strong> <?= $oCart->item->size->name ?>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
-                                <h4>Casin-Peak ihner armor</h4>
-                                <p><strong>Flavour:</strong> chocolate - <strong>Size:</strong> 150g</p>
+                            <div class="large-2 medium-2 small-3 columns as-table-cell">
+                                <span class="<?= strtolower($orderStatus) ?>"><?= $orderStatus ?></span>
+                            </div>
+                            <div class="large-2 medium-2 small-3 columns as-table-cell">
+                                <span><?= $oCart->price ?> <?= CURRENCY_SYMBOL ?></span>
+                            </div>
+                            <div class="large-2 medium-2 small-3 columns as-table-cell">
+                                <span><?= $oCart->qty ?></span>
+                            </div>
+                            <div class="large-2 medium-2 small-3 columns as-table-cell">
+                                <span><?= $oCart->price*$oCart->qty ?> <?= CURRENCY_SYMBOL ?></span>
                             </div>
                         </div>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span class="pending">Pending</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>199 LE</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>2</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>398 LE</span>
-                    </div>
-                </div>
-                <!-- [/] Product Item -->
-
-                <!-- Product Item -->
-                <div class="row as-table-row">
-                    <div class="large-4 medium-4 small-12 columns as-table-cell">
-                        <div class="row">
-                            <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
-                                <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/NITRO-TECH.png" alt="">
-                            </div>
-                            <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
-                                <h4>Casin-Peak ihner armor</h4>
-                                <p><strong>Flavour:</strong> chocolate - <strong>Size:</strong> 150g</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span class="pending">Pending</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>199 LE</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>2</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>398 LE</span>
-                    </div>
-                </div>
-                <!-- [/] Product Item -->
-
-                <!-- Product Item -->
-                <div class="row as-table-row">
-                    <div class="large-4 medium-4 small-12 columns as-table-cell">
-                        <div class="row">
-                            <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
-                                <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/NITRO-TECH.png" alt="">
-                            </div>
-                            <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
-                                <h4>Casin-Peak ihner armor</h4>
-                                <p><strong>Flavour:</strong> chocolate - <strong>Size:</strong> 150g</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span class="pending">Pending</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>199 LE</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>2</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>398 LE</span>
-                    </div>
-                </div>
-                <!-- [/] Product Item -->
-
-                <!-- Product Item -->
-                <div class="row as-table-row">
-                    <div class="large-4 medium-4 small-12 columns as-table-cell">
-                        <div class="row">
-                            <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
-                                <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/NITRO-TECH.png" alt="">
-                            </div>
-                            <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">
-                                <h4>Casin-Peak ihner armor</h4>
-                                <p><strong>Flavour:</strong> chocolate - <strong>Size:</strong> 150g</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span class="pending">Pending</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>199 LE</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>2</span>
-                    </div>
-                    <div class="large-2 medium-2 small-3 columns as-table-cell">
-                        <span>398 LE</span>
-                    </div>
-                </div>
-                <!-- [/] Product Item -->
-
-
+                        <!-- [/] Product Item -->
+                    <?php
+                    }
+                }
+                ?>
             </div>
         </div>
     </div>
-
-
 </div>

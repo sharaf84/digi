@@ -34,7 +34,7 @@ Yii::$app->metaTags->register($oProduct);
             <div class="row">
                 <div class="large-8 medium-8 small-12 columns">
                     <!--<a href="#" class="shop-now" onclick="TSS.Form.ajaxSubmit('#productForm', '.single-product');"><i class="md md-shopping-cart"></i> Add To Cart</a>-->
-                    <?php if ($oChildProduct) { ?>
+                    <?php if ($oChildProduct && $oChildProduct->inStock()) { ?>
                         <?php if (common\models\custom\Cart::isItemInUserCartOrder($oChildProduct->id)) { ?>
                             <a href="<?= Url::to(['/cart']) ?>" class="shop-now at-cart"><i class="md md-shopping-cart"></i> <?= Yii::t('app', 'Already In Cart') ?></a>
                         <?php } else { ?>

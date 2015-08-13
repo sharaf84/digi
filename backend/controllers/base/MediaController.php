@@ -35,7 +35,7 @@ class MediaController extends BaseController {
      * @return mixed
      */
     public function actionIndex($model = '', $modelId = null) {
-        !empty($model && $modelId) and Yii::$app->session['Media'] = ['model' => $model, 'model_id' => $modelId];
+        ($model && $modelId) and Yii::$app->session['Media'] = ['model' => $model, 'model_id' => $modelId];
         $searchModel = new $this->searchModel;
         $dataProvider = $searchModel->search(array_merge_recursive(Yii::$app->request->queryParams, ['Media' => Yii::$app->session['Media']]));
         return $this->render('index', [
