@@ -30,9 +30,13 @@ class ProfileController extends \frontend\components\BaseController {
     }
 
     public function actionView() {
+        
         if(!$this->oAuthUser->profile) 
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        return $this->render('view', ['oProfile' => $this->oAuthUser->profile]);
+        return $this->render('view', [
+            'oProfile' => $this->oAuthUser->profile,
+            'activeOrders' => $this->oAuthUser->getActiveOrders()->with('cartItems')->all()
+        ]);
     }
 
     public function actionEdit() {

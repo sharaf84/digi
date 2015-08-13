@@ -36,7 +36,11 @@ class OrdersController extends \frontend\components\BaseController {
             ],
         ];
     }
-
+    
+    /**
+     * Checkout
+     * @throws BadRequestHttpException
+     */
     public function actionCheckout() {
         if (!($this->oAuthUser->cartOrder && $this->oAuthUser->cartOrder->cartItems))
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));

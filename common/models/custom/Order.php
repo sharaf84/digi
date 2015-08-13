@@ -69,7 +69,7 @@ class Order extends \common\models\base\Base {
     public function rules() {
         return [
             [['user_id'], 'required'],
-            [['name', 'email', 'phone', 'address', 'payment_method'], 'required', 'on' => 'checkout'], //, 'amount', 'status', 'token'
+            [['name', 'email', 'phone', 'address', 'payment_method', 'amount', 'status', 'token'], 'required', 'on' => 'checkout'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             [['amount'], 'number', 'min' => 5, 'max' => 10000],
             [['user_id', 'payment_method', 'new', 'status'], 'integer'],
@@ -354,10 +354,11 @@ class Order extends \common\models\base\Base {
 
     public function checkout() {
         $this->scenario = 'checkout';
-        if ($this->validate() && !$this->hasOverflowCart && $this->user_id == $this->oldAttributes['user_id']) {
-            $this->generateToken();
-            $this->amount = $this->liveCartPrice;
-            $this->status = static::STATUS_PENDING;
+        $this->generateToken();
+        $this->amount = $this->liveCartPrice;
+        $this->status = static::STATUS_PENDING;
+        $this->user_id = $this->oldAttributes['user_id'];//Not to change old user
+        if ($this->validate() && !$this->hasOverflowCart) {
             $oDBTransaction = Yii::$app->db->beginTransaction();
             if ($this->save() && $this->afterCheckout()) {
                 $oDBTransaction->commit();
@@ -395,7 +396,7 @@ class Order extends \common\models\base\Base {
             $oCart->price = $oCart->item->price;
             $oCart->title = $oCart->item->title;
             $oCart->item->qty -= $oCart->qty;
-            if(!($oCart->save() && $oCart->item->save()))
+            if (!($oCart->save() && $oCart->item->save()))
                 return false;
         }
         return true;
