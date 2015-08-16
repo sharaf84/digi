@@ -46,7 +46,7 @@ header .user-avatar.usermenu-cont .usermenu-dropdownBox, header .user-avatar.log
 header .user-avatar.login-cont .login-dropdownBox {padding-top:30px}
 header .user-avatar.usermenu-cont .usermenu-dropdownSpace, header .user-avatar.login-cont .login-dropdownSpace {height: 38px}
 header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {top:28px !important}
-header .user-avatar.login-cont .signup-btn {top:42px !important}
+header .user-avatar.login-cont .signup-btn {top:52px !important}
 
 .flash-messagesBox {position:fixed;right:0;bottom:0;z-index:99999999;width:100%}
 	.flash-messagesClose {cursor:pointer;float:right;margin:12px 24px;color:#fff}
@@ -59,3 +59,26 @@ header .user-avatar.login-cont .signup-btn {top:42px !important}
 			.flash-message p {margin:0}
 			
 .swiper-slide {cursor:pointer}
+
+.span.error, small.error, span.error {padding:0 !important}
+
+header .drop-down .dropdown-product-item .dropdown-product-item--desc h3 {font-size:14px !important}
+header .drop-down .dropdown-product-item .dropdown-product-item--desc p {height:60px;overflow:hidden;margin:7px 0 !important}
+header .drop-down .articles-cont .dropdown-product-item {height:auto !important}
+header .drop-down .articles-cont .dropdown-product-item:last-child {float:left !important}
+
+.single-page ul.pagination.filters li a {padding:6px 10px !important}
+
+header .header-slider h2 {margin:24px 12px 0 !important;line-height:64px !important}
+header .header-slider p {margin:12px !important;line-height:32px !important}
+
+.article-section {border-bottom-width:0 !important}
+.article-section .row {border-bottom:1px solid #dcdcdc}
+
+header .user-avatar.login-cont label {margin:0 0 4px}
+header .user-avatar.login-cont label input {margin:0 !important}
+header .user-avatar.login-cont a {display:block;margin:0 0 4px;line-height:24px;text-decoration:underline;font-size:13px;font-weight:bold;color:#b4bbc2}
+
+.colorBox {display:inline-block;border:1px solid #000;width:32px;height:16px}
+
+#ar-layout header .user-avatar.login-cont .login-dropdown.active {right:0}

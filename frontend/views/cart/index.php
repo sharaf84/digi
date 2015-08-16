@@ -88,7 +88,7 @@ Pjax::begin([
                             <h4><?= Html::encode($oCart->item->title); ?></h4>
                             <p>
                                 <?php if ($oCart->item->isAccessory()) { ?>
-                                    <strong><?= Yii::t('app', 'Color') ?>:</strong> <?= $oCart->item->color ?>
+                                    <strong><?= Yii::t('app', 'Color') ?>:</strong> <strong class="colorBox" style="background-color:<?= $oCart->item->color ?>"></strong>
                                 <?php } else { ?>
                                     <strong><?= Yii::t('app', 'Flavour') ?>:</strong> <?= $oCart->item->flavor->name ?>
                                 <?php } ?>
