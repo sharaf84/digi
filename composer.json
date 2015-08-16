@@ -18,6 +18,7 @@
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
+        "yiisoft/yii2-authclient": "*",
         "mdmsoft/yii2-admin": "~1.0",
         "clevertech/yii-booster": "v3.0.0",
         "2amigos/yii2-file-upload-widget": "*",
@@ -28,8 +29,9 @@
         "kotchuprik/yii2-sortable-widgets": "dev-master",
         "2amigos/yii2-ckeditor-widget": "~1.0",
         "v0lume/yii2-meta-tags": "*",
-        "webvimark/multilanguage": "*",
-        "kartik-v/yii2-widgets": "*"
+        "kartik-v/yii2-widgets": "*",
+        "yii2mod/yii2-comments": "*",
+        "yii2mod/yii2-enum": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

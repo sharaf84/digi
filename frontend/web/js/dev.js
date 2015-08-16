@@ -28,13 +28,13 @@ Dev.onReady = function () {
 Dev.globalEvents = function () {
     var self = this;
 
-    self.AutoSubmitProductForm = function () {
+    self.autoSubmitProductForm = function () {
         $('body').on('change', '#productForm select', function () {
             $('#productForm').submit();
         });
     };
 
-    self.AutoSubmitSearchForm = function () {
+    self.autoSubmitSearchForm = function () {
         $('body').on('change', '#searchForm select', function () {
             $('#searchForm').submit();
         });
@@ -45,8 +45,16 @@ Dev.globalEvents = function () {
         //$('#alphabetChar li[data-id="' + $('#searchform-alpha').val() + '"]').addClass('current');
     };
 
-    self.AutoSubmitProductForm();
-    self.AutoSubmitSearchForm();
+    self.autoTriggerLoginBtn = function () {
+        if (window.location.hash == '#login') {
+            $('.login-btn').trigger('mouseenter');
+        }
+    }
+    
+    self.autoSubmitProductForm();
+    self.autoSubmitSearchForm();
+    self.autoTriggerLoginBtn();
+
 }
 
 /**

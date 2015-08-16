@@ -18,6 +18,8 @@ return [
         '@metronicUrl' => '@sharedUrl/themes/metronic',
         '@frontThemePath' => '@sharedPath/themes/frontend',
         '@frontThemeUrl' => '@sharedUrl/themes/frontend',
+        '@webvimark/helpers' => '@common/digisoft/webvimark/helpers',
+        '@webvimark/behaviors/multilanguage' => '@common/digisoft/webvimark/multilanguage',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [

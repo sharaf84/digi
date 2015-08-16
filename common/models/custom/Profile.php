@@ -88,6 +88,6 @@ class Profile extends \common\models\base\Base
     }
     
     public function getFullAddress() {
-        return Html::encode($this->address) . ', ' . Html::encode($this->city->name);
+        return Html::encode($this->address) . $this->city ? ', ' . Html::encode($this->city->name) : '';
     }
 }
