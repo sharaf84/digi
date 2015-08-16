@@ -85,12 +85,12 @@ $isHome = Yii::$app->controller->action->id == 'home';
                         <div class="language-switcher">AR</div>
                     </div>
                 </div>
-<?php } ?>
+            <?php } ?>
 
             <div id="articles-dropdown" class="drop-down">
                 <div class="row">
                     <div class="large-12 medium-12 small-12 columns articles-cont">
-<?php foreach (common\models\custom\Article::getLatest(6) as $oArticle) { ?>
+                        <?php foreach (common\models\custom\Article::getLatest(6) as $oArticle) { ?>
                             <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= $oArticle->getInnerUrl() ?>">
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
                                     <img src="<?= $oArticle->getFeaturedImgUrl('dropdown-article') ?>" alt="<?= Html::encode($oArticle->title) ?>">
@@ -100,8 +100,17 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                     <p><?= Html::encode($oArticle->brief) ?></p>
                                 </div>
                             </div>
-<?php } ?>
-
+                        <?php } ?>
+                        
+                        <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="/articles">
+                            <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
+                                <img src="http://local.tss.com/shared/images/placeholders/dropdown-article/placeholder.png" alt="More ...">
+                            </div>
+                            <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
+                                <h3>More ...</h3>
+                                <p></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,13 +128,14 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                 <li>
                                     <a data-category-uri="<?= $oCategory->getInnerUrl() ?>" href="#header-tabs--<?= $oCategory->slug ?>" class="active"><?= Html::encode($oCategory->name) ?></a>
                                 </li>  
-<?php } ?>
+                            <?php } ?>
                             <li><a data-category-uri="#" href="#header-tabs--brands"><?= Yii::t('app', 'Brands') ?></a></li>
                         </ul>
                     </div>
-                        <?php foreach ($categories as $oCategory) { ?>
+                    <?php foreach ($categories as $oCategory) { ?>
                         <div class="large-9 medium-9 small-9 columns content <?= isset($notActive) ? '' : 'active';
-                            $notActive = true; ?> products-cont" id="header-tabs--<?= $oCategory->slug ?>">
+                    $notActive = true;
+                        ?> products-cont" id="header-tabs--<?= $oCategory->slug ?>">
     <?php foreach ($oCategory->getLatestProducts(6) as $oProduct) { ?>
                                 <div class="large-4 medium-4 small-4 columns dropdown-product-item">
                                     <div class="large-5 medium-5 small-5 columns dropdown-product-item--img">
@@ -152,7 +162,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                         <li><a href="<?= $oBrand->getInnerUrl() ?>"><?= Html::encode($oBrand->name) ?></a></li>
                                         <?php if (++$index % 4 == 0) { ?>
                                         </ul></div><div class="large-4 medium-4 small-4 columns"><ul class="brand-list">
-    <?php } ?>
+                                        <?php } ?>
 <?php } ?>
                                 </ul>
                             </div>

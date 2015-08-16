@@ -17,6 +17,7 @@ $form = ActiveForm::begin([
 <?= Html::activePasswordInput($oLoginForm, 'password', ['placeholder' => Yii::t('app', 'Password')]); ?>
 <?= Html::error($oLoginForm, 'password', ['tag' => 'small', 'class' => 'error']); ?>
 <?= Html::activeCheckbox($oLoginForm, 'rememberMe', ['label' => Yii::t('app', 'Remember Password?')]); ?>
+<a href="<?= Url::to(['/user/request-password-reset']) ?>">Forget Your Password?</a>
 <button type="submit"><?= Yii::t('app', 'Sign In') ?></button>
 <div class="or-sep"><span><?= Yii::t('app', 'Or') ?></span></div>
 <a href="#" class="facebook-login">
