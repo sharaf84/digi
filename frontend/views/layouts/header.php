@@ -95,7 +95,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                         <?php } ?>
 							<div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="/articles">
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
-                                    <img src="http://local.tss.com/shared/images/placeholders/dropdown-article/placeholder.png" alt="More ...">
+                                    <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/addMore.png" alt="More ...">
                                 </div>
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
                                     <h3>More ...</h3>

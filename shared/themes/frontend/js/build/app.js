@@ -55,6 +55,10 @@ TSS.homepageManager = function () {
         spaceBetween: 0,
         hashnav: true,
         preloadImages: true,
+		onInit: function (instance) {
+			var slides = instance.slides;
+			$('header').attr('style', 'background: url(' + $(instance.slides[0]).find('img').attr('src') + ') 0 0 no-repeat;background-size: cover;');
+		},
         onSlideChangeStart: function (instance) {
             var slides = instance.slides;
             var productImage = $(slides[instance.activeIndex]).find('img').attr('src');

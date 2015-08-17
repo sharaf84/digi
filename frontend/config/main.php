@@ -1,6 +1,6 @@
 <?php
 define('CURRENCY_SYMBOL', 'LE');
-define('APP_LANG', 'ar');
+define('APP_LANG', 'en');
 
 use \yii\web\Request;
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
