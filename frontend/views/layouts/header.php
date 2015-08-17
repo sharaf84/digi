@@ -96,14 +96,14 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                 </div>
                             </div>
                         <?php } ?>
-                        
-                        <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= Url::to(['/articles']) ?>">
-                            <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
-                                <img src="/shared/images/placeholders/dropdown-article/placeholder.png" alt="More ...">
-                            </div>
-                            <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
-                                <h3>More ...</h3>
-                                <p></p>
+							<div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= Url::to(['/articles']) ?>">
+                                <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
+                                    <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/addMore.png" alt="<?= Yii::t('app', 'More ...') ?>">
+                                </div>
+                                <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
+                                    <h3><?= Yii::t('app', 'More ...') ?></h3>
+                                    <p></p>
+                                </div>
                             </div>
                         </div>
                     </div>
