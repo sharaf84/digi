@@ -14,7 +14,7 @@ $this->title = $oProfile->getName();
 
     <div class="row">
         <div class="large-3 medium-3 small-12 columns">
-            <img src="http://lorempixel.com/257/257/people" alt="">
+            <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('profile_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>">
         </div>
         <div class="large-9 medium-9 small-12 columns user-info">
 
@@ -24,7 +24,7 @@ $this->title = $oProfile->getName();
             <p>
                 <strong><?= Yii::t('app', 'Mobile') ?>:</strong> <?= Html::encode($oProfile->phone) ?> <br />
                 <strong><?= Yii::t('app', 'Address') ?>:</strong> <?= Html::encode($oProfile->getFullAddress()) ?> <br />
-                <strong><?= Yii::t('app', 'Email') ?>:</strong> <?= Html::encode($this->context->oAuthUser->email) ?> <br />
+                <strong><?= Yii::t('app', 'Email') ?>:</strong> <?= Html::encode(Yii::$app->user->identity->email) ?> <br />
             </p>
         </div>
     </div>

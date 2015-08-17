@@ -18,7 +18,7 @@ if (!empty($comments)) {
             <div class="comment-item row">
                 <span class="date-time"><?= $comment->getPostedDate(); ?></span>
                 <div class="large-1 medium-1 small-12 columns avatar-cont">
-                    <img src="<?= $comment->author->getFeaturedImgUrl('comment_avatar') ?>" alt="<?= $comment->getAuthorName(); ?>">
+                    <img src="<?= $comment->author->getFeaturedImgUrl('default_avatar') ?>" alt="<?= $comment->getAuthorName(); ?>">
                 </div>
                 <div class="large-11 medium-11 small-12 columns">
                     <h3><?= $comment->getAuthorName(); ?></h3>

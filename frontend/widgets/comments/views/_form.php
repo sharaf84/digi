@@ -27,10 +27,10 @@ Html::activeHiddenInput($commentModel, 'parentId');
 
     <!--<span class="date-time">2 hours ago</span>-->
 <div class="large-1 medium-1 small-12 columns avatar-cont">
-    <img src="<?= Yii::$app->controller->oAuthUser->getFeaturedImgUrl('comment_avatar') ?>" alt="">
+    <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="">
 </div>
 <div class="large-11 medium-11 small-12 columns">
-    <h3><?= Yii::$app->controller->oAuthUser->getName() ?></h3>
+    <h3><?= Yii::$app->user->identity->getName() ?></h3>
     <div class="comment-reply">
         <?= Html::activeTextarea($commentModel, 'content', ['placeholder' => Yii::t('app', 'Enter your comment here...'), 'rows' => 3]); ?>
         <?= Html::error($commentModel, 'content', ['tag' => 'small', 'class' => 'error']); ?>

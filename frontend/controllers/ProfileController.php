@@ -31,16 +31,16 @@ class ProfileController extends \frontend\components\BaseController {
 
     public function actionView() {
         
-        if(!$this->oAuthUser->profile) 
+        if(!Yii::$app->user->identity->profile) 
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         return $this->render('view', [
-            'oProfile' => $this->oAuthUser->profile,
-            'activeOrders' => $this->oAuthUser->getActiveOrders()->with('cartItems')->all()
+            'oProfile' => Yii::$app->user->identity->profile,
+            'activeOrders' => Yii::$app->user->identity->getActiveOrders()->with('cartItems')->all()
         ]);
     }
 
     public function actionEdit() {
-        $oProfile = $this->oAuthUser->profile;
+        $oProfile = Yii::$app->user->identity->profile;
         
         if(!$oProfile) 
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));

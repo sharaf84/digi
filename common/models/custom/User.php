@@ -72,6 +72,6 @@ class User extends \common\models\base\User {
     }
     
     public function getFeaturedImgUrl($size = null, $placeholder = 'person', $overwrite = false){
-        return $this->firstMedia ? $this->firstMedia->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
+        return parent::getFeaturedImgUrl($size, $placeholder, $overwrite);
     }
 }

@@ -59,15 +59,12 @@ class UserController extends \frontend\components\BaseController {
     }
 
     public function actionLogin() {
-        if (!\Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
         $oLoginForm = new Login();
         if ($oLoginForm->load(Yii::$app->request->post()) && $oLoginForm->login()) {
             return $this->goBack();
         } else {
             Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, wrong email or password. Please try again.'));
-            return $this->goHome();
+            return $this->goBack();//$this->goHome();
         }
     }
 

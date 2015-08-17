@@ -70,6 +70,7 @@ return [
                 'signup' => 'user/signup',
                 'login' => 'user/login',
                 'logout' => 'user/logout',
+                'forgot-password' => 'user/request-password-reset',
                 'article/<slug:\S+>' => 'articles/view',
                 '<slug:about-us|terms-of-service|privacy-policy>' => 'site/page',
                 'contact-us' => 'site/contact-us',

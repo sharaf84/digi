@@ -41,8 +41,8 @@ class CartController extends \frontend\components\BaseController {
     }
 
     public function actionIndex() {
-        return $this->render('index', ['cartItems' => $this->oAuthUser->cartItems]);
-        //return $this->render('index', ['cartItems' => $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder->cartItems : null]);
+        return $this->render('index', ['cartItems' => Yii::$app->user->identity->cartItems]);
+        //return $this->render('index', ['cartItems' => Yii::$app->user->identity->cartOrder ? Yii::$app->user->identity->cartOrder->cartItems : null]);
     }
 
     /**
@@ -50,11 +50,11 @@ class CartController extends \frontend\components\BaseController {
      * @param int $id item id
      */
     public function actionAdd($id) {
-        $oAuthUserCartOrder = $this->oAuthUser->cartOrder ? $this->oAuthUser->cartOrder : Order::createCartOrder();
-        if (!$oAuthUserCartOrder)
+        $oUserCartOrder = Yii::$app->user->identity->cartOrder ? Yii::$app->user->identity->cartOrder : Order::createCartOrder();
+        if (!$oUserCartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        if ($oAuthUserCartOrder->addCartItem($id)) {
+        if ($oUserCartOrder->addCartItem($id)) {
             Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Item added successfully.'));
             return $this->redirect(['/cart']);
         } else {
@@ -69,10 +69,10 @@ class CartController extends \frontend\components\BaseController {
      */
     public function actionIncrease($id) {
 
-        if (!$this->oAuthUser->cartOrder)
+        if (!Yii::$app->user->identity->cartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        $this->oAuthUser->cartOrder->increaseCartItem($id);
+        Yii::$app->user->identity->cartOrder->increaseCartItem($id);
         
         return $this->actionIndex();
 
@@ -84,10 +84,10 @@ class CartController extends \frontend\components\BaseController {
      */
     public function actionDecrease($id) {
 
-        if (!$this->oAuthUser->cartOrder)
+        if (!Yii::$app->user->identity->cartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        $this->oAuthUser->cartOrder->decreaseCartItem($id);
+        Yii::$app->user->identity->cartOrder->decreaseCartItem($id);
         
         return $this->actionIndex();
     }
@@ -98,10 +98,10 @@ class CartController extends \frontend\components\BaseController {
      */
     public function actionMatch($id) {
 
-        if (!$this->oAuthUser->cartOrder)
+        if (!Yii::$app->user->identity->cartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        $this->oAuthUser->cartOrder->matchCartItem($id);
+        Yii::$app->user->identity->cartOrder->matchCartItem($id);
         
         return $this->actionIndex();
     }
@@ -112,10 +112,10 @@ class CartController extends \frontend\components\BaseController {
      */
     public function actionRemove($id) {
 
-        if (!$this->oAuthUser->cartOrder)
+        if (!Yii::$app->user->identity->cartOrder)
             throw new BadRequestHttpException(Yii::t('app', 'Invalid cart order.'));
 
-        $this->oAuthUser->cartOrder->removeCartItem($id);
+        Yii::$app->user->identity->cartOrder->removeCartItem($id);
 
         return $this->actionIndex();
     }

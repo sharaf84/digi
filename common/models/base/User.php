@@ -243,8 +243,4 @@ class User extends Base implements IdentityInterface {
         ];
     }
 
-    public static function getAuthUser() {
-        return !Yii::$app->user->isGuest ? static::findOne(Yii::$app->user->id) : null;
-    }
-
 }
