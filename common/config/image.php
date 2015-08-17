@@ -22,7 +22,7 @@ return [
         'main-product' => ['thumbnail', 251, 496],
         'bottom-product' => ['thumbnail', 164, 314],
         'cart-product' => ['thumbnail', 53, 101],
-        'dropdown-product' => ['thumbnail', 87, 111],
+        'dropdown-product' => ['thumbnail', 112, 143],
         //'background-product' => ['thumbnail', 251, 496],
         'list-article' => ['thumbnail', 142, 140],
         'main-article' => ['thumbnail', 1000, 317],

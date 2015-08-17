@@ -11,6 +11,7 @@ a.at-cart, a.at-cart:hover {background: #252525;}
 .cart-overflow{background: #f39997;}
 a.cart-overflow{color: #e61b1e;}
 .single-page.shopping-cart button[type="submit"].cart-overflow {background: #e61b1e; cursor: default;}
+.facebook-signup{cursor: pointer;}
 
 header {background-image:url('./../shared/themes/frontend/images/src/loading.gif');background-repeat:no-repeat;background-position:center;background-size:auto}
 
@@ -84,3 +85,5 @@ header .user-avatar.login-cont a {display:block;margin:0 0 4px;line-height:24px;
 .colorBox {display:inline-block;border:1px solid #000;width:32px;height:16px}
 
 #ar-layout header .user-avatar.login-cont .login-dropdown.active {left:0}
+
+header .header-top-bar.skrollable-after .drop-down.active .tabs-cont {padding:0 !important}

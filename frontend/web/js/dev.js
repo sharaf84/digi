@@ -52,7 +52,7 @@ Dev.globalEvents = function () {
     };
     
     self.triggerFacbookLoginBtn = function () {
-        $('.facebook-login').click(function(){
+        $('.facebook-login, .facebook-signup').click(function(){
             $('#facebookLogin a').trigger('click');
         });
     };
