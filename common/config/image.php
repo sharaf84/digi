@@ -28,5 +28,7 @@ return [
         'main-article' => ['thumbnail', 1000, 317],
         'bottom-article' => ['thumbnail', 303, 197],
         'dropdown-article' => ['thumbnail', 193, 125],
+        'default_avatar' => ['thumbnail', 85, 85], 
+        'profile_avatar' => ['thumbnail', 228, 228], 
     ]
 ];

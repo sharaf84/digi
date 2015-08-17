@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @todo Enhancements
+ */
 use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -32,19 +35,19 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <?php if (!Yii::$app->user->isGuest) { ?>
                 <div class="large-2 medium-2 small-2 columns show-for-medium-up">
                     <div class="shopping-cart">
-                        <span><?= $this->context->oAuthUser->totalCartCount ? $this->context->oAuthUser->totalCartCount : 0 ?></span>
+                        <span><?= Yii::$app->user->identity->totalCartCount ? Yii::$app->user->identity->totalCartCount : 0 ?></span>
                         <a href="<?= Url::to(['/cart']) ?>">
                             <i class="icon-cart"></i>
                         </a>
                     </div>
                     <div class="user-avatar usermenu-cont">
-                        <img src="http://lorempixel.com/50/50/people" alt="" data-drop-down="#usermenu-dropdown">
+                        <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" data-drop-down="#usermenu-dropdown">
                         <div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
                             <div class="usermenu-dropdownSpace"></div>
                             <div class="usermenu-dropdownBox">
                                 <span class="arrow-up"></span>
-                                <img src="http://lorempixel.com/50/50/people" alt="" class="menu-avatar">
-                                <h3><a href="<?= Url::to(['/profile']) ?>"><?= $this->context->oAuthUser->getName() ?></a></h3>
+                                <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="menu-avatar">
+                                <h3><a href="<?= Url::to(['/profile']) ?>"><?= Yii::$app->user->identity->getName() ?></a></h3>
                                 <div class="row user-buttons-cont">
                                     <div class="large-6 medium-6 small-12 columns view-profile-cont">
                                         <a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
@@ -69,7 +72,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             <div class="login-dropdownBox">
                                 <span class="arrow-up"></span>
                                 <a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
-                                <?php echo $this->render('//user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
+                                <?php echo $this->render('/user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
                             </div>
                         </div>
                     </div>
@@ -82,7 +85,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <div id="articles-dropdown" class="drop-down">
                 <div class="row">
                     <div class="large-12 medium-12 small-12 columns articles-cont">
-                        <?php foreach (common\models\custom\Article::getLatest(6) as $oArticle) { ?>
+                        <?php foreach (common\models\custom\Article::getLatest(5) as $oArticle) { ?>
                             <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= $oArticle->getInnerUrl() ?>">
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
                                     <img src="<?= $oArticle->getFeaturedImgUrl('dropdown-article') ?>" alt="<?= Html::encode($oArticle->title) ?>">
@@ -93,15 +96,16 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                 </div>
                             </div>
                         <?php } ?>
-							<div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="/articles">
+							<div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= Url::to(['/articles']) ?>">
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
-                                    <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/addMore.png" alt="More ...">
+                                    <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/addMore.png" alt="<?= Yii::t('app', 'More ...') ?>">
                                 </div>
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
-                                    <h3>More ...</h3>
+                                    <h3><?= Yii::t('app', 'More ...') ?></h3>
                                     <p></p>
                                 </div>
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -124,8 +128,10 @@ $isHome = Yii::$app->controller->action->id == 'home';
                         </ul>
                     </div>
                     <?php foreach ($categories as $oCategory) { ?>
-                        <div class="large-9 medium-9 small-9 columns content <?= isset($notActive) ? '' : 'active'; $notActive = true; ?> products-cont" id="header-tabs--<?= $oCategory->slug ?>">
-                            <?php foreach ($oCategory->getLatestProducts(6) as $oProduct) { ?>
+                        <div class="large-9 medium-9 small-9 columns content <?= isset($notActive) ? '' : 'active';
+                    $notActive = true;
+                        ?> products-cont" id="header-tabs--<?= $oCategory->slug ?>">
+    <?php foreach ($oCategory->getLatestProducts(6) as $oProduct) { ?>
                                 <div class="large-4 medium-4 small-4 columns dropdown-product-item">
                                     <div class="large-5 medium-5 small-5 columns dropdown-product-item--img">
                                         <img src="<?= $oProduct->getFeaturedImgUrl('dropdown-product') ?>" alt="">                                    
@@ -136,9 +142,9 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                         <a href="<?= $oProduct->getInnerUrl() ?>" class="more-on-this-product"><?= Yii::t('app', 'Find out more') ?> <i class="md md-chevron-right"></i></a>
                                     </div>
                                 </div>
-                            <?php } ?>
+                        <?php } ?>
                         </div>
-                    <?php } ?>
+<?php } ?>
 
                     <div class="large-9 medium-9 small-9 columns content products-cont" id="header-tabs--brands">
                         <div class="brands-cont">
@@ -152,7 +158,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                         <?php if (++$index % 4 == 0) { ?>
                                         </ul></div><div class="large-4 medium-4 small-4 columns"><ul class="brand-list">
                                         <?php } ?>
-                                    <?php } ?>
+<?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -161,21 +167,21 @@ $isHome = Yii::$app->controller->action->id == 'home';
             </div>
         </div>
     </div>
-    <?php if ($isHome) { ?>
+<?php if ($isHome) { ?>
         <div class="row">
             <div id="checkpoint-a" class="header-slider swiper-container">
                 <div class="swiper-wrapper">
-                    <?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
-                        <div class="header-product swiper-slide" onclick="javascript:location='<?= $oMedia->link ?>'">
+    <?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
+                        <div class="header-product swiper-slide" onclick="javascript:location = '<?= $oMedia->link ?>'">
                             <img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
                             <h2><?= $oMedia->title ?></h2>
                             <p><?= $oMedia->description ?></p>
                             <!--<a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>-->
                         </div>
-                    <?php } ?>
+    <?php } ?>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-    <?php } ?>
+<?php } ?>
 </header>

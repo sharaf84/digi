@@ -23,21 +23,19 @@ use common\models\custom\City;
  * @property string $created
  * @property string $updated
  */
-class Profile extends \common\models\base\Base
-{
+class Profile extends \common\models\base\Base {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'profile';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['user_id', 'city_id', 'gender', 'status'], 'integer'],
             [['user_id', 'city_id', 'first_name', 'address', 'phone'], 'required'],
@@ -56,8 +54,7 @@ class Profile extends \common\models\base\Base
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'user_id' => Yii::t('app', 'User'),
@@ -74,20 +71,21 @@ class Profile extends \common\models\base\Base
             'updated' => Yii::t('app', 'Updated'),
         ];
     }
-    
+
     public function setUserId($id) {
         return $this->user_id = $id;
     }
-    
+
     public function getName() {
         return Html::encode($this->first_name . ' ' . $this->last_name);
     }
-    
+
     public function getCity() {
         return $this->hasOne(City::className(), ['id' => 'city_id']);
     }
-    
+
     public function getFullAddress() {
-        return Html::encode($this->address) . ', ' . Html::encode($this->city->name);
+        return $this->city ? Html::encode($this->address) . ', ' . Html::encode($this->city->name) : Html::encode($this->address);
     }
+
 }

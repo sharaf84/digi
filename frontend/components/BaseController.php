@@ -10,21 +10,15 @@ use frontend\assets\AppAsset;
  */
 class BaseController extends Controller {
     
-    public $oAuthUser = null;
 
     public function init() {
         parent::init();
         \webvimark\behaviors\multilanguage\MultiLanguageHelper::catchLanguage();
         $this->regiterAssets();
-        $this->setAuthUser();
     }
 
     protected function regiterAssets() {
         AppAsset::register($this->view);
-    }
-
-    protected function setAuthUser(){
-        $this->oAuthUser = \common\models\custom\User::getAuthUser();
     }
 
 }

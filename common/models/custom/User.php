@@ -3,6 +3,7 @@
 namespace common\models\custom;
 
 use common\models\custom\Profile;
+use common\helpers\MediaHelper;
 
 class User extends \common\models\base\User {
         
@@ -69,5 +70,8 @@ class User extends \common\models\base\User {
     public function getName() {
         return $this->profile ? $this->profile->getName() : $this->email;
     }
-
+    
+    public function getFeaturedImgUrl($size = null, $placeholder = 'person', $overwrite = false){
+        return parent::getFeaturedImgUrl($size, $placeholder, $overwrite);
+    }
 }

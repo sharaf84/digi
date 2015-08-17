@@ -1,18 +1,15 @@
 <?php
+
 define('CURRENCY_SYMBOL', 'LE');
 define('APP_LANG', 'en');
 
 use \yii\web\Request;
+
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
 
 $params = array_merge(
-    require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+        require(__DIR__ . '/../../common/config/params.php'), require(__DIR__ . '/../../common/config/params-local.php'), require(__DIR__ . '/params.php'), require(__DIR__ . '/params-local.php')
 );
-
-
 
 return [
     'id' => 'app-frontend',
@@ -23,6 +20,9 @@ return [
         'treemanager' => [
             'class' => 'kartik\tree\Module',
         // other module settings, refer detailed documentation
+        ],
+        'comment' => [
+            'class' => 'yii2mod\comments\Module'
         ]
     ],
     'components' => [
@@ -31,9 +31,9 @@ return [
         ],
         'user' => [
             'class' => 'digi\web\User',
-            'identityClass' => 'common\models\base\User',
+            'identityClass' => 'common\models\custom\User',
             'enableAutoLogin' => true,
-            'loginUrl' => '/',
+            'loginUrl' => '/#login',
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -48,7 +48,7 @@ return [
             'errorAction' => 'site/error',
         ],
         'urlManager' => [
-            //'class' => \webvimark\behaviors\multilanguage\MultiLanguageUrlManager::className(),
+            //'class' => 'webvimark\behaviors\multilanguage\MultiLanguageUrlManager', // \webvimark\behaviors\multilanguage\MultiLanguageUrlManager::className(),
             'baseUrl' => $baseUrl,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -70,6 +70,7 @@ return [
                 'signup' => 'user/signup',
                 'login' => 'user/login',
                 'logout' => 'user/logout',
+                'forgot-password' => 'user/request-password-reset',
                 'article/<slug:\S+>' => 'articles/view',
                 '<slug:about-us|terms-of-service|privacy-policy>' => 'site/page',
                 'contact-us' => 'site/contact-us',
@@ -79,6 +80,18 @@ return [
             'class' => 'digi\metaTags\MetaTagsComponent',
             'generateCsrf' => false,
             'generateOg' => true,
+        ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'facebook' => [
+                    'class' => 'yii\authclient\clients\Facebook',
+                    'authUrl' => 'https://www.facebook.com/dialog/oauth?display=popup',
+                    'clientId' => '1626098720985743',
+                    'clientSecret' => 'ecce3605a9255ed248ca9a4095c606f3',
+                    'scope' => 'email, public_profile'
+                ],
+            ],
         ],
     ],
     'params' => $params,
