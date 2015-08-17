@@ -152,8 +152,8 @@ class UserController extends \frontend\components\BaseController {
      * @return boolean|yii\web\Response
      */
     public function onAuthSuccess($client) {
-        $attributes = $client->api('me?fields=id,name,email', 'GET'); // $client->getUserAttributes();
-
+        $attributes = $client->api('me?fields=id,name,email,picture.type(large)', 'GET'); // $client->getUserAttributes();
+        //var_dump($attributes); die;
         $oAuthClient = Authclient::find()->where([
                     'source' => $client->getId(),
                     'source_id' => $attributes['id'],

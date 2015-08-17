@@ -20,6 +20,10 @@ $form = ActiveForm::begin([
 <a href="<?= Url::to(['/user/request-password-reset']) ?>">Forget Your Password?</a>
 <button type="submit"><?= Yii::t('app', 'Sign In') ?></button>
 <div class="or-sep"><span><?= Yii::t('app', 'Or') ?></span></div>
+
+<div id="facebookLogin" style="display: none">
+    <?php echo yii\authclient\widgets\AuthChoice::widget(['baseAuthUrl' => ['user/auth']]) ?>
+</div>
 <a href="#" class="facebook-login">
     <i class="fa fa-facebook"></i> <?= Yii::t('app', 'Sign in with Facebook') ?>
 </a>

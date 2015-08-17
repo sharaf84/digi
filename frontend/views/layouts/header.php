@@ -72,12 +72,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             <div class="login-dropdownBox">
                                 <span class="arrow-up"></span>
                                 <a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
-                                <?php echo $this->render('//user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
-                                <?=
-                                yii\authclient\widgets\AuthChoice::widget([
-                                    'baseAuthUrl' => ['user/auth']
-                                ])
-                                ?>
+                                <?php echo $this->render('/user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
                             </div>
                         </div>
                     </div>
@@ -90,7 +85,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
             <div id="articles-dropdown" class="drop-down">
                 <div class="row">
                     <div class="large-12 medium-12 small-12 columns articles-cont">
-                        <?php foreach (common\models\custom\Article::getLatest(6) as $oArticle) { ?>
+                        <?php foreach (common\models\custom\Article::getLatest(5) as $oArticle) { ?>
                             <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= $oArticle->getInnerUrl() ?>">
                                 <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
                                     <img src="<?= $oArticle->getFeaturedImgUrl('dropdown-article') ?>" alt="<?= Html::encode($oArticle->title) ?>">
@@ -102,9 +97,9 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             </div>
                         <?php } ?>
                         
-                        <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="/articles">
+                        <div class="large-2 medium-2 small-2 columns dropdown-product-item" data-route="<?= Url::to(['/articles']) ?>">
                             <div class="large-12 medium-12 small-12 columns dropdown-product-item--img">
-                                <img src="http://local.tss.com/shared/images/placeholders/dropdown-article/placeholder.png" alt="More ...">
+                                <img src="/shared/images/placeholders/dropdown-article/placeholder.png" alt="More ...">
                             </div>
                             <div class="large-12 medium-12 small-12 columns dropdown-product-item--desc">
                                 <h3>More ...</h3>

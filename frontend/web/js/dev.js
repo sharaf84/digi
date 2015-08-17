@@ -49,11 +49,18 @@ Dev.globalEvents = function () {
         if (window.location.hash == '#login') {
             $('.login-btn').trigger('mouseenter');
         }
-    }
+    };
+    
+    self.triggerFacbookLoginBtn = function () {
+        $('.facebook-login').click(function(){
+            $('#facebookLogin a').trigger('click');
+        });
+    };
     
     self.autoSubmitProductForm();
     self.autoSubmitSearchForm();
     self.autoTriggerLoginBtn();
+    self.triggerFacbookLoginBtn();
 
 }
 
