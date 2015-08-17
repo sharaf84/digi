@@ -13,7 +13,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar" >
-            <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
+            <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
             <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo"><?= Yii::t('app', 'TSS') ?></a></div>
             <div class="large-5 medium-6 small-5 columns show-for-medium-up">
                 <nav class="main-nav">
@@ -59,8 +59,8 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             </div>
                         </div>
                     </div>
-                    <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">
-                        <div class="language-switcher">AR</div>
+                    <div class="lang-switcher" data-route="<?= Yii::$app->params['mlConfig']['subdomains'][Yii::$app->language == 'en' ? 'ar' : 'en'] . Url::current() ?>">
+                        <div class="language-switcher"><?= Yii::t('app', 'AR') ?></div>
                     </div>
                 </div>
             <?php } else { ?>
@@ -76,8 +76,8 @@ $isHome = Yii::$app->controller->action->id == 'home';
                             </div>
                         </div>
                     </div>
-                    <div class="lang-switcher" data-route="<?= Url::to(['/ar']) ?>">
-                        <div class="language-switcher">AR</div>
+                    <div class="lang-switcher" data-route="<?= Yii::$app->params['mlConfig']['subdomains'][Yii::$app->language == 'en' ? 'ar' : 'en'] . Url::to('') ?>">
+                        <div class="language-switcher"><?= Yii::t('app', 'AR') ?></div>
                     </div>
                 </div>
             <?php } ?>

@@ -1,6 +1,6 @@
 <?php use yii\helpers\Url; ?>
 
-<aside class="<?php echo APP_LANG == 'ar' ? 'right' : 'left'; ?>-off-canvas-menu">
+<aside class="<?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-menu">
 	
 	<div class="row">
 		<?php if(! Yii::$app->user->isGuest ): ?>

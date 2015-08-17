@@ -99,7 +99,7 @@ Pjax::begin([
                     </div>
                 </div>
                 <div class="large-2 medium-2 small-4 columns as-table-cell">
-                    <span data-product-price="<?= $oCart->item->price ?>"><?= $oCart->item->price ?> <?= CURRENCY_SYMBOL ?></span>
+                    <span data-product-price="<?= $oCart->item->price ?>"><?= $oCart->item->price ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
                 </div>
                 <div class="large-2 medium-2 small-4 columns as-table-cell">
                     <span class="cart-quantity-cont">
@@ -119,7 +119,7 @@ Pjax::begin([
                     </span>
                 </div>
                 <div class="large-2 medium-2 small-4 columns as-table-cell">
-                    <span data-product-total="<?= $itemTotalPrice ?>"><?= $itemTotalPrice ?> <?= CURRENCY_SYMBOL ?></span>
+                    <span data-product-total="<?= $itemTotalPrice ?>"><?= $itemTotalPrice ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
                 </div>
             </div>
             <!-- [/] Product Item -->
@@ -127,7 +127,7 @@ Pjax::begin([
 
         <div class="row as-table-row">
             <div class="large-2 medium-2 small-12 columns right checkout-total" data-checkout-toal>
-                Total: <span><?= $cartTotalPrice ?> <?= CURRENCY_SYMBOL ?></span>
+                Total: <span><?= $cartTotalPrice ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
             </div>
         </div>
 

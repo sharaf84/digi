@@ -6,7 +6,7 @@
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html dir="<?php echo APP_LANG == 'ar' ? 'rtl' : 'ltr'; ?>" lang="<?php echo APP_LANG == 'ar' ? 'ar' : 'en'; ?>">
+<html dir="<?php echo Yii::$app->language == 'ar' ? 'rtl' : 'ltr'; ?>" lang="<?php echo Yii::$app->language == 'ar' ? 'ar' : 'en'; ?>">
     <head>
         <title><?= Html::encode($this->title) ?></title>
         <meta charset="<?= Yii::$app->charset ?>"/>
@@ -15,7 +15,7 @@
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
 
-		<?php if (APP_LANG == 'ar'): ?>
+		<?php if (Yii::$app->language == 'ar'): ?>
 			<link rel="stylesheet" href="<?= Url::to('@frontThemeUrl') ?>/css/build/app_ar.css" charset="utf-8">
 			<link rel="stylesheet" href="/css/dev_ar.css" charset="utf-8">
 		<?php else: ?>
@@ -23,7 +23,7 @@
 			<link rel="stylesheet" href="/css/dev.css" charset="utf-8">
 		<?php endif; ?>
     </head>
-    <body class="<?php echo Yii::$app->controller->action->id; ?>-page" id="<?php echo APP_LANG == 'ar' ? 'ar-layout' : 'en-layout'; ?>">
+    <body class="<?php echo Yii::$app->controller->action->id; ?>-page" id="<?php echo Yii::$app->language == 'ar' ? 'ar-layout' : 'en-layout'; ?>">
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">

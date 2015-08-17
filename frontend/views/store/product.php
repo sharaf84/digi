@@ -18,7 +18,7 @@ Yii::$app->metaTags->register($oProduct);
         <div class="large-8 medium-8 small-12 columns">
             <h1><?= Html::encode($oProduct->title) ?></h1>
             <p><?= Html::encode($oProduct->description) ?></p>
-            <p class="pricing"><?= $oChildProduct ? $oChildProduct->price : Yii::t('app', 'Lowest: ') . $oProduct->price ?> <?= CURRENCY_SYMBOL ?></p>
+            <p class="pricing"><?= $oChildProduct ? $oChildProduct->price : Yii::t('app', 'Lowest: ') . $oProduct->price ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></p>
 
             <?php
             echo $this->render('_productForm', [

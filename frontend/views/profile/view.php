@@ -119,13 +119,13 @@ $this->title = $oProfile->getName();
                                 <span class="<?= strtolower($orderStatus) ?>"><?= $orderStatus ?></span>
                             </div>
                             <div class="large-2 medium-2 small-3 columns as-table-cell">
-                                <span><?= $oCart->price ?> <?= CURRENCY_SYMBOL ?></span>
+                                <span><?= $oCart->price ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
                             </div>
                             <div class="large-2 medium-2 small-3 columns as-table-cell">
                                 <span><?= $oCart->qty ?></span>
                             </div>
                             <div class="large-2 medium-2 small-3 columns as-table-cell">
-                                <span><?= $oCart->price*$oCart->qty ?> <?= CURRENCY_SYMBOL ?></span>
+                                <span><?= $oCart->price*$oCart->qty ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
                             </div>
                         </div>
                         <!-- [/] Product Item -->

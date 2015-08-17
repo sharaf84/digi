@@ -10,5 +10,9 @@ return [
             'en'=>'English',
             'ar'=>'Arabic',
         ],
+        'subdomains' => [
+            'en' => 'http://local.tss.com', 
+            'ar' => 'http://ar.tss.com',
+        ]
     ],
 ];

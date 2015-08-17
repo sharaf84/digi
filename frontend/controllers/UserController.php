@@ -163,9 +163,7 @@ class UserController extends \frontend\components\BaseController {
                     Yii::$app->user->login($oAuthClient->user);
                 } else { // signup
                     if (User::find()->where(['email' => $attributes['email']])->exists()) {
-                        Yii::$app->getSession()->setFlash('error', [
-                            Yii::t('app', "User with the same email as in {client} account already exists but isn't linked to it. Login using email first to link it.", ['client' => $client->getTitle()]),
-                        ]);
+                        Yii::$app->getSession()->setFlash('error', Yii::t('app', "You can't sign in with Facebook account ({email}) as you're already registered by our normal sign up process. You can use normal sign in or forgot password.", ['email' => $attributes['email']]));
                     } else {
                         $oUser = new User();
                         $oProfile = new Profile();

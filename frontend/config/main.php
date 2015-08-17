@@ -1,7 +1,6 @@
 <?php
 
 define('CURRENCY_SYMBOL', 'LE');
-define('APP_LANG', 'en');
 
 use \yii\web\Request;
 
@@ -54,11 +53,11 @@ return [
             'showScriptName' => false,
             'rules' => [
                 // multilanguage rules
-                '<_c:[\w \-]+>/<id:\d+>' => '<_c>/view',
-                '<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_c>/<_a>',
+                //'<_c:[\w \-]+>/<id:\d+>' => '<_c>/view',
+                //'<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_c>/<_a>',
                 //'<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_c>/<_a>',//Make confiflect with cutome routes
-                '<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_m>/<_c>/<_a>',
-                '<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
+                //'<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_m>/<_c>/<_a>',
+                //'<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
                 // custom rules
                 'store' => 'store/search',
                 'store/search' => 'store/search',
@@ -72,7 +71,7 @@ return [
                 'logout' => 'user/logout',
                 'forgot-password' => 'user/request-password-reset',
                 'article/<slug:\S+>' => 'articles/view',
-                '<slug:about-us|terms-of-service|privacy-policy>' => 'site/page',
+                '<slug:(about-us|terms-of-service|privacy-policy)>' => 'site/page',
                 'contact-us' => 'site/contact-us',
             ],
         ],
