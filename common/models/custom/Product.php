@@ -225,7 +225,7 @@ class Product extends \common\models\base\Base {
     /**
      * Get Related Products
      */
-    public function getRelated($limit = 4) {
+    public function getRelated($limit = 1) {
         return self::find()
                         ->parents()
                         ->andWhere(['!=', 'id', $this->id])
