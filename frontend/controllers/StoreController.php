@@ -20,7 +20,7 @@ class StoreController extends \frontend\components\BaseController {
     public function actionSearch($slug = null) {
         $oProductQuery = Product::find();
         $oSearchForm = new SearchForm();
-        $escape = ['%'=>'\%', '_'=>'\_', '\\'=>'\\\\'];
+        $escape = ['%' => '\%', '_' => '\_', '\\' => '\\\\'];
         if ($oSearchForm->load(Yii::$app->request->get()) && $oSearchForm->validate()) {
             if ($oSearchForm->key) {
                 $oProductQuery->join('LEFT JOIN', '`base_tree` AS `category`', '`product`.`category_id` = `category`.`id`');
@@ -70,7 +70,7 @@ class StoreController extends \frontend\components\BaseController {
         if (!$oProduct)
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         $oChildProduct = null;
-        $flavors = $colors = [];
+        $flavors = $colors = $colorsOptions = [];
         $oProductForm = new ProductForm();
         if ($oProductForm->load(Yii::$app->request->get()) && $oProductForm->validate()) {
 
@@ -86,6 +86,8 @@ class StoreController extends \frontend\components\BaseController {
             }
             if ($oProduct->isAccessory()) {
                 $colors = $oProduct->getChildsColors($oProductForm->size);
+                foreach (array_keys($colors) as $color)
+                    $colorsOptions[$color] = ['style' => "background:$color; color:$color;"];
             } else {
                 $flavors = $oProduct->getChildsFlavors($oProductForm->size);
             }
@@ -97,6 +99,7 @@ class StoreController extends \frontend\components\BaseController {
                     'sizes' => $oProduct->getChildsSizes(),
                     'flavors' => $flavors,
                     'colors' => $colors,
+                    'colorsOptions' => $colorsOptions,
                     'relatedProducts' => $oProduct->getRelated(4)
         ]);
     }

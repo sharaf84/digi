@@ -15,17 +15,16 @@
         </div>
         <div class="large-3 medium-3 small-12 columns">
             <div class="comments-meta">
-                <?= count($comments)?> <?= Yii::t('app', 'Comment(s)') ?>
+                <?= count($comments) ?> <?= Yii::t('app', 'Comment(s)') ?>
             </div>
         </div>
     </div>
-    
+
     <?php if (!\Yii::$app->user->isGuest) { ?>
         <?php echo $this->render('_form', ['commentModel' => $commentModel, 'encryptedEntity' => $encryptedEntity]); ?>
     <?php } ?>
-    
+
     <?php echo $this->render('_list', ['comments' => $comments, 'maxLevel' => $maxLevel]) ?>
 
 </div>
-
 

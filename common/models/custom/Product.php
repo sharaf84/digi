@@ -6,7 +6,6 @@ use Yii;
 use yii\helpers\Url;
 use yii\helpers\ArrayHelper;
 
-
 /**
  * This is the model class for table "product".
  *
@@ -21,6 +20,7 @@ use yii\helpers\ArrayHelper;
  * @property string $color
  * @property string $price
  * @property integer $qty
+ * @property integer $sold holds sold count
  * @property string $brief
  * @property string $description
  * @property string $body
@@ -57,7 +57,7 @@ class Product extends \common\models\base\Base {
             [['price', 'featured', 'qty'], 'default', 'value' => 0],
             [['slug'], 'match', 'pattern' => static::SLUG_PATTERN],
             [['slug'], 'unique'],
-            [['price', 'qty'], 'number'],
+            [['price', 'qty', 'sold'], 'number'],
             [['brief', 'description', 'body'], 'string'],
             [['parent_id', 'category_id', 'brand_id', 'size_id', 'flavor_id', 'qty', 'featured', 'sort', 'status'], 'integer'],
             [['title', 'slug'], 'string', 'max' => 255],
@@ -82,6 +82,7 @@ class Product extends \common\models\base\Base {
             'color' => Yii::t('app', 'Color'),
             'price' => Yii::t('app', 'Price'),
             'qty' => Yii::t('app', 'Quantity'),
+            'sold' => Yii::t('app', 'Sold'),
             'brief' => Yii::t('app', 'Brief'),
             'description' => Yii::t('app', 'Description'),
             'body' => Yii::t('app', 'Body'),
@@ -210,14 +211,11 @@ class Product extends \common\models\base\Base {
      * Get Best Seller Products
      */
     public static function getBestSeller($limit = 1) {
-        /**
-         * @todo change the condition to get best seller products
-         */
         return self::find()
                         ->parents()
-                        ->andWhere(['featured' => 1])
+                        ->andWhere(['>', 'sold', 0])
                         ->with('firstMedia', 'category')
-                        ->defaultOrder()
+                        ->orderBy(['sold' => SORT_DESC])
                         ->limit($limit)
                         ->all();
     }

@@ -28,6 +28,7 @@ Yii::$app->metaTags->register($oProduct);
                 'sizes' => $oProduct->getChildsSizes(),
                 'flavors' => $flavors,
                 'colors' => $colors,
+                'colorsOptions' => $colorsOptions,
             ]);
             ?>
 

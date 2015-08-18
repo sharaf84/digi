@@ -23,7 +23,7 @@ $form = ActiveForm::begin([
     <i class="md md-arrow-drop-up"></i><i class="md md-arrow-drop-down"></i>
         <?php 
         echo $oProduct->isAccessory() 
-                ? Html::activeDropDownList($oProductForm, 'color', $colors, ['prompt' => Yii::t('app', 'Choose Color'), 'options' =>['#ffff00' => ['style' => 'background:#ffff00;color:#ffff00']]] ) 
+                ? Html::activeDropDownList($oProductForm, 'color', $colors, ['prompt' => Yii::t('app', 'Choose Color'), 'options' => $colorsOptions] ) 
                 : Html::activeDropDownList($oProductForm, 'flavor', $flavors, ['prompt' => Yii::t('app', 'Choose Flavor')]) ;
         ?>
 </div>

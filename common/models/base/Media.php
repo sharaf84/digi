@@ -90,7 +90,7 @@ class Media extends Base {
     }
 
     public function afterDelete() {
-        //var_dump($this);die;
+        //Delete files from the server
         MediaHelper::deleteFiles(Yii::getAlias('@root') . $this->path, $this->filename, true);
         return parent::afterDelete();
     }
@@ -136,6 +136,5 @@ class Media extends Base {
     public function getImgUrl($size = null, $placeholder = true, $overwrite = false) {
         return MediaHelper::getImgUrl($this, $size, $placeholder, $overwrite);
     }
-    
     
 }

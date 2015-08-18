@@ -36,9 +36,9 @@ class MediaHelper {
 
         return $oMedia->getFileUrl($size);
     }
-    
+
     public static function getPlaceholderUrl($size = null, $placeholder = true, $overwrite = false) {
-        return self::getImgUrl(null, $size, $placeholder, $overwrite); 
+        return self::getImgUrl(null, $size, $placeholder, $overwrite);
     }
 
     /**
@@ -99,7 +99,7 @@ class MediaHelper {
         }
         return $deleted;
     }
-    
+
     public static function gridDisplay($oMedia) {
         if (strpos($oMedia->mime, 'image') !== false)
             return static::imgLink($oMedia, 'micro', ['class' => 'colorboxImg', 'data-pjax' => '0']);
@@ -114,11 +114,11 @@ class MediaHelper {
     public static function imgLink($oMedia, $size = 'micro', $options = []) {
         return Html::a(static::img($oMedia, $size), $oMedia->getFileUrl(), $options);
     }
-    
+
     public static function img($oMedia, $size = 'micro', $options = []) {
         return Html::img($oMedia->getImgUrl($size), $options);
     }
-    
+
     public static function audio($oMedia, $options = []) {
         $options['controls'] = true;
         $sourceOption = ['src' => $oMedia->getFileUrl(), 'type' => $oMedia->mime];
@@ -133,6 +133,48 @@ class MediaHelper {
         $sourceTag = Html::tag('source', null, $sourceOption);
         $content = $sourceTag . yii::t('app', 'Your browser does not support HTML5 video');
         return Html::tag('video', $content, $options);
+    }
+
+    /**
+     * Uplad file from url and save data
+     * @param obj $oMedia
+     * @param string $url
+     * @param string $extension 
+     * @return boolean
+     */
+    public static function urlUpload($oMedia, $url, $extension = null) {
+
+        if (!$extension) {
+            $info = pathinfo($url);
+            $extension = reset(explode('?', $info['extension']));
+        }
+
+        $oMedia->filename = Yii::$app->security->generateRandomString(16) . '.' . $extension;
+        $path = static::createUploadDir();
+        $oMedia->path = substr($path, strlen(Yii::getAlias('@root'))) . '/';
+
+        file_put_contents($path . DIRECTORY_SEPARATOR . $oMedia->filename, file_get_contents($url));
+
+        $oMedia->size = filesize($path . DIRECTORY_SEPARATOR . $oMedia->filename);
+        $oMedia->mime = mime_content_type($path . DIRECTORY_SEPARATOR . $oMedia->filename);
+
+        return $oMedia->save();
+    }
+
+    /**
+     * Creates uoload dir
+     * @param string $path
+     * @return int $path
+     */
+    public static function createUploadDir($path = null) {
+        $path or $path = Yii::getAlias('@uploadPath') . '/' . date('Y/m/d');
+        if (!is_dir($path)) {
+            mkdir($path, 0775, true);
+            chmod($path, 0775);
+        } elseif (!is_writable($path)) {
+            chmod($path, 0775);
+        }
+        return $path;
     }
 
 }
