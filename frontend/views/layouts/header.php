@@ -13,18 +13,18 @@ $isHome = Yii::$app->controller->action->id == 'home';
     <div class="row">
         <!--.header-top-bar(data-magellan-expedition='fixed')-->
         <div class="header-top-bar" >
-            <div class="large-2 medium-2 small-2 columns show-for-small"><i class="md md-more-vert <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
-            <div class="large-2 medium-2 small-5 columns"><a href="/" class="logo"><?= Yii::t('app', 'TSS') ?></a></div>
-            <div class="large-5 medium-6 small-5 columns show-for-medium-up">
+            <div class="small-1 columns show-for-small"><i class="md md-more-vert <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
+            <div class="large-2 medium-3 small-4 columns"><a href="/" class="logo"><!-- <?= Yii::t('app', 'TSS') ?> --></a></div>
+            <div class="large-5 medium-6 columns show-for-medium-up">
                 <nav class="main-nav">
                     <ul>
                         <li><a href="<?= Url::home() ?>" class="<?= $isHome ? 'active' : '' ?>"><?= Yii::t('app', 'Home') ?></a></li>
-                        <li><a href="<?= Url::to(['/store']) ?>" class="<?= (Yii::$app->controller->id == 'store' ) ? 'active' : '' ?>"  data-drop-down="#store-dropdown"><?= Yii::t('app', 'Store') ?></a></li>
-                        <li><a href="<?= Url::to(['/articles']) ?>" class="<?= (Yii::$app->controller->id == 'articles' ) ? 'active' : '' ?>" data-drop-down="#articles-dropdown"><?= Yii::t('app', 'Articles') ?></a></li>
+                        <li><span class="<?= (Yii::$app->controller->id == 'store' ) ? 'active' : '' ?>"  data-drop-down="#store-dropdown"><?= Yii::t('app', 'Store') ?></span></li>
+                        <li><span class="<?= (Yii::$app->controller->id == 'articles' ) ? 'active' : '' ?>" data-drop-down="#articles-dropdown"><?= Yii::t('app', 'Articles') ?></span></li>
                     </ul>
                 </nav>
             </div>
-            <div class="large-3 medium-3 small-3 columns header-search-cont hide-for-medium">
+            <div class="large-3 small-7 columns header-search-cont hide-for-medium">
                 <form action="<?= Url::to(['/store/search']) ?>">
                     <i class="md md-search" onclick="if ($(this).next('input').val())
                                 $(this).parent('form').submit();"></i>
@@ -33,7 +33,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
             </div>
 
             <?php if (!Yii::$app->user->isGuest) { ?>
-                <div class="large-2 medium-2 small-2 columns show-for-medium-up">
+                <div class="large-2 medium-3 columns show-for-medium-up">
                     <div class="shopping-cart">
                         <span><?= Yii::$app->user->identity->totalCartCount ? Yii::$app->user->identity->totalCartCount : 0 ?></span>
                         <a href="<?= Url::to(['/cart']) ?>">
@@ -48,7 +48,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                 <span class="arrow-up"></span>
                                 <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="menu-avatar">
                                 <h3><a href="<?= Url::to(['/profile']) ?>"><?= Yii::$app->user->identity->getName() ?></a></h3>
-                                <div class="row user-buttons-cont">
+                                <div class="user-buttons-cont">
                                     <div class="large-6 medium-6 small-12 columns view-profile-cont">
                                         <a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
                                     </div>
@@ -56,6 +56,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                         <a href="<?= Url::to(['/user/logout']) ?>" data-method="post"><button><?= Yii::t('app', 'Logout') ?></button></a>
                                     </div>
                                 </div>
+								<div class="row"></div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +65,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                     </div>
                 </div>
             <?php } else { ?>
-                <div class="large-2 medium-2 small-2 columns show-for-medium-up">
+                <div class="large-2 medium-3 columns show-for-medium-up">
                     <div class="user-avatar login-cont">
                         <span class="login-btn" data-drop-down="#login-dropdown"><i class="md md-lock"></i> <?= Yii::t('app', 'Login') ?></span>
                         <div class="login-dropdown drop-down" id="login-dropdown">

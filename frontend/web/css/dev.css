@@ -13,6 +13,11 @@ a.cart-overflow{color: #e61b1e;}
 .single-page.shopping-cart button[type="submit"].cart-overflow {background: #e61b1e; cursor: default;}
 .facebook-signup{cursor: pointer;}
 
+body {}
+.home-bottom-articles p.article-meta .read-more {}
+.home-bottom-articles p {}
+.shop-now {}
+h1, h2, h3, h4, h5, h6 {}
 header {background-image:url('./../shared/themes/frontend/images/src/loading.gif');background-repeat:no-repeat;background-position:center;background-size:auto}
 
 @font-face {
@@ -23,7 +28,9 @@ header {background-image:url('./../shared/themes/frontend/images/src/loading.gif
 
 header .drop-down {-webkit-transition-duration:0s !important;-moz-transition-duration:0s !important;-o-transition-duration:0s !important;transition-duration:0s !important}
 
-header .main-nav ul li a {font-family: 'LevenimMTBold' !important;text-transform:uppercase;font-size:18px !important}
+header .main-nav ul li a, header .main-nav ul li span {font-family: 'LevenimMTBold' !important;text-transform:uppercase;font-size:18px !important}
+header .main-nav ul li span {cursor:pointer;color: #252525;font: 500 14px "PT Sans", arial, sans-serif;padding: 27px;display: block;-webkit-transition: 0.3s, ease, all;-moz-transition: 0.3s, ease, all;transition: 0.3s, ease, all;}
+header .main-nav ul li span.active, header .main-nav ul li span:hover {color: #ed2024;padding-top: 22px;border-top: 5px solid}
 
 .home-tabs ul.tabs li.tab-title:hover {background-color:transparent !important}
 .home-tabs ul.tabs li.tab-title a {margin:0 4px}
@@ -43,13 +50,12 @@ footer .social-links .row a {width:40px !important;height:40px !important}
 .social-links .fa {font-size:28px;line-height:40px;vertical-align:top}
 
 header .user-avatar.usermenu-cont .usermenu-dropdown, header .user-avatar.login-cont .login-dropdown {top:-500px !important;width:auto !important;background-color:transparent !important;padding:0 !important}
-html header .user-avatar.usermenu-cont .usermenu-dropdown.active {top:24px !important}
-html header .user-avatar.login-cont .login-dropdown.active {top:22px !important}
+html header .user-avatar.usermenu-cont .usermenu-dropdown.active, html header .user-avatar.login-cont .login-dropdown.active {top:40px !important}
 header .user-avatar.usermenu-cont .usermenu-dropdownBox, header .user-avatar.login-cont .login-dropdownBox {width: 240px;background:#383838;padding:10px}
 header .user-avatar.login-cont .login-dropdownBox {padding-top:30px}
-header .user-avatar.usermenu-cont .usermenu-dropdownSpace, header .user-avatar.login-cont .login-dropdownSpace {height: 38px}
-header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {top:28px !important}
-header .user-avatar.login-cont .signup-btn {top:52px !important}
+header .user-avatar.usermenu-cont .usermenu-dropdownSpace, header .user-avatar.login-cont .login-dropdownSpace {height: 34px}
+header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {top:24px !important}
+header .user-avatar.login-cont .signup-btn {top:44px !important}
 
 .flash-messagesBox {position:fixed;right:0;bottom:0;z-index:99999999;width:100%}
 	.flash-messagesClose {cursor:pointer;float:right;margin:12px 24px;color:#fff}
@@ -72,8 +78,8 @@ header .drop-down .articles-cont .dropdown-product-item:last-child {float:left !
 
 .single-page ul.pagination.filters li a {padding:6px 10px !important}
 
-header .header-slider h2 {margin:24px 12px 6px !important;line-height:48px !important;font-size:32px !important}
-header .header-slider p {margin:6px !important;line-height:24px !important;font-size:20px;font-weight:normal;color:#181818}
+header .header-slider h2 {margin:32px 48px 6px !important;line-height:48px !important;font-size:32px !important}
+header .header-slider p {margin:6px 48px !important;line-height:24px !important;font-size:20px;font-weight:normal;color:#181818}
 
 .article-section {border-bottom-width:0 !important}
 .article-section .row {border-bottom:1px solid #dcdcdc}
@@ -87,3 +93,43 @@ header .user-avatar.login-cont a {display:block;margin:0 0 4px;line-height:24px;
 #ar-layout header .user-avatar.login-cont .login-dropdown.active {right:0}
 
 header .header-top-bar.skrollable-after .drop-down.active .tabs-cont {padding:0 !important}
+
+#ar-layout .home-bottom-articles p.article-meta .date-time {float:left}
+.home-bottom-articles p.article-meta .read-more {float:right;width:auto}
+
+header .user-avatar {top:24px}
+header .header-top-bar {height:auto}
+#ar-layout header .main-nav ul li span {    font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important;}
+header .main-nav ul li a, header .main-nav ul li span {padding:16px;line-height:32px}
+header .main-nav ul li a.active, header .main-nav ul li a:hover, header .main-nav ul li span.active, header .main-nav ul li span:hover {padding-top:11px}
+header .logo {margin-top:4px}
+header form input[type='search'] {height:36px}
+header form i {top:auto}
+header form {margin:12px 0}
+header .user-avatar, header .lang-switcher, header .shopping-cart {position:relative;top:auto;left:auto;right:auto;bottom:auto;display:inline-block;vertical-align:top;width:auto;height:24px;line-height:24px;padding:20px 6px}
+header .header-top-bar .drop-down.active {top:60px !important}
+header .header-top-bar.skrollable-after .drop-down.active {top:64px !important}
+header .shopping-cart span {top:10px}
+header .user-avatar img {width:24px;height:24px}
+
+header .user-avatar.usermenu-cont .view-profile-cont button, header .user-avatar.usermenu-cont .logout-cont button {width:100%;margin:6px 0 0}
+
+header .drop-down .tabs-cont {height:auto}
+header .drop-down .brands-cont {height:auto}
+
+footer .prev-nav, footer .next-nav {top:60px}
+footer .prev-nav {left:0}
+footer .next-nav {right:0}
+
+.product-background-cover {right:0;left:auto;background-position:0% 0}
+.product-background-cover img {right:0;left:auto;max-height:100%}
+
+.single-page.single-product .tabs-content .content {max-width:80%;margin:0}
+
+@media (max-width: 960px) {
+	.product-background-cover {
+		display:none
+	}
+}
+
+select {font-family:arial}
