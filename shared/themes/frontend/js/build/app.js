@@ -142,7 +142,6 @@ TSS.header = function () {
         // 'data-200': 'width: 90%; left: 5%;border-radius:4px;',
         // 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
     });
-
     $('[data-drop-down]').mouseenter(function (e) {
         var id = $(this).data('dropDown');
         $('[data-drop-down]').removeClass('active');
@@ -152,12 +151,23 @@ TSS.header = function () {
     });
 	// Added By Muhammad Ali
 	// Start 
+    $('body').on('click', '[data-drop-down]:not(.active)', function (e) {
+        var id = $(this).data('dropDown');
+        $('[data-drop-down]').removeClass('active');
+        $(this).addClass('active');
+        $('.drop-down').removeClass('active');
+        $(id).addClass('active');
+    });
     $('[data-drop-down]').mouseleave(function (e) {
 		 $(this).removeClass('active');
 		$('.drop-down').removeClass('active');
     });
     $('.drop-down').mouseenter(function (e) {
 		 $(this).addClass('active');
+    });
+    $('body').on('click', '[data-drop-down].active', function (e) {
+		 $(this).removeClass('active');
+		$('.drop-down').removeClass('active');
     });
 	// End
     $('.drop-down').mouseleave(function (e) {

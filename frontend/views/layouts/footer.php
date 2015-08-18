@@ -16,10 +16,10 @@ use yii\helpers\Url; ?>
     <div class="footer-newsletter">
         <div class="row">
             <div class="large-1 medium-1 small-1 column hide-for-small"><i class="md md-email envelope"></i></div>
-            <div class="large-4 medium-4 small-12 column">
+            <div class="large-5 medium-5 small-12 column">
                 <h3><?= Yii::t('app', 'Get the latest sales and new product announcements right to your inbox') ?></h3>
             </div>
-            <div class="large-7 medium-7 small-12 column">
+            <div class="large-6 medium-6 small-12 column">
                 <form action="/" class="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
                     <input type="email" required placeholder="Email address"><span class="error"><?= Yii::t('app', 'Sorry, wrong email') ?></span>
                 </form>
