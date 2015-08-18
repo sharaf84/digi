@@ -48,7 +48,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                 <span class="arrow-up"></span>
                                 <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="menu-avatar">
                                 <h3><a href="<?= Url::to(['/profile']) ?>"><?= Yii::$app->user->identity->getName() ?></a></h3>
-                                <div class="row user-buttons-cont">
+                                <div class="user-buttons-cont">
                                     <div class="large-6 medium-6 small-12 columns view-profile-cont">
                                         <a href="<?= Url::to(['/profile']) ?>"><button><?= Yii::t('app', 'View Profile') ?></button></a>
                                     </div>
@@ -56,6 +56,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
                                         <a href="<?= Url::to(['/user/logout']) ?>" data-method="post"><button><?= Yii::t('app', 'Logout') ?></button></a>
                                     </div>
                                 </div>
+								<div class="row"></div>
                             </div>
                         </div>
                     </div>

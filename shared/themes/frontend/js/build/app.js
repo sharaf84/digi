@@ -38,7 +38,7 @@ TSS.homepageManager = function () {
 
     var footerSwiper = new Swiper('.footer-slider', {
         pagination: false,
-        slidesPerView: 6,
+        slidesPerView: 5,
         slidesPerColumn: 2,
         nextButton: 'footer .next-nav',
         prevButton: 'footer .prev-nav',
