@@ -31,7 +31,8 @@
         "v0lume/yii2-meta-tags": "*",
         "kartik-v/yii2-widgets": "*",
         "yii2mod/yii2-comments": "*",
-        "yii2mod/yii2-enum": "*"
+        "yii2mod/yii2-enum": "*",
+        "omnipay/migs": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

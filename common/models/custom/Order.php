@@ -19,6 +19,7 @@ use Yii;
  * @property string $token
  * @property integer $new
  * @property integer $status
+ * @property integer $paid
  * @property string $created
  * @property string $updated
  *
@@ -27,19 +28,23 @@ use Yii;
  */
 class Order extends \common\models\base\Base {
 
-    /**
-     * Status
-     */
+    //Status
     const STATUS_CART = 0;
     const STATUS_PENDING = 1;
     const STATUS_IN_PROGRESS = 2;
     const STATUS_DELIVERED = 10;
 
+    // Payment Methods
+
     /**
-     * Payment Methods
+     * Cash ON Delivery
      */
-    const METHOD_CASH_ON_DELIVERY = 1;
-    const METHOD_BANK = 2;
+    const METHOD_COD = 1;
+
+    /**
+     * MasterCard Internet Gateway Service
+     */
+    const METHOD_MIGS = 2;
 
     /**
      * @inheritdoc
@@ -75,6 +80,7 @@ class Order extends \common\models\base\Base {
             [['user_id', 'payment_method', 'new', 'status'], 'integer'],
             [['status'], 'in', 'range' => array_keys(static::getStatusList())],
             [['payment_method'], 'in', 'range' => array_keys(static::getPaymentMethodList())],
+            [['paid'], 'boolean'],
             [['email'], 'email'],
             [['name'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 11],
@@ -101,6 +107,7 @@ class Order extends \common\models\base\Base {
             'token' => Yii::t('app', 'Token'),
             'new' => Yii::t('app', 'New'),
             'status' => Yii::t('app', 'Status'),
+            'paid' => Yii::t('app', 'Paid'),
             'created' => Yii::t('app', 'Created'),
             'updated' => Yii::t('app', 'Updated'),
         ];
@@ -218,8 +225,8 @@ class Order extends \common\models\base\Base {
      */
     public static function getPaymentMethodList() {
         return [
-            self::METHOD_CASH_ON_DELIVERY => Yii::t('app', 'Cash on delivery'),
-            self::METHOD_BANK => Yii::t('app', 'Bank'),
+            self::METHOD_COD => Yii::t('app', 'Cash on delivery'),
+            self::METHOD_MIGS => Yii::t('app', 'Visa / Mastercard'),
         ];
     }
 
@@ -349,7 +356,7 @@ class Order extends \common\models\base\Base {
      * Generates token
      */
     public function generateToken() {
-        $this->token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->token = Yii::$app->security->generateRandomString(16) . '_' . time();
     }
 
     public function checkout() {
@@ -357,7 +364,7 @@ class Order extends \common\models\base\Base {
         $this->generateToken();
         $this->amount = $this->liveCartPrice;
         $this->status = static::STATUS_PENDING;
-        $this->user_id = $this->oldAttributes['user_id'];//Not to change old user
+        $this->user_id = $this->oldAttributes['user_id']; //Not to change old user
         if ($this->validate() && !$this->hasOverflowCart) {
             $oDBTransaction = Yii::$app->db->beginTransaction();
             if ($this->save() && $this->afterCheckout()) {
@@ -367,6 +374,20 @@ class Order extends \common\models\base\Base {
                 $oDBTransaction->rollBack();
         }
         return false;
+    }
+
+    public static function findToPayment($token) {
+        return static::findOne([
+                    'token' => $token,
+                    'user_id' => Yii::$app->user->id,
+                    'status' => Order::STATUS_PENDING,
+                    'paid' => false,
+        ]);
+    }
+
+    public function paid() {
+        $this->paid = 1;
+        return $this->save();
     }
 
     /**
