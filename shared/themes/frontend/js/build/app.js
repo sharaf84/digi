@@ -157,6 +157,7 @@ TSS.header = function () {
 			$(id).addClass('active');
 		}
     });
+	/*
     $('[data-drop-down]').mouseleave(function (e) {
 		 $(this).removeClass('active');
 		$('.drop-down').removeClass('active');
@@ -164,7 +165,9 @@ TSS.header = function () {
     $('.drop-down').mouseenter(function (e) {
 		 $(this).addClass('active');
     });
+	*/
 	// End
+	/*
     $('[data-drop-down]').mouseenter(function (e) {
         var id = $(this).data('dropDown');
         $('[data-drop-down]').removeClass('active');
@@ -176,6 +179,7 @@ TSS.header = function () {
         $('[data-drop-down]').removeClass('active');
         $('.drop-down').removeClass('active');
     });
+	*/
     $('#store-dropdown ul li a').mouseenter(function (e) {
         e.stopPropagation();
         $(this).click();
