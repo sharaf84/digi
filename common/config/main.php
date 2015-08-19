@@ -20,6 +20,7 @@ return [
         '@frontThemeUrl' => '@sharedUrl/themes/frontend',
         '@webvimark/helpers' => '@common/digisoft/webvimark/helpers',
         '@webvimark/behaviors/multilanguage' => '@common/digisoft/webvimark/multilanguage',
+        '@hitcounter' => '@common/digisoft/hitcounter/src',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [

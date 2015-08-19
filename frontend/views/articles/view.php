@@ -5,6 +5,7 @@ use yii\helpers\Url;
 
 $this->title = Html::encode($oArticle->title);
 Yii::$app->metaTags->register($oArticle);
+$oArticle->getBehavior('HitCounter')->touch();
 ?>
 <div id="checkpoint-a" class="single-page blog-listing single-blog row">
     <div class="page-title large-12 medium-12 small-12 columns">

@@ -8,12 +8,27 @@ class Article extends \common\models\base\Content {
     
     const TYPE = 2;
     
+    /**
+     * @inheritdoc
+     */
+    public function behaviors() {
+        return array_merge_recursive(parent::behaviors(), [
+            'HitCounter' => [
+                'class' => \hitcounter\HitableBehavior::className(),
+                'attribute' => 'hits',    //attribute which should contain uniquie hits value
+                'group' => 'Article',               //group name of the model (class name by default)
+                'delay' => -1,             //never register the same visitor
+                'table_name' => '{{%hits}}'     //table with hits data
+            ],
+        ]);
+    }
+    
     public static function getLatest($limit = 1){
         return self::find()->with('firstMedia')->orderBy(['date' => SORT_DESC])->limit($limit)->all();
     }
     
     public static function getMostRead($limit = 1){
-        return self::find()->with('firstMedia')->orderBy(['date' => SORT_DESC])->limit($limit)->all();
+        return self::find()->with('firstMedia')->orderBy(['hits' => SORT_DESC, 'date' => SORT_DESC])->limit($limit)->all();
     }
     
     public function getInnerUrl() {

@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'test' => 'Allah Akbar'
+    'الله اكبر' => 'Allah Akbar'
 ];
 

@@ -64,7 +64,7 @@ class UserController extends \frontend\components\BaseController {
             return $this->goBack();
         } else {
             Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, wrong email or password. Please try again.'));
-            return $this->goBack();//$this->goHome();
+            return $this->goBack(); //$this->goHome();
         }
     }
 
@@ -150,7 +150,7 @@ class UserController extends \frontend\components\BaseController {
      */
     public function onAuthSuccess($client) {
         $attributes = $client->api('me?fields=id,name,email,picture.type(large)', 'GET'); // $client->getUserAttributes();
-        //var_dump($attributes); die;
+        
         $oAuthClient = Authclient::find()->where([
                     'source' => $client->getId(),
                     'source_id' => $attributes['id'],
@@ -178,6 +178,12 @@ class UserController extends \frontend\components\BaseController {
                         $oDBTransaction = Yii::$app->db->beginTransaction();
                         if ($oUser->save() && $oProfile->setUserId($oUser->id) && $oProfile->save(false) && $oAuthClient->setUserId($oUser->id) && $oAuthClient->save()) {
                             $oDBTransaction->commit();
+                            if(!empty($attributes['picture']['data']['url'])) {
+                                $oMedia = new \common\models\base\Media();
+                                $oMedia->model = 'User';
+                                $oMedia->model_id = $oUser->id;
+                                \common\helpers\MediaHelper::urlUpload($oMedia, $attributes['picture']['data']['url']);
+                            }
                             Yii::$app->user->login($oUser);
                         } else {
                             Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Sorry, error saving data.'));

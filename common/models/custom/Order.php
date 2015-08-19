@@ -396,7 +396,9 @@ class Order extends \common\models\base\Base {
             $oCart->price = $oCart->item->price;
             $oCart->title = $oCart->item->title;
             $oCart->item->qty -= $oCart->qty;
-            if (!($oCart->save() && $oCart->item->save()))
+            $oCart->item->sold += $oCart->qty;
+            $oCart->item->parent->sold += $oCart->qty;
+            if (!($oCart->save() && $oCart->item->save() && $oCart->item->parent->save()))
                 return false;
         }
         return true;
