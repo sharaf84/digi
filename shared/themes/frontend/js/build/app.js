@@ -127,7 +127,7 @@ TSS.header = function () {
     //'data-end-end': 'width: 100%; left: 0%;border-radius:0px;top:-20px;',
     //});
 	
-
+	
     $('.header-top-bar').css({
         width: Helpers.isMobile() ? window.innerWidth : 1000,
         left: Helpers.isMobile() ? 0 : ((totalGutter / 2 / window.innerWidth) * 100) + '%'
@@ -142,6 +142,7 @@ TSS.header = function () {
         // 'data-200': 'width: 90%; left: 5%;border-radius:4px;',
         // 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
     });
+	
     $('[data-drop-down]').mouseenter(function (e) {
         var id = $(this).data('dropDown');
         $('[data-drop-down]').removeClass('active');

@@ -18,7 +18,7 @@ body {}
 .home-bottom-articles p {}
 .shop-now {}
 h1, h2, h3, h4, h5, h6 {}
-header {background-image:url('./../shared/themes/frontend/images/src/loading.gif');background-repeat:no-repeat;background-position:center;background-size:auto}
+/* header {background-image:url('./../shared/themes/frontend/images/src/loading.gif');background-repeat:no-repeat;background-position:center;background-size:auto} */
 
 @font-face {
   font-family: 'LevenimMTBold';
@@ -106,7 +106,7 @@ header .logo {margin-top:4px}
 header form input[type='search'] {height:36px}
 header form i {top:auto}
 header form {margin:12px 0}
-header .user-avatar, header .lang-switcher, header .shopping-cart {position:relative;top:auto;left:auto;right:auto;bottom:auto;display:inline-block;vertical-align:top;width:auto;height:24px;line-height:24px;padding:20px 6px}
+header .user-avatar, header .lang-switcher, header .shopping-cart {position:relative;top:auto;left:auto;right:auto;bottom:auto;display:inline-block;vertical-align:top;width:auto !important;height:24px;line-height:24px;padding:20px 6px}
 header .header-top-bar .drop-down.active {top:60px !important}
 header .header-top-bar.skrollable-after .drop-down.active {top:64px !important}
 header .shopping-cart span {top:10px}
