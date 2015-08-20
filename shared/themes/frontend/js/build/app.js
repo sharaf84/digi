@@ -57,20 +57,20 @@ TSS.homepageManager = function () {
         preloadImages: true,
 		onInit: function (instance) {
 			var slides = instance.slides;
-			$('header').attr('style', 'background: url(' + $(instance.slides[0]).find('img').attr('src') + ') 0 0 no-repeat;background-size: cover;');
+			//$('header').attr('style', 'background: url(' + $(instance.slides[0]).find('img').attr('src') + ') 0 0 no-repeat;background-size: cover;');
 		},
         onSlideChangeStart: function (instance) {
             var slides = instance.slides;
             var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
-            $('header').attr('style', 'background: #fff;');
-            $('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
+            //$('header').attr('style', 'background: #fff;');
+            //$('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
             //$('.header-slider h2').removeClass('animated slideInLeft');
         },
         onSlideChangeEnd: function (instance) {
             var slides = instance.slides;
             var productImage = $(slides[instance.activeIndex]).find('img').attr('src');
-            $('header').attr('style', 'background: #111;');
-            $('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
+            //$('header').attr('style', 'background: #111;');
+            //$('header').attr('style', 'background: url(' + productImage + ') 0 0 no-repeat;background-size: cover;');
             //$('.header-slider h2').addClass('animated slideInLeft');
         }
     });
@@ -117,6 +117,18 @@ TSS.header = function () {
     var rowWidth = 1000; //$('.row').width();
     var totalGutter = window.innerWidth - rowWidth;
 
+	if ($(window).scrollTop() > 0) {
+		$('header').addClass('scrollHeader');
+	} else {
+		$('header').removeClass('scrollHeader');
+	}
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 0) {
+			$('header').addClass('scrollHeader');
+		} else {
+			$('header').removeClass('scrollHeader');
+		}
+	});
     //$('header:not(.single-header) .header-top-bar').attr({
     //'data-top-top': 'position:fixed;',
     //'data-anchor-target': '#checkpoint-a',

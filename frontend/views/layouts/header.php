@@ -9,10 +9,10 @@ use yii\widgets\ActiveForm;
 
 $isHome = Yii::$app->controller->action->id == 'home';
 ?>
-<header class="<?php echo $isHome ? 'home-page' : 'single-header'; ?>">
-    <div class="row">
-        <!--.header-top-bar(data-magellan-expedition='fixed')-->
-        <div class="header-top-bar" >
+<header class="<?php echo $isHome ? 'home-page' : 'staticHeader single-header'; ?>">
+	<!--.header-top-bar(data-magellan-expedition='fixed')-->
+	<div class="headerContainer" >
+		<div class="row headerBox">
             <div class="small-1 medium-1 columns hide-for-large-up"><i class="md md-more-vert <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
             <div class="large-2 medium-4 small-4 columns"><a href="/" class="logo"><!-- <?= Yii::t('app', 'TSS') ?> --></a></div>
             <div class="large-5 columns show-for-large-up">
@@ -169,20 +169,19 @@ $isHome = Yii::$app->controller->action->id == 'home';
         </div>
     </div>
 <?php if ($isHome) { ?>
-        <div class="row">
-            <div id="checkpoint-a" class="header-slider swiper-container">
-                <div class="swiper-wrapper">
-    <?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
-                        <div class="header-product swiper-slide" onclick="javascript:location = '<?= $oMedia->link ?>'">
-                            <img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
-                            <h2><?= $oMedia->title ?></h2>
-                            <p><?= $oMedia->description ?></p>
-                            <!--<a href="<?= $oMedia->link ?>" class="shop-now"><i class="md md-shopping-cart"></i><?= Yii::t('app', 'Shop Now') ?></a>-->
-                        </div>
-    <?php } ?>
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
+	<div id="checkpoint-a" class="header-slider swiper-container">
+		<div class="swiper-wrapper">
+<?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
+				<div class="header-product swiper-slide" onclick="javascript:location = '<?= $oMedia->link ?>'">
+					<img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
+					<!--
+					<h2><?= $oMedia->title ?></h2>
+					<p><?= $oMedia->description ?></p>
+					-->
+				</div>
+<?php } ?>
+		</div>
+		<div class="swiper-pagination"></div>
+	</div>
 <?php } ?>
 </header>
