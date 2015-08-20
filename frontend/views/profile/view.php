@@ -68,24 +68,27 @@ $this->title = $oProfile->getName();
             <div class="as-table">
                 <div class="row">
                     <div class="large-12 medium-12 small-12 columns as-caption">
-                        Order History
+                        <?= Yii::t('app', 'Order History') ?>
                     </div>
                 </div>
                 <div class="row as-table-head hide-for-small">
                     <div class="large-4 medium-4 small-4 columns as-table-head-cell">
-                        Product
+                        <?= Yii::t('app', 'Product') ?>
                     </div>
                     <div class="large-2 medium-2 small-2 columns as-table-head-cell">
-                        Status
+                        <?= Yii::t('app', 'Status') ?>
                     </div>
                     <div class="large-2 medium-2 small-2 columns as-table-head-cell">
-                        Price
+                        <?= Yii::t('app', 'Price') ?>
+                    </div>
+                    <div class="large-1 medium-1 small-1 columns as-table-head-cell">
+                        <?= Yii::t('app', 'Quantity') ?>
                     </div>
                     <div class="large-2 medium-2 small-2 columns as-table-head-cell">
-                        Quantity
+                        <?= Yii::t('app', 'Total') ?>
                     </div>
-                    <div class="large-2 medium-2 small-2 columns as-table-head-cell">
-                        Total
+                    <div class="large-1 medium-1 small-1 columns as-table-head-cell">
+                        <?= Yii::t('app', 'Paid') ?>
                     </div>
                 </div>
                 <?php
@@ -121,11 +124,14 @@ $this->title = $oProfile->getName();
                             <div class="large-2 medium-2 small-3 columns as-table-cell">
                                 <span><?= $oCart->price ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
                             </div>
-                            <div class="large-2 medium-2 small-3 columns as-table-cell">
+                            <div class="large-1 medium-1 small-3 columns as-table-cell">
                                 <span><?= $oCart->qty ?></span>
                             </div>
                             <div class="large-2 medium-2 small-3 columns as-table-cell">
-                                <span><?= $oCart->price*$oCart->qty ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
+                                <span><?= $oCart->getTotalPrice() ?> <?= Yii::t('app', CURRENCY_SYMBOL) ?></span>
+                            </div>
+                            <div class="large-1 medium-1 small-3 columns as-table-cell">
+                                <span><?= $oCart->order->paid ? Yii::t('app', 'yes') : Yii::t('app', 'No') ?></span>
                             </div>
                         </div>
                         <!-- [/] Product Item -->

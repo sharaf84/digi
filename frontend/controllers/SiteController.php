@@ -36,6 +36,51 @@ class SiteController extends \frontend\components\BaseController {
         ];
     }
 
+    public function actionGo() {
+        $gateway = \Omnipay\Omnipay::create('Migs_ThreeParty');
+        $gateway->setMerchantId('TEST512345USD');
+        $gateway->setMerchantAccessCode('F05FC469');
+        $gateway->setSecureHash('E49780B4C8FDB4E38222ADE7F3B97CCA');
+
+        $response = $gateway->purchase([
+                    'amount' => '15.00',
+                    'currency' => 'USD',
+                    'transactionId' => 'yourAccessToken',
+                    'returnUrl' => \yii\helpers\Url::to(['/site/response'], true),
+                ])->send();
+        Yii::$app->session['migsPurchaseRequest'] = $response->getRequest()->getParameters();
+        
+        if ($response->isSuccessful()) {
+            // payment was successful: update database
+            print_r($response);
+        } elseif ($response->isRedirect()) {
+            // redirect to offsite payment gateway
+            $response->redirect();
+        } else {
+            // payment failed: display message to customer
+            echo $response->getMessage();
+        }
+    }
+
+    public function actionResponse() {
+        $gateway = \Omnipay\Omnipay::create('Migs_ThreeParty');
+        $response = $gateway->completePurchase(Yii::$app->session['migsPurchaseRequest'])->send();
+        
+        if ($response->isSuccessful()) {
+            // payment was successful: update database
+            //print_r($response->getMessage());
+            //print_r($response->getData());
+            //print_r($response->getTransactionReference());
+            print_r($response);
+        } elseif ($response->isRedirect()) {
+            // redirect to offsite payment gateway
+            $response->redirect();
+        } else {
+            // payment failed: display message to customer
+            echo $response->getMessage();
+        }
+    }
+
     /**
      * Home page
      */
@@ -63,7 +108,7 @@ class SiteController extends \frontend\components\BaseController {
             return $this->render('page', ['oPage' => $oPage]);
         }
     }
-    
+
     /**
      * Contact us page
      */

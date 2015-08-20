@@ -213,7 +213,7 @@ class Product extends \common\models\base\Base {
     public static function getBestSeller($limit = 1) {
         return self::find()
                         ->parents()
-                        ->andWhere(['>', 'sold', 0])
+                        //->andWhere(['>', 'sold', 0])
                         ->with('firstMedia', 'category')
                         ->orderBy(['sold' => SORT_DESC])
                         ->limit($limit)

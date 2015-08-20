@@ -127,4 +127,12 @@ class Cart extends \common\models\base\Base {
     public function isOverflow(){
         return $this->qty > $this->item->qty;
     }
+    
+    /**
+     * @return total price
+     */
+    public function getTotalPrice(){
+        return $this->price * $this->qty;
+    }
+    
 }
