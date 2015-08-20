@@ -36,16 +36,16 @@ use yii\helpers\Url; ?>
     </div>
     <div class="footer-copy row">
         <hr>
-        <div class="large-6 medium-6 small-12 columns<?php echo Yii::$app->language == 'ar' ? ' left' : '' ?>">
-            <p><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></p>
-        </div>
-        <div class="large-6 medium-6 small-12 columns<?php echo Yii::$app->language == 'ar' ? ' right' : '' ?>">
+        <div class="large-6 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' left' : 'right' ?>">
             <p class="footer-links">
                 <a href="<?= Url::to(['/site/page', 'slug' => 'about-us']) ?>"><?= Yii::t('app', 'About Us') ?></a> - 
                 <a href="<?= Url::to(['/site/contact-us']) ?>"><?= Yii::t('app', 'Contact Us') ?></a> - 
                 <a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>"><?= Yii::t('app', 'Terms Of Service') ?></a> - 
                 <a href="<?= Url::to(['/site/page', 'slug' => 'privacy-policy']) ?>"><?= Yii::t('app', 'Privacy Policy') ?></a>
             </p>
+        </div>
+        <div class="large-6 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' right' : 'left' ?>">
+            <p><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></p>
         </div>
     </div>
 </footer>

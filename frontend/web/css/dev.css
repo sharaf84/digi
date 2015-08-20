@@ -29,6 +29,21 @@ header .drop-down {position:absolute;top:56px;z-index:-1;display:none}
 header .drop-down.active {top:56px;display:block}
 header.scrollHeader .drop-down.active, header.staticHeader .drop-down.active {top:64px;z-index:1}
 
+.home-tabs ul.tabs li.tab-title a {font-size:14px !important}
+.home-tabs .product-item {text-align:center}
+.home-bottom-articles {text-align:center}
+.home-bottom-articles h5, .home-bottom-articles p {text-align:left}
+.article-section {text-align:center}
+.article-section h4, .article-section p {text-align:left}
+
+footer .footer-copy p.footer-links {text-align:right}
+@media (max-width: 640px) {
+	footer .footer-copy p.footer-links, footer .footer-copy p {
+		text-align:center
+	}
+}
+ul.pagination li {height:auto}
+
 html {overflow:auto !important}
 body {height:100% !important}
 body {}
