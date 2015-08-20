@@ -52,7 +52,7 @@ class OrdersController extends \frontend\components\BaseController {
         if ($oCheckoutOrder->load(Yii::$app->request->post())) {
             if ($oCheckoutOrder->checkout()) {
                 if ($oCheckoutOrder->payment_method == Order::METHOD_MIGS) {
-                    return $this->redirect(['/payment/migs-purchase', ['token' => $oCheckoutOrder->token]]);
+                    return $this->redirect(['/payment/migs-purchase', 'token' => $oCheckoutOrder->token]);
                 } else {
                     Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Order saved successfully.'));
                     return $this->redirect(['/profile']);

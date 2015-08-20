@@ -39,29 +39,28 @@ $this->title = $oProfile->getName();
             </div>
         </div>
     </div>
-
+    
+    <?php if(!empty($activities)){?>
     <div class="row">
         <div class="profile-section">
             <div class="section-header">
-                <h3><span><?= Yii::t('app', 'Activity') ?></span></h3>
+                <h3><span><?= Yii::t('app', 'Activities') ?></span></h3>
             </div>
             <div class="section-body">
+                <?php foreach ($activities as $oComment) { ?>
                 <div class="activity-item">
                     <i class="md md-message"></i>
-                    You commented on Bigger Arm in 24 hours
+                    <a href="<?= $oComment->article->getInnerUrl() ?>">
+                        <?= Yii::t('app', 'You commented on') ?> <?= $oComment->article->title ?> <?= $oComment->getPostedDate() ?>
+                    </a>
                 </div>
-                <div class="activity-item">
-                    <i class="md md-message"></i>
-                    You commented on Bigger Arm in 24 hours
-                </div>
-                <div class="activity-item">
-                    <i class="md md-message"></i>
-                    You commented on Bigger Arm in 24 hours
-                </div>
+                <?php }?>
             </div>
         </div>
     </div>
-
+    <?php } ?>
+    
+    <?php if(!empty($activeOrders)){?>
     <div class="row">
         <div class="profile-section order-history">
 
@@ -142,4 +141,5 @@ $this->title = $oProfile->getName();
             </div>
         </div>
     </div>
+    <?php } ?>
 </div>

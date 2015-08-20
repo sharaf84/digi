@@ -30,12 +30,12 @@ class ProfileController extends \frontend\components\BaseController {
     }
 
     public function actionView() {
-        
         if(!Yii::$app->user->identity->profile) 
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         return $this->render('view', [
             'oProfile' => Yii::$app->user->identity->profile,
-            'activeOrders' => Yii::$app->user->identity->getActiveOrders()->with('cartItems')->all()
+            'activeOrders' => Yii::$app->user->identity->getActiveOrders()->with('cartItems')->all(),
+            'activities' => Yii::$app->user->identity->getActivities(),
         ]);
     }
 
