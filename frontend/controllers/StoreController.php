@@ -23,8 +23,8 @@ class StoreController extends \frontend\components\BaseController {
         $escape = ['%' => '\%', '_' => '\_', '\\' => '\\\\'];
         if ($oSearchForm->load(Yii::$app->request->get()) && $oSearchForm->validate()) {
             if ($oSearchForm->key) {
-                $oProductQuery->join('LEFT JOIN', '`base_tree` AS `category`', '`product`.`category_id` = `category`.`id`');
-                $oProductQuery->join('LEFT JOIN', '`base_tree` AS `brand`', '`product`.`brand_id` = `brand`.`id`');
+                $oProductQuery->leftJoin('`base_tree` AS `category`', '`product`.`category_id` = `category`.`id`');
+                $oProductQuery->leftJoin('`base_tree` AS `brand`', '`product`.`brand_id` = `brand`.`id`');
                 $oProductQuery->andWhere('
                         `product`.`title` LIKE :key OR 
                         `product`.`brief` LIKE :key OR
@@ -37,8 +37,8 @@ class StoreController extends \frontend\components\BaseController {
         }
         if ($slug) {
             if (!$oSearchForm->key) {
-                $oProductQuery->join('LEFT JOIN', '`base_tree` AS `category`', '`product`.`category_id` = `category`.`id`');
-                $oProductQuery->join('LEFT JOIN', '`base_tree` AS `brand`', '`product`.`brand_id` = `brand`.`id`');
+                $oProductQuery->leftJoin('`base_tree` AS `category`', '`product`.`category_id` = `category`.`id`');
+                $oProductQuery->leftJoin('`base_tree` AS `brand`', '`product`.`brand_id` = `brand`.`id`');
             }
             $oProductQuery->andWhere('`category`.`slug`=:slug OR `brand`.`slug`=:slug', [':slug' => $slug]);
         }

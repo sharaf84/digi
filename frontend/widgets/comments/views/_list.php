@@ -21,7 +21,7 @@ if (!empty($comments)) {
                     <img src="<?= $comment->author->getFeaturedImgUrl('default_avatar') ?>" alt="<?= $comment->getAuthorName(); ?>">
                 </div>
                 <div class="large-11 medium-11 small-12 columns">
-                    <h3><?= $comment->getAuthorName(); ?></h3>
+                    <h3><?= $comment->author->getName(); ?></h3>
                     <p><?php echo $comment->getContent(); ?></p>
                 </div>
             </div>
