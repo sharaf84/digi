@@ -13,6 +13,8 @@ a.cart-overflow{color: #e61b1e;}
 .single-page.shopping-cart button[type="submit"].cart-overflow {background: #e61b1e; cursor: default;}
 .facebook-signup{cursor: pointer;}
 
+html {overflow:auto !important}
+body {height:100% !important}
 body {}
 .home-bottom-articles p.article-meta .read-more {}
 .home-bottom-articles p {}
@@ -25,6 +27,8 @@ h1, h2, h3, h4, h5, h6 {}
   src: url("../../shared/themes/frontend/fonts/lvnmbd.eot");
   src: url("../../shared/themes/frontend/fonts/lvnmbd.eot") format("embedded-opentype"), url("../../shared/themes/frontend/fonts/lvnmbd.woff") format("woff"), url("../../shared/themes/frontend/fonts/lvnmbd.ttf") format("truetype"), url("../../shared/themes/frontend/fonts/lvnmbd.svg") format("svg");
 }
+
+header .left-off-canvas-toggle {cursor:pointer;position:static;width:auto}
 
 header .drop-down {-webkit-transition-duration:0s !important;-moz-transition-duration:0s !important;-o-transition-duration:0s !important;transition-duration:0s !important}
 
@@ -102,7 +106,7 @@ header .header-top-bar {height:auto}
 #ar-layout header .main-nav ul li span {    font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important;}
 header .main-nav ul li a, header .main-nav ul li span {padding:16px;line-height:32px}
 header .main-nav ul li a.active, header .main-nav ul li a:hover, header .main-nav ul li span.active, header .main-nav ul li span:hover {padding-top:11px}
-header .logo {margin-top:4px}
+header .logo {margin-top:4px;width:auto}
 header form input[type='search'] {height:36px}
 header form i {top:auto}
 header form {margin:12px 0}

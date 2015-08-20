@@ -127,7 +127,7 @@ TSS.header = function () {
     //'data-end-end': 'width: 100%; left: 0%;border-radius:0px;top:-20px;',
     //});
 	
-	
+	/*
     $('.header-top-bar').css({
         width: Helpers.isMobile() ? window.innerWidth : 1000,
         left: Helpers.isMobile() ? 0 : ((totalGutter / 2 / window.innerWidth) * 100) + '%'
@@ -142,7 +142,7 @@ TSS.header = function () {
         // 'data-200': 'width: 90%; left: 5%;border-radius:4px;',
         // 'data-300': 'width: 100%; left: 0%;border-radius:0px;',
     });
-	
+	*/
 	// Added By Muhammad Ali
 	// Start 
     $('[data-drop-down]').click(function (e) {
@@ -157,17 +157,14 @@ TSS.header = function () {
 			$(id).addClass('active');
 		}
     });
-	/*
-    $('[data-drop-down]').mouseleave(function (e) {
+	$('[data-drop-down]').mouseleave(function (e) {
 		 $(this).removeClass('active');
 		$('.drop-down').removeClass('active');
     });
     $('.drop-down').mouseenter(function (e) {
 		 $(this).addClass('active');
     });
-	*/
 	// End
-	/*
     $('[data-drop-down]').mouseenter(function (e) {
         var id = $(this).data('dropDown');
         $('[data-drop-down]').removeClass('active');
@@ -179,8 +176,7 @@ TSS.header = function () {
         $('[data-drop-down]').removeClass('active');
         $('.drop-down').removeClass('active');
     });
-	*/
-    $('#store-dropdown ul li a').mouseenter(function (e) {
+	$('#store-dropdown ul li a').mouseenter(function (e) {
         e.stopPropagation();
         $(this).click();
     }).click(function (e) {
@@ -197,6 +193,7 @@ TSS.header = function () {
     if (!Helpers.isMobile()) {
         self.s = skrollr.init();
     }
+	
     $('.open-login-js').click(function (e) {
         $('#mobile-login-form').removeClass('hide').show();
     });
@@ -250,8 +247,9 @@ TSS.contactUsPage = function () {
         var mapOptions = {
             zoom: 11,
             center: new google.maps.LatLng(30.065227, 31.216546),
-            styles: [{"featureType": "all", "elementType": "labels.text.fill", "stylers": [{"color": "#ffffff"}]}, {"featureType": "all", "elementType": "labels.text.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "all", "elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {"featureType": "administrative", "elementType": "geometry.fill", "stylers": [{"color": "#ED2024"}]}, {"featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{"color": "#ED2024"}, {"weight": 1.2}]}, {"featureType": "administrative.locality", "elementType": "geometry.fill", "stylers": [{"lightness": "-1"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.fill", "stylers": [{"lightness": "0"}, {"saturation": "0"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "administrative.land_parcel", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "landscape", "elementType": "geometry", "stylers": [{"color": "#ED2024"}]}, {"featureType": "poi", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road", "elementType": "geometry.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.arterial", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.local", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "transit", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "water", "elementType": "geometry", "stylers": [{"color": "#090228"}]}]
-        };
+            //styles: [{"featureType": "all", "elementType": "labels.text.fill", "stylers": [{"color": "#ffffff"}]}, {"featureType": "all", "elementType": "labels.text.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "all", "elementType": "labels.icon", "stylers": [{"visibility": "off"}]}, {"featureType": "administrative", "elementType": "geometry.fill", "stylers": [{"color": "#ED2024"}]}, {"featureType": "administrative", "elementType": "geometry.stroke", "stylers": [{"color": "#ED2024"}, {"weight": 1.2}]}, {"featureType": "administrative.locality", "elementType": "geometry.fill", "stylers": [{"lightness": "-1"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.fill", "stylers": [{"lightness": "0"}, {"saturation": "0"}]}, {"featureType": "administrative.neighborhood", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "administrative.land_parcel", "elementType": "labels.text.stroke", "stylers": [{"weight": "0.01"}]}, {"featureType": "landscape", "elementType": "geometry", "stylers": [{"color": "#ED2024"}]}, {"featureType": "poi", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road", "elementType": "geometry.stroke", "stylers": [{"visibility": "off"}]}, {"featureType": "road.highway", "elementType": "geometry.fill", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.highway.controlled_access", "elementType": "geometry.stroke", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.arterial", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "road.local", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "transit", "elementType": "geometry", "stylers": [{"color": "#99282f"}]}, {"featureType": "water", "elementType": "geometry", "stylers": [{"color": "#090228"}]}]
+			styles: [{"featureType":"landscape","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","stylers":[{"saturation":-100},{"lightness":51},{"visibility":"simplified"}]},{"featureType":"road.highway","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"road.arterial","stylers":[{"saturation":-100},{"lightness":30},{"visibility":"on"}]},{"featureType":"road.local","stylers":[{"saturation":-100},{"lightness":40},{"visibility":"on"}]},{"featureType":"transit","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"administrative.province","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":-25},{"saturation":-100}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]}]
+		};
 
         var mapElement = document.getElementById('contact-us-map');
         var map = new google.maps.Map(mapElement, mapOptions);

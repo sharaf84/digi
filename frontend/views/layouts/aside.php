@@ -46,10 +46,11 @@
         </li>
         <li><a href="#"><i class="md md-message"></i> Articles</a></li>
         <li class="mobile-menu-shopping-cart"><a href="#"><i class="fa fa-shopping-cart"></i> View Cart <span>9</span></a></li>
+        <li><a href="#"><i class="fa fa-language"></i> Language</a></li>
         <li><a href="#"><i class="md md-phone"></i> Contact Us</a></li>
         <li><a href="#"><i class="md md-help"></i> About Us</a></li>
-        <li><a href="#"><i class="fa fa-language"></i> Language</a></li>
         <li><a href="#"><i class="fa fa-file-text-o"></i> Terms of Service</a></li>
+		<!--
         <li class="mobile-menu-social-icons">
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
@@ -60,6 +61,7 @@
 				<input type="email" required="" placeholder="Email address"><span class="error">Sorry, wrong email</span>
 			</form>
         </li>
+		-->
     </ul>
 </aside>
 
