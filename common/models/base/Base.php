@@ -69,11 +69,11 @@ class Base extends \yii\db\ActiveRecord {
         return $this->hasOne(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
 
-    public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = false) {
+    public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = true) {
         return $this->firstMedia ? $this->firstMedia->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
 
-    public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = false) {
+    public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = true) {
         return ($this->media && !empty($this->media[$index])) ? $this->media[$index]->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
 
