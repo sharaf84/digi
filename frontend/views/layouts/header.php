@@ -172,7 +172,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
 	<div id="checkpoint-a" class="header-slider swiper-container">
 		<div class="swiper-wrapper">
 <?php foreach (\common\models\custom\Page::getHomeSlider()->media as $oMedia) { ?>
-				<div class="header-product swiper-slide" onclick="javascript:location = '<?= $oMedia->link ?>'">
+				<div class="header-product swiper-slide" data-route="<?= $oMedia->link ?>">
 					<img src="<?= $oMedia->getImgUrl('home-slider') ?>" alt="">
 					<!--
 					<h2><?= $oMedia->title ?></h2>

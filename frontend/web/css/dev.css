@@ -165,3 +165,5 @@ footer .next-nav {right:0}
 }
 
 select {font-family:arial}
+
+header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:auto}
