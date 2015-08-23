@@ -5,7 +5,9 @@ use yii\helpers\Url; ?>
     <div class="row">
         <div class="footer-slider swiper-container">
             <div class="swiper-wrapper">
-                <?php foreach (\common\models\custom\Brand::getFooterSlider() as $oBrand) { ?>
+                <?php 
+                $footerBrands = isset($headerBrands) ? $headerBrands : \common\models\custom\Brand::getFooterSlider();
+                foreach ($footerBrands as $oBrand) { ?>
                     <div style="background: url(<?= $oBrand->getFeaturedImgUrl() ?>) center center no-repeat;" class="large-2 medium-2 small-12 columns footer-slider-img swiper-slide"></div>
                 <?php } ?>
             </div>

@@ -27,7 +27,17 @@ Dev.onReady = function () {
  */
 Dev.globalEvents = function () {
     var self = this;
-
+    
+    self.manageHeaderSearchForm = function () {
+        $('#headerSearchForm i').click(function () {
+            $('#headerSearchForm').submit();
+        });
+        $('#headerSearchForm').submit(function () {
+            if (!$.trim($('#headerSearchForm input').val()))
+                return false;
+        });
+    };
+    
     self.autoSubmitProductForm = function () {
         $('body').on('change', '#productForm select', function () {
             $('#productForm').submit();
@@ -57,6 +67,7 @@ Dev.globalEvents = function () {
         });
     };
     
+    self.manageHeaderSearchForm();
     self.autoSubmitProductForm();
     self.autoSubmitSearchForm();
     self.autoTriggerLoginBtn();
