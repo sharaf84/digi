@@ -8,7 +8,7 @@ use yii\helpers\Html;
 
     <div class="row">
         <?php if (!Yii::$app->user->isGuest) { ?>
-            <div class="mobile-user-avatar small-12 columns">
+            <div class="mobile-user-avatar logged small-12 columns">
                 <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>">
             </div>
             <div class="mobile-user-name small-12 columns">
@@ -16,7 +16,7 @@ use yii\helpers\Html;
             </div>
         <?php } else { ?>
             <div class="mobile-user-avatar small-12 columns">
-                <i class="md md-person"></i>
+                <img src="<?= Url::to('@frontThemeUrl') ?>/images/src/user.png" alt="" />
             </div>
             <div class="mobile-user-name small-12 columns">
                 <h4><a href="#" class="open-login-js"><i class="md md-lock-outline"></i> <span><?= Yii::t('app', 'Login') ?></span></a> <?= Yii::t('app', 'or') ?> <a href="<?= Url::to(['/signup']) ?>" class="open-signup-js"><span><?= Yii::t('app', 'Register') ?></span></a> </h4>
@@ -64,10 +64,3 @@ use yii\helpers\Html;
         <li><a href="<?= Url::to(['/site/page', 'slug' => 'privacy-policy']) ?>"><i class="fa fa-file-text-o"></i> <?= Yii::t('app', 'Privacy Policy') ?></a></li>
     </ul>
 </aside>
-
-
-
-<div id="mobile-login-form" class="hide">
-    <a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
-    <?php echo $this->render('/user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
-</div>

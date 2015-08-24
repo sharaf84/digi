@@ -171,3 +171,19 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 .productBox {background: url('../../shared/themes/frontend/images/src/product-ltr-bg.png') no-repeat 100% 0%}
 .productImage {float:right;margin-right:-160px}
 	.productImage img {min-height:960px}
+	
+#mobile-login-form {-webkit-transition:0.3s, ease, all !important;-moz-transition:0.3s, ease, all !important;-o-transition: 0.3s, ease, all !important;transition:0.3s, ease, all !important}
+#mobile-login-form {position:fixed;top:84px;z-index:11;padding:24px 0;width:100%;background-color:#292929}
+.scrollHeader #mobile-login-form {top:68px}
+#mobile-login-form form {margin:0 auto;}
+#mobile-login-form .smallLoginFormBox {margin:0 auto;width:80%;max-width:360px}
+#mobile-login-form form i {position:static}
+
+.mobile-user-avatar {padding:24px 0}
+	.mobile-user-avatar img {border:1px solid #acacac;border-radius:50%;padding:9px}
+	.mobile-user-avatar.logged img {border-color:#ed2024}
+.mobile-user-name {}
+	.mobile-user-name h4 {font-size:18px;color:#a2a1a1}
+		.mobile-user-name h4 a {text-decoration:underline;font-size:22px;color:#ffffff}
+	.mobile-user-name h3 {}
+		.mobile-user-name h3 a {font-size:22px;color:#ffffff}

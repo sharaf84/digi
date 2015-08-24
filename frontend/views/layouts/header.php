@@ -34,4 +34,10 @@ $isHome = Yii::$app->controller->action->id == 'home';
         </div>
     </div>
     <?= $isHome ? $this->render('_homeSlider') : '' ?>
+	<div id="mobile-login-form" class="hide">
+		<div class="smallLoginFormBox">
+			<a href="<?= Url::to(['/signup']) ?>" class="signup-btn"><?= Yii::t('app', 'Sign Up') ?></a>
+			<?php echo $this->render('/user/_loginForm', array('oLoginForm' => new \common\models\base\form\Login())); ?>
+		</div>
+	</div>
 </header>
