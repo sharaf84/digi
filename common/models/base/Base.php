@@ -68,12 +68,19 @@ class Base extends \yii\db\ActiveRecord {
     public function getFirstMedia() {
         return $this->hasOne(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
-
-    public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = true) {
+    
+    /**
+     * Gets retlted featured image url ex: $oArticle->getFeaturedImgUrl().
+     */
+    public function getFeaturedImgUrl($size = null, $placeholder = true, $overwrite = false) {
         return $this->firstMedia ? $this->firstMedia->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
-
-    public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = true) {
+    
+    /**
+     * Gets retlted image url by index ex:
+     * $oArticle->getImgUrlByIndex(2) => gets the third article image. 
+     */
+    public function getImgUrlByIndex($index, $size = null, $placeholder = true, $overwrite = false) {
         return ($this->media && !empty($this->media[$index])) ? $this->media[$index]->getImgUrl($size, $placeholder, $overwrite) : MediaHelper::getPlaceholderUrl($size, $placeholder, $overwrite);
     }
 
