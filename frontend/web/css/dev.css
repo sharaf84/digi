@@ -156,7 +156,7 @@ footer .next-nav {right:0}
 .product-background-cover {right:0;left:auto;background-position:0% 0}
 .product-background-cover img {right:0;left:auto;max-height:100%}
 
-.single-page.single-product .tabs-content .content {max-width:80%;margin:0}
+.single-page.single-product .tabs-content .content {max-width:100%;margin:0}
 
 @media (max-width: 960px) {
 	.product-background-cover {
@@ -167,3 +167,7 @@ footer .next-nav {right:0}
 select {font-family:arial}
 
 header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:auto}
+.single-page.shopping-cart .single-product .product-image-cont img {width:auto}
+.productBox {background: url('../../shared/themes/frontend/images/src/product-ltr-bg.png') no-repeat 100% 0%}
+.productImage {float:right;margin-right:-160px}
+	.productImage img {min-height:960px}

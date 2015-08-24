@@ -9,7 +9,7 @@ Yii::$app->metaTags->register($oProduct);
 ?>
 
 <?php Pjax::begin(['id' => 'pjaxProduct']); ?>
-<div id="checkpoint-a" class="single-page single-product row" data-product-main-image="<?= $oChildProduct ? $oChildProduct->getImgUrlByIndex(0, 'main-product') : $oProduct->getFeaturedImgUrl('main-product') ?>">
+<div id="checkpoint-a" class="single-page single-product" data-product-main-image="<?= $oChildProduct ? $oChildProduct->getImgUrlByIndex(0, 'main-product') : $oProduct->getFeaturedImgUrl('main-product') ?>">
 
     <div class="product-header row">
         <div class="large-4 medium-4 small-12 columns product-image">
@@ -49,25 +49,28 @@ Yii::$app->metaTags->register($oProduct);
         </div>
     </div>
 
-    <div class="row">
-        <div class="product-tabs">
-            <?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
-                <ul data-tab class="tabs">
-                    <li class="tab-title active"><a href="#product-info">Product Info</a></li>
-                    <li class="tab-title"><a href="#nutrition-facts">Nutrition Facts</a></li>
-                </ul>
-            <?php } ?>
-            <div class="tabs-content">
-                <div id="product-info" class="content row active">
-                    <?= $oProduct->body ?>
-                </div>
-                <?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
-                    <div id="nutrition-facts" class="content row">
-                        <img src="<?= $oChildProduct->getImgUrlByIndex(1) ?>" >
-                    </div>
-                <?php } ?>
-            </div>
-        </div>
+    <div class="productBox">
+		<div class="productImage"><img src="<?= $oChildProduct ? $oChildProduct->getImgUrlByIndex(0, 'main-product') : $oProduct->getFeaturedImgUrl('main-product') ?>" alt="" /></div>
+		<div class="row">
+			<div class="product-tabs">
+				<?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
+					<ul data-tab class="tabs">
+						<li class="tab-title active"><a href="#product-info">Product Info</a></li>
+						<li class="tab-title"><a href="#nutrition-facts">Nutrition Facts</a></li>
+					</ul>
+				<?php } ?>
+				<div class="tabs-content">
+					<div id="product-info" class="content row active">
+						<?= $oProduct->body ?>
+					</div>
+					<?php if ($oChildProduct && !$oProduct->isAccessory()) { ?>
+						<div id="nutrition-facts" class="content row">
+							<img src="<?= $oChildProduct->getImgUrlByIndex(1) ?>" >
+						</div>
+					<?php } ?>
+				</div>
+			</div>
+		</div>
     </div>
 
     <?php if ($relatedProducts) { ?>

@@ -157,7 +157,7 @@ footer .next-nav {left:0}
 .product-background-cover {left:0;right:auto;background-position:0% 0}
 .product-background-cover img {left:0;right:auto;max-height:100%}
 
-.single-page.single-product .tabs-content .content {max-width:80%;margin:0}
+.single-page.single-product .tabs-content .content {max-width:100%;margin:0}
 
 @media (max-width: 960px) {
 	.product-background-cover {
@@ -168,3 +168,7 @@ footer .next-nav {left:0}
 select {font-family:arial}
 
 header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:auto}
+.single-page.shopping-cart .single-product .product-image-cont img {width:auto}
+.productBox {background: url('../../shared/themes/frontend/images/src/product-rtl-bg.png') no-repeat 0% 0%}
+.productImage {float:left;margin-left:-160px}
+	.productImage img {min-height:960px}

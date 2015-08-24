@@ -26,7 +26,7 @@ TSS.helpers = function () {
 					<img src="' + backgroundImage + '" alt="">\n\
 				</div>\n\
 			';
-            $('body').prepend(productCoverTpl);
+            //$('body').prepend(productCoverTpl);
         }
     };
 };
