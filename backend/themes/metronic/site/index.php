@@ -2,6 +2,8 @@
 
 use yii\helpers\Url;
 use infoweb\analytics\Analytics;
+
+$this->title = 'TSS Dashboard';
 ?>
 <div class="page-content">
    
