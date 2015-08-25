@@ -93,6 +93,9 @@ use yii\helpers\Url;
         <li>
             <a href="<?= Url::to(['/users']) ?>"> Users </a>
         </li>
+        <li>
+            <a href="<?= Url::to(['/orders']) ?>"> Orders </a>
+        </li>
         <!--        <li class="mega-menu-dropdown">
                     <a data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
                         Mega <i class="fa fa-angle-down"></i>

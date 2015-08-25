@@ -24,6 +24,7 @@
 		<?php endif; ?>
     </head>
     <body class="<?php echo Yii::$app->controller->action->id; ?>-page" id="<?php echo Yii::$app->language == 'ar' ? 'ar-layout' : 'en-layout'; ?>">
+        <?php include_once 'analyticstracking.php'; ?>
         <?php $this->beginBody() ?>
         <div data-offcanvas class="off-canvas-wrap">
             <div class="inner-wrap">

@@ -86,5 +86,5 @@ class User extends \common\models\base\User {
                         ->orderBy(['id' => SORT_DESC])
                         ->all();
     }
-
+    
 }
