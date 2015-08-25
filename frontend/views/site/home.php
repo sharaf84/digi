@@ -7,21 +7,21 @@ use yii\helpers\Html;
 $this->title = Yii::t('app', 'TSS Home Page');
 ?>
 <div class="center-features row">
-    <h3>largest egyptian fitness website</h3>
+    <h3><?= Yii::t('app', 'largest egyptian fitness website') ?></h3>
     <div class="large-4 medium-4 small-12 columns">
         <div class="star-icon"></div>
-        <h4>High Quality</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <h4><?= Yii::t('app', 'High Quality') ?></h4>
+        <p><?= Yii::t('app', 'We recognize that you want an efficient shopping experience. ') ?></p>
     </div>
     <div class="large-4 medium-4 small-12 columns">
         <div class="delivery-icon"></div>
-        <h4>Free Delivery</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <h4><?= Yii::t('app', 'Free Delivery') ?></h4>
+        <p><?= Yii::t('app', 'Changing the way people shop for supplements. ') ?></p>
     </div>
     <div class="large-4 medium-4 small-12 columns">
         <div class="network-icon"></div>
-        <h4>Social Blog</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <h4><?= Yii::t('app', 'Social Blog') ?></h4>
+        <p><?= Yii::t('app', 'Get the best social tips and advice from the supplements experts. ') ?></p>
     </div>
 </div>
 <div class="home-tabs">
