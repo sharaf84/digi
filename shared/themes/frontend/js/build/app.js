@@ -206,6 +206,9 @@ TSS.header = function () {
         self.s = skrollr.init();
     }
 	
+    $('#mobile-login-form .closeSmallLoginForm').click(function (e) {
+        $('#mobile-login-form').addClass('hide');
+    });
     $('.open-login-js').click(function (e) {
         $('#mobile-login-form').removeClass('hide').show();
     });
