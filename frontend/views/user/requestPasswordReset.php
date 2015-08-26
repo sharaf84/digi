@@ -1,7 +1,6 @@
 <?php
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use frontend\widgets\ActiveForm;
 
 $this->title = Yii::t('app', 'Request password reset');
 ?>
@@ -18,14 +17,9 @@ $this->title = Yii::t('app', 'Request password reset');
         <p><?= Yii::t('app', 'Please fill out your email. A link to reset password will be sent there.') ?></p>
     </div>
 
-    <?php ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+    <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
     
-    <div class="input-cont large-5 medium-5 small-12 columns large-centered medium-centered">
-        <label><?= Html::activeLabel($oRequestPasswordResetForm, 'email'); ?>
-            <?= Html::activeTextInput($oRequestPasswordResetForm, 'email'); ?>
-        </label>
-        <?= Html::error($oRequestPasswordResetForm, 'email', ['tag' => 'small', 'class' => 'error']); ?>
-    </div>
+    <?= $form->field($oRequestPasswordResetForm, 'email')->textInput() ?>
 
     <div class="large-5 medium-5 small-12 columns large-centered medium-centered">
         <button type="submit"><?= Yii::t('app', 'Send') ?></button>
