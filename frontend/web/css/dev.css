@@ -17,7 +17,7 @@ a.cart-overflow{color: #e61b1e;}
 *, *:before, *:after {box-sizing:border-box}
 header {background:none;width:auto;height:auto}
 header.single-header {height:68px}
-header .headerContainer {position:fixed;z-index:2;width:100%}
+header .headerContainer {position:fixed;z-index:11;width:100%}
 	header .headerBox {-webkit-transition-duration:0.4s;-moz-transition-duration:0.4s;-o-transition-duration:0.4s;transition-duration:0.4s}
 	header .headerBox {position:relative;margin-top:20px;border-radius:8px;background-color:#fff}
 	header.scrollHeader .headerBox, header.staticHeader .headerBox {margin-top:0;border-bottom:4px solid red;border-radius:0;max-width:100%;background-color:#fff}
@@ -30,7 +30,7 @@ header .drop-down {position:absolute;top:56px;z-index:-1;display:none}
 header .drop-down.active {top:56px;display:block}
 header.scrollHeader .drop-down.active, header.staticHeader .drop-down.active {top:64px;z-index:1}
 
-.home-tabs ul.tabs li.tab-title a {font-size:14px !important}
+.home-tabs ul.tabs li.tab-title a {font-size:14px !important;padding:0;line-height:48px}
 .home-tabs .product-item {text-align:center}
 .home-bottom-articles {text-align:center}
 .home-bottom-articles h5, .home-bottom-articles p {text-align:left}
@@ -61,6 +61,7 @@ h1, h2, h3, h4, h5, h6 {}
 }
 
 header .left-off-canvas-toggle {cursor:pointer;position:static;width:auto;height:64px;line-height:64px}
+header .right-off-canvas-toggle {cursor:pointer;position:static;width:auto;height:64px;line-height:64px}
 
 
 header .main-nav ul li a, header .main-nav ul li span {font-family: 'LevenimMTBold' !important;text-transform:uppercase;font-size:18px !important}
@@ -198,3 +199,12 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 #mobile-login-form .facebook-login {display:block;background:#3162a2;color:#fff;text-align:center;padding:9px 0;font-weight:bold;font-size:14px;margin-bottom:7px;position:relative}
 #mobile-login-form .facebook-login i {color: #fff;font-size:15px !important;display:inline !important}
 #mobile-login-form .closeSmallLoginForm {cursor:pointer;display:inline-block;width:24px;height:24px;background-image:url('../../shared/themes/frontend/images/src/back.png')}
+
+.align-center {text-align:center}
+
+.or-sep span {display:block;text-align:center;line-height:32px;color:#b4bbc2}
+
+.article-list-item {margin:0 auto !important}
+
+header .user-avatar.usermenu-cont .usermenu-dropdown {left:auto;right:0}
+header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {right:15px;left:auto}

@@ -17,7 +17,7 @@ a.cart-overflow{color: #e61b1e;}
 *, *:before, *:after {box-sizing:border-box}
 header {background:none;width:auto;height:auto}
 header.single-header {height:68px}
-header .headerContainer {position:fixed;z-index:2;width:100%}
+header .headerContainer {position:fixed;z-index:11;width:100%}
 	header .headerBox {-webkit-transition-duration:0.4s;-moz-transition-duration:0.4s;-o-transition-duration:0.4s;transition-duration:0.4s}
 	header .headerBox {position:relative;margin-top:20px;border-radius:8px;background-color:#fff}
 	header.scrollHeader .headerBox, header.staticHeader .headerBox {margin-top:0;border-bottom:4px solid red;border-radius:0;max-width:100%;background-color:#fff}
@@ -30,7 +30,7 @@ header .drop-down {position:absolute;top:56px;z-index:-1;display:none}
 header .drop-down.active {top:56px;display:block}
 header.scrollHeader .drop-down.active, header.staticHeader .drop-down.active {top:64px;z-index:1}
 
-.home-tabs ul.tabs li.tab-title a {font-size:14px !important}
+.home-tabs ul.tabs li.tab-title a {font-size:14px !important;padding:0:line-height:48px}
 .home-tabs .product-item {text-align:center}
 .home-bottom-articles {text-align:center}
 .home-bottom-articles h5, .home-bottom-articles p {text-align:right}
@@ -152,8 +152,8 @@ header .drop-down .tabs-cont {height:auto;padding:0}
 header .drop-down .brands-cont {height:auto}
 
 footer .prev-nav, footer .next-nav {top:60px}
-footer .prev-nav {right:0}
-footer .next-nav {left:0}
+footer .prev-nav {left:0}
+footer .next-nav {right:0}
 
 .product-background-cover {left:0;right:auto;background-position:0% 0}
 .product-background-cover img {left:0;right:auto;max-height:100%}
@@ -198,3 +198,13 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 #mobile-login-form label, #mobile-login-form a {color:#b4bbc2;display:block;margin:0 0 5px 1px;font-weight:bold;font-size:13px}
 #mobile-login-form .facebook-login {display:block;background:#3162a2;color:#fff;text-align:center;padding:9px 0;font-weight:bold;font-size:14px;margin-bottom:7px;position:relative}
 #mobile-login-form .facebook-login i {color: #fff;font-size:15px !important;display:inline !important}
+#mobile-login-form .closeSmallLoginForm {cursor:pointer;display:inline-block;width:24px;height:24px;background-image:url('../../shared/themes/frontend/images/src/back.png')}
+
+.align-center {text-align:center}
+
+.or-sep span {display:block;text-align:center;line-height:32px;color:#b4bbc2}
+
+.article-list-item {margin:0 auto !important}
+
+header .user-avatar.usermenu-cont .usermenu-dropdown {right:auto;left:0}
+header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {left:15px;right:auto}
