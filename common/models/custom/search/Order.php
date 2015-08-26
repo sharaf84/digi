@@ -18,7 +18,7 @@ class Order extends OrderModel
     public function rules()
     {
         return [
-            [['id', 'user_id', 'payment_method', 'new'], 'integer'],
+            [['id', 'user_id', 'payment_method', 'new', 'status', 'paid'], 'integer'],
             [['name', 'email', 'phone', 'address', 'comment', 'created', 'updated'], 'safe'],
             [['amount'], 'number'],
         ];
@@ -47,7 +47,7 @@ class Order extends OrderModel
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
-
+        
         $this->load($params);
 
         if (!$this->validate()) {
@@ -61,6 +61,8 @@ class Order extends OrderModel
             'user_id' => $this->user_id,
             'payment_method' => $this->payment_method,
             'amount' => $this->amount,
+            'status' => $this->status,
+            'paid' => $this->paid,
             'new' => $this->new,
             'created' => $this->created,
             'updated' => $this->updated,
@@ -71,6 +73,8 @@ class Order extends OrderModel
             ->andFilterWhere(['like', 'phone', $this->phone])
             ->andFilterWhere(['like', 'address', $this->address])
             ->andFilterWhere(['like', 'comment', $this->comment]);
+        
+        $query->andWhere(['!=', 'status', OrderModel::STATUS_CART]);
 
         return $dataProvider;
     }

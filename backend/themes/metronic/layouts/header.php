@@ -9,7 +9,7 @@ use yii\helpers\Url;
         <div class="container">
             <!-- BEGIN LOGO -->
             <div class="page-logo">
-                <a class="logo-bg" href="<?= Url::home(); //Url::to('/');  ?>">
+                <a class="logo-bg" href="<?= Url::home(); //Url::to('/');   ?>">
                     <img src="<?= Url::to(['/images/logo.png']); ?>" alt="logo" class="logo-default"/>
                 </a>
                 <div class="menu-toggler sidebar-toggler hide">
@@ -18,7 +18,7 @@ use yii\helpers\Url;
             </div>
             <!-- END LOGO -->
             <!-- BEGIN TOP MENU -->
-<?php include_once 'topMenu.php'; ?>
+            <?php include_once 'topMenu.php'; ?>
             <!-- END TOP MENU -->
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
             <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -31,210 +31,40 @@ use yii\helpers\Url;
 
                     <!-- BEGIN NOTIFICATION DROPDOWN -->
                     <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
+                        <?php $newOrders = common\models\custom\Order::findNew();?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <i class="iconBell"></i>
-                            <span class="badge badge-default">
-                                7 </span>
+                            <span class="badge badge-default"> <?= count($newOrders) ?> </span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
                                 <p>
-                                    You have 14 new notifications
+                                    You have <?= count($newOrders) ?> new orders
                                 </p>
                             </li>
                             <li>
                                 <ul class="dropdown-menu-list scroller" style="height: 250px;">
+                                    <?php foreach($newOrders as $oOrder) { ?>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?= Url::to(['/orders/view', 'id' => $oOrder->id])?>">
                                             <span class="label label-sm label-icon label-success">
-                                                <i class="fa fa-plus"></i>
-                                            </span>
-                                            New user registered. <span class="time">
-                                                Just now </span>
+                                                <i class="icon-basket"></i>
+                                            </span><?= Html::encode($oOrder->name) ?> <span class="time">
+                                                <?= $oOrder->amount ?> </span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-danger">
-                                                <i class="fa fa-bolt"></i>
-                                            </span>
-                                            Server #12 overloaded. <span class="time">
-                                                15 mins </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-warning">
-                                                <i class="fa fa-bell-o"></i>
-                                            </span>
-                                            Server #2 not responding. <span class="time">
-                                                22 mins </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-info">
-                                                <i class="fa fa-bullhorn"></i>
-                                            </span>
-                                            Application error. <span class="time">
-                                                40 mins </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-danger">
-                                                <i class="fa fa-bolt"></i>
-                                            </span>
-                                            Database overloaded 68%. <span class="time">
-                                                2 hrs </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-danger">
-                                                <i class="fa fa-bolt"></i>
-                                            </span>
-                                            2 user IP blocked. <span class="time">
-                                                5 hrs </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-warning">
-                                                <i class="fa fa-bell-o"></i>
-                                            </span>
-                                            Storage Server #4 not responding. <span class="time">
-                                                45 mins </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-info">
-                                                <i class="fa fa-bullhorn"></i>
-                                            </span>
-                                            System Error. <span class="time">
-                                                55 mins </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <span class="label label-sm label-icon label-danger">
-                                                <i class="fa fa-bolt"></i>
-                                            </span>
-                                            Database overloaded 68%. <span class="time">
-                                                2 hrs </span>
-                                        </a>
-                                    </li>
+                                    <?php }?>
                                 </ul>
                             </li>
                             <li class="external">
-                                <a href="#">
-                                    See all notifications <i class="m-icon-swapright"></i>
+                                <a href="<?= Url::to(['/orders'])?>">
+                                    See all orders <i class="m-icon-swapright"></i>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <!-- END NOTIFICATION DROPDOWN -->
-                    <!-- BEGIN INBOX DROPDOWN -->
-                    <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <i class="iconChat"></i>
-                            <span class="badge badge-default">
-                                4 </span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <p>
-                                    You have 12 new messages
-                                </p>
-                            </li>
-                            <li>
-                                <ul class="dropdown-menu-list scroller" style="height: 250px;">
-                                    <li>
-                                        <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar2.jpg'); ?>" alt=""/>
-                                            </span>
-                                            <span class="subject">
-                                                <span class="from">
-                                                    Lisa Wong </span>
-                                                <span class="time">
-                                                    Just Now </span>
-                                            </span>
-                                            <span class="message">
-                                                Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar3.jpg'); ?>" alt=""/>
-                                            </span>
-                                            <span class="subject">
-                                                <span class="from">
-                                                    Richard Doe </span>
-                                                <span class="time">
-                                                    16 mins </span>
-                                            </span>
-                                            <span class="message">
-                                                Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar1.jpg'); ?>" alt=""/>
-                                            </span>
-                                            <span class="subject">
-                                                <span class="from">
-                                                    Bob Nilson </span>
-                                                <span class="time">
-                                                    2 hrs </span>
-                                            </span>
-                                            <span class="message">
-                                                Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar2.jpg'); ?>" alt=""/>
-                                            </span>
-                                            <span class="subject">
-                                                <span class="from">
-                                                    Lisa Wong </span>
-                                                <span class="time">
-                                                    40 mins </span>
-                                            </span>
-                                            <span class="message">
-                                                Vivamus sed auctor 40% nibh congue nibh... </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="inbox.html?a=view">
-                                            <span class="photo">
-                                                <img src="<?= Url::to('@metronicUrl/assets/admin/layout/img/avatar3.jpg'); ?>" alt=""/>
-                                            </span>
-                                            <span class="subject">
-                                                <span class="from">
-                                                    Richard Doe </span>
-                                                <span class="time">
-                                                    46 mins </span>
-                                            </span>
-                                            <span class="message">
-                                                Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="external">
-                                <a href="inbox.html">
-                                    See all messages <i class="m-icon-swapright"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- END INBOX DROPDOWN -->
+                    
                     <!-- BEGIN TODO DROPDOWN -->
                     <li class="dropdown dropdown-extended dropdown-tasks" id="header_task_bar">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -244,11 +74,11 @@ use yii\helpers\Url;
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="<?= Url::to(['/settings'])?>">
+                                <a href="<?= Url::to(['/settings']) ?>">
                                     <i class="icon-settings"></i> Settings </a>
                             </li>
                             <li>
-                                <a href="<?= Url::to(['/users/change-password', 'id' => 1])?>">
+                                <a href="<?= Url::to(['/users/change-password', 'id' => 1]) ?>">
                                     <i class="icon-key"></i> Change Password </a>
                             </li>
                             <li class="divider">

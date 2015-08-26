@@ -13,6 +13,7 @@ return [
         'person' => ['path' =>  Yii::getAlias('@sharedUrl') . '/images/placeholders/', 'filename' => 'person-placeholder.png'],
     ],
     'sizes' => [
+        '25*25' => ['thumbnail', 25, 25],
         'micro' => ['thumbnail', 50, 50],
         'home-slider' => ['thumbnail', 1231, 673],
         'home-banner' => ['thumbnail',  1231, 505],

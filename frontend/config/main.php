@@ -1,7 +1,5 @@
 <?php
 
-define('CURRENCY_SYMBOL', 'LE');
-
 use \yii\web\Request;
 
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());

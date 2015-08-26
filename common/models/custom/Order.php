@@ -32,6 +32,7 @@ class Order extends \common\models\base\Base {
     const STATUS_CART = 0;
     const STATUS_PENDING = 1;
     const STATUS_IN_PROGRESS = 2;
+    const STATUS_CANCELED = 3;
     const STATUS_DELIVERED = 10;
 
     // Payment Methods
@@ -77,10 +78,10 @@ class Order extends \common\models\base\Base {
             [['name', 'email', 'phone', 'address', 'payment_method', 'amount', 'status', 'token'], 'required', 'on' => 'checkout'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             [['amount'], 'number', 'min' => 5, 'max' => 10000],
-            [['user_id', 'payment_method', 'new', 'status'], 'integer'],
-            [['status'], 'in', 'range' => array_keys(static::getStatusList())],
+            [['user_id', 'payment_method', 'status'], 'integer'],
+            [['status'], 'in', 'range' => array_keys(static::getStatusList(true))],
             [['payment_method'], 'in', 'range' => array_keys(static::getPaymentMethodList())],
-            [['paid'], 'boolean'],
+            [['paid', 'new'], 'boolean'],
             [['email'], 'email'],
             [['name'], 'string', 'max' => 255],
             [['phone'], 'string', 'max' => 11],
@@ -128,6 +129,10 @@ class Order extends \common\models\base\Base {
 
                     case self::STATUS_IN_PROGRESS:
                         $this->afterProgress();
+                        break;
+
+                    case self::STATUS_CANCELED:
+                        $this->afterCancel();
                         break;
 
                     case self::STATUS_DELIVERED:
@@ -209,15 +214,30 @@ class Order extends \common\models\base\Base {
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPayments() {
+        return $this->hasMany(Payment::className(), ['order_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPayment() {
+        return $this->hasOne(Payment::className(), ['order_id' => 'id']);
+    }
+
+    /**
      * Retrieves status list
      */
-    public static function getStatusList() {
-        return [
-            self::STATUS_CART => Yii::t('app', 'Cart'),
-            self::STATUS_PENDING => Yii::t('app', 'Pending'),
-            self::STATUS_IN_PROGRESS => Yii::t('app', 'In Progress'),
-            self::STATUS_DELIVERED => Yii::t('app', 'Delivered'),
-        ];
+    public static function getStatusList($cart = false) {
+        $list = [];
+        $cart and $list[self::STATUS_CART] = Yii::t('app', 'Cart');
+        $list[self::STATUS_PENDING] = Yii::t('app', 'Pending');
+        $list[self::STATUS_IN_PROGRESS] = Yii::t('app', 'In Progress');
+        $list[self::STATUS_CANCELED] = Yii::t('app', 'Canceled');
+        $list[self::STATUS_DELIVERED] = Yii::t('app', 'Delivered');
+        return $list;
     }
 
     /**
@@ -362,6 +382,7 @@ class Order extends \common\models\base\Base {
     public function checkout() {
         $this->scenario = 'checkout';
         $this->generateToken();
+        $this->new = true;
         $this->amount = $this->liveCartPrice;
         $this->status = static::STATUS_PENDING;
         $this->user_id = $this->oldAttributes['user_id']; //Not to change old user
@@ -385,8 +406,72 @@ class Order extends \common\models\base\Base {
         ]);
     }
 
+    public static function findNew() {
+        return static::find()
+                        ->where(['new' => true])
+                        ->orderBy(['updated' => SORT_DESC])
+                        ->all();
+    }
+
+    public static function getTotalCount() {
+        return static::find()->where(['!=', 'status', static::STATUS_CART])->count();
+    }
+
+    public static function getTotalRevenu() {
+        return static::find()->where(['status' => static::STATUS_DELIVERED])->sum('amount');
+    }
+    
+    public static function getTopUsers($limit=1) {
+        return static::find()
+                ->select(['user_id', 'SUM(amount) amount'])
+                ->with('user')
+                ->where(['status' => static::STATUS_DELIVERED])
+                ->groupBy('user_id')
+                ->orderBy(['SUM(amount)' => SORT_DESC])
+                ->limit($limit)
+                ->all();
+    }
+
     public function paid() {
-        $this->paid = 1;
+        $this->paid = true;
+        return $this->save();
+    }
+
+    public function seen() {
+        $this->new = false;
+        return $this->save();
+    }
+
+    public function canProgress() {
+        return $this->status == self::STATUS_PENDING;
+    }
+
+    public function canDeliver() {
+        return $this->status == self::STATUS_PENDING || $this->status == self::STATUS_IN_PROGRESS;
+    }
+
+    public function canCancel() {
+        return $this->status == self::STATUS_PENDING || $this->status == self::STATUS_IN_PROGRESS;
+    }
+
+    public function progress() {
+        if (!$this->canProgress())
+            return false;
+        $this->status = self::STATUS_IN_PROGRESS;
+        return $this->save();
+    }
+
+    public function deliver() {
+        if (!$this->canDeliver())
+            return false;
+        $this->status = self::STATUS_DELIVERED;
+        return $this->save();
+    }
+
+    public function cancel() {
+        if (!$this->canCancel())
+            return false;
+        $this->status = self::STATUS_CANCELED;
         return $this->save();
     }
 
@@ -407,19 +492,18 @@ class Order extends \common\models\base\Base {
 //    
     ///////////// afterSave Actions ////////////////////
 
+    /**
+     * After Checkout
+     * Updates cart price and title with live item values
+     * Deduct cart qty from live item qty => $item->qty - $cart->qty  
+     * @todo enhancements
+     */
     public function afterCheckout() {
-        /**
-         * Updates cart price and title with live item values
-         * Deduct cart qty from live item
-         * @todo enhancements
-         */
         foreach ($this->cartItems as $oCart) {
             $oCart->price = $oCart->item->price;
             $oCart->title = $oCart->item->title;
             $oCart->item->qty -= $oCart->qty;
-            $oCart->item->sold += $oCart->qty;
-            $oCart->item->parent->sold += $oCart->qty;
-            if (!($oCart->save() && $oCart->item->save() && $oCart->item->parent->save()))
+            if (!($oCart->save() && $oCart->item->save()))
                 return false;
         }
         return true;
@@ -431,10 +515,33 @@ class Order extends \common\models\base\Base {
          */
     }
 
+    /**
+     * After Delivery
+     * Increase live item and it's parent sold counter with cart qty
+     * @todo enhancements
+     */
     public function afterDelivery() {
-        /**
-         * @todo implementation
-         */
+        foreach ($this->cartItems as $oCart) {
+            $oCart->item->sold += $oCart->qty;
+            $oCart->item->parent->sold += $oCart->qty;
+            if (!($oCart->item->save() && $oCart->item->parent->save()))
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * After Cancel
+     * Increase live item qty with cart qty => $item->qty + $cart->qty  
+     * @todo enhancements
+     */
+    public function afterCancel() {
+        foreach ($this->cartItems as $oCart) {
+            $oCart->item->qty += $oCart->qty;
+            if (!$oCart->item->save())
+                return false;
+        }
+        return true;
     }
 
 }

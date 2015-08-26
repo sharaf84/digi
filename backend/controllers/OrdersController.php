@@ -11,21 +11,19 @@ use yii\web\NotFoundHttpException;
 /**
  * OrdersController implements the CRUD actions for Order model.
  */
-class OrdersController extends BaseController
-{
+class OrdersController extends BaseController {
 
     /**
      * Lists all Order models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new OrderSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -34,11 +32,45 @@ class OrdersController extends BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
+        $model = $this->findModel($id);
+        $model->new and $model->seen();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $model,
         ]);
+    }
+
+    /**
+     * Swithch order status to be in progress.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionProgress($id) {
+        $model = $this->findModel($id);
+        $model->progress();
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+    
+    /**
+     * Swithch order status to be delivered.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionDeliver($id) {
+        $model = $this->findModel($id);
+        $model->deliver();
+        return $this->redirect(['view', 'id' => $model->id]);
+    }
+    
+    /**
+     * Cancel order.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCancel($id) {
+        $model = $this->findModel($id);
+        $model->cancel();
+        return $this->redirect(['view', 'id' => $model->id]);
     }
 
     /**
@@ -46,18 +78,17 @@ class OrdersController extends BaseController
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new Order();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
+//    public function actionCreate() {
+//        $model = new Order();
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->render('create', [
+//                        'model' => $model,
+//            ]);
+//        }
+//    }
 
     /**
      * Updates an existing Order model.
@@ -65,18 +96,17 @@ class OrdersController extends BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
+//    public function actionUpdate($id) {
+//        $model = $this->findModel($id);
+//
+//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->render('update', [
+//                        'model' => $model,
+//            ]);
+//        }
+//    }
 
     /**
      * Deletes an existing Order model.
@@ -84,14 +114,13 @@ class OrdersController extends BaseController
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-        if (Yii::$app->request->isAjax) {
-            $this->actionIndex();
-        }
-        return $this->redirect(['index']);
-    }
+//    public function actionDelete($id) {
+//        $this->findModel($id)->delete();
+//        if (Yii::$app->request->isAjax) {
+//            $this->actionIndex();
+//        }
+//        return $this->redirect(['index']);
+//    }
 
     /**
      * Finds the Order model based on its primary key value.
@@ -100,12 +129,12 @@ class OrdersController extends BaseController
      * @return Order the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Order::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

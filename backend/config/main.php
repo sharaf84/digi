@@ -72,7 +72,7 @@ return [
         ],
         'i18n' => [
             'translations' => [
-                'yii' => [
+                '*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'sourceLanguage' => 'en',
                     'basePath' => '@app/messages',
@@ -96,6 +96,7 @@ return [
         'allowActions' => [
             //'rbac/*', // add or remove allowed actions to this list
             'site/login',
+            'site/analytics',
         ]
     ],
     'params' => $params,

@@ -83,24 +83,35 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             ['class' => 'yii\grid\SerialColumn'],
                             'id',
-                            //'parent_id',
-                            'category_id',
-                            'brand_id',
-                            'size_id',
-                            'flavor_id',
                             'title',
-                            // 'slug',
-                            'color',
+                            [
+                                'attribute' => 'parent_id',
+                                'format' => 'html',
+                                'value' => function ($model, $key, $index, $column) {
+                                    return $model->isParent() ? 'Parent' : 'Child of: ' . $model->parent->title;
+                                }
+                            ],
+                            'category.name:text:Category',
+                            'brand.name:text:Barnd',
+                            'size.name:text:Size',
+                            'flavor.name:text:Flavor',
+                            [
+                                'attribute' => 'color',
+                                'format' => 'html',
+                                'value' => function ($model, $key, $index, $column) {
+                                    return '<span class="label label-sm" style="color:#000; background-color:' . $model->color . '"> ' . $model->color . ' </span>';
+                                }
+                            ],
                             'price',
-                            // 'qty',
-                            // 'brief:ntext',
-                            // 'description:ntext',
-                            // 'body:ntext',
-                            // 'featured',
-                            // 'sort',
-                            // 'status',
-                            // 'created',
-                            // 'updated',
+                            'qty',
+                            [
+                                'attribute' => 'featured',
+                                'filter' => [0 => 'No', 1 => 'Yes'],
+                                'format' => 'html',
+                                'value' => function ($model, $key, $index, $column) {
+                            return $model->featured ? '<span class="badge badge-success"> Yes </span>' : '<span class="badge badge-danger"> No </span>';
+                        },
+                            ],
                             [
                                 'class' => 'digi\metronic\grid\ActionColumn',
                                 'template' => '{view} {update} {delete} {media}'
