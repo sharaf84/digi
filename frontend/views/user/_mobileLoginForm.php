@@ -30,10 +30,10 @@ $form = ActiveForm::begin([
 	</div>
 </div>
 <div class="row">
-	<div class="large-6 medium-6 small-6 columns">
+	<div class="large-6 medium-6 small-12 columns">
 		<?= Html::activeCheckbox($oLoginForm, 'rememberMe', ['label' => Yii::t('app', 'Remember Password?')]); ?>
 	</div>
-	<div class="large-6 medium-6 small-6 columns">
+	<div class="large-6 medium-6 small-12 columns">
 		<a href="<?= Url::to(['/user/request-password-reset']) ?>"><?= Yii::t('app', 'Forgot Your Password?') ?></a>
 	</div>
 </div>

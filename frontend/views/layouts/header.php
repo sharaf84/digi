@@ -11,8 +11,7 @@ $isHome = Yii::$app->controller->action->id == 'home';
     <!--.header-top-bar(data-magellan-expedition='fixed')-->
     <div class="headerContainer" >
         <div class="row headerBox">
-            <div class="small-1 medium-1 columns hide-for-large-up"><i class="md md-more-vert <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i></div>
-            <div class="large-2 medium-4 small-4 columns"><a href="/" class="logo"><!-- <?= Yii::t('app', 'TSS') ?> --></a></div>
+            <div class="large-2 medium-5 small-5 columns"><i class="md md-more-vert hide-for-large-up <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?> <?php echo Yii::$app->language == 'ar' ? 'right' : 'left'; ?>-off-canvas-toggle"></i><a href="/" class="logo"><!-- <?= Yii::t('app', 'TSS') ?> --></a></div>
             <div class="large-5 columns show-for-large-up">
                 <nav class="main-nav">
                     <ul>

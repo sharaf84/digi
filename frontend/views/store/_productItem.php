@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 ?>
-<div class="large-2 medium-3 small-12 columns">
+<div class="large-2 medium-3 small-12 columns align-center">
     <img src="<?= $model->getFeaturedImgUrl('list-product') ?>" alt="<?= Html::encode($model->title) ?>">
 </div>
 <div class="large-10 medium-9 small-12 columns">
