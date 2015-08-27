@@ -23,6 +23,14 @@ class Article extends \common\models\base\Content {
         ]);
     }
     
+    public function getComments() {
+        return $this->hasMany(Comment::className(), ['entityId' => 'id'])->active()->andWhere(['entity' => Comment::hashEntityClass(self::className())]);
+    }
+    
+    public function getCommentsCount() {
+        return $this->hasMany(Comment::className(), ['entityId' => 'id'])->active()->andWhere(['entity' => Comment::hashEntityClass(self::className())])->count();
+    }
+    
     public static function getLatest($limit = 1){
         return self::find()->with('firstMedia')->orderBy(['date' => SORT_DESC])->limit($limit)->all();
     }

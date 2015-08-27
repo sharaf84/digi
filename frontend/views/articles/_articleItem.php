@@ -12,7 +12,7 @@ use yii\helpers\Html;
         <p class="large-12 medium-12 small-12 columns"><?= Html::encode($model->description) ?></p>
 
         <p class="article-meta large-10 medium-10 small-12 columns">
-            <?= $model->getListDate() ?> - 10 comments
+            <?= $model->getListDate() ?> - <?= $model->getCommentsCount() ?> <?= Yii::t('app', 'Comment(s)') ?>
         </p>
         <a href="<?= $model->getInnerUrl() ?>" class="shop-now large-2 medium-2 small-12 columns"><?= Yii::t('app', 'Read more') ?></a>
     <!-- [/] Main Article -->
@@ -26,7 +26,7 @@ use yii\helpers\Html;
             <p><?= Html::encode($model->description) ?></p>
         </div>
         <p class="article-meta large-8 medium-8 small-12 columns">
-            <?= $model->getListDate() ?> - 10 comments
+            <?= $model->getListDate() ?> - <?= $model->getCommentsCount() ?> <?= Yii::t('app', 'Comment(s)') ?>
         </p>
         <a href="<?= $model->getInnerUrl() ?>" class="shop-now large-2 medium-2 small-12 columns"><?= Yii::t('app', 'Read more') ?></a>
     <!-- [/] Single Article -->
