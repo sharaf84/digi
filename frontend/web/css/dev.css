@@ -211,3 +211,6 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 
 header .user-avatar.usermenu-cont .usermenu-dropdown {left:auto;right:0}
 header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arrow-up {right:15px;left:auto}
+
+body.openMenu {height:100vh !important;overflow:hidden}
+body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {height:100vh !important}

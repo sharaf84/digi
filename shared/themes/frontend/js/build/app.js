@@ -129,6 +129,12 @@ TSS.header = function () {
 			$('header').removeClass('scrollHeader');
 		}
 	});
+	$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+		$(window).scrollTop(0);
+		$('body').addClass('openMenu');
+	}).on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+		$('body').removeClass('openMenu');
+	});
     //$('header:not(.single-header) .header-top-bar').attr({
     //'data-top-top': 'position:fixed;',
     //'data-anchor-target': '#checkpoint-a',
