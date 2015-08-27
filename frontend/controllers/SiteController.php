@@ -85,4 +85,25 @@ class SiteController extends \frontend\components\BaseController {
         }
     }
 
+    /**
+     * Subscribe to mailchimp 
+     */
+    public function actionSubscribe() {
+        $email = Yii::$app->request->get('email');
+        $oEmailValidator = new \yii\validators\EmailValidator();
+        if ($email && $oEmailValidator->validate($email)) {
+            try {
+                $oMailchimp = new \sammaye\mailchimp\Mailchimp(['apikey' => Yii::$app->params['mailchimp']['apiKey']]);
+                if ($oMailchimp->lists->subscribe(Yii::$app->params['mailchimp']['listId'], ['email' => $email]))
+                    Yii::$app->session->setFlash('success', Yii::t('app', 'Subscribed successfully, please check your email inbox to confirm.'));
+            } catch (\Mailchimp_Error $exc) {
+                Yii::$app->session->setFlash('error', $exc->getMessage());
+            }
+        } else {
+            Yii::$app->session->setFlash('error', Yii::t('app', 'Sorry, wrong email'));
+        }
+
+        return $this->goBack();
+    }
+
 }

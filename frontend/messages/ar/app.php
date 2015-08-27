@@ -126,5 +126,11 @@ return [
     'Changing the way people shop for supplements. ' => 'نغير الطريق التى يتسوق بيها الناس المكملات الغذائية',
     'Social Blog' => 'المدونة',
     'Get the best social tips and advice from the supplements experts. ' => 'احصل على نصائح وافضل طرق التعامل مع المكملات الغذائية من خبراء متخصصين',
+    //Sharaf start
+    'Subscribed successfully, please check your email inbox to confirm.' => 'تم الاشتراك بنجاح من فضلك راجع بريدك الالكترونى لتأكيد الاشتراك',
+    'Sorry, please write search key' => 'من فضلك ادخل كلمة البحث',
+    'Email required' => 'ادخل البريد الاكترونى',
+    'Password required' => 'ادخل كلمة المرور',
+    //Sharaf end
 ];
 

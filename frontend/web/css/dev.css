@@ -105,7 +105,10 @@ header .user-avatar.login-cont .signup-btn {top:44px !important}
 			
 .swiper-slide {cursor:pointer}
 
-.span.error, small.error, span.error {padding:0 !important}
+.span.error, small.error, span.error {display:none; padding: 4px 8px !important}
+form .has-error .error{display: block}
+#loginForm [data-invalid] + .error {display: block}
+#mobileLoginForm [data-invalid] + .error {display: block}
 
 header .drop-down .dropdown-product-item .dropdown-product-item--desc h3 {font-size:14px !important}
 header .drop-down .dropdown-product-item .dropdown-product-item--desc p {height:60px;overflow:hidden;margin:7px 0 !important}

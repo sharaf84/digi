@@ -22,8 +22,10 @@ use yii\helpers\Url; ?>
                 <h3><?= Yii::t('app', 'Get the latest sales and new product announcements right to your inbox') ?></h3>
             </div>
             <div class="large-6 medium-6 small-12 column">
-                <form action="/" class="newsletter-form-js" data-abide="ajax"><i onclick="TSS.newsletter();" class="md md-chevron-right"></i>
-                    <input type="email" required placeholder="Email address"><span class="error"><?= Yii::t('app', 'Sorry, wrong email') ?></span>
+                <form action="<?= Url::to(['/site/subscribe']) ?>" class="newsletter-form-js" data-abide>
+                    <i onclick="$(this).parent('form').submit();//TSS.newsletter();" class="md md-chevron-right"></i>
+                    <input name="email" type="email" required placeholder="<?= Yii::t('app', 'Email Address') ?>">
+                    <span class="error"><?= Yii::t('app', 'Sorry, wrong email') ?></span>
                 </form>
             </div>
         </div>
