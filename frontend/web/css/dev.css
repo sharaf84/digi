@@ -79,6 +79,7 @@ header .header-top-bar.skrollable {-webkit-transition:0.3s, ease, all !important
 header.single-header {border-bottom-width:0 !important}
 header.single-header .header-top-bar {border-bottom:3px solid #ed2024 !important;width:100% !important;left:0% !important;border-radius:0 !important}
 
+footer > .row:first-child {padding:0 40px}
 footer .footer-slider {margin:20px 0 !important}
 footer .footer-newsletter {margin:20px 0 !important}
 footer .social-links .row {max-width:342px !important}
@@ -141,7 +142,8 @@ header .header-top-bar {height:auto}
 #ar-layout header .main-nav ul li span {    font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important;}
 header .main-nav ul li a, header .main-nav ul li span {padding:16px;line-height:32px}
 header .main-nav ul li a.active, header .main-nav ul li a:hover, header .main-nav ul li span.active, header .main-nav ul li span:hover {padding-top:11px}
-header .logo {margin-top:4px;width:auto}
+header .logo {margin:4px 0 0 40px;width:auto;max-width:100%;text-indent:inherit;height:56px;line-height:56px;background:none}
+header .logo img {display:inline-block;max-width:100%;max-height:100%;vertical-align:middle}
 header form input[type='search'] {height:36px}
 header form i {top:auto}
 header form {margin:12px 0}
@@ -165,6 +167,9 @@ footer .next-nav {right:0}
 
 @media (max-width: 960px) {
 	.product-background-cover {
+		display:none
+	}
+	.productImage {
 		display:none
 	}
 }
@@ -201,7 +206,8 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 #mobile-login-form label, #mobile-login-form a {color:#b4bbc2;display:block;margin:0 0 5px 1px;font-weight:bold;font-size:13px}
 #mobile-login-form .facebook-login {display:block;background:#3162a2;color:#fff;text-align:center;padding:9px 0;font-weight:bold;font-size:14px;margin-bottom:7px;position:relative}
 #mobile-login-form .facebook-login i {color: #fff;font-size:15px !important;display:inline !important}
-#mobile-login-form .closeSmallLoginForm {cursor:pointer;display:inline-block;width:24px;height:24px;background-image:url('../../shared/themes/frontend/images/src/back.png')}
+#mobile-login-form .closeSmallLoginForm {cursor:pointer;display:inline-block;margin-bottom:12px;width:24px;height:24px;background-image:url('../../shared/themes/frontend/images/src/back.png');background-position:center;vertical-align:middle}
+#mobile-login-form .closeSmallLoginFormText {cursor:pointer;display:inline-block;margin-bottom:12px;height:24px;line-height:24px;font-size:22px;font-weight:bold;color:#b4bbc2;vertical-align:middle}
 
 .align-center {text-align:center}
 
@@ -214,3 +220,7 @@ header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arr
 
 body.openMenu {height:100vh !important;overflow:hidden}
 body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {height:100vh !important}
+
+.single-page .page-title {background-size:inherit;background-repeat:repeat-x;padding-left:0.9375rem;padding-right:0.9375rem}
+.single-page .page-title h2 {line-height:28px;padding:3px 15px 4px 0}
+.column + .column:last-child, .columns + .columns:last-child {float:left}

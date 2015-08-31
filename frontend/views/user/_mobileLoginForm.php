@@ -14,7 +14,7 @@ ActiveForm::begin([
 ?>
 <div class="row">
     <div class="large-12 medium-12 small-12 columns">
-        <span class="closeSmallLoginForm"></span>
+        <span class="closeSmallLoginForm"></span><span class="closeSmallLoginFormText">Back</span>
     </div>
 </div>
 <div class="row">
