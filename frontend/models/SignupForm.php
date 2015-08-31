@@ -3,7 +3,7 @@
 namespace frontend\models;
 
 use yii\base\Model;
-use common\models\base\User;
+use common\models\custom\User;
 use common\models\custom\Profile;
 use Yii;
 
@@ -30,7 +30,7 @@ class SignupForm extends Model {
             ['email', 'filter', 'filter' => 'trim'],
             ['email', 'required'],
             ['email', 'email'],
-            ['email', 'unique', 'targetClass' => '\common\models\base\User', 'message' => Yii::t('app', 'This email address has already been taken.')],
+            ['email', 'unique', 'targetClass' => User::className(), 'message' => Yii::t('app', 'This email address has already been taken.')],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
             ['phone', 'filter', 'filter' => 'trim'],
@@ -87,20 +87,6 @@ class SignupForm extends Model {
         }
 
         return null;
-    }
-
-    /**
-     * Sends an email with a link, for verification.
-     *
-     * @return boolean whether the email was send
-     */
-    public function sendEmail($oUser) {
-
-        return \Yii::$app->mailer->compose(['html' => 'verificationToken-html'], ['oUser' => $oUser])
-                        ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
-                        ->setTo($oUser->email)
-                        ->setSubject('Verification for ' . \Yii::$app->name)
-                        ->send();
     }
 
 }

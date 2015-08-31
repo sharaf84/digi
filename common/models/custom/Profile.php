@@ -71,6 +71,17 @@ class Profile extends \common\models\base\Base {
             'updated' => Yii::t('app', 'Updated'),
         ];
     }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser() {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+    
+    public function getCity() {
+        return $this->hasOne(City::className(), ['id' => 'city_id']);
+    }
 
     public function setUserId($id) {
         return $this->user_id = $id;
@@ -79,11 +90,7 @@ class Profile extends \common\models\base\Base {
     public function getName() {
         return Html::encode($this->first_name . ' ' . $this->last_name);
     }
-
-    public function getCity() {
-        return $this->hasOne(City::className(), ['id' => 'city_id']);
-    }
-
+    
     public function getFullAddress() {
         return $this->city ? Html::encode($this->address) . ', ' . Html::encode($this->city->name) : Html::encode($this->address);
     }

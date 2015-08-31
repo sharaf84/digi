@@ -25,12 +25,12 @@ class OrdersController extends \frontend\components\BaseController {
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::className(),
-                'actions' => [
-                //'Checkout' => ['post'],
-                ],
-            ],
+//            'verbs' => [
+//                'class' => \yii\filters\VerbFilter::className(),
+//                'actions' => [
+//                    'checkout' => ['post'],
+//                ],
+//            ],
         ];
     }
 

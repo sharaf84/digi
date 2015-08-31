@@ -2,8 +2,9 @@
 
 namespace frontend\models;
 
-use common\models\base\User;
 use yii\base\Model;
+use common\models\custom\User;
+use common\helpers\MailHelper;
 
 /**
  * Password reset request form
@@ -21,7 +22,7 @@ class RequestPasswordResetForm extends Model {
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'exist',
-                'targetClass' => '\common\models\base\User',
+                'targetClass' => User::className(),
                 'filter' => ['status' => User::STATUS_VERIFIED],
                 'message' => 'There is no user with such email.'
             ],
@@ -34,21 +35,15 @@ class RequestPasswordResetForm extends Model {
      * @return boolean whether the email was send
      */
     public function sendEmail() {
-        /* @var $user User */
-        $user = User::findOne([
+        /* @var $oUser User */
+        $oUser = User::findOne([
                     'status' => User::STATUS_VERIFIED,
                     'email' => $this->email,
         ]);
 
-        if ($user) {
-            $user->generatePasswordResetToken();
-            if ($user->save()) {
-                return \Yii::$app->mailer->compose(['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'], ['user' => $user])
-                                ->setFrom([\Yii::$app->params['supportEmail'] => \Yii::$app->name . ' robot'])
-                                ->setTo($this->email)
-                                ->setSubject('Password reset for ' . \Yii::$app->name)
-                                ->send();
-            }
+        if ($oUser) {
+            $oUser->generatePasswordResetToken();
+            return $oUser->save() && MailHelper::sendPasswordResetToken($oUser);
         }
 
         return false;

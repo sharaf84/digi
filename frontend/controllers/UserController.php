@@ -78,7 +78,7 @@ class UserController extends \frontend\components\BaseController {
         $oSignupForm = new SignupForm();
         if ($oSignupForm->load(Yii::$app->request->post())) {
             if ($oUser = $oSignupForm->signup()) {
-                if ($oSignupForm->sendEmail($oUser)) {
+                if (\common\helpers\MailHelper::sendVerificationToken($oUser)) {
                     Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Check your email for further instructions.'));
                     return $this->goHome();
                 } else {

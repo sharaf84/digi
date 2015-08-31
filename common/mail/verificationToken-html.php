@@ -1,15 +1,18 @@
 <?php
+
 use yii\helpers\Html;
-
-/* @var $this yii\web\View */
-/* @var $user common\models\User */
-
-$resetLink = Yii::$app->urlManager->createAbsoluteUrl(['user/verify', 'token' => $oUser->token]);
+use yii\helpers\Url;
 ?>
-<div class="password-reset">
-    <p>Hello <?= Html::encode($oUser->username) ?>,</p>
 
-    <p>Follow the link below to verify your account:</p>
-
-    <p><?= Html::a(Html::encode($resetLink), $resetLink) ?></p>
+<div class="message">
+    <div class="title">
+        <h1><?= Yii::t('app', 'Hello') ?> <?= Html::encode($oUser->getName()) ?></h1>
+        <!--<h2>Please Confirm Subscription</h2>-->
+    </div>
+    <div class="content">
+        <p><?= Yii::t('app', 'Follow the link below to verify your account') ?></p>
+    </div>
+    <div class="option">
+        <a href="<?= Url::to(['/user/verify', 'token' => $oUser->token], true) ?>" /><span><?= Yii::t('app', 'Verify Account') ?></span></a>
+    </div>
 </div>

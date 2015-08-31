@@ -131,6 +131,18 @@ return [
     'Sorry, please write search key' => 'من فضلك ادخل كلمة البحث',
     'Email required' => 'ادخل البريد الاكترونى',
     'Password required' => 'ادخل كلمة المرور',
-    //Sharaf end
+    '&copy; 2015 TSS, All Rights Reserved' => '&copy; 2015 TSS, جميع الحقوق محفوظة',
+    'Hello' => 'مرحبا',
+    'Password reset for ' => 'تغيير كلمة المرور ل ',
+    'Follow the link below to reset your password' => 'اتبع الرابط التالى لتغيير كلمة المرور',
+    'Reset Password' => 'تغيير كلمة المرور',
+    'Verification for ' => 'تفعيل الاشتراك فى ',
+    'Follow the link below to verify your account' => 'اتبع الرابط التالى لتفعيل الاشتراك',
+    'Verify Account' => 'تفعيل الاشتراك',
+    'Successful Payment Confirmation' => 'تمت عملية الدفع بنجاح',
+    'Order Details' => 'تفاصيل الطلب',
+    'Successful Payment Confirmation' => 'تمت عملية الدفع بنجاح',
+    'Follow Order' => 'تابع الطلب',
+//Sharaf end
 ];
 

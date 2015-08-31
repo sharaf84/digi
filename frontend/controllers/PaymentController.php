@@ -24,12 +24,12 @@ class PaymentController extends \frontend\components\BaseController {
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::className(),
-                'actions' => [
-                //'Checkout' => ['post'],
-                ],
-            ],
+//            'verbs' => [
+//                'class' => \yii\filters\VerbFilter::className(),
+//                'actions' => [
+//                    'migs-purchase' => ['post'],
+//                ],
+//            ],
         ];
     }
 
@@ -54,6 +54,7 @@ class PaymentController extends \frontend\components\BaseController {
                     'amount' => $oOrder->amount,
                     'currency' => Yii::$app->params['MIGS']['currency'],
                     'transactionId' => $oOrder->token,
+                    'description' => $oOrder->id,
                     'returnUrl' => \yii\helpers\Url::to(['/payment/migs-complete-purchase'], true),
                 ])->send();
 
@@ -90,6 +91,7 @@ class PaymentController extends \frontend\components\BaseController {
             $oDBTransaction = Yii::$app->db->beginTransaction();
             if ($oOrder->paid() && $oPayment->save()) {
                 $oDBTransaction->commit();
+                \common\helpers\MailHelper::sendSuccessfulPaymentResponse($oOrder);
                 Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Your order paid successfully.'));
             } else{
                 $oDBTransaction->rollBack();

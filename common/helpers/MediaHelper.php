@@ -2,14 +2,18 @@
 
 namespace common\helpers;
 
-use yii;
+use Yii;
 use yii\imagine\Image;
-use \yii\helpers\Html;
+use yii\helpers\Html;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
 use yii\web\HttpException;
 use common\models\base\Media;
 
+/**
+ * Media Helper 
+ * @author Ahmed Sharaf <sharaf.developer@gmail.com>
+ */
 class MediaHelper {
 
     /**

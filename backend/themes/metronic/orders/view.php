@@ -121,6 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'html',
                                 'value' => $model->new ? '<span class="badge badge-danger"> new </span>' : '<span class="badge badge-success"> seen </span>',
                             ],
+                            'token',
                             'created',
                             'updated',
                         ],

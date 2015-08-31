@@ -1,6 +1,5 @@
 <?php
 return [
-    'adminEmail' => 'a.sharaf@digitreeinc.com',
     'MIGS' => [
         'merchantId' => 'TEST512345USD',
         'merchantAccessCode' => 'F05FC469',
