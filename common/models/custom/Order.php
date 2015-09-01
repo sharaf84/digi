@@ -379,24 +379,6 @@ class Order extends \common\models\base\Base {
         $this->token = Yii::$app->security->generateRandomString(16) . '_' . time();
     }
 
-    public function checkout() {
-        $this->scenario = 'checkout';
-        $this->generateToken();
-        $this->new = true;
-        $this->amount = $this->liveCartPrice;
-        $this->status = static::STATUS_PENDING;
-        $this->user_id = $this->oldAttributes['user_id']; //Not to change old user
-        if ($this->validate() && !$this->hasOverflowCart) {
-            $oDBTransaction = Yii::$app->db->beginTransaction();
-            if ($this->save() && $this->afterCheckout()) {
-                $oDBTransaction->commit();
-                return true;
-            } else
-                $oDBTransaction->rollBack();
-        }
-        return false;
-    }
-
     public static function findToPayment($token) {
         return static::findOne([
                     'token' => $token,
@@ -420,26 +402,24 @@ class Order extends \common\models\base\Base {
     public static function getTotalRevenu() {
         return static::find()->where(['status' => static::STATUS_DELIVERED])->sum('amount');
     }
-    
-    public static function getTopUsers($limit=1) {
+
+    public static function getTopUsers($limit = 1) {
         return static::find()
-                ->select(['user_id', 'SUM(amount) amount'])
-                ->with('user')
-                ->where(['status' => static::STATUS_DELIVERED])
-                ->groupBy('user_id')
-                ->orderBy(['SUM(amount)' => SORT_DESC])
-                ->limit($limit)
-                ->all();
+                        ->select(['user_id', 'SUM(amount) amount'])
+                        ->with('user')
+                        ->where(['status' => static::STATUS_DELIVERED])
+                        ->groupBy('user_id')
+                        ->orderBy(['SUM(amount)' => SORT_DESC])
+                        ->limit($limit)
+                        ->all();
+    }
+    
+    public function getCreatedDate(){
+        return date('j F Y', strtotime($this->created));
     }
 
-    public function paid() {
-        $this->paid = true;
-        return $this->save();
-    }
-
-    public function seen() {
-        $this->new = false;
-        return $this->save();
+    public function canPay() {
+        return ($this->status == self::STATUS_PENDING || $this->status == self::STATUS_IN_PROGRESS) && !$this->paid;
     }
 
     public function canProgress() {
@@ -453,6 +433,37 @@ class Order extends \common\models\base\Base {
     public function canCancel() {
         return $this->status == self::STATUS_PENDING || $this->status == self::STATUS_IN_PROGRESS;
     }
+    
+    ///////////// Save Actions ////////////////////
+    
+    public function checkout() {
+        $this->scenario = 'checkout';
+        $this->generateToken();
+        $this->new = true;
+        $this->amount = $this->liveCartPrice;
+        $this->status = static::STATUS_PENDING;
+        $this->user_id = Yii::$app->user->id;//$this->oldAttributes['user_id']; //Not to change old user
+        $this->created = new \yii\db\Expression('NOW()');
+        if ($this->validate() && !$this->hasOverflowCart) {
+            $oDBTransaction = Yii::$app->db->beginTransaction();
+            if ($this->save() && $this->afterCheckout()) {
+                $oDBTransaction->commit();
+                return true;
+            } else
+                $oDBTransaction->rollBack();
+        }
+        return false;
+    }
+
+    public function paid() {
+        $this->paid = true;
+        return $this->save();
+    }
+
+    public function seen() {
+        $this->new = false;
+        return $this->save();
+    }
 
     public function progress() {
         if (!$this->canProgress())
@@ -465,6 +476,7 @@ class Order extends \common\models\base\Base {
         if (!$this->canDeliver())
             return false;
         $this->status = self::STATUS_DELIVERED;
+        $this->paid = true;
         return $this->save();
     }
 
@@ -474,22 +486,7 @@ class Order extends \common\models\base\Base {
         $this->status = self::STATUS_CANCELED;
         return $this->save();
     }
-
-    /**
-     * Updates cart attrs with live item values
-     */
-//    public function autoUpdateCartItems() {
-//        if (!$this->cartItems)
-//            return false;
-//        foreach ($this->cartItems as $oCart) {
-//            $oCart->price = $oCart->item->price;
-//            $oCart->title = $oCart->item->title;
-//            if (!$oCart->save())
-//                return false;
-//        }
-//        return true;
-//    }
-//    
+  
     ///////////// afterSave Actions ////////////////////
 
     /**

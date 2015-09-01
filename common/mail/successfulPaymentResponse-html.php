@@ -23,7 +23,7 @@ use yii\helpers\Url;
                 'comment:ntext',
                 [
                     'attribute' => 'amount',
-                    'value' => $oOrder->amount . CURRENCY_SYMBOL,
+                    'value' => $oOrder->amount . ' ' . CURRENCY_SYMBOL,
                 ],
                 [
                     'attribute' => 'payment_method',
@@ -40,6 +40,7 @@ use yii\helpers\Url;
                     'format' => 'html',
                     'value' => $oOrder->status ? '<span class="label label-sm order-status-' . $oOrder->status . '">' . $oOrder->statusList[$oOrder->status] . '</span>' : '(not set)',
                 ],
+                'created',
             ],
         ])
         ?>

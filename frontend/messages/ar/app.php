@@ -143,6 +143,10 @@ return [
     'Order Details' => 'تفاصيل الطلب',
     'Successful Payment Confirmation' => 'تمت عملية الدفع بنجاح',
     'Follow Order' => 'تابع الطلب',
+    'Order #' => '# الطلب',
+    'Not Paid' => 'غير مدفوع',
+    'Pay Now' => 'ادفع الان',
+    'Gateway response message ({msg}). You can try again from your orders history.' => 'يمكنك المحاولة مرة اخرى من خلال جدول الطلبات .({msg}) نتيجة عملية الدفع',
 //Sharaf end
 ];
 

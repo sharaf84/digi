@@ -72,16 +72,15 @@ Pjax::begin([
                         </a>
                     <?php } ?>
                 <?php } ?>
-
-                <?php
-                echo Html::a('<span class="remove-product">&times;</span>', Url::to(['/cart/remove', 'id' => $oCart->item_id]), [
-                    //'data-confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
-                    'data-method' => 'post',
-                ]);
-                ?>
                 <div class="large-6 medium-6 small-12 columns as-table-cell">
                     <div class="row">
-                        <div class="large-3 medium-3 small-4 small-centered columns product-image-cont">
+                        <div class="large-3 medium-3 small-4 columns product-image-cont">
+                            <?php
+                            echo Html::a('<span class="remove-product">&times;</span>', Url::to(['/cart/remove', 'id' => $oCart->item_id]), [
+                                //'data-confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                                'data-method' => 'post',
+                            ]);
+                            ?>
                             <img src="<?= $oCart->item->getFeaturedImgUrl('cart-product') ?>" alt="<?= Html::encode($oCart->item->title) ?>">
                         </div>
                         <div class="large-9 medium-9 small-12 columns product-info-cont small-only-text-center">

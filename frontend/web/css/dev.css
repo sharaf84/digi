@@ -223,4 +223,11 @@ body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {heigh
 
 .single-page .page-title {background-size:inherit;background-repeat:repeat-x;padding-left:0.9375rem;padding-right:0.9375rem}
 .single-page .page-title h2 {line-height:28px;padding:3px 15px 4px 0}
-.column + .column:last-child, .columns + .columns:last-child {float:left}
+.column + .column.product-item:last-child, .columns + .columns.product-item:last-child {float:left}
+.orderHeader {background-color: #eee;line-height: 42px;border-bottom: 2px solid red}
+.orderHeader span.pending {color: orange; }
+.orderHeader span.canceled, .orderHeader span.no {color: #e61b1e; }
+.orderHeader span.delivered, .orderHeader span.yes {color: #178e4a; }
+.orderHeader span.in-progress {color: blue; }
+.single-page.shopping-cart .single-product .product-image-cont img {clear:none}
+.single-page.shopping-cart .remove-product {float:left;position:static}

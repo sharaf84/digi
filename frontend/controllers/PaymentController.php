@@ -79,7 +79,8 @@ class PaymentController extends \frontend\components\BaseController {
             $oOrder = Order::findToPayment(Yii::$app->session['migsPurchaseRequest']['transactionId']);
             if (!$oOrder)
                 throw new GoneHttpException(Yii::t('app', 'Sorry, your order not found!'));
-
+            
+            $oOrder->payment_method = Order::METHOD_MIGS;
             $oPayment = new Payment([
                 'order_id' => $oOrder->id,
                 //'status' => 0,
@@ -87,7 +88,7 @@ class PaymentController extends \frontend\components\BaseController {
                 'transaction_reference' => $response->getTransactionReference(),
                 'response' => json_encode($response->getData())
             ]);
-
+            
             $oDBTransaction = Yii::$app->db->beginTransaction();
             if ($oOrder->paid() && $oPayment->save()) {
                 $oDBTransaction->commit();
@@ -97,12 +98,11 @@ class PaymentController extends \frontend\components\BaseController {
                 $oDBTransaction->rollBack();
                 Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Error, saving transaction no {number}', ['number' => $response->getTransactionReference()]));
             }
-            return $this->redirect(['/profile']);
         } else {
             // payment failed: display message to customer
-            Yii::$app->getSession()->setFlash('error', Yii::t('app', $response->getMessage()));
-            return $this->goHome();
+            Yii::$app->getSession()->setFlash('error', Yii::t('app', 'Gateway response message ({msg}). You can try again from your orders history.', ['msg' => $response->getMessage()]));
         }
+        return $this->redirect(['/profile']);
     }
 
 }
