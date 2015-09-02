@@ -147,6 +147,7 @@ return [
     'Not Paid' => 'غير مدفوع',
     'Pay Now' => 'ادفع الان',
     'Gateway response message ({msg}). You can try again from your orders history.' => 'يمكنك المحاولة مرة اخرى من خلال جدول الطلبات .({msg}) نتيجة عملية الدفع',
+    'I agree with Terms and Conditions' => 'أوافق على الشروط والأحكام',
 //Sharaf end
 ];
 

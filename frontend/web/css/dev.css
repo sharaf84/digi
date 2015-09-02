@@ -222,7 +222,7 @@ body.openMenu {height:100vh !important;overflow:hidden}
 body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {height:100vh !important}
 
 .single-page .page-title {background-size:inherit;background-repeat:repeat-x;padding-left:0.9375rem;padding-right:0.9375rem}
-.single-page .page-title h2 {line-height:28px;padding:3px 15px 4px 0}
+.single-page .page-title h2 {line-height:28px;padding:3px 15px !important}
 .column + .column.product-item:last-child, .columns + .columns.product-item:last-child {float:left}
 .orderHeader {background-color: #eee;line-height: 42px;border-bottom: 2px solid red}
 .orderHeader span.pending {color: orange; }
@@ -231,3 +231,5 @@ body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {heigh
 .orderHeader span.in-progress {color: blue; }
 .single-page.shopping-cart .single-product .product-image-cont img {clear:none}
 .single-page.shopping-cart .remove-product {float:left;position:static}
+
+#checkoutForm .checkbox a {line-height: 20px;padding: 0 4px;vertical-align: top}

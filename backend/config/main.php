@@ -27,7 +27,13 @@ return [
         'treemanager' => [
             'class' => 'kartik\tree\Module',
         // other module settings, refer detailed documentation
-        ]
+        ],
+        'comment' => [
+            'class' => 'yii2mod\comments\Module',
+            'controllerMap' => [
+                'manage' => 'yii2mod\comments\controllers\ManageController'
+            ]
+        ],
     ],
     'components' => [
         'request' => [

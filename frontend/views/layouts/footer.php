@@ -49,7 +49,7 @@ use yii\helpers\Url; ?>
             </p>
         </div>
         <div class="large-6 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' right' : 'left' ?>">
-            <p><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></p>
+            <p><a href="http://digitreeinc.com" target="_blank"><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></a></p>
         </div>
     </div>
 </footer>

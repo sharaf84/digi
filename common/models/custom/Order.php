@@ -46,6 +46,10 @@ class Order extends \common\models\base\Base {
      * MasterCard Internet Gateway Service
      */
     const METHOD_MIGS = 2;
+    
+    
+    public $agree;
+
 
     /**
      * @inheritdoc
@@ -75,7 +79,8 @@ class Order extends \common\models\base\Base {
     public function rules() {
         return [
             [['user_id'], 'required'],
-            [['name', 'email', 'phone', 'address', 'payment_method', 'amount', 'status', 'token'], 'required', 'on' => 'checkout'],
+            [['name', 'email', 'phone', 'address', 'payment_method', 'amount', 'status', 'token', 'agree'], 'required', 'on' => 'checkout'],
+            [['agree'], 'required', 'requiredValue' => 1,  'on' => 'checkout'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             [['amount'], 'number', 'min' => 5, 'max' => 10000],
             [['user_id', 'payment_method', 'status'], 'integer'],
@@ -111,6 +116,7 @@ class Order extends \common\models\base\Base {
             'paid' => Yii::t('app', 'Paid'),
             'created' => Yii::t('app', 'Created'),
             'updated' => Yii::t('app', 'Updated'),
+            'agree' => Yii::t('app', 'I agree with Terms and Conditions'),
         ];
     }
 
@@ -454,15 +460,20 @@ class Order extends \common\models\base\Base {
         }
         return false;
     }
-
+        
+    public function updateToken() {
+        $this->generateToken();
+        return $this->save(false);
+    }
+    
     public function paid() {
         $this->paid = true;
-        return $this->save();
+        return $this->save(false);
     }
 
     public function seen() {
         $this->new = false;
-        return $this->save();
+        return $this->save(false);
     }
 
     public function progress() {

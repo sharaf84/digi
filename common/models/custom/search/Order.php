@@ -75,7 +75,9 @@ class Order extends OrderModel
             ->andFilterWhere(['like', 'comment', $this->comment]);
         
         $query->andWhere(['!=', 'status', OrderModel::STATUS_CART]);
-
+        
+        $query->orderBy(['created' => SORT_DESC]);
+        
         return $dataProvider;
     }
 }

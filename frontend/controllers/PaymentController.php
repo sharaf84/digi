@@ -41,10 +41,10 @@ class PaymentController extends \frontend\components\BaseController {
     public function actionMigsPurchase($token) {
 
         $oOrder = Order::findToPayment($token);
-
-        if (!$oOrder)
+        
+        if (!($oOrder && $oOrder->updateToken()))
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-
+        
         $gateway = \Omnipay\Omnipay::create('Migs_ThreeParty');
         $gateway->setMerchantId(Yii::$app->params['MIGS']['merchantId']);
         $gateway->setMerchantAccessCode(Yii::$app->params['MIGS']['merchantAccessCode']);
@@ -54,7 +54,7 @@ class PaymentController extends \frontend\components\BaseController {
                     'amount' => $oOrder->amount,
                     'currency' => Yii::$app->params['MIGS']['currency'],
                     'transactionId' => $oOrder->token,
-                    'description' => $oOrder->id,
+                    'description' => Yii::$app->user->identity->email,
                     'returnUrl' => \yii\helpers\Url::to(['/payment/migs-complete-purchase'], true),
                 ])->send();
 
