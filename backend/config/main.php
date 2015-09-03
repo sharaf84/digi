@@ -30,9 +30,9 @@ return [
         ],
         'comment' => [
             'class' => 'yii2mod\comments\Module',
-            'controllerMap' => [
-                'manage' => 'yii2mod\comments\controllers\ManageController'
-            ]
+//            'controllerMap' => [
+//                'manage' => 'yii2mod\comments\controllers\ManageController'
+//            ]
         ],
     ],
     'components' => [

@@ -30,21 +30,21 @@ class ProfileController extends \frontend\components\BaseController {
     }
 
     public function actionView() {
-        if(!Yii::$app->user->identity->profile) 
+        if (!Yii::$app->user->identity->profile)
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
         return $this->render('view', [
-            'oProfile' => Yii::$app->user->identity->profile,
-            'activeOrders' => Yii::$app->user->identity->getActiveOrders()->with('cartItems')->all(),
-            'activities' => Yii::$app->user->identity->getActivities(),
+                    'oProfile' => Yii::$app->user->identity->profile,
+                    'activeOrders' => Yii::$app->user->identity->getActiveOrders()->with('cartItems')->all(),
+                    'activities' => Yii::$app->user->identity->getActivities(),
         ]);
     }
 
     public function actionEdit() {
         $oProfile = Yii::$app->user->identity->profile;
-        
-        if(!$oProfile) 
+
+        if (!$oProfile)
             throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
-        
+
         if ($oProfile->load(Yii::$app->request->post()) && $oProfile->save()) {
 //            if (Yii::$app->request->isAjax) {
 //                Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -52,8 +52,24 @@ class ProfileController extends \frontend\components\BaseController {
 //            }
             Yii::$app->getSession()->setFlash('success', Yii::t('app', 'Profile updated successfully'));
             return $this->redirect(['/profile']);
-        } 
+        }
         return $this->render('edit', ['oProfile' => $oProfile]);
+    }
+
+    /**
+     * uploads user avatar
+     */
+    public function actionUploadAvatar() {
+        $oMedia = new \common\models\custom\Media();
+        $oMedia->scenario = 'uploadAvatar';
+        $oMedia->model = 'User';
+        $oMedia->model_id = Yii::$app->user->id;
+        $oMedia->uploadedFile = \yii\web\UploadedFile::getInstanceByName('avatar');
+        if (\common\helpers\MediaHelper::fileUpload($oMedia))
+            echo Yii::$app->user->identity->getFeaturedImgUrl();
+        else 
+            var_dump($oMedia->errors); 
+        Yii::$app->end();
     }
 
 }

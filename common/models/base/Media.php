@@ -27,7 +27,12 @@ use common\helpers\MediaHelper;
  * @property string $updated
  */
 class Media extends Base {
-
+    
+    /**
+     * @var $uploadedFile instance of \yii\web\UploadedFile
+     */
+    public $uploadedFile;
+    
     /**
      * @inheritdoc
      */

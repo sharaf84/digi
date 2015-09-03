@@ -14,7 +14,24 @@ $this->title = $oProfile->getName();
     <div class="large-12 medium-12 small-12 columns">
         <div class="row">
             <div class="large-3 medium-3 small-12 columns">
+                
                 <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('profile_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>">
+                <?php
+                // A block file picker button with custom icon and label
+                echo \kartik\widgets\FileInput::widget([
+                    'name' => 'avatar',
+                    'pluginOptions' => [
+                        'uploadUrl' => Url::to(['/profile/upload-avatar']),
+                        'showCaption' => false,
+                        'showRemove' => false,
+                        'showUpload' => false,
+                        'browseClass' => 'btn btn-primary btn-block',
+                        'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                        'browseLabel' => Yii::t('app', 'Select Photo') 
+                    ],
+                    'options' => ['accept' => 'image/*']
+                ]);
+                ?>
             </div>
             <div class="large-9 medium-9 small-12 columns user-info">
 

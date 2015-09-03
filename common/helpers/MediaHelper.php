@@ -138,6 +138,23 @@ class MediaHelper {
         $content = $sourceTag . yii::t('app', 'Your browser does not support HTML5 video');
         return Html::tag('video', $content, $options);
     }
+    
+    /**
+     * Uplad file from $_FILES
+     * @param obj $oMedia
+     * @return boolean
+     */
+    public static function fileUpload($oMedia) {
+        
+        $oMedia->filename = Yii::$app->security->generateRandomString(16) . '.' . $oMedia->uploadedFile->extension;
+        $path = static::createUploadDir();
+        $oMedia->path = substr($path, strlen(Yii::getAlias('@root'))) . '/';
+        $oMedia->size = $oMedia->uploadedFile->size;
+        $oMedia->mime = $oMedia->uploadedFile->type;
+        
+        return $oMedia->validate() && $oMedia->uploadedFile->saveAs($path . DIRECTORY_SEPARATOR . $oMedia->filename) &&  $oMedia->save(false);
+        
+    }
 
     /**
      * Uplad file from url and save data

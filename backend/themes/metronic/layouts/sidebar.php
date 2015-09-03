@@ -49,14 +49,7 @@ use yii\helpers\Url;
                     <span class="title">Articles</span> 
                 </a>
             </li>
-            
-            <li class="<?= (Yii::$app->controller->id == 'pages') ? 'active' : '' ?>">
-                <a href="<?= Url::to(['/pages']) ?>">
-                    <i class="fa fa-pencil"></i>
-                    <span class="title">Pages</span> 
-                </a>
-            </li>
-            
+
             <li class="<?= (Yii::$app->controller->id == 'users') ? 'active' : '' ?>">
                 <a href="<?= Url::to(['/users']) ?>">
                     <i class="fa fa-user"></i>
@@ -70,7 +63,28 @@ use yii\helpers\Url;
                     <span class="title">Orders</span> 
                 </a>
             </li>
-
+                        
+            <li class="<?= (Yii::$app->controller->id == 'pages') ? 'active' : '' ?>">
+                <a href="<?= Url::to(['/pages']) ?>">
+                    <i class="fa fa-pencil"></i>
+                    <span class="title">Pages</span> 
+                </a>
+            </li>
+            
+            <li class="<?= (Yii::$app->controller->id == 'cities') ? 'active' : '' ?>">
+                <a href="<?= Url::to(['/cities']) ?>">
+                    <i class="fa fa-flag"></i>
+                    <span class="title">Cities</span> 
+                </a>
+            </li>
+            
+            <li class="<?= (Yii::$app->controller->id == 'comments') ? 'active' : '' ?>">
+                <a href="<?= Url::to(['/comments']) ?>">
+                    <i class="fa fa-comments"></i>
+                    <span class="title">Comments</span> 
+                </a>
+            </li>
+            
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

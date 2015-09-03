@@ -33,14 +33,26 @@ use yii\helpers\Url;
             <a href="<?= Url::to(['/articles']) ?>"> Articles </a>
         </li>
         <li>
-            <a href="<?= Url::to(['/pages']) ?>"> Pages </a>
-        </li>
-        <li>
             <a href="<?= Url::to(['/users']) ?>"> Users </a>
         </li>
         <li>
             <a href="<?= Url::to(['/orders']) ?>"> Orders </a>
         </li>
-        
+        <li class="classic-menu-dropdown">
+            <a data-toggle="dropdown" href="javascript:;">
+                Contents <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu pull-left">
+                <li>
+                    <a href="<?= Url::to(['/pages']) ?>"><i class="fa fa-pencil"></i> Pages </a>
+                </li>
+                <li>
+                    <a href="<?= Url::to(['/cities']) ?>"><i class="fa fa-flag"></i> Cities </a>
+                </li>
+                <li>
+                    <a href="<?= Url::to(['/comments']) ?>"><i class="fa fa-comments"></i> Comments </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </div>
