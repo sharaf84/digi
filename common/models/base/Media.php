@@ -27,12 +27,12 @@ use common\helpers\MediaHelper;
  * @property string $updated
  */
 class Media extends Base {
-    
+
     /**
      * @var $uploadedFile instance of \yii\web\UploadedFile
      */
     public $uploadedFile;
-    
+
     /**
      * @inheritdoc
      */
@@ -78,7 +78,7 @@ class Media extends Base {
             'updated' => 'Updated',
         ];
     }
-    
+
     public function behaviors() {
         return array_merge_recursive(parent::behaviors(), [
             'Sortable' => [
@@ -88,10 +88,20 @@ class Media extends Base {
             ],
         ]);
     }
-    
+
     public static function find() {
         //Set default condition
         return parent::find()->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+    }
+
+    public function afterSave($insert, $changedAttributes) {
+        if (!$insert) {
+            if (!empty($changedAttributes['filename'])) {
+                $path = !empty($changedAttributes['path']) ? $changedAttributes['path'] : $this->path;
+                MediaHelper::deleteFiles(Yii::getAlias('@root') . $path, $changedAttributes['filename'], true);
+            }
+        }
+        return parent::afterSave($insert, $changedAttributes);
     }
 
     public function afterDelete() {
@@ -141,5 +151,5 @@ class Media extends Base {
     public function getImgUrl($size = null, $placeholder = true, $overwrite = false) {
         return MediaHelper::getImgUrl($this, $size, $placeholder, $overwrite);
     }
-    
+
 }

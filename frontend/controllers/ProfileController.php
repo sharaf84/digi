@@ -60,15 +60,16 @@ class ProfileController extends \frontend\components\BaseController {
      * uploads user avatar
      */
     public function actionUploadAvatar() {
-        $oMedia = new \common\models\custom\Media();
+        $oUserIdentity = clone Yii::$app->user->identity;
+        $oMedia = $oUserIdentity->firstMedia ? $oUserIdentity->firstMedia : new \common\models\custom\Media();
         $oMedia->scenario = 'uploadAvatar';
         $oMedia->model = 'User';
         $oMedia->model_id = Yii::$app->user->id;
         $oMedia->uploadedFile = \yii\web\UploadedFile::getInstanceByName('avatar');
-        if (\common\helpers\MediaHelper::fileUpload($oMedia))
-            echo Yii::$app->user->identity->getFeaturedImgUrl();
-        else 
-            var_dump($oMedia->errors); 
+        if (\common\helpers\MediaHelper::fileUpload($oMedia)){
+            echo json_encode(['imgUrl' => Yii::$app->user->identity->getFeaturedImgUrl('profile_avatar')]);
+        }else 
+            echo json_encode($oMedia->errors); 
         Yii::$app->end();
     }
 

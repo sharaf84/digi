@@ -59,14 +59,14 @@ class Base extends \yii\db\ActiveRecord {
      * Global Media hasMany Relation
      */
     public function getMedia() {
-        return $this->hasMany(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+        return $this->hasMany(\common\models\custom\Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
 
     /**
      * Global Media hasOne Relation
      */
     public function getFirstMedia() {
-        return $this->hasOne(Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
+        return $this->hasOne(\common\models\custom\Media::className(), ['model_id' => 'id'])->andWhere(['model' => StringHelper::basename(static::className())]); //->orderBy(['sort' => SORT_ASC, 'id' => SORT_DESC]);
     }
     
     /**

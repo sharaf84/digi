@@ -11,12 +11,12 @@ use yii\helpers\Url;
         </a>
     </div>
     <div class="user-avatar usermenu-cont">
-        <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" data-drop-down="#usermenu-dropdown">
+        <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" data-drop-down="#usermenu-dropdown" class="avatarImg">
         <div class="usermenu-dropdown drop-down" id="usermenu-dropdown">
             <div class="usermenu-dropdownSpace"></div>
             <div class="usermenu-dropdownBox">
                 <span class="arrow-up"></span>
-                <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="menu-avatar">
+                <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('default_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="menu-avatar avatarImg">
                 <h3><a href="<?= Url::to(['/profile']) ?>"><?= Yii::$app->user->identity->getName() ?></a></h3>
                 <div class="user-buttons-cont">
                     <div class="large-6 medium-6 small-12 columns view-profile-cont">
