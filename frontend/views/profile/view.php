@@ -13,7 +13,7 @@ $this->title = $oProfile->getName();
     </div>
     <div class="large-12 medium-12 small-12 columns">
         <div class="row">
-            <div class="large-3 medium-3 small-12 columns">
+            <div class="large-3 medium-3 small-12 columns profile-avatar">
                 
                 <img src="<?= Yii::$app->user->identity->getFeaturedImgUrl('profile_avatar') ?>" alt="<?= Yii::$app->user->identity->getName() ?>" class="avatarImg">
                 <?php
@@ -26,12 +26,15 @@ $this->title = $oProfile->getName();
                         'showCaption' => false,
                         'showRemove' => false,
                         'showUpload' => false,
-                        'browseClass' => 'btn btn-primary btn-block',
-                        'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                        //'browseClass' => 'btn btn-primary btn-block',
+                        //'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
+                        'browseIcon' => '<i class="fa fa-camera"></i> ',
                         'browseLabel' => Yii::t('app', 'Select Photo'),
                     ],
                     'pluginEvents' => [
-                        'fileuploaded' => "function(event, data, previewId, index){var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader; $('.avatarImg').attr('src', response.imgUrl);}",
+                        'filebatchselected' => "function(event, files){ $('.profile-avatar .file-preview').css('visibility', 'visible'); }",
+                        'fileclear' => "function(event, files){ $('.profile-avatar .file-preview').css('visibility', 'hidden'); }",
+                        'fileuploaded' => "function(event, data, previewId, index){var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader; $('.avatarImg').attr('src', response.imgUrl); $('.profile-avatar .file-preview').css('visibility', 'hidden'); }",
                     ],
                     'options' => ['accept' => 'image/*'],
                 ]);

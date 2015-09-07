@@ -18,9 +18,9 @@ a.cart-overflow{color: #e61b1e;}
 header {background:none;width:auto;height:auto}
 header.single-header {height:68px}
 header .headerContainer {position:fixed;z-index:11;width:100%}
-	header .headerBox {-webkit-transition-duration:0.4s;-moz-transition-duration:0.4s;-o-transition-duration:0.4s;transition-duration:0.4s}
-	header .headerBox {position:relative;margin-top:20px;border-radius:8px;background-color:#fff}
-	header.scrollHeader .headerBox, header.staticHeader .headerBox {margin-top:0;border-bottom:4px solid red;border-radius:0;max-width:100%;background-color:#fff}
+header .headerBox {-webkit-transition-duration:0.4s;-moz-transition-duration:0.4s;-o-transition-duration:0.4s;transition-duration:0.4s}
+header .headerBox {position:relative;margin-top:20px;border-radius:8px;background-color:#fff}
+header.scrollHeader .headerBox, header.staticHeader .headerBox {margin-top:0;border-bottom:4px solid red;border-radius:0;max-width:100%;background-color:#fff}
 
 header .swiper-container-horizontal > .swiper-pagination {width:100%}
 header .header-slider {margin-top:0;height:auto;max-height:560px}
@@ -39,9 +39,9 @@ header.scrollHeader .drop-down.active, header.staticHeader .drop-down.active {to
 
 footer .footer-copy p.footer-links {text-align:left}
 @media (max-width: 640px) {
-	footer .footer-copy p.footer-links, footer .footer-copy p {
-		text-align:center
-	}
+    footer .footer-copy p.footer-links, footer .footer-copy p {
+        text-align:center
+    }
 }
 ul.pagination li {height:auto}
 
@@ -55,9 +55,9 @@ h1, h2, h3, h4, h5, h6 {}
 /* header {background-image:url('./../shared/themes/frontend/images/src/loading.gif');background-repeat:no-repeat;background-position:center;background-size:auto} */
 
 @font-face {
-  font-family: 'LevenimMTBold';
-  src: url("../../shared/themes/frontend/fonts/lvnmbd.eot");
-  src: url("../../shared/themes/frontend/fonts/lvnmbd.eot") format("embedded-opentype"), url("../../shared/themes/frontend/fonts/lvnmbd.woff") format("woff"), url("../../shared/themes/frontend/fonts/lvnmbd.ttf") format("truetype"), url("../../shared/themes/frontend/fonts/lvnmbd.svg") format("svg");
+    font-family: 'LevenimMTBold';
+    src: url("../../shared/themes/frontend/fonts/lvnmbd.eot");
+    src: url("../../shared/themes/frontend/fonts/lvnmbd.eot") format("embedded-opentype"), url("../../shared/themes/frontend/fonts/lvnmbd.woff") format("woff"), url("../../shared/themes/frontend/fonts/lvnmbd.ttf") format("truetype"), url("../../shared/themes/frontend/fonts/lvnmbd.svg") format("svg");
 }
 
 header .left-off-canvas-toggle {cursor:pointer;position:static;width:auto;height:64px;line-height:64px}
@@ -95,15 +95,15 @@ header .user-avatar.usermenu-cont .arrow-up, header .user-avatar.login-cont .arr
 header .user-avatar.login-cont .signup-btn {top:44px !important}
 
 .flash-messagesBox {position:fixed;left:0;bottom:0;z-index:99999999;width:100%}
-	.flash-messagesClose {cursor:pointer;float:left;margin:12px 24px;color:#fff}
-	.flash-messages {}
-		.flash-message {padding:12px 24px;color:#fff}
-		.flash-message.error {background-color:#b71c1c}
-		.flash-message.information {background-color:#0d47a1}
-		.flash-message.warning {background-color:#f57f17}
-		.flash-message.success {background-color:#1b5e20}
-			.flash-message p {margin:0}
-			
+.flash-messagesClose {cursor:pointer;float:left;margin:12px 24px;color:#fff}
+.flash-messages {}
+.flash-message {padding:12px 24px;color:#fff}
+.flash-message.error {background-color:#b71c1c}
+.flash-message.information {background-color:#0d47a1}
+.flash-message.warning {background-color:#f57f17}
+.flash-message.success {background-color:#1b5e20}
+.flash-message p {margin:0}
+
 .swiper-slide {cursor:pointer}
 
 .span.error, small.error, span.error {display:none; padding: 4px 8px !important}
@@ -166,12 +166,12 @@ footer .next-nav {right:0}
 .single-page.single-product .tabs-content .content {max-width:100%;margin:0}
 
 @media (max-width: 960px) {
-	.product-background-cover {
-		display:none
-	}
-	.productImage {
-		display:none
-	}
+    .product-background-cover {
+        display:none
+    }
+    .productImage {
+        display:none
+    }
 }
 
 select {font-family:arial}
@@ -180,8 +180,8 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 .single-page.shopping-cart .single-product .product-image-cont img {width:auto}
 .productBox {background: url('../../shared/themes/frontend/images/src/product-rtl-bg.png') no-repeat 0% 0%}
 .productImage {float:left;margin-left:-160px}
-	.productImage img {min-height:960px}
-	
+.productImage img {min-height:960px}
+
 #mobile-login-form {-webkit-transition:0.3s, ease, all !important;-moz-transition:0.3s, ease, all !important;-o-transition: 0.3s, ease, all !important;transition:0.3s, ease, all !important}
 #mobile-login-form {position:fixed;top:0px;z-index:11;padding:24px 0;width:100%;height:100%;background-color:#292929}
 .scrollHeader #mobile-login-form {top:68px}
@@ -190,14 +190,14 @@ header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:
 #mobile-login-form form i {position:static}
 
 .mobile-user-avatar {padding:24px 0;text-align:center}
-	.mobile-user-avatar img {border:1px solid #acacac;border-radius:50%;padding:9px}
-	.mobile-user-avatar.logged img {border-color:#ed2024}
+.mobile-user-avatar img {border:1px solid #acacac;border-radius:50%;padding:9px}
+.mobile-user-avatar.logged img {border-color:#ed2024}
 .mobile-user-name {}
-	.mobile-user-name h4 {font-size:18px;color:#a2a1a1}
-		.mobile-user-name h4 a {text-decoration:underline;font-size:22px;color:#ffffff}
-	.mobile-user-name h3 {}
-		.mobile-user-name h3 a {font-size:22px;color:#ffffff}
-		
+.mobile-user-name h4 {font-size:18px;color:#a2a1a1}
+.mobile-user-name h4 a {text-decoration:underline;font-size:22px;color:#ffffff}
+.mobile-user-name h3 {}
+.mobile-user-name h3 a {font-size:22px;color:#ffffff}
+
 .article-image {text-align:center}
 
 .home-tabs .product-item p {height:36px;line-height:18px;overflow:hideen}
@@ -233,3 +233,28 @@ body.openMenu .left-off-canvas-menu, body.openMenu .right-off-canvas-menu {heigh
 .single-page.shopping-cart .remove-product {float:right;position:static}
 
 #checkoutForm .checkbox a {line-height: 20px;padding: 0 4px;vertical-align: top}
+
+.paymentMethods {margin:0;padding:0;list-style:none;text-align:center;font-size:0}
+.paymentMethods li {display:inline-block}
+.paymentMethods li a {cursor:pointer;display:block;height:32px;background-image:url('../../shared/themes/frontend/images/src/iconz.png')}
+.paymentMethods li.paymentMethod-01 a {width:29px;background-position:0 0}
+.paymentMethods li.paymentMethod-02 a {width:30px;background-position:-29px 0}
+.paymentMethods li.paymentMethod-03 a {width:33px;background-position:-59px 0}
+.paymentMethods li.paymentMethod-04 a {width:36px;background-position:-92px 0}
+
+.profile-avatar {position:relative;margin-bottom:24px}
+.profile-avatar .file-input {position:absolute;top:0;left:0;right:0;width:100%;padding-left:0.9375rem;padding-right:0.9375rem}
+.profile-avatar .file-preview {border-width:0;padding:0;border-radius:0;background-color:#fff;visibility:hidden}
+.profile-avatar .file-drop-zone {margin:0;padding:0;border-width:0}
+.profile-avatar .file-drop-zone-title {font-size:medium;line-height:32px;height:228px;padding:82px 10px;color:#aaa}
+.profile-avatar .file-preview-frame {position:relative;margin:0;padding:0;width:100%;height:208px;background-color:#fff}
+.profile-avatar .file-thumbnail-footer {position:absolute;bottom:0;width:100%}
+.profile-avatar .file-caption-name {width:100% !important;padding:0}
+.profile-avatar .btn-primary {box-shadow:none;width:100%;color:#252525;background-color:transparent;border-color:transparent}
+.profile-avatar .btn-primary:hover {color:#252525;background-color:transparent;border-color:transparent}
+.profile-avatar .file-preview-frame {box-shadow:none;border-style:dotted}
+.profile-avatar .file-preview-frame:hover {box-shadow:none}
+.profile-avatar .file-upload-indicator:hover {font-size:inherit;padding-top:2px}
+.profile-avatar .text-info, .profile-avatar .text-danger, .profile-avatar .text-warning {color:#000}
+.profile-avatar .kv-file-remove {display:none}
+.profile-avatar .file-actions {margin:2px 4px}

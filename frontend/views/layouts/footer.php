@@ -40,7 +40,7 @@ use yii\helpers\Url; ?>
     </div>
     <div class="footer-copy row">
         <hr>
-        <div class="large-6 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' left' : 'right' ?>">
+        <div class="large-5 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' left' : 'right' ?>">
             <p class="footer-links">
                 <a href="<?= Url::to(['/site/page', 'slug' => 'about-us']) ?>"><?= Yii::t('app', 'About Us') ?></a> - 
                 <a href="<?= Url::to(['/site/contact-us']) ?>"><?= Yii::t('app', 'Contact Us') ?></a> - 
@@ -48,8 +48,16 @@ use yii\helpers\Url; ?>
                 <a href="<?= Url::to(['/site/page', 'slug' => 'privacy-policy']) ?>"><?= Yii::t('app', 'Privacy Policy') ?></a>
             </p>
         </div>
-        <div class="large-6 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' right' : 'left' ?>">
+        <div class="large-5 medium-6 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' right' : 'left' ?>">
             <p><a href="http://digitreeinc.com" target="_blank"><?= Yii::t('app', '&copy; 2015 Digitree, All Rights Reserved') ?></a></p>
+        </div>
+        <div class="large-2 medium-12 small-12 columns <?php echo Yii::$app->language == 'ar' ? ' left' : 'right' ?>">
+            <ul class="paymentMethods">
+				<li class="paymentMethod-01"><a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>" alt="<?= Yii::t('app', 'Chash On Delivery') ?>"></a></li>
+				<li class="paymentMethod-02"><a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>" alt="<?= Yii::t('app', 'VISA') ?>"></a></li>
+				<li class="paymentMethod-03"><a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>" alt="<?= Yii::t('app', 'Master Card') ?>"></a></li>
+				<li class="paymentMethod-04"><a href="<?= Url::to(['/site/page', 'slug' => 'terms-of-service']) ?>" alt="<?= Yii::t('app', 'AAIB') ?>"></a></li>
+            </ul>
         </div>
     </div>
 </footer>
