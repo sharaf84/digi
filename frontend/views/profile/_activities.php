@@ -9,7 +9,7 @@
                     <div class="activity-item">
                         <i class="md md-message"></i>
                         <a href="<?= $oComment->article->getInnerUrl() ?>">
-                            <?= Yii::t('app', 'You commented on') ?> <?= $oComment->article->title ?> <?= $oComment->getPostedDate() ?>
+                            <?= Yii::t('app', 'You commented on') ?> <?= $oComment->article->title ?> <?= date('j M Y, g:i a', $oComment->createdAt) ?>
                         </a>
                     </div>
                 <?php } ?>

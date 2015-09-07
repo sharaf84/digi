@@ -16,7 +16,7 @@ if (!empty($comments)) {
         if ($comment->isActive) {
             ?>
             <div class="comment-item row">
-                <span class="date-time"><?= $comment->getPostedDate(); ?></span>
+                <span class="date-time"><?= date('j M Y, g:i a', $comment->createdAt) ?></span>
                 <div class="large-1 medium-1 small-12 columns avatar-cont">
                     <img src="<?= $comment->author->getFeaturedImgUrl('default_avatar') ?>" alt="<?= $comment->getAuthorName(); ?>">
                 </div>

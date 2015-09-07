@@ -34,7 +34,7 @@ $this->title = $oProfile->getName();
                     'pluginEvents' => [
                         'filebatchselected' => "function(event, files){ $('.profile-avatar .file-preview').css('visibility', 'visible'); }",
                         'fileclear' => "function(event, files){ $('.profile-avatar .file-preview').css('visibility', 'hidden'); }",
-                        'fileuploaded' => "function(event, data, previewId, index){var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader; $('.avatarImg').attr('src', response.imgUrl); $('.profile-avatar .file-preview').css('visibility', 'hidden'); }",
+                        'fileuploaded' => "function(event, data, previewId, index){var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader; $('.avatarImg').attr('src', response.imgUrl); $('.fileinput-remove').trigger('click'); }",
                     ],
                     'options' => ['accept' => 'image/*'],
                 ]);
