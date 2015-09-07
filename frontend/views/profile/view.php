@@ -25,6 +25,7 @@ $this->title = $oProfile->getName();
                         'uploadUrl' => Url::to(['/profile/upload-avatar']),
                         'showCaption' => false,
                         'showRemove' => false,
+                        'showCancel' => false,
                         'showUpload' => false,
                         //'browseClass' => 'btn btn-primary btn-block',
                         //'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',

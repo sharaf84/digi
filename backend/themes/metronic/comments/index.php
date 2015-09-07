@@ -103,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                             [
                                 'class' => 'digi\metronic\grid\ActionColumn',
-                                'template' => '{update}{delete}',
+                                'template' => '{delete}',
                             ]
                         ],
                     ]);
