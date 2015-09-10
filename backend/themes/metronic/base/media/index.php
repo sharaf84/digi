@@ -32,18 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ])
         ?>
-        <div class="page-toolbar">
-            <div class="btn-group pull-right">
-                <button type="button" class="btn btn-fit-height grey-salt dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
-                    Actions <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li>
-                        <?= Html::a('Create Media', ['create'], ['class' => '']) ?>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        
     </div>
 
     <!-- END PAGE HEADER-->
@@ -85,15 +74,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div>
                 </div>
                 <div class="portlet-body">
-                    <div class="table-toolbar">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="btn-group">
-                                    <?= Html::a('Add New <i class="fa fa-plus"></i>', ['create'], ['class' => 'btn green']) ?> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <?php
                     Pjax::begin([
