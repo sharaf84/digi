@@ -48,7 +48,7 @@ class UsersController extends BaseController {
     public function actionCreate() {
         $model =  new $this->model;
         if ($model->load(Yii::$app->request->post())) {
-            $model->status = $model::STATUS_VERIFIED;
+            //$model->status = $model::STATUS_VERIFIED;
             $model->setPassword($model->password);
             $model->generateAuthKey();
             if ($model->save())
