@@ -49,7 +49,7 @@ class StoreController extends \frontend\components\BaseController {
                 'defaultOrder' => ['sort' => SORT_ASC, 'id' => SORT_DESC]
             ],
             'pagination' => [
-                'pageSize' => 1,
+                'pageSize' => 5,
             ],
         ]);
         $this->view->params['searchKey'] = $oSearchForm->key;
