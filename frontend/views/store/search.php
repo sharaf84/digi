@@ -2,6 +2,7 @@
 
 use yii\widgets\Pjax;
 use yii\helpers\Inflector;
+use yii\helpers\Html;
 
 $this->title = Yii::t('app', 'Store');
 ?>
@@ -10,9 +11,9 @@ $this->title = Yii::t('app', 'Store');
         <h2>
             <?php
             if ($slug) {
-                echo Inflector::camel2words($slug);
+                echo Html::encode(Inflector::camel2words($slug));
             } elseif ($oSearchForm->key) {
-                echo Yii::t('app', 'Search results of: {key}', ['key' => $oSearchForm->key]);
+                echo Yii::t('app', 'Search results of: {key}', ['key' => Html::encode($oSearchForm->key)]);
             }else
                 echo Yii::t('app', 'Store');
             ?>
