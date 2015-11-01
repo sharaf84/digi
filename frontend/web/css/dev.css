@@ -23,7 +23,7 @@ header .headerBox {position:relative;margin-top:20px;border-radius:8px;backgroun
 header.scrollHeader .headerBox, header.staticHeader .headerBox {margin-top:0;border-bottom:4px solid red;border-radius:0;max-width:100%;background-color:#fff}
 
 header .swiper-container-horizontal > .swiper-pagination {width:100%}
-header .header-slider {margin-top:0;height:auto;max-height:560px}
+header .header-slider {margin-top:0;height:auto}
 header .header-slider img {display:block;width:100%}
 header .drop-down {-webkit-transition-duration:0s !important;-moz-transition-duration:0s !important;-o-transition-duration:0s !important;transition-duration:0s !important}
 header .drop-down {position:absolute;top:56px;z-index:-1;display:none}
@@ -179,8 +179,8 @@ select {font-family:arial}
 header .drop-down .dropdown-product-item .dropdown-product-item--img img {width:auto}
 .single-page.shopping-cart .single-product .product-image-cont img {width:auto}
 .productBox {background: url('../../shared/themes/frontend/images/src/product-ltr-bg.png') no-repeat 100% 0%}
-.productImage {float:right;margin-right:-160px}
-.productImage img {min-height:960px}
+.productImage {float:right;padding-left:32px;width:320px;height:960px;line-height:960px;text-align:center}
+.productImage img {display:inline-block;vertcal-align:middle;max-width:100%;max-height:100%}
 
 #mobile-login-form {-webkit-transition:0.3s, ease, all !important;-moz-transition:0.3s, ease, all !important;-o-transition: 0.3s, ease, all !important;transition:0.3s, ease, all !important}
 #mobile-login-form {position:fixed;top:0px;z-index:11;padding:24px 0;width:100%;height:100%;background-color:rgba(41,41,41,1.00)}

@@ -4409,7 +4409,8 @@ table {
     float: none;
     display: block;
     top: auto; }
-
+.product-tabs .tabs {float:right}
+.product-tabs .tabs-content {padding-top:71px}
 .tabs-content {
   margin-bottom: 1.5rem;
   width: 100%; }
@@ -11790,7 +11791,7 @@ footer {
         text-align: right; }
       footer .footer-copy p a {
         color: #fff; }
-
+#nutrition-facts {width:auto;margin-left:352px !important}
 #ar-layout {
   font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important; }
   #ar-layout header .main-nav ul li a,
@@ -11867,7 +11868,6 @@ footer {
   #ar-layout .single-page.profile-page .user-info .edit-profile {
     right: auto;
     left: 30px; }
-
 /**
  * General Responsive Rules:
  */

@@ -4412,7 +4412,8 @@ table {
     float: none;
     display: block;
     top: auto; }
-
+.product-tabs .tabs {float:left}
+.product-tabs .tabs-content {padding-top:71px}
 .tabs-content {
   margin-bottom: 1.5rem;
   width: 100%; }
@@ -11792,7 +11793,7 @@ footer {
         text-align: right; }
       footer .footer-copy p a {
         color: #fff; }
-
+#nutrition-facts {width:auto;margin-right:352px !important}
 /**
  * General Responsive Rules:
  */

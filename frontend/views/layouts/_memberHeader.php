@@ -30,8 +30,8 @@ use yii\helpers\Url;
             </div>
         </div>
     </div>
-    <div class="lang-switcher" data-route="<?= Yii::$app->params['mlConfig']['subdomains'][Yii::$app->language == 'en' ? 'ar' : 'en'] . Url::current() ?>">
+<!--    <div class="lang-switcher" data-route="<?= Yii::$app->params['mlConfig']['subdomains'][Yii::$app->language == 'en' ? 'ar' : 'en'] . Url::current() ?>">
         <div class="language-switcher"><?= Yii::t('app', 'AR') ?></div>
-    </div>
+    </div>-->
 </div>
 
