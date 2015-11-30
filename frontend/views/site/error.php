@@ -9,30 +9,15 @@ use yii\helpers\Html;
 
 $this->title = $name;
 ?>
-<div id="checkpoint-a" class="single-page row">
+<div id="checkpoint-a" class="single-page row errorPage">
 
     <div class="page-title large-12 medium-12 small-12 columns">
-        <h2><?= Html::encode($this->title) ?></h2>
+        <h2><?= Yii::t('app', 'Error Page') ?></h2>
     </div>
 
-    <div class="admin-content"><?= nl2br(Html::encode($message)) ?></div>
-
-</div>
-<!--
-<div class="site-error">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+    <div class="admin-content">
+        <h1><?= Html::encode($exception->statusCode) ?></h1>
+        <?= nl2br(Html::encode(Yii::t('app', 'Sorry, the page you tried cannot be found.'))) ?>
     </div>
 
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>
--->

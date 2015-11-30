@@ -30,13 +30,15 @@ class MetaTag extends \yii\db\ActiveRecord {
                     'db_table' => 'translations_with_text',
                     'attributes' => ['title', 'keywords', 'description'],
                     //Sets all virtual attributes at these routes ex: title_ar, title_fr, ... 
-                    'admin_routes' => [
+                    'admin_routes' => end(explode('/', Yii::getAlias('@app'))) == 'frontend' ? [] : [
                         'content/update',
                         'content/view',
                         'pages/update',
                         'pages/view',
                         'articles/update',
                         'articles/view',
+                        'products/update',
+                        'products/view',
                         'media/update',
                         'media/view',
                         'treemanager/node/manage',

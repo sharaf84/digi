@@ -39,6 +39,8 @@ class Base extends \yii\db\ActiveRecord {
                         'pages/view',
                         'articles/update',
                         'articles/view', //make confilect with frontend articles/view
+                        'products/update',
+                        'products/view',
                         'media/update',
                         'media/view',
                         'treemanager/node/manage',

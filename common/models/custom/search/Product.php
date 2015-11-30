@@ -73,7 +73,7 @@ class Product extends ProductModel {
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-                ->andFilterWhere(['like', 'slug', $this->slug])
+                //->andFilterWhere(['like', 'slug', $this->slug])
                 ->andFilterWhere(['like', 'color', $this->color])
                 ->andFilterWhere(['like', 'brief', $this->brief])
                 ->andFilterWhere(['like', 'description', $this->description])

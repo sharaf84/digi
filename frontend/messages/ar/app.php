@@ -31,7 +31,7 @@ return [
     "You can't sign in with Facebook account ({email}) as you're already registered by our normal sign up process. You can use normal sign in or forgot password." => 'لايمكنك التسجيل من خلال الفيسبوك باستخدام هذا البريد الالكترونى ({email}) لانه مسجل لدينا من قبل يمكن تسخيل الدخول بالطريقة العادية او استعادة كلمة المرور انت كنت لا تتزكرها',
     'Sorry, error saving data.' => 'حدث خطا اثناء حفظ البيانات',
     'Your authentication data saved successfully.' => 'تم حفظ بيانات الدخول بنجاح',
-    'Sorry, no email found.' => 'هذا البريد الالمترونى غير موجود لدينا',
+    'Sorry, no email found.' => 'هذا البريد الالكترونى غير موجود لدينا',
     'This email address has already been taken.' => 'هذا البريد الالكترونى مستخدم من قبل',
     'Invalid City.' => 'قمت بادخال مدينة ',
     'Full Name' => 'الاسم بالكامل',
@@ -66,7 +66,7 @@ return [
     'Privacy Policy' => 'سياسة الخصوصية',
     'Get the latest sales and new product announcements right to your inbox' => 'تعرف على اخر الخصومات واحدث المنتجات عن طريق البريد الالكترونى',
     'Sorry, wrong email' => 'البريد الالكترونى غير صحيح',
-    '&copy; 2015 Digitree, All Rights Reserved' => '&copy; 2015 Digitree, جميع الحقوق محفوظة',
+    '&copy; 2015 Digitree, All Rights Reserved' => '2015 Digitree &copy;',
     'TSS' => 'TSS',
     'Select Payment Method' => 'اختر طريقة الدفع',
     'Edit Profile' => 'تعديل الصفحة الشخصية',
@@ -148,6 +148,7 @@ return [
     'Pay Now' => 'ادفع الان',
     'Gateway response message ({msg}). You can try again from your orders history.' => 'يمكنك المحاولة مرة اخرى من خلال جدول الطلبات .({msg}) نتيجة عملية الدفع',
     'I agree with Terms and Conditions' => 'أوافق على الشروط والأحكام',
+    'Error Page' => 'صفحة الخطأ',
+    'Sorry, the page you tried cannot be found.' => 'نأسف, الصفحة التى تحاول الدخول عليها غير موجودة.',
 //Sharaf end
 ];
-

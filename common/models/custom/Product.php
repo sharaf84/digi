@@ -52,7 +52,7 @@ class Product extends \common\models\base\Base {
     public function rules() {
         return [
             [['title', 'category_id', 'brand_id'], 'required', 'on' => 'parent'],
-            [['size_id', 'price', 'qty'], 'required', 'on' => 'child'],
+            [['size_id', 'price', 'qty', 'parent_id'], 'required', 'on' => 'child'],
             [['size_id'], 'ruleValidateSize', 'on' => 'child'],
             [['price', 'featured', 'qty'], 'default', 'value' => 0],
             [['slug'], 'match', 'pattern' => static::SLUG_PATTERN],
@@ -120,12 +120,16 @@ class Product extends \common\models\base\Base {
     }
 
     public function beforeSave($insert) {
-        if ($this->isChild() && $insert) {
-            $oParentProduct = self::findOne($this->parent_id);
-            $this->title = $oParentProduct->title;
-            $this->slug = null;
-            $this->category_id = $oParentProduct->category_id;
-            $this->brand_id = $oParentProduct->brand_id;
+        if ($insert) {
+            if ($this->isChild()) {
+                $oParentProduct = self::findOne($this->parent_id);
+                $this->title = $oParentProduct->title;
+                $this->slug = null;
+                $this->category_id = $oParentProduct->category_id;
+                $this->brand_id = $oParentProduct->brand_id;
+            }
+        } else {
+            return $this->parent_id == $this->oldAttributes['parent_id']; //prevent switching from parent to child and vise versa. 
         }
         return parent::beforeSave($insert);
     }
@@ -240,6 +244,16 @@ class Product extends \common\models\base\Base {
      */
     public static function getParentsList() {
         return ArrayHelper::map(static::getParents(), 'id', 'title');
+    }
+
+    /**
+     * Get Other Parents List
+     * @return array of parents as [id => title] where id != $this->id used for dropdown
+     */
+    public function getOtherParentsList() {
+        $query = static::find()->parents()->defaultOrder();
+        !$this->isNewRecord and $query->andWhere(['!=', 'id', $this->id]);
+        return ArrayHelper::map($query->all(), 'id', 'title');
     }
 
     /**

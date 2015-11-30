@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use digi\metronic\widgets\ActiveForm;
+
 //use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
@@ -14,7 +15,7 @@ use digi\metronic\widgets\ActiveForm;
 <div class="form-body">
     <h3 class="form-section">Note:  <small>fields marked with asterisk (*) are required.</small></h3>
 
-    <?= $form->field($model, 'parent_id')->dropDownList(common\models\custom\Product::getParentsList(), ['prompt' => 'Please Select']) ?>
+    <?= $form->field($model, 'parent_id')->dropDownList($model->getOtherParentsList(), ['prompt' => 'Please Select', 'disabled' => !$model->isNewRecord]) ?>
 
     <div class="parentFields">
         <?=
@@ -49,8 +50,8 @@ use digi\metronic\widgets\ActiveForm;
         <?= $form->field($model, 'qty')->textInput() ?>
     </div>
 
-    <?php //echo $form->field($model, 'status')->textInput() ?>
-    
+    <?php //echo $form->field($model, 'status')->textInput()  ?>
+
     <div class="parentFields">
         <?= $form->field($model, 'brief')->textarea(['rows' => 6])->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea']) ?>
 
@@ -65,7 +66,7 @@ use digi\metronic\widgets\ActiveForm;
                 ->widget(\webvimark\behaviors\multilanguage\input_widget\MultiLanguageActiveField::className(), ['inputType' => 'textArea'])
         ?>
     </div>
-    
+
     <div class="parentFields">
         <h3 class="form-section">SEO:  <small>Meta Tags</small></h3>
 
