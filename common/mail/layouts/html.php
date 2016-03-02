@@ -9,7 +9,7 @@ use yii\helpers\Url;
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html dir="<?= (Yii::$app->language == 'ar') ? 'rtl' : 'ltr' ?>" lang="en">
     <head>
         <meta charset="<?= Yii::$app->charset ?>" />
         <meta http-equiv="x-ua-compatible" content="ie=edge" />

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "82e883df9c0b8f4bf5c26db84866d98b",
+    "hash": "16c48736c3e7b459b335a431e0695a97",
     "packages": [
         {
             "name": "2amigos/yii2-ckeditor-widget",
@@ -1113,6 +1113,48 @@
             "time": "2015-01-23 10:10:39"
         },
         {
+            "name": "himiklab/yii2-sitemap-module",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/himiklab/yii2-sitemap-module.git",
+                "reference": "83ac08e23673d5d6de4f11aee3b44a1bf77972df"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/himiklab/yii2-sitemap-module/zipball/83ac08e23673d5d6de4f11aee3b44a1bf77972df",
+                "reference": "83ac08e23673d5d6de4f11aee3b44a1bf77972df",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "himiklab\\sitemap\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "HimikLab",
+                    "homepage": "https://github.com/himiklab"
+                }
+            ],
+            "description": "Yii2 module for automatically generation XML Sitemap",
+            "keywords": [
+                "Sitemap",
+                "module",
+                "xml",
+                "yii2"
+            ],
+            "time": "2015-07-31 15:11:09"
+        },
+        {
             "name": "imagine/imagine",
             "version": "v0.5.0",
             "source": {
@@ -1400,7 +1442,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/bf45a22f6bd9fe11bbe8378d1a4129867c9c5bbb",
+                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/0fd506de3ef0c73ec8a3f0c9267ed8353f5e9f89",
                 "reference": "bf45a22f6bd9fe11bbe8378d1a4129867c9c5bbb",
                 "shasum": ""
             },
@@ -2396,7 +2438,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kotchuprik/yii2-sortable-widgets/zipball/30529fff17f9280c5670f1543d74955e16ef5715",
+                "url": "https://api.github.com/repos/kotchuprik/yii2-sortable-widgets/zipball/d9f80c4c60fd6159e231e55f147babf333b9c398",
                 "reference": "8d9d5bd88c63bc730743d6ab0af85448b458819d",
                 "shasum": ""
             },
@@ -2804,12 +2846,12 @@
             "version": "v2.7.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/EventDispatcher.git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
                 "reference": "9310b5f9a87ec2ea75d20fec0b0017c77c66dac3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/EventDispatcher/zipball/9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
                 "reference": "9310b5f9a87ec2ea75d20fec0b0017c77c66dac3",
                 "shasum": ""
             },
@@ -2862,12 +2904,12 @@
             "version": "v2.7.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/HttpFoundation.git",
+                "url": "https://github.com/symfony/http-foundation.git",
                 "reference": "863af6898081b34c65d42100c370b9f3c51b70ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/HttpFoundation/zipball/863af6898081b34c65d42100c370b9f3c51b70ca",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/863af6898081b34c65d42100c370b9f3c51b70ca",
                 "reference": "863af6898081b34c65d42100c370b9f3c51b70ca",
                 "shasum": ""
             },

@@ -12,9 +12,9 @@ use yii\web\AssetBundle;
 
 class UIAsset extends AssetBundle {
 
-    //public $sourcePath = '@frontThemePath';
-    public $basePath = '@frontThemePath';
-    public $baseUrl = '@frontThemeUrl';
+    public $sourcePath = '@frontThemePath';
+    //public $basePath = '@frontThemePath';
+    //public $baseUrl = '@frontThemeUrl';
 
     public $css = [
         'ui-deps/font-awesome/css/font-awesome.min.css',

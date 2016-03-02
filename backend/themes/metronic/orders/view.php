@@ -129,11 +129,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     ?>
 
                     <h2 class="page-title">Order Items</h2>
-
+                    <?php 
+                    $orderItemsDP = new \yii\data\ActiveDataProvider(['query' => $model->getCartItems()]);
+                    $orderItemsDP->sort = false;
+                    ?>        
                     <?php Pjax::begin(['id' => 'pjaxCartGrid']); ?>
                     <?=
                     GridView::widget([
-                        'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getCartItems()]),
+                        'dataProvider' => $orderItemsDP,
                         //'filterModel' => new \common\models\custom\search\Cart(),
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
@@ -141,6 +144,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             //'order_id',
                             'item_id',
                             'title',
+                            'item.size.name:text:Size',
+                            'item.flavor.name:text:Flavor',
+                            'item.color:text:Color',
                             'price',
                             'qty',
                         //['class' => 'digi\metronic\grid\ActionColumn'],
@@ -150,11 +156,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php Pjax::end(); ?>
 
                     <h2 class="page-title">Order Transactions</h2>
-
+                    <?php 
+                    $orderPaymentDP = new \yii\data\ActiveDataProvider(['query' => $model->getPayments()]);
+                    $orderPaymentDP->sort = false;
+                    ?> 
                     <?php Pjax::begin(['id' => 'pjaxPaymentGrid']); ?>
                     <?=
                     GridView::widget([
-                        'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getPayments()]),
+                        'dataProvider' => $orderPaymentDP,
                         'columns' => [
                             ['class' => 'yii\grid\SerialColumn'],
                             'gateway',

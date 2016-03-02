@@ -9,6 +9,31 @@ class Category extends \common\models\base\Tree {
     const ROOT = 1;
     
     /**
+     * @inheritdoc
+     */
+    public function behaviors() {
+        return array_merge_recursive(parent::behaviors(), [
+            'sitemap' => [
+                'class' => \himiklab\sitemap\behaviors\SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select(['slug', 'updated']);
+                    $model->andWhere(['lvl' => 1]);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => $model->getInnerUrl(true),
+                        'lastmod' => strtotime($model->updated),
+                        'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_WEEKLY,
+                        'priority' => 0.8
+                    ];
+                }
+            ],
+        ]);
+    }
+    
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getProducts() {

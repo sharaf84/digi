@@ -21,9 +21,43 @@ return [
         ],
         'comment' => [
             'class' => 'yii2mod\comments\Module'
-        ]
+        ],
+        'sitemap' => [
+            'class' => 'himiklab\sitemap\Sitemap',
+            'models' => [
+                // your models
+                'common\models\custom\Category',
+                'common\models\custom\Brand',
+                'common\models\custom\Product',
+                'common\models\custom\Article',
+                'common\models\custom\Page',
+            ],
+            'urls' => [
+                // your additional urls
+                [
+                    'loc' => 'http://www.tssegypt.com/',
+                    'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_DAILY,
+                    'priority' => 0.1,
+                ],
+                [
+                    'loc' => 'http://www.tssegypt.com/signup',
+                    'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_NEVER,
+                    'priority' => 0.6,
+                ],
+                [
+                    'loc' => 'http://www.tssegypt.com/forgot-password',
+                    'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_NEVER,
+                    'priority' => 0.6,
+                ],
+            ],
+            'enableGzip' => true, // default is false
+            'cacheExpire' => 3600, // 1 second. Default is 24 hours
+        ],
     ],
     'components' => [
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
         'request' => [
             'baseUrl' => $baseUrl,
         ],
@@ -57,6 +91,8 @@ return [
                 //'<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_c>/<_a>',//Make confiflect with cutome routes
                 //'<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>' => '<_m>/<_c>/<_a>',
                 //'<_m:[\w \-]+>/<_c:[\w \-]+>/<_a:[\w \-]+>/<id:\d+>' => '<_m>/<_c>/<_a>',
+                //Sitemap rule
+                ['pattern' => 'sitemap', 'route' => 'sitemap/default/index', 'suffix' => '.xml'],
                 // custom rules
                 'store' => 'store/search',
                 'store/search' => 'store/search',
@@ -69,7 +105,6 @@ return [
                 'login' => 'user/login',
                 'logout' => 'user/logout',
                 'forgot-password' => 'user/request-password-reset',
-                'article/<slug:\S+>' => 'articles/view',
                 '<slug:(about-us|terms-of-service|privacy-policy)>' => 'site/page',
                 'contact-us' => 'site/contact-us',
             ],

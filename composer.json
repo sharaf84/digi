@@ -34,7 +34,8 @@
         "yii2mod/yii2-enum": "*",
         "omnipay/migs": "~2.0",
         "infoweb-internet-solutions/yii2-cms-analytics": "*",
-        "sammaye/yii2-mailchimp": "*"
+        "sammaye/yii2-mailchimp": "*",
+        "himiklab/yii2-sitemap-module": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

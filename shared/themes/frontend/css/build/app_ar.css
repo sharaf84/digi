@@ -10460,7 +10460,7 @@ th.hide-for-touch {
 button, input[type="button"], input[type="reset"], input[type="submit"] {
   background: #e61b1e;
   color: #fff;
-  font: 400 18px "PT Sans", arial, sans-serif;
+  font: 400 18px "Droid Arabic Kufi", arial, sans-serif;
   padding: 14px;
   display: block;
   max-width: 160px;
@@ -10480,7 +10480,7 @@ button:active, input[type="button"]:active, input[type="reset"]:active, input[ty
 
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], textarea {
   color: #9c9c9c;
-  font: 400 16px/24px "PT Sans", arial, sans-serif;
+  font: 400 16px/24px "Droid Arabic Kufi", arial, sans-serif;
   border: 1px solid #ed2024; }
 
 input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, textarea:focus,
@@ -10553,7 +10553,7 @@ select {
  * Defautls:
  */
 body {
-  font-family: "PT Sans", arial, sans-serif !important;
+  font-family: "Droid Arabic Kufi", arial, sans-serif !important;
   color: #252525;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10578,7 +10578,7 @@ body {
 .shop-now {
   background: #e61b1e;
   color: #fff;
-  font: 500 17px "PT Sans", arial, sans-serif;
+  font: 500 17px "Droid Arabic Kufi", arial, sans-serif;
   padding: 8px 14px;
   display: block;
   max-width: 160px;
@@ -10620,13 +10620,13 @@ body {
     margin: 0 auto; }
   .product-carousel-item h4, .single-page.single-product .product-item h4, .archive-page .product-item h4 {
     color: #252525;
-    font: 600 19px "PT Sans", arial, sans-serif;
+    font: 600 19px "Droid Arabic Kufi", arial, sans-serif;
     text-transform: uppercase; }
     .product-carousel-item h4 span, .single-page.single-product .product-item h4 span, .archive-page .product-item h4 span {
       color: #e61b1e; }
   .product-carousel-item p, .single-page.single-product .product-item p, .archive-page .product-item p {
     color: #252525;
-    font: 400 14px "PT Sans", arial, sans-serif; }
+    font: 400 14px "Droid Arabic Kufi", arial, sans-serif; }
   .product-carousel-item .shop-now, .single-page.single-product .product-item .shop-now, .archive-page .product-item .shop-now {
     margin: 0 auto; }
   .product-carousel-item a.more-on-this-product, .single-page.single-product .product-item a.more-on-this-product, .archive-page .product-item a.more-on-this-product {
@@ -10709,7 +10709,7 @@ header {
       position: relative; }
       header .main-nav ul li a {
         color: #252525;
-        font: 500 14px "PT Sans", arial, sans-serif;
+        font: 500 14px "Droid Arabic Kufi", arial, sans-serif;
         padding: 27px;
         display: block;
         -webkit-transition: 0.3s, ease, all;
@@ -10840,7 +10840,7 @@ header {
       top: 20px; }
     header form input[type='search'] {
       color: #9c9c9c;
-      font: 400 16px/24px "PT Sans", arial, sans-serif;
+      font: 400 16px/24px "Droid Arabic Kufi", arial, sans-serif;
       border: 1px solid #ed2024; }
   header .shopping-cart {
     position: absolute;
@@ -11062,18 +11062,18 @@ header {
   margin: 20px auto 40px auto; }
   .center-features h3 {
     color: #252525;
-    font: 400 35px "PT Sans", arial, sans-serif;
+    font: 400 35px "Droid Arabic Kufi", arial, sans-serif;
     text-transform: uppercase;
     text-align: center;
     margin: 40px 0; }
   .center-features h4 {
     color: #252525;
-    font: 600 22px "PT Sans", arial, sans-serif;
+    font: 600 22px "Droid Arabic Kufi", arial, sans-serif;
     text-align: center;
     text-transform: uppercase; }
   .center-features p {
     color: #252525;
-    font: 400 15px "PT Sans", arial, sans-serif;
+    font: 400 15px "Droid Arabic Kufi", arial, sans-serif;
     text-align: center; }
   .center-features .star-icon, .center-features .delivery-icon, .center-features .network-icon {
     background: #252525 url(../../images/src/star-icon.png) center center no-repeat;
@@ -11106,7 +11106,7 @@ header {
       width: 50%;
       outline: none !important; }
       .home-tabs ul.tabs li.tab-title a {
-        font: 600 20px "PT Sans", arial, sans-serif;
+        font: 600 20px "Droid Arabic Kufi", arial, sans-serif;
         text-transform: uppercase;
         text-align: center;
         line-height: 21px; }
@@ -11128,13 +11128,13 @@ header {
       text-align: center; }
     .home-tabs .product-item h4 {
       color: #252525;
-      font: 600 19px "PT Sans", arial, sans-serif;
+      font: 600 19px "Droid Arabic Kufi", arial, sans-serif;
       text-transform: uppercase; }
       .home-tabs .product-item h4 span {
         color: #e61b1e; }
     .home-tabs .product-item p {
       color: #252525;
-      font: 400 14px "PT Sans", arial, sans-serif; }
+      font: 400 14px "Droid Arabic Kufi", arial, sans-serif; }
     .home-tabs .product-item .shop-now {
       margin: 0 auto; }
 
@@ -11143,7 +11143,7 @@ header {
  */
 .dark-section {
   background: #252525 url(../../images/src/Layer-91.png) center center no-repeat;
-  height: 392px;
+  height: 517px;
   background-size: cover; }
   .dark-section img {
     max-width: 320px;
@@ -11169,11 +11169,11 @@ header {
   padding-bottom: 29px; }
   .article-section h4 {
     color: #e61b1e;
-    font: 600 31px/29px "PT Sans", arial, sans-serif;
+    font: 600 31px/29px "Droid Arabic Kufi", arial, sans-serif;
     text-transform: uppercase;
     margin-top: 80px; }
   .article-section p {
-    font: 400 21px "PT Sans", arial, sans-serif;
+    font: 400 21px "Droid Arabic Kufi", arial, sans-serif;
     font-style: italic;
     color: #252525; }
   .article-section .shop-now {
@@ -11187,18 +11187,18 @@ header {
   margin-top: 40px;
   margin-bottom: 40px; }
   .home-bottom-articles h5 {
-    font: 600 18px "PT Sans", arial, sans-serif;
+    font: 600 18px "Droid Arabic Kufi", arial, sans-serif;
     margin: 10px 0; }
   .home-bottom-articles p {
-    font: 400 15px "PT Sans", arial, sans-serif;
+    font: 400 15px "Droid Arabic Kufi", arial, sans-serif;
     margin: 10px 0; }
     .home-bottom-articles p.article-meta {
       border-top: 1px solid #dcdcdc; }
       .home-bottom-articles p.article-meta .date-time {
-        font: 400 12px "PT Sans", arial, sans-serif;
+        font: 400 12px "Droid Arabic Kufi", arial, sans-serif;
         color: #b9b9b9; }
       .home-bottom-articles p.article-meta .read-more {
-        font: 600 12px "PT Sans", arial, sans-serif;
+        font: 600 12px "Droid Arabic Kufi", arial, sans-serif;
         color: #ed2124;
         text-align: right;
         display: inline-block;
@@ -11288,7 +11288,7 @@ header {
     font-weight: bold;
     color: #ed2024; }
   .single-page.single-product p {
-    font: "PT Sans", arial, sans-serif 16px;
+    font: "Droid Arabic Kufi", arial, sans-serif 16px;
     color: #3f3f3f; }
     .single-page.single-product p.pricing {
       color: #252525;
@@ -11340,11 +11340,11 @@ header {
       color: #252525;
       font: 41px 'Impact', arial, sans-serif; }
     .single-page.single-product .tabs-content .content p {
-      font: 18px "PT Sans", arial, sans-serif;
+      font: 18px "Droid Arabic Kufi", arial, sans-serif;
       color: #252525;
       margin: 20px 0; }
     .single-page.single-product .tabs-content .content h3 {
-      font: bold 22px "PT Sans", arial, sans-serif;
+      font: bold 22px "Droid Arabic Kufi", arial, sans-serif;
       color: #252525;
       margin-top: 50px; }
   .single-page .admin-content p {
@@ -11379,13 +11379,15 @@ header {
     margin-bottom: 30px;
     padding-bottom: 30px; }
     .single-page.blog-listing article h3 {
-      font-weight: bold;
+      /*font-weight: bold;*/
       font-size: 21px;
       color: #e61b1e;
+      padding:0 28px 0 10px; 
       margin: 20px 0 10px 0; }
     .single-page.blog-listing article p {
       color: #1a1e27;
-      font-size: 16px; }
+      font-size: 16px;
+      padding:0 10px; }
     .single-page.blog-listing article .article-meta {
       color: #525151;
       font-size: 12px; }
@@ -11432,7 +11434,7 @@ header {
   .single-page.single-blog .comments .comment-item {
     border-bottom: 1px solid #dedede;
     margin: 0 0 30px 0;
-    padding-bottom: 30px;
+    padding: 30px;
     position: relative; }
     .single-page.single-blog .comments .comment-item h3 {
       font-weight: bold;
@@ -11449,7 +11451,7 @@ header {
       color: #9d9d9d;
       font-size: 13px;
       position: absolute;
-      right: 15px;
+      left: 20px;
       top: 0; }
     .single-page.single-blog .comments .comment-item .avatar-cont {
       padding: 0; }
@@ -11733,7 +11735,7 @@ footer {
     margin: 30px 0; }
   footer h3 {
     color: #d9d9d9;
-    font: 700 18px/19px "PT Sans", arial, sans-serif;
+    font: 700 18px/19px "Droid Arabic Kufi", arial, sans-serif;
     margin: 18px 0 0 0; }
   footer .envelope {
     color: #fff;
@@ -11785,7 +11787,7 @@ footer {
     footer .footer-copy p {
       margin: 0;
       padding: 0;
-      font: 400 14px "PT Sans", arial, sans-serif;
+      font: 400 14px "Droid Arabic Kufi", arial, sans-serif;
       color: rgba(255, 255, 255, 0.5); }
       footer .footer-copy p.footer-links {
         text-align: right; }
@@ -11793,12 +11795,12 @@ footer {
         color: #fff; }
 #nutrition-facts {width:auto;margin-left:352px !important}
 #ar-layout {
-  font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important; }
+  font-family: "Droid Arabic Kufi", "Droid Arabic Kufi", arial, sans-serif !important; }
   #ar-layout header .main-nav ul li a,
   #ar-layout header form input[type='search'],
   #ar-layout header .lang-switcher,
   #ar-layout header .user-avatar {
-    font-family: "Droid Arabic Kufi", "PT Sans", arial, sans-serif !important; }
+    font-family: "Droid Arabic Kufi", "Droid Arabic Kufi", arial, sans-serif !important; }
   #ar-layout header form i {
     right: auto;
     left: 22px; }
@@ -12049,7 +12051,7 @@ footer {
       margin: -7px 0 20px 0; }
     aside .mobile-user-name h4 {
       color: #acacac;
-      font: 12px "PT Sans", arial, sans-serif; }
+      font: 12px "Droid Arabic Kufi", arial, sans-serif; }
       aside .mobile-user-name h4 a {
         color: #fff;
         font-size: 14px; }
@@ -12369,7 +12371,7 @@ footer {
       margin: -7px 0 20px 0; }
     aside .mobile-user-name h4 {
       color: #acacac;
-      font: 12px "PT Sans", arial, sans-serif; }
+      font: 12px "Droid Arabic Kufi", arial, sans-serif; }
       aside .mobile-user-name h4 a {
         color: #fff;
         font-size: 14px; }
@@ -12689,7 +12691,7 @@ footer {
       margin: -7px 0 20px 0; }
     aside .mobile-user-name h4 {
       color: #acacac;
-      font: 12px "PT Sans", arial, sans-serif; }
+      font: 12px "Droid Arabic Kufi", arial, sans-serif; }
       aside .mobile-user-name h4 a {
         color: #fff;
         font-size: 14px; }
@@ -12838,3 +12840,7 @@ footer {
   #ar-layout aside aside form i.md-chevron-right {
     right: auto;
     left: 0; } }
+	
+	.errorPage {}
+		.errorPage .admin-content {padding:32px 0;text-align:center}
+		.errorPage .admin-content h1 {font-size:180px;line-height:240px}

@@ -20,6 +20,22 @@ class Article extends \common\models\base\Content {
                 'delay' => -1,             //never register the same visitor
                 'table_name' => '{{%hits}}'     //table with hits data
             ],
+            'sitemap' => [
+                'class' => \himiklab\sitemap\behaviors\SitemapBehavior::className(),
+                'scope' => function ($model) {
+                    /** @var \yii\db\ActiveQuery $model */
+                    $model->select(['slug', 'updated']);
+                },
+                'dataClosure' => function ($model) {
+                    /** @var self $model */
+                    return [
+                        'loc' => $model->getInnerUrl(true),
+                        'lastmod' => strtotime($model->updated),
+                        'changefreq' => \himiklab\sitemap\behaviors\SitemapBehavior::CHANGEFREQ_MONTHLY,
+                        'priority' => 0.8
+                    ];
+                }
+            ],
         ]);
     }
     
@@ -39,8 +55,8 @@ class Article extends \common\models\base\Content {
         return self::find()->with('firstMedia')->orderBy(['hits' => SORT_DESC, 'date' => SORT_DESC])->limit($limit)->all();
     }
     
-    public function getInnerUrl() {
-        return Url::to(['/article/' . $this->slug]);
+    public function getInnerUrl($scheme = false) {
+        return Url::to(['/article/' . $this->slug], $scheme);
     }
     
     public function getSlideDate(){

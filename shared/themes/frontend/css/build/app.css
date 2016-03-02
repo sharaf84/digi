@@ -5609,7 +5609,7 @@ blockquote p {
   transform: translate3d(100%, 0, 0);
   right: 0; }
   .right-off-canvas-menu * {
-    -webkit-backface-visibility: hidden; }
+    /* -webkit-backface-visibility: hidden; */ }
 
 ul.off-canvas-list {
   list-style-type: none;
@@ -11133,6 +11133,11 @@ header {
       font: 600 19px "PT Sans", arial, sans-serif;
       text-transform: uppercase; }
       .home-tabs .product-item h4 span {
+		  line-height:36px;
+		  height:36px;
+		  overflow:hidden;
+		  display:block;
+		  font-size:18px;
         color: #e61b1e; }
     .home-tabs .product-item p {
       color: #252525;
@@ -11145,7 +11150,7 @@ header {
  */
 .dark-section {
   background: #252525 url(../../images/src/Layer-91.png) center center no-repeat;
-  height: 392px;
+  height: 517px;
   background-size: cover; }
   .dark-section img {
     max-width: 320px;
@@ -12764,3 +12769,7 @@ footer {
   #ar-layout aside aside form i.md-chevron-right {
     right: auto;
     left: 0; } }
+
+	.errorPage {}
+		.errorPage .admin-content {padding:32px 0;text-align:center}
+		.errorPage .admin-content h1 {font-size:180px;line-height:240px}
